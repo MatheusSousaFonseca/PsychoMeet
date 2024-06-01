@@ -79,11 +79,11 @@
       </counter>
       <counter>
         <item-type type-id="relationship" type="Association" />
-        <value>29</value>
+        <value>28</value>
       </counter>
       <counter>
         <item-type type-id="property" type="Property" />
-        <value>111</value>
+        <value>109</value>
       </counter>
       <counter>
         <item-type type-id="use-case" type="Use Case" />
@@ -202,16 +202,6 @@
         <phone-number />
         <description />
         <color>#00000000</color>
-        <working-schedule uid="ws-26674336dfea465090f1bf8fc204e559" hours="8" monday="8" tuesday="8" wednesday="8" thursday="8" friday="8" saturday="0" sunday="0" />
-      </person>
-      <person id="">
-        <first-name>Matheus</first-name>
-        <last-name>Sousa</last-name>
-        <role />
-        <e-mail />
-        <phone-number />
-        <description />
-        <color>#00000000</color>
       </person>
     </persons>
     <teams />
@@ -232,13 +222,16 @@
     </custom-types>
   </types>
   <items>
-    <item id="75289f0680814513873b00ee2af486ca" cid="UC007" type="use-case" name="Marcar consulta" owner="d04e100db1f54fe3be81a394dbca24a2" creation-date="05/16/2024 22:09:52" visibility="undefined">
+    <item id="958f3e7678014b958e3d2e285a1ef91f" cid="UC012" type="use-case" name="Visualizar solicitação de consulta" owner="d04e100db1f54fe3be81a394dbca24a2" creation-date="05/16/2024 22:12:10" visibility="undefined">
       <use-case>
         <stakeholders />
         <special-requirements />
         <issues />
       </use-case>
     </item>
+    <item id="96b8883e2ecb4f56bab10c9fa3d4a08b" cid="GNR017" type="generalization" creation-date="05/16/2024 21:39:11" from="2c0e6a4927ff44bfa2225baf61276849" to="c9163b7233e345f4a98b0c2c305aaa14" visibility="package" />
+    <item id="be63968372dd40d699094c53a97ad011" cid="ELEM002" type="ui-area" name="Area2" creation-date="05/20/2024 20:12:42" />
+    <item id="9085323cecb64916b5e8fd30cb8171d9" cid="AC006" type="actor" name="Paciente" creation-date="05/16/2024 21:38:57" visibility="undefined" />
     <item id="a0674816ff2648f49dceb97e5f6a1b06" cid="UC010" type="use-case" name="Desmarcar consulta" owner="d04e100db1f54fe3be81a394dbca24a2" creation-date="05/16/2024 22:11:27" visibility="undefined">
       <use-case>
         <stakeholders />
@@ -246,11 +239,175 @@
         <issues />
       </use-case>
     </item>
+    <item id="775ed3ac8e0d4f228f2fdaab59c5cda1" cid="UC003" type="use-case" name="Modulo de Gerencia de Consulta" owner="666e6e384b8e46f78629504e16813efa" creation-date="05/16/2024 21:41:54" visibility="undefined">
+      <use-case>
+        <stakeholders />
+        <special-requirements />
+        <issues />
+      </use-case>
+    </item>
+    <item id="27eeb1b4fc6443519fdab95438315eb1" cid="EX007" type="extend" creation-date="05/16/2024 22:14:55" from="e3de43a3aa824f6098f4509e087c0cef" to="4982786869d24e2aae7f8251da7f7f56" visibility="package">
+      <stereotypes>
+        <stereotype name="extend" />
+      </stereotypes>
+      <stereotype-instances>
+        <stereotype id="13c03d0e463a4043a9a5ecc3ad167425_extend_c" type="extend" creation-date="05/16/2024 22:14:55" ref="" />
+      </stereotype-instances>
+      <extend extension-point="" condition="" />
+    </item>
+    <item id="6a88f8375cee4025bb672904c73a383c" cid="PROP087" type="property" owner="0fd0710be9744401a09c86f3b158c9c3" creator="" creation-date="05/20/2024 20:35:26" visibility="private" />
+    <item id="75289f0680814513873b00ee2af486ca" cid="UC007" type="use-case" name="Marcar consulta" owner="d04e100db1f54fe3be81a394dbca24a2" creation-date="05/16/2024 22:09:52" visibility="undefined">
+      <use-case>
+        <stakeholders />
+        <special-requirements />
+        <issues />
+      </use-case>
+    </item>
+    <item id="f4754adc87d2423aa2e4c6159c3e182b" cid="PROP008" type="property" owner="a6fd200172f441c38f772d8dd88f82bf" creator="" creation-date="05/16/2024 21:45:37" visibility="private" />
+    <item id="6176b3f97dc1460a98ae1b638b4230ae" cid="PROP004" type="property" owner="2a8082f2ff6d47fcbc26eb2e99f763ac" creator="" creation-date="05/16/2024 21:45:17" visibility="private" />
+    <item id="ba26ce16550045b9a28983b682a6b01b" cid="UC011" type="use-case" name="Informar disponibilidade" owner="d04e100db1f54fe3be81a394dbca24a2" creation-date="05/16/2024 22:11:41" visibility="undefined">
+      <use-case>
+        <stakeholders />
+        <special-requirements />
+        <issues />
+      </use-case>
+    </item>
+    <item id="9f6195c85ace414f88a4c449e722fee6" cid="PROP037" type="property" owner="c86b90c7ceaf4a39803f81d14d1bb8dd" creator="" creation-date="05/16/2024 22:15:19" visibility="private" />
+    <item id="381d170832c74753b609e8ad4efd3c4d" cid="PROP053" type="property" owner="343af5e0f027418fa343b8f8ecce264b" creator="" creation-date="05/16/2024 22:20:55" visibility="private" />
+    <item id="e1b13a09689046b49f9fc094494ddd01" cid="GNR018" type="generalization" creation-date="05/16/2024 21:39:30" from="61538a39c5454634975c2005f30166bd" to="696a7043defc46d48a1c4c0565786206" visibility="package" />
+    <item id="e3ac2df0d6fa40d38e4d14972deec4e5" cid="AC005" type="actor" name="Psicologo" creation-date="05/16/2024 21:38:43" visibility="undefined" />
+    <item id="cb83f923756444928da7b112583c0b32" cid="AC001" type="actor" name="Pessoa" creation-date="05/16/2024 21:34:08" visibility="undefined" />
+    <item id="cbc7c60594ef40a28cb4170119e028c7" cid="AC006" type="actor" name="Administrador" creation-date="05/16/2024 21:38:57" visibility="undefined" />
+    <item id="3ebc54cd07384d41ad158655d518ea01" cid="EX007" type="extend" owner="d04e100db1f54fe3be81a394dbca24a2" creation-date="05/16/2024 22:14:55" from="1b8d0eaa7e00438ab40795c44300e232" to="f367d52181524241b9c2fc6957f56f99" visibility="package">
+      <stereotypes>
+        <stereotype name="extend" />
+      </stereotypes>
+      <stereotype-instances>
+        <stereotype id="13c03d0e463a4043a9a5ecc3ad167425_extend_c" type="extend" creation-date="05/16/2024 22:14:55" ref="" />
+      </stereotype-instances>
+      <extend extension-point="" condition="" />
+    </item>
+    <item id="fa3403efd1a74a8c9bf23e4f5f367ec1" cid="PROP088" type="property" owner="0fd0710be9744401a09c86f3b158c9c3" creator="" creation-date="05/20/2024 20:35:26" visibility="private" />
+    <item id="3bb121633f194b2ab75f1102fa7af90d" cid="UC011" type="use-case" name="Criar Filtro" owner="396b12a733544ed0a3b50b8025eee996" creation-date="05/16/2024 22:11:41" visibility="undefined">
+      <use-case>
+        <stakeholders />
+        <special-requirements />
+        <issues />
+      </use-case>
+    </item>
+    <item id="34b750ff9503435488818d8645d30f10" cid="PROP012" type="property" owner="21809bd31ffa4384b9155b4bb64e3869" creator="" creation-date="05/16/2024 21:46:27" visibility="private" />
+    <item id="93cd043dec90465f9797db5d0b13dbd4" cid="ELEM002" type="ui-area" name="Area2" creation-date="05/20/2024 20:12:42" />
+    <item id="905b71848ec148429365dd42f9bfc8ac" cid="PROP106" type="property" owner="e9fed6ba94b6428983d46680fb5fb0bc" creator="" creation-date="06/01/2024 17:20:44" visibility="private" />
+    <item id="d48efb63b5884344a58616947402a7d3" cid="PROP040" type="property" owner="0c0bba2012c049d8822b4cf7c0451b05" creator="" creation-date="05/16/2024 22:15:57" visibility="private" />
+    <item id="6c053cd199fb4347b427756e6b0867ee" cid="PROP054" type="property" owner="343af5e0f027418fa343b8f8ecce264b" creator="" creation-date="05/16/2024 22:20:55" visibility="private" />
+    <item id="c48515ab1e964cc1830e176bc67a00af" cid="GNR018" type="generalization" creation-date="05/16/2024 21:39:30" from="e3ac2df0d6fa40d38e4d14972deec4e5" to="d9882f1442424a0ab0c25a287eec179b" visibility="package" />
+    <item id="798d2e5be79940ed8f27aa33c71f49e8" cid="PROP003" type="property" owner="2a8082f2ff6d47fcbc26eb2e99f763ac" creator="" creation-date="05/16/2024 21:45:17" visibility="private" />
+    <item id="15ada55609094968830df51a8e429167" cid="UC008" type="use-case" name="Acessar Historico de Consultas" owner="396b12a733544ed0a3b50b8025eee996" creation-date="05/16/2024 22:10:35" visibility="undefined">
+      <use-case>
+        <stakeholders />
+        <special-requirements />
+        <issues />
+      </use-case>
+    </item>
+    <item id="70ab2ca1771148b0bf00c0351dac81bb" cid="AC006" type="actor" name="Paciente" creation-date="05/16/2024 21:38:57" visibility="undefined" />
+    <item id="433c2a4270b24a6fba3893677e8cc27c" cid="SYS002" type="system-boundary" name="PsychoMeet Modulo de Busca de Profissionais" creation-date="05/16/2024 22:06:38">
+      <owned-items />
+    </item>
+    <item id="387f761cddd946ec9b15b7494b74bc98" cid="PROP105" type="property" owner="e9fed6ba94b6428983d46680fb5fb0bc" creator="" creation-date="06/01/2024 17:20:44" visibility="private" />
+    <item id="c9163b7233e345f4a98b0c2c305aaa14" cid="AC001" type="actor" name="Pessoa" creation-date="05/16/2024 21:34:08" visibility="undefined" />
+    <item id="75fa5a4245ef4ee69feb6aa8715e8ed3" cid="AC001" type="actor" name="Pessoa" creation-date="05/16/2024 21:34:08" visibility="undefined" />
+    <item id="1b8d0eaa7e00438ab40795c44300e232" cid="UC009" type="use-case" name="Remarcar consulta" owner="d04e100db1f54fe3be81a394dbca24a2" creation-date="05/16/2024 22:11:14" visibility="undefined">
+      <use-case>
+        <stakeholders />
+        <special-requirements />
+        <issues />
+      </use-case>
+    </item>
+    <item id="666e6e384b8e46f78629504e16813efa" cid="SYS001" type="system-boundary" name="PsychoMeet Modulo de Gerencia do Sistema" creation-date="05/16/2024 21:34:00">
+      <owned-items />
+    </item>
+    <item id="dbdda828e0984da9b952f8140402af91" cid="AC006" type="actor" name="Administrador" creation-date="05/16/2024 21:38:57" visibility="undefined" />
     <item id="5a05dc72ab1e4de38217704d094cb6fb" cid="PROP036" type="property" owner="e143de4419b740aea85ef72001722d8f" creator="" creation-date="05/16/2024 22:12:44" visibility="private" />
+    <item id="444939858aa44aa79ff8a5bdd130123d" cid="UC010" type="use-case" name="Editar Perfil" owner="83af4756f51c4426a544e1310a755134" creation-date="05/16/2024 22:11:27" visibility="undefined">
+      <use-case>
+        <stakeholders />
+        <special-requirements />
+        <issues />
+      </use-case>
+    </item>
+    <item id="0f39a21751f84039b6ff5f5701e64c80" cid="PROP038" type="property" owner="c86b90c7ceaf4a39803f81d14d1bb8dd" creator="" creation-date="05/16/2024 22:15:19" visibility="private" />
+    <item id="a86bab8e3857488d915d6b72d531178b" cid="AC001" type="actor" name="Pessoa" creation-date="05/16/2024 21:34:08" visibility="undefined" />
+    <item id="b457199f3b59454494f14df0a3b940c4" cid="PROP098" type="property" owner="794e82cd64f844f696f22db95a0d639c" creator="" creation-date="05/20/2024 20:39:56" visibility="private" />
+    <item id="41ea16dbb4344d909ed716609762e72f" cid="UC008" type="use-case" name="Buscar Profissionais" owner="433c2a4270b24a6fba3893677e8cc27c" creation-date="05/16/2024 22:10:35" visibility="undefined">
+      <use-case>
+        <stakeholders />
+        <special-requirements />
+        <issues />
+      </use-case>
+    </item>
+    <item id="bf33921e8b30449aa8f4cdd84ee97c99" cid="UC001" type="use-case" name="Implementar medidas de segurança" owner="666e6e384b8e46f78629504e16813efa" creation-date="05/16/2024 21:41:12" visibility="undefined">
+      <use-case>
+        <stakeholders />
+        <special-requirements />
+        <issues />
+      </use-case>
+    </item>
+    <item id="4b2e759ebfa849539cdb679371eb4183" cid="UC012" type="use-case" name="Alterar Senha" creation-date="05/16/2024 22:12:10" visibility="undefined">
+      <use-case>
+        <stakeholders />
+        <special-requirements />
+        <issues />
+      </use-case>
+    </item>
+    <item id="5217b15abb0c41368d8d6e89f9d226d2" cid="AC005" type="actor" name="Psicologo" creation-date="05/16/2024 21:38:43" visibility="undefined" />
+    <item id="fa93b22efdc94b24bd43a454a51cf68c" cid="PROP016" type="property" owner="eb4e253dccaa4522a9a7159bbc83fbe2" creator="" creation-date="05/16/2024 21:48:10" visibility="private" />
+    <item id="1d25cbb8e8284cabb17a805b5abfd0bd" cid="ELEM002" type="ui-area" name="Area2" creation-date="05/20/2024 20:12:42" />
+    <item id="e531c799e4714b5fb771988f49c4f6e4" cid="PROP015" type="property" owner="eb4e253dccaa4522a9a7159bbc83fbe2" creator="" creation-date="05/16/2024 21:48:10" visibility="private" />
+    <item id="e7b730bce27f4edba57cb1b294f274c3" cid="PROP099" type="property" owner="01d3f2c7f52747089e57053f36bd8a4e" creator="" creation-date="05/20/2024 20:40:56" visibility="private" />
+    <item id="4982786869d24e2aae7f8251da7f7f56" cid="UC008" type="use-case" name="Login" creation-date="05/16/2024 22:10:35" visibility="undefined">
+      <use-case>
+        <stakeholders />
+        <special-requirements />
+        <issues />
+      </use-case>
+    </item>
     <item id="7f4bb24c8e944b848e0771829978c75d" cid="PROP097" type="property" owner="794e82cd64f844f696f22db95a0d639c" creator="" creation-date="05/20/2024 20:39:56" visibility="private" />
-    <item id="c00b520307ae4c5f8c8a65cb2f6c1039" cid="AC005" type="actor" name="Psicologo" creation-date="05/16/2024 21:38:43" visibility="undefined" />
-    <item id="24f78dde672f44349da3a06d969e57d9" cid="GNR018" type="generalization" creation-date="05/16/2024 21:39:30" from="0cd71722105a4957a9af9465a38886cc" to="75fa5a4245ef4ee69feb6aa8715e8ed3" visibility="package" />
-    <item id="2c0e6a4927ff44bfa2225baf61276849" cid="AC004" type="actor" name="Paciente" creation-date="05/16/2024 21:38:37" visibility="undefined" />
+    <item id="6592ee0ba42847eaa22beff09577b9fc" cid="UC010" type="use-case" name="Editar Perfil" creation-date="05/16/2024 22:11:27" visibility="undefined">
+      <use-case>
+        <stakeholders />
+        <special-requirements />
+        <issues />
+      </use-case>
+    </item>
+    <item id="de5d6bef08874e22b2f8dfca75ba2b06" cid="ELEM002" type="ui-area" name="Area2" creation-date="05/20/2024 20:12:42" />
+    <item id="255adff403ff417380ea6af403b9578d" cid="UC011" type="use-case" name="Criar Filtro" creation-date="05/16/2024 22:11:41" visibility="undefined">
+      <use-case>
+        <stakeholders />
+        <special-requirements />
+        <issues />
+      </use-case>
+    </item>
+    <item id="4ab6b0309c2e4ba7be637458c6f65025" cid="PROP107" type="property" owner="aa9ec2fae01a4f29889d0fed89bef4d0" creator="" creation-date="06/01/2024 17:29:57" visibility="private" />
+    <item id="a4c79fa0cadb4fc9b3b3f3a7b5ed3931" cid="PROP094" type="property" owner="7a14266aac034f07842d9120c509ceff" creator="" creation-date="05/20/2024 20:36:24" visibility="private" />
+    <item id="5a7fabc445cb47f5a844add3a35108db" cid="AC004" type="actor" name="Paciente" creation-date="05/16/2024 21:38:37" visibility="undefined" />
+    <item id="b0140d1849ea4501aa68c43d5af89b4d" cid="EX008" type="extend" owner="d04e100db1f54fe3be81a394dbca24a2" creation-date="05/16/2024 22:16:37" from="ba26ce16550045b9a28983b682a6b01b" to="a0674816ff2648f49dceb97e5f6a1b06" visibility="package">
+      <stereotypes>
+        <stereotype name="extend" />
+      </stereotypes>
+      <stereotype-instances>
+        <stereotype id="e8e0f75312524c7bbf6594ee35b2f111_extend_c" type="extend" creation-date="05/16/2024 22:16:37" ref="" />
+      </stereotype-instances>
+      <extend extension-point="" condition="" />
+    </item>
+    <item id="b7e09da95976419f8efb9b43428d1e91" cid="UC004" type="use-case" name="Modulo Pos-Consulta" owner="666e6e384b8e46f78629504e16813efa" creation-date="05/16/2024 21:44:04" visibility="undefined">
+      <use-case>
+        <stakeholders />
+        <special-requirements />
+        <issues />
+      </use-case>
+    </item>
+    <item id="c3de8b792bcc4f50a61335efc2838eb6" cid="PROP039" type="property" owner="0c0bba2012c049d8822b4cf7c0451b05" creator="" creation-date="05/16/2024 22:15:57" visibility="private" />
+    <item id="6e61384a8f41406cafa4094ce9271ba7" cid="GNR019" type="generalization" creation-date="05/16/2024 21:39:37" from="dbdda828e0984da9b952f8140402af91" to="696a7043defc46d48a1c4c0565786206" visibility="package" />
     <item id="95778a321e05486aa988d7553795004b" cid="EX007" type="extend" owner="396b12a733544ed0a3b50b8025eee996" creation-date="05/16/2024 22:14:55" to="15ada55609094968830df51a8e429167" visibility="package">
       <stereotypes>
         <stereotype name="extend" />
@@ -260,57 +417,51 @@
       </stereotype-instances>
       <extend extension-point="" condition="" />
     </item>
-    <item id="0f97377374fb4d8d86c546c25e809f0b" cid="GNR017" type="generalization" creation-date="05/16/2024 21:39:11" from="5a7fabc445cb47f5a844add3a35108db" to="696a7043defc46d48a1c4c0565786206" visibility="package" />
-    <item id="203ed973d7104d5c9637444bf0bf0f3b" cid="UC007" type="use-case" name="Visualizar perfil dos profissionais" owner="433c2a4270b24a6fba3893677e8cc27c" creation-date="05/16/2024 22:09:52" visibility="undefined">
-      <use-case>
-        <stakeholders />
-        <special-requirements />
-        <issues />
-      </use-case>
+    <item id="0cd71722105a4957a9af9465a38886cc" cid="AC005" type="actor" name="Psicologo" creation-date="05/16/2024 21:38:43" visibility="undefined" />
+    <item id="696a7043defc46d48a1c4c0565786206" cid="AC001" type="actor" name="Pessoa" creation-date="05/16/2024 21:34:08" visibility="undefined" />
+    <item id="15eec1bad2ea4a9eac27468bcd554122" cid="PROP035" type="property" owner="e143de4419b740aea85ef72001722d8f" creator="" creation-date="05/16/2024 22:12:44" visibility="private" />
+    <item id="cbb1e706c149489683bfc32b405e01e2" cid="GNR017" type="generalization" creation-date="05/16/2024 21:39:11" from="c8c4ebef2f34492c96bea4c8e46ffeab" to="cb83f923756444928da7b112583c0b32" visibility="package" />
+    <item id="396b12a733544ed0a3b50b8025eee996" cid="SYS002" type="system-boundary" name="PsychoMeet Modulo Pos-Consulta" creation-date="05/16/2024 22:06:38">
+      <owned-items />
     </item>
     <item id="def182867c1d48e1904ddf51684067ae" cid="REL015" type="relationship" creation-date="05/16/2024 22:20:55" from="70ab2ca1771148b0bf00c0351dac81bb" to="41ea16dbb4344d909ed716609762e72f" visibility="package">
       <owned-items />
       <relation from="70ab2ca1771148b0bf00c0351dac81bb" to="41ea16dbb4344d909ed716609762e72f" derived="false">
-        <start-role id="umlar-c0400fc4-0990-4bea-957c-aabd78718d88" name="" navigability="" association-type="association" visibility="private" property-ref="d65dbf140b734aa1a7028408d72832a8" />
-        <end-role id="umlar-9c4d90ab-7ee9-46bc-91e0-35507b3f5ffc" name="" navigability="" association-type="association" visibility="private" property-ref="80cdfba3bddc4ae7ad67fd2f9a3da6ec" />
+        <start-role id="umlar-96e34b77-9b5a-41dc-ade9-4161aa2b4ac6" name="" navigability="" association-type="association" visibility="private" property-ref="d65dbf140b734aa1a7028408d72832a8" />
+        <end-role id="umlar-c90eee20-1cee-4a4c-a318-b9413443747d" name="" navigability="" association-type="association" visibility="private" property-ref="80cdfba3bddc4ae7ad67fd2f9a3da6ec" />
       </relation>
     </item>
-    <item id="4b2e759ebfa849539cdb679371eb4183" cid="UC012" type="use-case" name="Alterar Senha" creation-date="05/16/2024 22:12:10" visibility="undefined">
-      <use-case>
-        <stakeholders />
-        <special-requirements />
-        <issues />
-      </use-case>
-    </item>
-    <item id="d48efb63b5884344a58616947402a7d3" cid="PROP040" type="property" owner="0c0bba2012c049d8822b4cf7c0451b05" creator="" creation-date="05/16/2024 22:15:57" visibility="private" />
-    <item id="0cd71722105a4957a9af9465a38886cc" cid="AC005" type="actor" name="Psicologo" creation-date="05/16/2024 21:38:43" visibility="undefined" />
-    <item id="6176b3f97dc1460a98ae1b638b4230ae" cid="PROP004" type="property" owner="2a8082f2ff6d47fcbc26eb2e99f763ac" creator="" creation-date="05/16/2024 21:45:17" visibility="private" />
-    <item id="396b12a733544ed0a3b50b8025eee996" cid="SYS002" type="system-boundary" name="PsychoMeet Modulo Pos-Consulta" creation-date="05/16/2024 22:06:38">
+    <item id="0f97377374fb4d8d86c546c25e809f0b" cid="GNR017" type="generalization" creation-date="05/16/2024 21:39:11" from="5a7fabc445cb47f5a844add3a35108db" to="696a7043defc46d48a1c4c0565786206" visibility="package" />
+    <item id="2c0e6a4927ff44bfa2225baf61276849" cid="AC004" type="actor" name="Paciente" creation-date="05/16/2024 21:38:37" visibility="undefined" />
+    <item id="fb8a045de28e44cbbfa2c46c893381c1" cid="GNR019" type="generalization" creation-date="05/16/2024 21:39:37" from="9085323cecb64916b5e8fd30cb8171d9" to="d9882f1442424a0ab0c25a287eec179b" visibility="package" />
+    <item id="2d266c59edac48de95b08e0874ad93e2" cid="REL016" type="relationship" creation-date="05/16/2024 22:21:38" from="70ab2ca1771148b0bf00c0351dac81bb" to="203ed973d7104d5c9637444bf0bf0f3b" visibility="package">
       <owned-items />
+      <relation from="70ab2ca1771148b0bf00c0351dac81bb" to="203ed973d7104d5c9637444bf0bf0f3b" derived="false">
+        <start-role id="umlar-cd64b0d7-bd6f-4a40-8d9c-1603d10cca75" name="" navigability="" association-type="association" visibility="private" property-ref="a98173e8ddb9497597ce21b03ca9a70b" />
+        <end-role id="umlar-b3d89d1c-2d47-46d5-b627-e50dbecd1ebc" name="" navigability="" association-type="association" visibility="private" property-ref="423fa2db0b3f48bdbbae0e21651a7aa7" />
+      </relation>
     </item>
-    <item id="cbb1e706c149489683bfc32b405e01e2" cid="GNR017" type="generalization" creation-date="05/16/2024 21:39:11" from="c8c4ebef2f34492c96bea4c8e46ffeab" to="cb83f923756444928da7b112583c0b32" visibility="package" />
-    <item id="ac5772097e664c7e9dc457c54980d362" cid="PROP100" type="property" owner="01d3f2c7f52747089e57053f36bd8a4e" creator="" creation-date="05/20/2024 20:40:56" visibility="private" />
-    <item id="905b71848ec148429365dd42f9bfc8ac" cid="PROP106" type="property" owner="e9fed6ba94b6428983d46680fb5fb0bc" creator="" creation-date="06/01/2024 17:20:44" visibility="private" />
-    <item id="a4c79fa0cadb4fc9b3b3f3a7b5ed3931" cid="PROP094" type="property" owner="7a14266aac034f07842d9120c509ceff" creator="" creation-date="05/20/2024 20:36:24" visibility="private" />
-    <item id="666e6e384b8e46f78629504e16813efa" cid="SYS001" type="system-boundary" name="PsychoMeet Modulo de Gerencia do Sistema" creation-date="05/16/2024 21:34:00">
-      <owned-items />
+    <item id="dcec438485df4ab19f77a198561e7ed1" cid="EX009" type="extend" owner="433c2a4270b24a6fba3893677e8cc27c" creation-date="05/16/2024 22:22:18" from="203ed973d7104d5c9637444bf0bf0f3b" to="41ea16dbb4344d909ed716609762e72f" visibility="package">
+      <stereotypes>
+        <stereotype name="extend" />
+      </stereotypes>
+      <stereotype-instances>
+        <stereotype id="62fded5393f54e64a063d0c9aaa6acf3_extend_c" type="extend" creation-date="05/16/2024 22:22:18" ref="" />
+      </stereotype-instances>
+      <extend extension-point="" condition="" />
     </item>
-    <item id="0f39a21751f84039b6ff5f5701e64c80" cid="PROP038" type="property" owner="c86b90c7ceaf4a39803f81d14d1bb8dd" creator="" creation-date="05/16/2024 22:15:19" visibility="private" />
-    <item id="4d80c97d93314682b2c6847d57b602bf" cid="UC005" type="use-case" name="Modulo de Gerencia do Sistema" owner="666e6e384b8e46f78629504e16813efa" creation-date="05/16/2024 21:44:21" visibility="undefined">
-      <use-case>
-        <stakeholders />
-        <special-requirements />
-        <issues />
-      </use-case>
+    <item id="42ff027bdd124aef8a13ea1210176139" cid="EX008" type="extend" creation-date="05/16/2024 22:16:37" from="255adff403ff417380ea6af403b9578d" to="6592ee0ba42847eaa22beff09577b9fc" visibility="package">
+      <stereotypes>
+        <stereotype name="extend" />
+      </stereotypes>
+      <stereotype-instances>
+        <stereotype id="e8e0f75312524c7bbf6594ee35b2f111_extend_c" type="extend" creation-date="05/16/2024 22:16:37" ref="" />
+      </stereotype-instances>
+      <extend extension-point="" condition="" />
     </item>
-    <item id="bc9e8eff5ecf4602959da26e2ce72893" cid="AC004" type="actor" name="Paciente" creation-date="05/16/2024 21:38:37" visibility="undefined" />
-    <item id="de5d6bef08874e22b2f8dfca75ba2b06" cid="ELEM002" type="ui-area" name="Area2" creation-date="05/20/2024 20:12:42" />
-    <item id="6c053cd199fb4347b427756e6b0867ee" cid="PROP054" type="property" owner="343af5e0f027418fa343b8f8ecce264b" creator="" creation-date="05/16/2024 22:20:55" visibility="private" />
-    <item id="cb83f923756444928da7b112583c0b32" cid="AC001" type="actor" name="Pessoa" creation-date="05/16/2024 21:34:08" visibility="undefined" />
-    <item id="009d4562db9e46e5835e0022aff0c599" cid="PROP110" type="property" owner="89ee5be38258477392c92a1ab98140d4" creator="" creation-date="06/01/2024 18:04:59" visibility="private" />
-    <item id="e1b13a09689046b49f9fc094494ddd01" cid="GNR018" type="generalization" creation-date="05/16/2024 21:39:30" from="61538a39c5454634975c2005f30166bd" to="696a7043defc46d48a1c4c0565786206" visibility="package" />
-    <item id="e57a2e3dd7114b70bc3a7a4dcbe1868f" cid="PROP108" type="property" owner="aa9ec2fae01a4f29889d0fed89bef4d0" creator="" creation-date="06/01/2024 17:29:57" visibility="private" />
-    <item id="f7731f5fc20e4bff84d76ef4aae30737" cid="EX006" type="extend" creation-date="05/16/2024 22:14:35" from="bc2b82bc69344b82853724f249d667fe" to="4982786869d24e2aae7f8251da7f7f56" visibility="package">
+    <item id="d3310b59386248c7a84406872ebc4bb2" cid="GNR018" type="generalization" creation-date="05/16/2024 21:39:30" from="c00b520307ae4c5f8c8a65cb2f6c1039" to="cb83f923756444928da7b112583c0b32" visibility="package" />
+    <item id="48959f24ddf24094bc015161c5aeae23" cid="PROP093" type="property" owner="7a14266aac034f07842d9120c509ceff" creator="" creation-date="05/20/2024 20:36:24" visibility="private" />
+    <item id="296fb8c24b5d41b2abaa62a4a442f158" cid="EX006" type="extend" owner="396b12a733544ed0a3b50b8025eee996" creation-date="05/16/2024 22:14:35" from="e92eb474a0354d409e5d668632f99968" to="15ada55609094968830df51a8e429167" visibility="package">
       <stereotypes>
         <stereotype name="extend" />
       </stereotypes>
@@ -319,8 +470,70 @@
       </stereotype-instances>
       <extend extension-point="" condition="" />
     </item>
-    <item id="9e07a80dbd1d477ba73c86cce2402a72" cid="AC005" type="actor" name="Psicologo" creation-date="05/16/2024 21:38:43" visibility="undefined" />
     <item id="e92eb474a0354d409e5d668632f99968" cid="UC007" type="use-case" name="Fornecer Feedbacks" owner="396b12a733544ed0a3b50b8025eee996" creation-date="05/16/2024 22:09:52" visibility="undefined">
+      <use-case>
+        <stakeholders />
+        <special-requirements />
+        <issues />
+      </use-case>
+    </item>
+    <item id="bc9e8eff5ecf4602959da26e2ce72893" cid="AC004" type="actor" name="Paciente" creation-date="05/16/2024 21:38:37" visibility="undefined" />
+    <item id="203ed973d7104d5c9637444bf0bf0f3b" cid="UC007" type="use-case" name="Visualizar perfil dos profissionais" owner="433c2a4270b24a6fba3893677e8cc27c" creation-date="05/16/2024 22:09:52" visibility="undefined">
+      <use-case>
+        <stakeholders />
+        <special-requirements />
+        <issues />
+      </use-case>
+    </item>
+    <item id="9e07a80dbd1d477ba73c86cce2402a72" cid="AC005" type="actor" name="Psicologo" creation-date="05/16/2024 21:38:43" visibility="undefined" />
+    <item id="7648193a6e0c4fb683083f234704eaaa" cid="GNR019" type="generalization" creation-date="05/16/2024 21:39:37" from="70ab2ca1771148b0bf00c0351dac81bb" to="75fa5a4245ef4ee69feb6aa8715e8ed3" visibility="package" />
+    <item id="fd6e6e7dea1243119c730726f7640aeb" cid="UC010" type="use-case" name="Editar Perfil" owner="396b12a733544ed0a3b50b8025eee996" creation-date="05/16/2024 22:11:27" visibility="undefined">
+      <use-case>
+        <stakeholders />
+        <special-requirements />
+        <issues />
+      </use-case>
+    </item>
+    <item id="ac5772097e664c7e9dc457c54980d362" cid="PROP100" type="property" owner="01d3f2c7f52747089e57053f36bd8a4e" creator="" creation-date="05/20/2024 20:40:56" visibility="private" />
+    <item id="b8f802b7a7b74177a22b45da037188de" cid="PROP056" type="property" owner="e878a9690da54115a6f71ea1a5e29d27" creator="" creation-date="05/16/2024 22:21:38" visibility="private" />
+    <item id="4217935c79e14eb897875d67af11f69b" cid="PROP011" type="property" owner="21809bd31ffa4384b9155b4bb64e3869" creator="" creation-date="05/16/2024 21:46:27" visibility="private" />
+    <item id="c8c4ebef2f34492c96bea4c8e46ffeab" cid="AC004" type="actor" name="Paciente" creation-date="05/16/2024 21:38:37" visibility="undefined" />
+    <item id="e57a2e3dd7114b70bc3a7a4dcbe1868f" cid="PROP108" type="property" owner="aa9ec2fae01a4f29889d0fed89bef4d0" creator="" creation-date="06/01/2024 17:29:57" visibility="private" />
+    <item id="8b411d0f7e52443881e1da05b1eb0288" cid="UC012" type="use-case" owner="396b12a733544ed0a3b50b8025eee996" creation-date="05/16/2024 22:12:10" visibility="undefined">
+      <use-case>
+        <stakeholders />
+        <special-requirements />
+        <issues />
+      </use-case>
+    </item>
+    <item id="d9882f1442424a0ab0c25a287eec179b" cid="AC001" type="actor" name="Pessoa" creation-date="05/16/2024 21:34:08" visibility="undefined" />
+    <item id="bc2b82bc69344b82853724f249d667fe" cid="UC007" type="use-case" name="Realizar Cadastro" creation-date="05/16/2024 22:09:52" visibility="undefined">
+      <use-case>
+        <stakeholders />
+        <special-requirements />
+        <issues />
+      </use-case>
+    </item>
+    <item id="4d80c97d93314682b2c6847d57b602bf" cid="UC005" type="use-case" name="Modulo de Gerencia do Sistema" owner="666e6e384b8e46f78629504e16813efa" creation-date="05/16/2024 21:44:21" visibility="undefined">
+      <use-case>
+        <stakeholders />
+        <special-requirements />
+        <issues />
+      </use-case>
+    </item>
+    <item id="d04e100db1f54fe3be81a394dbca24a2" cid="SYS002" type="system-boundary" name="PsychoMeet Modulo de Gerencia de Consulta" creation-date="05/16/2024 22:06:38">
+      <owned-items />
+    </item>
+    <item id="8309e8c45a7a4ce69e91fff49dd19787" cid="GNR018" type="generalization" creation-date="05/16/2024 21:39:30" from="9e07a80dbd1d477ba73c86cce2402a72" to="c9163b7233e345f4a98b0c2c305aaa14" visibility="package" />
+    <item id="5f6b01cfac80488cbd832384ea70940a" cid="UC002" type="use-case" name="Modulo de Busca de Profissionais" owner="666e6e384b8e46f78629504e16813efa" creation-date="05/16/2024 21:41:33" visibility="undefined">
+      <use-case>
+        <stakeholders />
+        <special-requirements />
+        <issues />
+      </use-case>
+    </item>
+    <item id="47d794497b7c47d69b49a4072d5b2757" cid="ELEM002" type="ui-area" name="Area2" creation-date="05/20/2024 20:12:42" />
+    <item id="e3de43a3aa824f6098f4509e087c0cef" cid="UC009" type="use-case" name="Recuperar Senha" creation-date="05/16/2024 22:11:14" visibility="undefined">
       <use-case>
         <stakeholders />
         <special-requirements />
@@ -336,255 +549,7 @@
       </stereotype-instances>
       <extend extension-point="" condition="" />
     </item>
-    <item id="7648193a6e0c4fb683083f234704eaaa" cid="GNR019" type="generalization" creation-date="05/16/2024 21:39:37" from="70ab2ca1771148b0bf00c0351dac81bb" to="75fa5a4245ef4ee69feb6aa8715e8ed3" visibility="package" />
-    <item id="cbc7c60594ef40a28cb4170119e028c7" cid="AC006" type="actor" name="Administrador" creation-date="05/16/2024 21:38:57" visibility="undefined" />
-    <item id="381d170832c74753b609e8ad4efd3c4d" cid="PROP053" type="property" owner="343af5e0f027418fa343b8f8ecce264b" creator="" creation-date="05/16/2024 22:20:55" visibility="private" />
-    <item id="433c2a4270b24a6fba3893677e8cc27c" cid="SYS002" type="system-boundary" name="PsychoMeet Modulo de Busca de Profissionais" creation-date="05/16/2024 22:06:38">
-      <owned-items />
-    </item>
-    <item id="e3ac2df0d6fa40d38e4d14972deec4e5" cid="AC005" type="actor" name="Psicologo" creation-date="05/16/2024 21:38:43" visibility="undefined" />
-    <item id="27eeb1b4fc6443519fdab95438315eb1" cid="EX007" type="extend" creation-date="05/16/2024 22:14:55" from="e3de43a3aa824f6098f4509e087c0cef" to="4982786869d24e2aae7f8251da7f7f56" visibility="package">
-      <stereotypes>
-        <stereotype name="extend" />
-      </stereotypes>
-      <stereotype-instances>
-        <stereotype id="13c03d0e463a4043a9a5ecc3ad167425_extend_c" type="extend" creation-date="05/16/2024 22:14:55" ref="" />
-      </stereotype-instances>
-      <extend extension-point="" condition="" />
-    </item>
-    <item id="b7e09da95976419f8efb9b43428d1e91" cid="UC004" type="use-case" name="Modulo Pos-Consulta" owner="666e6e384b8e46f78629504e16813efa" creation-date="05/16/2024 21:44:04" visibility="undefined">
-      <use-case>
-        <stakeholders />
-        <special-requirements />
-        <issues />
-      </use-case>
-    </item>
-    <item id="dcec438485df4ab19f77a198561e7ed1" cid="EX009" type="extend" owner="433c2a4270b24a6fba3893677e8cc27c" creation-date="05/16/2024 22:22:18" from="203ed973d7104d5c9637444bf0bf0f3b" to="41ea16dbb4344d909ed716609762e72f" visibility="package">
-      <stereotypes>
-        <stereotype name="extend" />
-      </stereotypes>
-      <stereotype-instances>
-        <stereotype id="62fded5393f54e64a063d0c9aaa6acf3_extend_c" type="extend" creation-date="05/16/2024 22:22:18" ref="" />
-      </stereotype-instances>
-      <extend extension-point="" condition="" />
-    </item>
-    <item id="3ebc54cd07384d41ad158655d518ea01" cid="EX007" type="extend" owner="d04e100db1f54fe3be81a394dbca24a2" creation-date="05/16/2024 22:14:55" from="1b8d0eaa7e00438ab40795c44300e232" to="f367d52181524241b9c2fc6957f56f99" visibility="package">
-      <stereotypes>
-        <stereotype name="extend" />
-      </stereotypes>
-      <stereotype-instances>
-        <stereotype id="13c03d0e463a4043a9a5ecc3ad167425_extend_c" type="extend" creation-date="05/16/2024 22:14:55" ref="" />
-      </stereotype-instances>
-      <extend extension-point="" condition="" />
-    </item>
-    <item id="2d266c59edac48de95b08e0874ad93e2" cid="REL016" type="relationship" creation-date="05/16/2024 22:21:38" from="70ab2ca1771148b0bf00c0351dac81bb" to="203ed973d7104d5c9637444bf0bf0f3b" visibility="package">
-      <owned-items />
-      <relation from="70ab2ca1771148b0bf00c0351dac81bb" to="203ed973d7104d5c9637444bf0bf0f3b" derived="false">
-        <start-role id="umlar-1a035c91-708e-455a-ba2f-b4ac973b1257" name="" navigability="" association-type="association" visibility="private" property-ref="a98173e8ddb9497597ce21b03ca9a70b" />
-        <end-role id="umlar-e6f0ef2a-b5fe-49de-b5e3-ee716880d6e4" name="" navigability="" association-type="association" visibility="private" property-ref="423fa2db0b3f48bdbbae0e21651a7aa7" />
-      </relation>
-    </item>
-    <item id="47d794497b7c47d69b49a4072d5b2757" cid="ELEM002" type="ui-area" name="Area2" creation-date="05/20/2024 20:12:42" />
-    <item id="70ab2ca1771148b0bf00c0351dac81bb" cid="AC006" type="actor" name="Paciente" creation-date="05/16/2024 21:38:57" visibility="undefined" />
-    <item id="c48515ab1e964cc1830e176bc67a00af" cid="GNR018" type="generalization" creation-date="05/16/2024 21:39:30" from="e3ac2df0d6fa40d38e4d14972deec4e5" to="d9882f1442424a0ab0c25a287eec179b" visibility="package" />
-    <item id="93cd043dec90465f9797db5d0b13dbd4" cid="ELEM002" type="ui-area" name="Area2" creation-date="05/20/2024 20:12:42" />
-    <item id="e531c799e4714b5fb771988f49c4f6e4" cid="PROP015" type="property" owner="eb4e253dccaa4522a9a7159bbc83fbe2" creator="" creation-date="05/16/2024 21:48:10" visibility="private" />
-    <item id="8309e8c45a7a4ce69e91fff49dd19787" cid="GNR018" type="generalization" creation-date="05/16/2024 21:39:30" from="9e07a80dbd1d477ba73c86cce2402a72" to="c9163b7233e345f4a98b0c2c305aaa14" visibility="package" />
-    <item id="6592ee0ba42847eaa22beff09577b9fc" cid="UC010" type="use-case" name="Editar Perfil" creation-date="05/16/2024 22:11:27" visibility="undefined">
-      <use-case>
-        <stakeholders />
-        <special-requirements />
-        <issues />
-      </use-case>
-    </item>
-    <item id="f4754adc87d2423aa2e4c6159c3e182b" cid="PROP008" type="property" owner="a6fd200172f441c38f772d8dd88f82bf" creator="" creation-date="05/16/2024 21:45:37" visibility="private" />
-    <item id="96b8883e2ecb4f56bab10c9fa3d4a08b" cid="GNR017" type="generalization" creation-date="05/16/2024 21:39:11" from="2c0e6a4927ff44bfa2225baf61276849" to="c9163b7233e345f4a98b0c2c305aaa14" visibility="package" />
-    <item id="d04e100db1f54fe3be81a394dbca24a2" cid="SYS002" type="system-boundary" name="PsychoMeet Modulo de Gerencia de Consulta" creation-date="05/16/2024 22:06:38">
-      <owned-items />
-    </item>
-    <item id="b8f802b7a7b74177a22b45da037188de" cid="PROP056" type="property" owner="e878a9690da54115a6f71ea1a5e29d27" creator="" creation-date="05/16/2024 22:21:38" visibility="private" />
-    <item id="19cf42250297426fb61994af257aa297" cid="PROP109" type="property" owner="89ee5be38258477392c92a1ab98140d4" creator="" creation-date="06/01/2024 18:04:59" visibility="private" />
-    <item id="a3ffb066aebb487cbdb26c3e7f19120b" cid="UC008" type="use-case" name="Acessar Historico de Consultas" owner="396b12a733544ed0a3b50b8025eee996" creation-date="05/16/2024 22:10:35" visibility="undefined">
-      <use-case>
-        <stakeholders />
-        <special-requirements />
-        <issues />
-      </use-case>
-    </item>
-    <item id="3bb121633f194b2ab75f1102fa7af90d" cid="UC011" type="use-case" name="Criar Filtro" owner="396b12a733544ed0a3b50b8025eee996" creation-date="05/16/2024 22:11:41" visibility="undefined">
-      <use-case>
-        <stakeholders />
-        <special-requirements />
-        <issues />
-      </use-case>
-    </item>
-    <item id="958f3e7678014b958e3d2e285a1ef91f" cid="UC012" type="use-case" name="Visualizar solicitação de consulta" owner="d04e100db1f54fe3be81a394dbca24a2" creation-date="05/16/2024 22:12:10" visibility="undefined">
-      <use-case>
-        <stakeholders />
-        <special-requirements />
-        <issues />
-      </use-case>
-    </item>
-    <item id="4982786869d24e2aae7f8251da7f7f56" cid="UC008" type="use-case" name="Login" creation-date="05/16/2024 22:10:35" visibility="undefined">
-      <use-case>
-        <stakeholders />
-        <special-requirements />
-        <issues />
-      </use-case>
-    </item>
-    <item id="387f761cddd946ec9b15b7494b74bc98" cid="PROP105" type="property" owner="e9fed6ba94b6428983d46680fb5fb0bc" creator="" creation-date="06/01/2024 17:20:44" visibility="private" />
-    <item id="b0140d1849ea4501aa68c43d5af89b4d" cid="EX008" type="extend" owner="d04e100db1f54fe3be81a394dbca24a2" creation-date="05/16/2024 22:16:37" from="ba26ce16550045b9a28983b682a6b01b" to="a0674816ff2648f49dceb97e5f6a1b06" visibility="package">
-      <stereotypes>
-        <stereotype name="extend" />
-      </stereotypes>
-      <stereotype-instances>
-        <stereotype id="e8e0f75312524c7bbf6594ee35b2f111_extend_c" type="extend" creation-date="05/16/2024 22:16:37" ref="" />
-      </stereotype-instances>
-      <extend extension-point="" condition="" />
-    </item>
-    <item id="c9163b7233e345f4a98b0c2c305aaa14" cid="AC001" type="actor" name="Pessoa" creation-date="05/16/2024 21:34:08" visibility="undefined" />
-    <item id="444939858aa44aa79ff8a5bdd130123d" cid="UC010" type="use-case" name="Editar Perfil" owner="83af4756f51c4426a544e1310a755134" creation-date="05/16/2024 22:11:27" visibility="undefined">
-      <use-case>
-        <stakeholders />
-        <special-requirements />
-        <issues />
-      </use-case>
-    </item>
-    <item id="dbdda828e0984da9b952f8140402af91" cid="AC006" type="actor" name="Administrador" creation-date="05/16/2024 21:38:57" visibility="undefined" />
-    <item id="e7b730bce27f4edba57cb1b294f274c3" cid="PROP099" type="property" owner="01d3f2c7f52747089e57053f36bd8a4e" creator="" creation-date="05/20/2024 20:40:56" visibility="private" />
-    <item id="c3de8b792bcc4f50a61335efc2838eb6" cid="PROP039" type="property" owner="0c0bba2012c049d8822b4cf7c0451b05" creator="" creation-date="05/16/2024 22:15:57" visibility="private" />
     <item id="62ff27fb68a5482aa91bdb846176aaba" cid="PROP007" type="property" owner="a6fd200172f441c38f772d8dd88f82bf" creator="" creation-date="05/16/2024 21:45:37" visibility="private" />
-    <item id="255adff403ff417380ea6af403b9578d" cid="UC011" type="use-case" name="Criar Filtro" creation-date="05/16/2024 22:11:41" visibility="undefined">
-      <use-case>
-        <stakeholders />
-        <special-requirements />
-        <issues />
-      </use-case>
-    </item>
-    <item id="d9882f1442424a0ab0c25a287eec179b" cid="AC001" type="actor" name="Pessoa" creation-date="05/16/2024 21:34:08" visibility="undefined" />
-    <item id="a86bab8e3857488d915d6b72d531178b" cid="AC001" type="actor" name="Pessoa" creation-date="05/16/2024 21:34:08" visibility="undefined" />
-    <item id="ba26ce16550045b9a28983b682a6b01b" cid="UC011" type="use-case" name="Informar disponibilidade" owner="d04e100db1f54fe3be81a394dbca24a2" creation-date="05/16/2024 22:11:41" visibility="undefined">
-      <use-case>
-        <stakeholders />
-        <special-requirements />
-        <issues />
-      </use-case>
-    </item>
-    <item id="8b411d0f7e52443881e1da05b1eb0288" cid="UC012" type="use-case" owner="396b12a733544ed0a3b50b8025eee996" creation-date="05/16/2024 22:12:10" visibility="undefined">
-      <use-case>
-        <stakeholders />
-        <special-requirements />
-        <issues />
-      </use-case>
-    </item>
-    <item id="b457199f3b59454494f14df0a3b940c4" cid="PROP098" type="property" owner="794e82cd64f844f696f22db95a0d639c" creator="" creation-date="05/20/2024 20:39:56" visibility="private" />
-    <item id="4217935c79e14eb897875d67af11f69b" cid="PROP011" type="property" owner="21809bd31ffa4384b9155b4bb64e3869" creator="" creation-date="05/16/2024 21:46:27" visibility="private" />
-    <item id="42ff027bdd124aef8a13ea1210176139" cid="EX008" type="extend" creation-date="05/16/2024 22:16:37" from="255adff403ff417380ea6af403b9578d" to="6592ee0ba42847eaa22beff09577b9fc" visibility="package">
-      <stereotypes>
-        <stereotype name="extend" />
-      </stereotypes>
-      <stereotype-instances>
-        <stereotype id="e8e0f75312524c7bbf6594ee35b2f111_extend_c" type="extend" creation-date="05/16/2024 22:16:37" ref="" />
-      </stereotype-instances>
-      <extend extension-point="" condition="" />
-    </item>
-    <item id="296fb8c24b5d41b2abaa62a4a442f158" cid="EX006" type="extend" owner="396b12a733544ed0a3b50b8025eee996" creation-date="05/16/2024 22:14:35" from="e92eb474a0354d409e5d668632f99968" to="15ada55609094968830df51a8e429167" visibility="package">
-      <stereotypes>
-        <stereotype name="extend" />
-      </stereotypes>
-      <stereotype-instances>
-        <stereotype id="050ecd0fe21546478cf9dee55aaf0812_extend_c" type="extend" creation-date="05/16/2024 22:14:35" ref="" />
-      </stereotype-instances>
-      <extend extension-point="" condition="" />
-    </item>
-    <item id="9f6195c85ace414f88a4c449e722fee6" cid="PROP037" type="property" owner="c86b90c7ceaf4a39803f81d14d1bb8dd" creator="" creation-date="05/16/2024 22:15:19" visibility="private" />
-    <item id="5f6b01cfac80488cbd832384ea70940a" cid="UC002" type="use-case" name="Modulo de Busca de Profissionais" owner="666e6e384b8e46f78629504e16813efa" creation-date="05/16/2024 21:41:33" visibility="undefined">
-      <use-case>
-        <stakeholders />
-        <special-requirements />
-        <issues />
-      </use-case>
-    </item>
-    <item id="bc2b82bc69344b82853724f249d667fe" cid="UC007" type="use-case" name="Realizar Cadastro" creation-date="05/16/2024 22:09:52" visibility="undefined">
-      <use-case>
-        <stakeholders />
-        <special-requirements />
-        <issues />
-      </use-case>
-    </item>
-    <item id="1d25cbb8e8284cabb17a805b5abfd0bd" cid="ELEM002" type="ui-area" name="Area2" creation-date="05/20/2024 20:12:42" />
-    <item id="4ab6b0309c2e4ba7be637458c6f65025" cid="PROP107" type="property" owner="aa9ec2fae01a4f29889d0fed89bef4d0" creator="" creation-date="06/01/2024 17:29:57" visibility="private" />
-    <item id="5217b15abb0c41368d8d6e89f9d226d2" cid="AC005" type="actor" name="Psicologo" creation-date="05/16/2024 21:38:43" visibility="undefined" />
-    <item id="6a88f8375cee4025bb672904c73a383c" cid="PROP087" type="property" owner="0fd0710be9744401a09c86f3b158c9c3" creator="" creation-date="05/20/2024 20:35:26" visibility="private" />
-    <item id="9085323cecb64916b5e8fd30cb8171d9" cid="AC006" type="actor" name="Paciente" creation-date="05/16/2024 21:38:57" visibility="undefined" />
-    <item id="41ea16dbb4344d909ed716609762e72f" cid="UC008" type="use-case" name="Buscar Profissionais" owner="433c2a4270b24a6fba3893677e8cc27c" creation-date="05/16/2024 22:10:35" visibility="undefined">
-      <use-case>
-        <stakeholders />
-        <special-requirements />
-        <issues />
-      </use-case>
-    </item>
-    <item id="ac53fae3b6d64a01b708c57ba93bf064" cid="UC009" type="use-case" name="Recuperar Senha" owner="396b12a733544ed0a3b50b8025eee996" creation-date="05/16/2024 22:11:14" visibility="undefined">
-      <use-case>
-        <stakeholders />
-        <special-requirements />
-        <issues />
-      </use-case>
-    </item>
-    <item id="fa93b22efdc94b24bd43a454a51cf68c" cid="PROP016" type="property" owner="eb4e253dccaa4522a9a7159bbc83fbe2" creator="" creation-date="05/16/2024 21:48:10" visibility="private" />
-    <item id="e3de43a3aa824f6098f4509e087c0cef" cid="UC009" type="use-case" name="Recuperar Senha" creation-date="05/16/2024 22:11:14" visibility="undefined">
-      <use-case>
-        <stakeholders />
-        <special-requirements />
-        <issues />
-      </use-case>
-    </item>
-    <item id="798d2e5be79940ed8f27aa33c71f49e8" cid="PROP003" type="property" owner="2a8082f2ff6d47fcbc26eb2e99f763ac" creator="" creation-date="05/16/2024 21:45:17" visibility="private" />
-    <item id="ca681f83d3a64738875eb0b6077a231b" cid="PROP055" type="property" owner="e878a9690da54115a6f71ea1a5e29d27" creator="" creation-date="05/16/2024 22:21:38" visibility="private" />
-    <item id="fb8a045de28e44cbbfa2c46c893381c1" cid="GNR019" type="generalization" creation-date="05/16/2024 21:39:37" from="9085323cecb64916b5e8fd30cb8171d9" to="d9882f1442424a0ab0c25a287eec179b" visibility="package" />
-    <item id="696a7043defc46d48a1c4c0565786206" cid="AC001" type="actor" name="Pessoa" creation-date="05/16/2024 21:34:08" visibility="undefined" />
-    <item id="6e61384a8f41406cafa4094ce9271ba7" cid="GNR019" type="generalization" creation-date="05/16/2024 21:39:37" from="dbdda828e0984da9b952f8140402af91" to="696a7043defc46d48a1c4c0565786206" visibility="package" />
-    <item id="fa3403efd1a74a8c9bf23e4f5f367ec1" cid="PROP088" type="property" owner="0fd0710be9744401a09c86f3b158c9c3" creator="" creation-date="05/20/2024 20:35:26" visibility="private" />
-    <item id="bf33921e8b30449aa8f4cdd84ee97c99" cid="UC001" type="use-case" name="Implementar medidas de segurança" owner="666e6e384b8e46f78629504e16813efa" creation-date="05/16/2024 21:41:12" visibility="undefined">
-      <use-case>
-        <stakeholders />
-        <special-requirements />
-        <issues />
-      </use-case>
-    </item>
-    <item id="5a7fabc445cb47f5a844add3a35108db" cid="AC004" type="actor" name="Paciente" creation-date="05/16/2024 21:38:37" visibility="undefined" />
-    <item id="75fa5a4245ef4ee69feb6aa8715e8ed3" cid="AC001" type="actor" name="Pessoa" creation-date="05/16/2024 21:34:08" visibility="undefined" />
-    <item id="fd6e6e7dea1243119c730726f7640aeb" cid="UC010" type="use-case" name="Editar Perfil" owner="396b12a733544ed0a3b50b8025eee996" creation-date="05/16/2024 22:11:27" visibility="undefined">
-      <use-case>
-        <stakeholders />
-        <special-requirements />
-        <issues />
-      </use-case>
-    </item>
-    <item id="775ed3ac8e0d4f228f2fdaab59c5cda1" cid="UC003" type="use-case" name="Modulo de Gerencia de Consulta" owner="666e6e384b8e46f78629504e16813efa" creation-date="05/16/2024 21:41:54" visibility="undefined">
-      <use-case>
-        <stakeholders />
-        <special-requirements />
-        <issues />
-      </use-case>
-    </item>
-    <item id="48959f24ddf24094bc015161c5aeae23" cid="PROP093" type="property" owner="7a14266aac034f07842d9120c509ceff" creator="" creation-date="05/20/2024 20:36:24" visibility="private" />
-    <item id="be63968372dd40d699094c53a97ad011" cid="ELEM002" type="ui-area" name="Area2" creation-date="05/20/2024 20:12:42" />
-    <item id="15eec1bad2ea4a9eac27468bcd554122" cid="PROP035" type="property" owner="e143de4419b740aea85ef72001722d8f" creator="" creation-date="05/16/2024 22:12:44" visibility="private" />
-    <item id="1b8d0eaa7e00438ab40795c44300e232" cid="UC009" type="use-case" name="Remarcar consulta" owner="d04e100db1f54fe3be81a394dbca24a2" creation-date="05/16/2024 22:11:14" visibility="undefined">
-      <use-case>
-        <stakeholders />
-        <special-requirements />
-        <issues />
-      </use-case>
-    </item>
-    <item id="f367d52181524241b9c2fc6957f56f99" cid="UC008" type="use-case" name="Visualizar Disponibilidade dos psicologos" owner="d04e100db1f54fe3be81a394dbca24a2" creation-date="05/16/2024 22:10:35" visibility="undefined">
-      <use-case>
-        <stakeholders />
-        <special-requirements />
-        <issues />
-      </use-case>
-    </item>
     <item id="d40fac5fd1844e55aa0145d0f1963400" cid="EX006" type="extend" owner="d04e100db1f54fe3be81a394dbca24a2" creation-date="05/16/2024 22:14:35" from="75289f0680814513873b00ee2af486ca" to="f367d52181524241b9c2fc6957f56f99" visibility="package">
       <stereotypes>
         <stereotype name="extend" />
@@ -594,20 +559,36 @@
       </stereotype-instances>
       <extend extension-point="" condition="" />
     </item>
-    <item id="15ada55609094968830df51a8e429167" cid="UC008" type="use-case" name="Acessar Historico de Consultas" owner="396b12a733544ed0a3b50b8025eee996" creation-date="05/16/2024 22:10:35" visibility="undefined">
+    <item id="f7731f5fc20e4bff84d76ef4aae30737" cid="EX006" type="extend" creation-date="05/16/2024 22:14:35" from="bc2b82bc69344b82853724f249d667fe" to="4982786869d24e2aae7f8251da7f7f56" visibility="package">
+      <stereotypes>
+        <stereotype name="extend" />
+      </stereotypes>
+      <stereotype-instances>
+        <stereotype id="050ecd0fe21546478cf9dee55aaf0812_extend_c" type="extend" creation-date="05/16/2024 22:14:35" ref="" />
+      </stereotype-instances>
+      <extend extension-point="" condition="" />
+    </item>
+    <item id="c00b520307ae4c5f8c8a65cb2f6c1039" cid="AC005" type="actor" name="Psicologo" creation-date="05/16/2024 21:38:43" visibility="undefined" />
+    <item id="ac53fae3b6d64a01b708c57ba93bf064" cid="UC009" type="use-case" name="Recuperar Senha" owner="396b12a733544ed0a3b50b8025eee996" creation-date="05/16/2024 22:11:14" visibility="undefined">
       <use-case>
         <stakeholders />
         <special-requirements />
         <issues />
       </use-case>
     </item>
+    <item id="24f78dde672f44349da3a06d969e57d9" cid="GNR018" type="generalization" creation-date="05/16/2024 21:39:30" from="0cd71722105a4957a9af9465a38886cc" to="75fa5a4245ef4ee69feb6aa8715e8ed3" visibility="package" />
+    <item id="f367d52181524241b9c2fc6957f56f99" cid="UC008" type="use-case" name="Visualizar Disponibilidade dos psicologos" owner="d04e100db1f54fe3be81a394dbca24a2" creation-date="05/16/2024 22:10:35" visibility="undefined">
+      <use-case>
+        <stakeholders />
+        <special-requirements />
+        <issues />
+      </use-case>
+    </item>
+    <item id="61538a39c5454634975c2005f30166bd" cid="AC005" type="actor" name="Psicologo" creation-date="05/16/2024 21:38:43" visibility="undefined" />
+    <item id="ca681f83d3a64738875eb0b6077a231b" cid="PROP055" type="property" owner="e878a9690da54115a6f71ea1a5e29d27" creator="" creation-date="05/16/2024 22:21:38" visibility="private" />
     <item id="d3196ad20e5d428f81d452a89faf80bb" cid="WB001" type="ui-web-browser" name="WebBrowser1" creation-date="05/20/2024 20:11:27">
       <web-browser url="" />
     </item>
-    <item id="c8c4ebef2f34492c96bea4c8e46ffeab" cid="AC004" type="actor" name="Paciente" creation-date="05/16/2024 21:38:37" visibility="undefined" />
-    <item id="34b750ff9503435488818d8645d30f10" cid="PROP012" type="property" owner="21809bd31ffa4384b9155b4bb64e3869" creator="" creation-date="05/16/2024 21:46:27" visibility="private" />
-    <item id="d3310b59386248c7a84406872ebc4bb2" cid="GNR018" type="generalization" creation-date="05/16/2024 21:39:30" from="c00b520307ae4c5f8c8a65cb2f6c1039" to="cb83f923756444928da7b112583c0b32" visibility="package" />
-    <item id="61538a39c5454634975c2005f30166bd" cid="AC005" type="actor" name="Psicologo" creation-date="05/16/2024 21:38:43" visibility="undefined" />
   </items>
   <models>
     <model id="p3c8f27a9aeef45cfbc7816cdeb228c58_630876841" name="Visao de Funcao" namespace="" order-index="1" expanded="true">
@@ -623,7 +604,7 @@
       </meta>
       <abstract-items />
       <sub-models />
-      <diagram type="uml-usecase" id="p3e3d97773c3944c7a4a225ab712f63f2_994351975" name="DCU_PsychoMeet_VisaoGeral" order-index="1" uid="" name-style="" auto-routed-paths="false" default-line-style="default" view-location="0,-33">
+      <diagram type="uml-usecase" id="p3e3d97773c3944c7a4a225ab712f63f2_994351975" name="DCU_PsychoMeet_VisaoGeral" order-index="1" uid="" name-style="" auto-routed-paths="false" default-line-style="default" view-location="0,68">
         <style>
           <background-color index="1" color="#FFFFFFFF" />
           <background-color index="2" color="#FFFFFFFF" />
@@ -651,19 +632,9 @@
           <item id="eb4e253dccaa4522a9a7159bbc83fbe2" cid="REL008" type="relationship" creator="" creation-date="05/16/2024 21:48:10" from="8b124b7d9f7249ab9cc967e2086bf622" to="9b3ab36780e94f20b431f3129fe76a36" visibility="package">
             <owned-items />
             <relation from="8b124b7d9f7249ab9cc967e2086bf622" to="9b3ab36780e94f20b431f3129fe76a36" derived="false">
-              <start-role id="umlar-a0eedaf7-1c76-4ad1-a6c7-d33a6308a6bd" name="" navigability="" association-type="association" visibility="private" property-ref="e531c799e4714b5fb771988f49c4f6e4" />
-              <end-role id="umlar-58f37aaf-c1e5-479d-8725-b2b4fb7b0cad" name="" navigability="" association-type="association" visibility="private" property-ref="fa93b22efdc94b24bd43a454a51cf68c" />
+              <start-role id="umlar-d871f822-8ee3-426e-973e-0d038ddfa1a6" name="" navigability="" association-type="association" visibility="private" property-ref="e531c799e4714b5fb771988f49c4f6e4" />
+              <end-role id="umlar-40f63fec-9392-48be-acca-56ab41efbc86" name="" navigability="" association-type="association" visibility="private" property-ref="fa93b22efdc94b24bd43a454a51cf68c" />
             </relation>
-          </item>
-          <item id="e24cc9421ec943f9ae9d3a5ef1872079" cid="UC003" type="use-case" name="Modulo de Gerencia de Consulta" owner="ccce18e3bf614014bcfb0c81f6d7a842" creator="" creation-date="05/16/2024 21:41:54" visibility="undefined">
-            <associated-diagrams>
-              <diagram id="paf23f501aaaa467c9668ada3947918e5_513647190" />
-            </associated-diagrams>
-            <use-case>
-              <stakeholders />
-              <special-requirements />
-              <issues />
-            </use-case>
           </item>
           <item id="6c78ac3c4dc64ad6b796c900fc7803d1" cid="UC004" type="use-case" name="Modulo Pos-Consulta" owner="ccce18e3bf614014bcfb0c81f6d7a842" creator="" creation-date="05/16/2024 21:44:04" visibility="undefined">
             <associated-diagrams>
@@ -675,9 +646,9 @@
               <issues />
             </use-case>
           </item>
-          <item id="9b3ab36780e94f20b431f3129fe76a36" cid="UC002" type="use-case" name="Modulo de Busca de Profissionais" owner="ccce18e3bf614014bcfb0c81f6d7a842" creator="" creation-date="05/16/2024 21:41:33" visibility="undefined">
+          <item id="e24cc9421ec943f9ae9d3a5ef1872079" cid="UC003" type="use-case" name="Modulo de Gerencia de Consulta" owner="ccce18e3bf614014bcfb0c81f6d7a842" creator="" creation-date="05/16/2024 21:41:54" visibility="undefined">
             <associated-diagrams>
-              <diagram id="p26babd47398f47bb89f3a19992f420ee_910639338" />
+              <diagram id="paf23f501aaaa467c9668ada3947918e5_513647190" />
             </associated-diagrams>
             <use-case>
               <stakeholders />
@@ -688,21 +659,24 @@
           <item id="ccce18e3bf614014bcfb0c81f6d7a842" cid="SYS001" type="system-boundary" name="PsychoMeet" creator="" creation-date="05/16/2024 21:34:00">
             <owned-items />
           </item>
+          <item id="9b3ab36780e94f20b431f3129fe76a36" cid="UC002" type="use-case" name="Modulo de Busca de Profissionais" owner="ccce18e3bf614014bcfb0c81f6d7a842" creator="" creation-date="05/16/2024 21:41:33" visibility="undefined">
+            <associated-diagrams>
+              <diagram id="p26babd47398f47bb89f3a19992f420ee_910639338" />
+            </associated-diagrams>
+            <use-case>
+              <stakeholders />
+              <special-requirements />
+              <issues />
+            </use-case>
+          </item>
           <item id="db92d9f8c0fc46419a60af9efdcef2f4" cid="AC001" type="actor" name="Pessoa" creator="" creation-date="05/16/2024 21:34:08" visibility="undefined" />
           <item id="b1ef6630cbdb4abc8c024b811893a3ba" cid="GNR017" type="generalization" creator="" creation-date="05/16/2024 21:39:11" from="8b124b7d9f7249ab9cc967e2086bf622" to="db92d9f8c0fc46419a60af9efdcef2f4" visibility="package" />
           <item id="8b124b7d9f7249ab9cc967e2086bf622" cid="AC004" type="actor" name="Paciente" creator="" creation-date="05/16/2024 21:38:37" visibility="undefined" />
           <item id="2a8082f2ff6d47fcbc26eb2e99f763ac" cid="REL002" type="relationship" creator="" creation-date="05/16/2024 21:45:17" from="db92d9f8c0fc46419a60af9efdcef2f4" to="5ee8b7b9064144ad9ace12d029a888e5" visibility="package">
             <owned-items />
             <relation from="db92d9f8c0fc46419a60af9efdcef2f4" to="5ee8b7b9064144ad9ace12d029a888e5" derived="false">
-              <start-role id="umlar-fe5f5591-6a9f-462f-9a4c-3a5a8735d02f" name="" navigability="" association-type="association" visibility="private" property-ref="798d2e5be79940ed8f27aa33c71f49e8" />
-              <end-role id="umlar-89167dec-3dd4-47ae-97f5-9988ac3d485c" name="" navigability="" association-type="association" visibility="private" property-ref="6176b3f97dc1460a98ae1b638b4230ae" />
-            </relation>
-          </item>
-          <item id="a6fd200172f441c38f772d8dd88f82bf" cid="REL004" type="relationship" creator="" creation-date="05/16/2024 21:45:37" from="db92d9f8c0fc46419a60af9efdcef2f4" to="6c78ac3c4dc64ad6b796c900fc7803d1" visibility="package">
-            <owned-items />
-            <relation from="db92d9f8c0fc46419a60af9efdcef2f4" to="6c78ac3c4dc64ad6b796c900fc7803d1" derived="false">
-              <start-role id="umlar-04d72d79-751c-4d14-8421-ad5eaad148fb" name="" navigability="" association-type="association" visibility="private" property-ref="62ff27fb68a5482aa91bdb846176aaba" />
-              <end-role id="umlar-3704bc60-778e-4639-ad26-d82c6b9ffe10" name="" navigability="" association-type="association" visibility="private" property-ref="f4754adc87d2423aa2e4c6159c3e182b" />
+              <start-role id="umlar-a4642277-485b-49bc-a9d9-db1d47061f5a" name="" navigability="" association-type="association" visibility="private" property-ref="798d2e5be79940ed8f27aa33c71f49e8" />
+              <end-role id="umlar-9fec96fc-4b20-49b0-811b-672136841a80" name="" navigability="" association-type="association" visibility="private" property-ref="6176b3f97dc1460a98ae1b638b4230ae" />
             </relation>
           </item>
           <item id="5ee8b7b9064144ad9ace12d029a888e5" cid="UC001" type="use-case" name="Modulo de Gerencia de Conta" owner="ccce18e3bf614014bcfb0c81f6d7a842" creator="" creation-date="05/16/2024 21:41:12" visibility="undefined">
@@ -715,12 +689,19 @@
               <issues />
             </use-case>
           </item>
+          <item id="a6fd200172f441c38f772d8dd88f82bf" cid="REL004" type="relationship" creator="" creation-date="05/16/2024 21:45:37" from="db92d9f8c0fc46419a60af9efdcef2f4" to="6c78ac3c4dc64ad6b796c900fc7803d1" visibility="package">
+            <owned-items />
+            <relation from="db92d9f8c0fc46419a60af9efdcef2f4" to="6c78ac3c4dc64ad6b796c900fc7803d1" derived="false">
+              <start-role id="umlar-71045e6d-4754-40f3-8f39-85be8d919371" name="" navigability="" association-type="association" visibility="private" property-ref="62ff27fb68a5482aa91bdb846176aaba" />
+              <end-role id="umlar-eb1478be-a1c8-419e-84e2-fef66f6af466" name="" navigability="" association-type="association" visibility="private" property-ref="f4754adc87d2423aa2e4c6159c3e182b" />
+            </relation>
+          </item>
           <item id="ed024878c23f41e08052764eb50a5747" cid="AC005" type="actor" name="Psicologo" creator="" creation-date="05/16/2024 21:38:43" visibility="undefined" />
           <item id="21809bd31ffa4384b9155b4bb64e3869" cid="REL006" type="relationship" creator="" creation-date="05/16/2024 21:46:27" from="db92d9f8c0fc46419a60af9efdcef2f4" to="e24cc9421ec943f9ae9d3a5ef1872079" visibility="package">
             <owned-items />
             <relation from="db92d9f8c0fc46419a60af9efdcef2f4" to="e24cc9421ec943f9ae9d3a5ef1872079" derived="false">
-              <start-role id="umlar-e3b2f39f-1fcb-471c-a39d-0b09340f6d64" name="" navigability="" association-type="association" visibility="private" property-ref="4217935c79e14eb897875d67af11f69b" />
-              <end-role id="umlar-16cd0dee-498c-41ec-b8fb-8b671d30b6dc" name="" navigability="" association-type="association" visibility="private" property-ref="34b750ff9503435488818d8645d30f10" />
+              <start-role id="umlar-845dd914-e739-47f2-b968-23c500061bb4" name="" navigability="" association-type="association" visibility="private" property-ref="4217935c79e14eb897875d67af11f69b" />
+              <end-role id="umlar-a516ad58-821c-4fda-a5de-7fb702ba7428" name="" navigability="" association-type="association" visibility="private" property-ref="34b750ff9503435488818d8645d30f10" />
             </relation>
           </item>
         </abstract-items>
@@ -813,7 +794,7 @@
           </item>
         </layer>
       </diagram>
-      <diagram type="uml-usecase" id="pe170eeaf0d644f1cb25046605660bfaa_286766593" name="DCU_PsychoMeet_ModuloDeGerenciaDeConta" order-index="2" overview-order-index="0" uid="" name-style="" auto-routed-paths="false" default-line-style="default" view-location="34,72">
+      <diagram type="uml-usecase" id="pe170eeaf0d644f1cb25046605660bfaa_286766593" name="DCU_PsychoMeet_ModuloDeGerenciaDeConta" order-index="2" overview-order-index="0" uid="" name-style="" auto-routed-paths="false" default-line-style="default" view-location="125,-192">
         <style>
           <background-color index="1" color="#FFFFFFFF" />
           <background-color index="2" color="#FFFFFFFF" />
@@ -847,29 +828,29 @@
           <item id="e143de4419b740aea85ef72001722d8f" cid="REL010" type="relationship" creator="" creation-date="05/16/2024 22:12:44" from="cb83f923756444928da7b112583c0b32" to="69d2aecdbebc47a3a4204de683e06a47" visibility="package">
             <owned-items />
             <relation from="cb83f923756444928da7b112583c0b32" to="69d2aecdbebc47a3a4204de683e06a47" derived="false">
-              <start-role id="umlar-ee9d09a7-362c-4178-a96f-22a261d75cc2" name="" navigability="" association-type="association" visibility="private" property-ref="15eec1bad2ea4a9eac27468bcd554122" />
-              <end-role id="umlar-3b945d99-a760-4e00-b4d9-6ff58fe56ffc" name="" navigability="" association-type="association" visibility="private" property-ref="5a05dc72ab1e4de38217704d094cb6fb" />
+              <start-role id="umlar-375521f9-6f32-4e0f-9e95-3650df0de80f" name="" navigability="" association-type="association" visibility="private" property-ref="15eec1bad2ea4a9eac27468bcd554122" />
+              <end-role id="umlar-1e9a5ca5-8d6c-4479-a2de-a22870946195" name="" navigability="" association-type="association" visibility="private" property-ref="5a05dc72ab1e4de38217704d094cb6fb" />
             </relation>
           </item>
           <item id="aa9ec2fae01a4f29889d0fed89bef4d0" cid="REL027" type="relationship" creator="" creation-date="06/01/2024 17:29:57" from="c00b520307ae4c5f8c8a65cb2f6c1039" to="444939858aa44aa79ff8a5bdd130123d" visibility="package">
             <owned-items />
             <relation from="c00b520307ae4c5f8c8a65cb2f6c1039" to="444939858aa44aa79ff8a5bdd130123d" derived="false">
-              <start-role id="umlar-8ceb58d7-a599-450e-80d7-e8211421cf86" name="" navigability="" association-type="association" visibility="private" property-ref="4ab6b0309c2e4ba7be637458c6f65025" />
-              <end-role id="umlar-1fe5fbd9-86ce-46a8-a894-695c4a5c9b79" name="" navigability="" association-type="association" visibility="private" property-ref="e57a2e3dd7114b70bc3a7a4dcbe1868f" />
+              <start-role id="umlar-28650e8a-d526-49da-abbd-3623542056b7" name="" navigability="" association-type="association" visibility="private" property-ref="4ab6b0309c2e4ba7be637458c6f65025" />
+              <end-role id="umlar-22fa6ce4-1ca4-4052-983b-6835d06f84f3" name="" navigability="" association-type="association" visibility="private" property-ref="e57a2e3dd7114b70bc3a7a4dcbe1868f" />
             </relation>
           </item>
           <item id="c86b90c7ceaf4a39803f81d14d1bb8dd" cid="REL011" type="relationship" creator="" creation-date="05/16/2024 22:15:19" from="cb83f923756444928da7b112583c0b32" to="68c8f770adec4691b0db5bf8d3b6d08d" visibility="package">
             <owned-items />
             <relation from="cb83f923756444928da7b112583c0b32" to="68c8f770adec4691b0db5bf8d3b6d08d" derived="false">
-              <start-role id="umlar-add243a1-6b7c-483a-b715-367edf06204c" name="" navigability="" association-type="association" visibility="private" property-ref="9f6195c85ace414f88a4c449e722fee6" />
-              <end-role id="umlar-f5b0dd93-c061-48f4-8f4d-340d5ab08adc" name="" navigability="" association-type="association" visibility="private" property-ref="0f39a21751f84039b6ff5f5701e64c80" />
+              <start-role id="umlar-484b7e52-f944-4dcd-b903-5f7a3f375cf9" name="" navigability="" association-type="association" visibility="private" property-ref="9f6195c85ace414f88a4c449e722fee6" />
+              <end-role id="umlar-8b07e5ee-2f53-482a-b197-365e6f68610a" name="" navigability="" association-type="association" visibility="private" property-ref="0f39a21751f84039b6ff5f5701e64c80" />
             </relation>
           </item>
           <item id="0c0bba2012c049d8822b4cf7c0451b05" cid="REL012" type="relationship" creator="" creation-date="05/16/2024 22:15:57" from="c8c4ebef2f34492c96bea4c8e46ffeab" to="a204bfe7512444a69231ee7719b5d65d" visibility="package">
             <owned-items />
             <relation from="c8c4ebef2f34492c96bea4c8e46ffeab" to="a204bfe7512444a69231ee7719b5d65d" derived="false">
-              <start-role id="umlar-28e0284a-644b-44dd-8314-1824275c2b38" name="" navigability="" association-type="association" visibility="private" property-ref="c3de8b792bcc4f50a61335efc2838eb6" />
-              <end-role id="umlar-7f4ba484-61bf-4920-9979-21ab97f5407f" name="" navigability="" association-type="association" visibility="private" property-ref="d48efb63b5884344a58616947402a7d3" />
+              <start-role id="umlar-ecf43674-cbad-4afd-91ae-bee8d4dbaedf" name="" navigability="" association-type="association" visibility="private" property-ref="c3de8b792bcc4f50a61335efc2838eb6" />
+              <end-role id="umlar-339d502e-09e1-42da-950b-b66f26592dbe" name="" navigability="" association-type="association" visibility="private" property-ref="d48efb63b5884344a58616947402a7d3" />
             </relation>
           </item>
           <item id="e8e0f75312524c7bbf6594ee35b2f111" cid="EX008" type="extend" owner="83af4756f51c4426a544e1310a755134" creator="" creation-date="05/16/2024 22:16:37" from="bf8513363d1d46e482f2a2df37884428" to="a204bfe7512444a69231ee7719b5d65d" visibility="package">
@@ -895,24 +876,15 @@
               <issues />
             </use-case>
           </item>
-          <item id="83af4756f51c4426a544e1310a755134" cid="SYS002" type="system-boundary" name="PsychoMeet Modulo de Gerencia de Conta" creator="" creation-date="05/16/2024 22:06:38">
-            <owned-items />
-          </item>
-          <item id="bf8513363d1d46e482f2a2df37884428" cid="UC011" type="use-case" name="Criar Filtro" owner="83af4756f51c4426a544e1310a755134" creator="" creation-date="05/16/2024 22:11:41" visibility="undefined">
+          <item id="bf8513363d1d46e482f2a2df37884428" cid="UC011" type="use-case" name="Criar Preferência" owner="83af4756f51c4426a544e1310a755134" creator="" creation-date="05/16/2024 22:11:41" visibility="undefined">
             <use-case>
               <stakeholders />
               <special-requirements />
               <issues />
             </use-case>
           </item>
-          <item id="050ecd0fe21546478cf9dee55aaf0812" cid="EX006" type="extend" owner="83af4756f51c4426a544e1310a755134" creator="" creation-date="05/16/2024 22:14:35" from="68c8f770adec4691b0db5bf8d3b6d08d" to="69d2aecdbebc47a3a4204de683e06a47" visibility="package">
-            <stereotypes>
-              <stereotype name="extend" />
-            </stereotypes>
-            <stereotype-instances>
-              <stereotype id="050ecd0fe21546478cf9dee55aaf0812_extend_c" type="extend" creation-date="05/16/2024 22:14:35" ref="" />
-            </stereotype-instances>
-            <extend extension-point="" condition="" />
+          <item id="83af4756f51c4426a544e1310a755134" cid="SYS002" type="system-boundary" name="PsychoMeet Modulo de Gerencia de Conta" creator="" creation-date="05/16/2024 22:06:38">
+            <owned-items />
           </item>
           <item id="13c03d0e463a4043a9a5ecc3ad167425" cid="EX007" type="extend" owner="83af4756f51c4426a544e1310a755134" creator="" creation-date="05/16/2024 22:14:55" from="2430943e27094beeaa6d9b378b85ac49" to="69d2aecdbebc47a3a4204de683e06a47" visibility="package">
             <stereotypes>
@@ -920,6 +892,15 @@
             </stereotypes>
             <stereotype-instances>
               <stereotype id="13c03d0e463a4043a9a5ecc3ad167425_extend_c" type="extend" creation-date="05/16/2024 22:14:55" ref="" />
+            </stereotype-instances>
+            <extend extension-point="" condition="" />
+          </item>
+          <item id="050ecd0fe21546478cf9dee55aaf0812" cid="EX006" type="extend" owner="83af4756f51c4426a544e1310a755134" creator="" creation-date="05/16/2024 22:14:35" from="68c8f770adec4691b0db5bf8d3b6d08d" to="69d2aecdbebc47a3a4204de683e06a47" visibility="package">
+            <stereotypes>
+              <stereotype name="extend" />
+            </stereotypes>
+            <stereotype-instances>
+              <stereotype id="050ecd0fe21546478cf9dee55aaf0812_extend_c" type="extend" creation-date="05/16/2024 22:14:35" ref="" />
             </stereotype-instances>
             <extend extension-point="" condition="" />
           </item>
@@ -1055,7 +1036,7 @@
           </item>
         </layer>
       </diagram>
-      <diagram type="uml-usecase" id="pc3c13a9cd1f449dabd79a211f8fb6c67_351340663" name="DCU_PsychoMeet_ModuloPosConsulta" order-index="3" overview-order-index="1" uid="" name-style="" auto-routed-paths="false" default-line-style="default" view-location="81,-56">
+      <diagram type="uml-usecase" id="pc3c13a9cd1f449dabd79a211f8fb6c67_351340663" name="DCU_PsychoMeet_ModuloPosConsulta" order-index="3" overview-order-index="1" uid="" name-style="" auto-routed-paths="false" default-line-style="default" view-location="54,-157">
         <style>
           <background-color index="1" color="#FFFFFFFF" />
           <background-color index="2" color="#FFFFFFFF" />
@@ -1067,18 +1048,11 @@
           </authors>
           <description />
           <creation-date>05/16/2024 21:56:30</creation-date>
-          <change-date>06/01/2024 18:04:59</change-date>
+          <change-date>06/01/2024 17:27:28</change-date>
           <revision-count>0</revision-count>
           <version />
         </meta>
         <abstract-items>
-          <item id="343af5e0f027418fa343b8f8ecce264b" cid="REL015" type="relationship" creator="" creation-date="05/16/2024 22:20:55" from="9085323cecb64916b5e8fd30cb8171d9" to="15ada55609094968830df51a8e429167" visibility="package">
-            <owned-items />
-            <relation from="9085323cecb64916b5e8fd30cb8171d9" to="15ada55609094968830df51a8e429167" derived="false">
-              <start-role id="umlar-9b119e01-f6dd-43f3-b1a9-ccb6281b1e60" name="" navigability="" association-type="association" visibility="private" property-ref="381d170832c74753b609e8ad4efd3c4d" />
-              <end-role id="umlar-502a1ef7-c4e3-4407-b3c2-ab55314d832d" name="" navigability="" association-type="association" visibility="private" property-ref="6c053cd199fb4347b427756e6b0867ee" />
-            </relation>
-          </item>
           <item id="62fded5393f54e64a063d0c9aaa6acf3" cid="EX009" type="extend" owner="396b12a733544ed0a3b50b8025eee996" creator="" creation-date="05/16/2024 22:22:18" from="e92eb474a0354d409e5d668632f99968" to="15ada55609094968830df51a8e429167" visibility="package">
             <stereotypes>
               <stereotype name="extend" />
@@ -1088,18 +1062,18 @@
             </stereotype-instances>
             <extend extension-point="" condition="" />
           </item>
-          <item id="89ee5be38258477392c92a1ab98140d4" cid="REL028" type="relationship" creator="" creation-date="06/01/2024 18:04:59" from="e3ac2df0d6fa40d38e4d14972deec4e5" to="a3ffb066aebb487cbdb26c3e7f19120b" visibility="package">
+          <item id="343af5e0f027418fa343b8f8ecce264b" cid="REL015" type="relationship" creator="" creation-date="05/16/2024 22:20:55" from="9085323cecb64916b5e8fd30cb8171d9" to="15ada55609094968830df51a8e429167" visibility="package">
             <owned-items />
-            <relation from="e3ac2df0d6fa40d38e4d14972deec4e5" to="a3ffb066aebb487cbdb26c3e7f19120b" derived="false">
-              <start-role id="umlar-044bd6ad-e696-424d-aef1-4c9d2b9eebc2" name="" navigability="" association-type="association" visibility="private" property-ref="19cf42250297426fb61994af257aa297" />
-              <end-role id="umlar-6378a1f5-eab8-4f72-8572-6d546027d4c5" name="" navigability="" association-type="association" visibility="private" property-ref="009d4562db9e46e5835e0022aff0c599" />
+            <relation from="9085323cecb64916b5e8fd30cb8171d9" to="15ada55609094968830df51a8e429167" derived="false">
+              <start-role id="umlar-0c474a79-912f-4f7e-878f-fbffb3b1363d" name="" navigability="" association-type="association" visibility="private" property-ref="381d170832c74753b609e8ad4efd3c4d" />
+              <end-role id="umlar-da31f8ce-74a0-48c3-8853-9ce9af126ef3" name="" navigability="" association-type="association" visibility="private" property-ref="6c053cd199fb4347b427756e6b0867ee" />
             </relation>
           </item>
           <item id="e878a9690da54115a6f71ea1a5e29d27" cid="REL016" type="relationship" creator="" creation-date="05/16/2024 22:21:38" from="9085323cecb64916b5e8fd30cb8171d9" to="e92eb474a0354d409e5d668632f99968" visibility="package">
             <owned-items />
             <relation from="9085323cecb64916b5e8fd30cb8171d9" to="e92eb474a0354d409e5d668632f99968" derived="false">
-              <start-role id="umlar-3b3e08bc-bae6-4c1f-9b90-5696b8b07888" name="" navigability="" association-type="association" visibility="private" property-ref="ca681f83d3a64738875eb0b6077a231b" />
-              <end-role id="umlar-427cb428-9243-416f-9368-e0534d1a3ae3" name="" navigability="" association-type="association" visibility="private" property-ref="b8f802b7a7b74177a22b45da037188de" />
+              <start-role id="umlar-ad83f2ce-2eae-46b8-b79b-580a99a6fc15" name="" navigability="" association-type="association" visibility="private" property-ref="ca681f83d3a64738875eb0b6077a231b" />
+              <end-role id="umlar-5370786f-c654-46c4-877c-19ab6bfe2a31" name="" navigability="" association-type="association" visibility="private" property-ref="b8f802b7a7b74177a22b45da037188de" />
             </relation>
           </item>
           <item id="8d224f48ab884ae8b1ef14cb82fbb9ef" cid="EX016" type="extend" owner="396b12a733544ed0a3b50b8025eee996" creator="" creation-date="06/01/2024 17:24:40" from="15ada55609094968830df51a8e429167" to="e92eb474a0354d409e5d668632f99968" visibility="package">
@@ -1172,10 +1146,6 @@
             </layout>
             <relation from="9085323cecb64916b5e8fd30cb8171d9" from-iid="d8069cf85814432db7578ced887caaf7" to="e92eb474a0354d409e5d668632f99968" to-iid="840e4b91872e459da777a413184246a3" />
           </item>
-          <item id="a3ffb066aebb487cbdb26c3e7f19120b" iid="e616d93f64644d849aacb62c7a88e783" container="396b12a733544ed0a3b50b8025eee996" container-iid="83a92ce5878141fcb064251cfed7f990" creation-date="05/16/2024 22:10:35" order-index="0" type="entity">
-            <layout ax="541" ay="255.32617" awidth="120" aheight="75" x="541" y="255.32617" width="120" height="75" />
-            <use-case />
-          </item>
           <item id="8d224f48ab884ae8b1ef14cb82fbb9ef" iid="0dadc400579949119a28235a3b7cbeed" container="396b12a733544ed0a3b50b8025eee996" container-iid="83a92ce5878141fcb064251cfed7f990" creation-date="06/01/2024 17:24:40" order-index="16" type="relation">
             <layout line-style="oblique" lock-start-point="true" lock-end-point="true" lock-to-fields="false" auto-path="" x1="566" y1="108" x2="551" y2="166" start-border-pos="0.625" end-border-pos="0.1852589641434263" start-local-pos="60" end-local-pos="93" name-position="26,10">
               <points>
@@ -1185,18 +1155,9 @@
             </layout>
             <relation from="15ada55609094968830df51a8e429167" from-iid="d34cc97f49064988808f0d738a4e589d" to="e92eb474a0354d409e5d668632f99968" to-iid="840e4b91872e459da777a413184246a3" />
           </item>
-          <item id="89ee5be38258477392c92a1ab98140d4" iid="d49f7868985f4b4699aeb112a105d10a" creation-date="06/01/2024 18:04:59" order-index="17" type="relation">
-            <layout start-role-position="25,15" end-role-position="25,-15" start-multiplicity-position="25,-15" end-multiplicity-position="25,15" line-style="oblique" lock-start-point="true" lock-end-point="true" lock-to-fields="false" auto-path="" x1="204" y1="277" x2="551" y2="314" start-border-pos="0.5" end-border-pos="0.8044205729166667" start-local-pos="100" end-local-pos="11" name-position="0,20">
-              <points>
-                <point x="204" y="277" />
-                <point x="551" y="314" />
-              </points>
-            </layout>
-            <relation from="e3ac2df0d6fa40d38e4d14972deec4e5" from-iid="d2586a39b1bd4ddab87be0b2515f049e" to="a3ffb066aebb487cbdb26c3e7f19120b" to-iid="e616d93f64644d849aacb62c7a88e783" />
-          </item>
         </layer>
       </diagram>
-      <diagram type="uml-usecase" id="paf23f501aaaa467c9668ada3947918e5_513647190" name="DCU_PsychoMeet_ModuloGerenciaDeConsulta" order-index="4" overview-order-index="2" uid="" name-style="" auto-routed-paths="false" default-line-style="default" view-location="0,388">
+      <diagram type="uml-usecase" id="paf23f501aaaa467c9668ada3947918e5_513647190" name="DCU_PsychoMeet_ModuloGerenciaDeConsulta" order-index="4" overview-order-index="2" uid="" name-style="" auto-routed-paths="false" default-line-style="default" view-location="0,259">
         <style>
           <background-color index="1" color="#FFFFFFFF" />
           <background-color index="2" color="#FFFFFFFF" />
@@ -1226,11 +1187,11 @@
           <item id="e9fed6ba94b6428983d46680fb5fb0bc" cid="REL026" type="relationship" owner="d04e100db1f54fe3be81a394dbca24a2" creator="" creation-date="06/01/2024 17:20:44" from="846fe9156972435bb957f25eedd39922" to="846fe9156972435bb957f25eedd39922" visibility="package">
             <owned-items />
             <relation from="846fe9156972435bb957f25eedd39922" to="846fe9156972435bb957f25eedd39922" derived="false">
-              <start-role id="umlar-2b13bae1-8626-4372-af6d-bc64fe136541" name="" navigability="" association-type="association" visibility="private" property-ref="387f761cddd946ec9b15b7494b74bc98" />
-              <end-role id="umlar-78f7fc15-6ecf-4deb-bea8-3720cf44f1f2" name="" navigability="" association-type="association" visibility="private" property-ref="905b71848ec148429365dd42f9bfc8ac" />
+              <start-role id="umlar-d5a990e8-22c2-4a1c-b564-67c7b82ff9d2" name="" navigability="" association-type="association" visibility="private" property-ref="387f761cddd946ec9b15b7494b74bc98" />
+              <end-role id="umlar-38985501-9a9a-405b-815f-2b58699cb78e" name="" navigability="" association-type="association" visibility="private" property-ref="905b71848ec148429365dd42f9bfc8ac" />
             </relation>
           </item>
-          <item id="18543d7500564fff82e77913e7aa9f18" cid="UC015" type="use-case" name="Aceitar e recusar consulta" owner="d04e100db1f54fe3be81a394dbca24a2" creator="" creation-date="06/01/2024 17:22:29" visibility="undefined">
+          <item id="18543d7500564fff82e77913e7aa9f18" cid="UC015" type="use-case" name="Aceitar e recusar consulta" owner="d04e100db1f54fe3be81a394dbca24a2" creator="" creation-date="06/01/2024 17:22:29">
             <use-case>
               <stakeholders />
               <special-requirements />
@@ -1240,8 +1201,8 @@
           <item id="0fd0710be9744401a09c86f3b158c9c3" cid="REL017" type="relationship" creator="" creation-date="05/20/2024 20:35:26" from="c9163b7233e345f4a98b0c2c305aaa14" to="c9163b7233e345f4a98b0c2c305aaa14" visibility="package">
             <owned-items />
             <relation from="c9163b7233e345f4a98b0c2c305aaa14" to="c9163b7233e345f4a98b0c2c305aaa14" derived="false">
-              <start-role id="umlar-7ed5a49d-3026-4688-8df4-1fc6490d70d9" name="" navigability="" association-type="association" visibility="private" property-ref="6a88f8375cee4025bb672904c73a383c" />
-              <end-role id="umlar-6c554d3b-7399-4d2a-9f52-07d6998a8f8e" name="" navigability="" association-type="association" visibility="private" property-ref="fa3403efd1a74a8c9bf23e4f5f367ec1" />
+              <start-role id="umlar-45d5d119-b6f5-49b3-8c98-8ff60f39ffba" name="" navigability="" association-type="association" visibility="private" property-ref="6a88f8375cee4025bb672904c73a383c" />
+              <end-role id="umlar-89cb5e8f-df6a-4b7c-8f81-f24babab4911" name="" navigability="" association-type="association" visibility="private" property-ref="fa3403efd1a74a8c9bf23e4f5f367ec1" />
             </relation>
           </item>
           <item id="18915777de094b40b7c83a7ae53431b9" cid="EX012" type="extend" owner="d04e100db1f54fe3be81a394dbca24a2" creator="" creation-date="05/20/2024 20:38:40" from="846fe9156972435bb957f25eedd39922" to="1b8d0eaa7e00438ab40795c44300e232" visibility="package">
@@ -1256,9 +1217,16 @@
           <item id="794e82cd64f844f696f22db95a0d639c" cid="REL022" type="relationship" creator="" creation-date="05/20/2024 20:39:56" from="9e07a80dbd1d477ba73c86cce2402a72" to="7cc152d55e3e4b81993b1e8f1934e070" visibility="package">
             <owned-items />
             <relation from="9e07a80dbd1d477ba73c86cce2402a72" to="7cc152d55e3e4b81993b1e8f1934e070" derived="false">
-              <start-role id="umlar-191377cf-99a7-4587-b982-0163f31ecb43" name="" navigability="" association-type="association" visibility="private" property-ref="7f4bb24c8e944b848e0771829978c75d" />
-              <end-role id="umlar-8c3702da-55aa-4be4-978c-efacfc0884e4" name="" navigability="" association-type="association" visibility="private" property-ref="b457199f3b59454494f14df0a3b940c4" />
+              <start-role id="umlar-ec199069-0c02-4a45-94ad-f8922210fac1" name="" navigability="" association-type="association" visibility="private" property-ref="7f4bb24c8e944b848e0771829978c75d" />
+              <end-role id="umlar-bc72ab5a-4921-4306-a6af-aac3209d8a91" name="" navigability="" association-type="association" visibility="private" property-ref="b457199f3b59454494f14df0a3b940c4" />
             </relation>
+          </item>
+          <item id="7cc152d55e3e4b81993b1e8f1934e070" cid="UC014" type="use-case" name="Visualizar consulta" owner="d04e100db1f54fe3be81a394dbca24a2" creator="" creation-date="05/20/2024 20:39:12" visibility="undefined">
+            <use-case>
+              <stakeholders />
+              <special-requirements />
+              <issues />
+            </use-case>
           </item>
           <item id="2bc7abe5aa454b93b0b3a3ec050e99e8" cid="EX014" type="extend" owner="d04e100db1f54fe3be81a394dbca24a2" creator="" creation-date="05/20/2024 20:41:39" from="7cc152d55e3e4b81993b1e8f1934e070" to="958f3e7678014b958e3d2e285a1ef91f" visibility="package">
             <stereotypes>
@@ -1269,18 +1237,11 @@
             </stereotype-instances>
             <extend extension-point="" condition="" />
           </item>
-          <item id="7cc152d55e3e4b81993b1e8f1934e070" cid="UC014" type="use-case" name="Visualizar consulta" owner="d04e100db1f54fe3be81a394dbca24a2" creator="" creation-date="05/20/2024 20:39:12" visibility="undefined">
-            <use-case>
-              <stakeholders />
-              <special-requirements />
-              <issues />
-            </use-case>
-          </item>
           <item id="7a14266aac034f07842d9120c509ceff" cid="REL020" type="relationship" creator="" creation-date="05/20/2024 20:36:24" from="2c0e6a4927ff44bfa2225baf61276849" to="75289f0680814513873b00ee2af486ca" visibility="package">
             <owned-items />
             <relation from="2c0e6a4927ff44bfa2225baf61276849" to="75289f0680814513873b00ee2af486ca" derived="false">
-              <start-role id="umlar-a04b23b0-09ab-46ad-b66c-db617a21a69e" name="" navigability="" association-type="association" visibility="private" property-ref="48959f24ddf24094bc015161c5aeae23" />
-              <end-role id="umlar-a43bc51d-9812-4069-a67f-fdf199a2e4d2" name="" navigability="" association-type="association" visibility="private" property-ref="a4c79fa0cadb4fc9b3b3f3a7b5ed3931" />
+              <start-role id="umlar-0854adf2-4c05-484c-8486-db675f2b0388" name="" navigability="" association-type="association" visibility="private" property-ref="48959f24ddf24094bc015161c5aeae23" />
+              <end-role id="umlar-0829513a-4155-459c-aa98-57403fbbc99d" name="" navigability="" association-type="association" visibility="private" property-ref="a4c79fa0cadb4fc9b3b3f3a7b5ed3931" />
             </relation>
           </item>
           <item id="02fc230974a341f7b944668047c24e63" cid="EX015" type="extend" owner="d04e100db1f54fe3be81a394dbca24a2" creator="" creation-date="06/01/2024 17:22:59" from="958f3e7678014b958e3d2e285a1ef91f" to="18543d7500564fff82e77913e7aa9f18" visibility="package">
@@ -1301,12 +1262,12 @@
             </stereotype-instances>
             <extend extension-point="" condition="" />
           </item>
-          <item id="01d3f2c7f52747089e57053f36bd8a4e" cid="REL023" type="relationship" creator="" creation-date="05/20/2024 20:40:56" from="9e07a80dbd1d477ba73c86cce2402a72" to="ba26ce16550045b9a28983b682a6b01b" visibility="package">
-            <owned-items />
-            <relation from="9e07a80dbd1d477ba73c86cce2402a72" to="ba26ce16550045b9a28983b682a6b01b" derived="false">
-              <start-role id="umlar-f2227268-85e7-417b-9fab-843f34045cdd" name="" navigability="" association-type="association" visibility="private" property-ref="e7b730bce27f4edba57cb1b294f274c3" />
-              <end-role id="umlar-b48cfbc9-c695-47ff-b771-3160f9861fde" name="" navigability="" association-type="association" visibility="private" property-ref="ac5772097e664c7e9dc457c54980d362" />
-            </relation>
+          <item id="846fe9156972435bb957f25eedd39922" cid="UC013" type="use-case" name="Visualizar consultas" owner="d04e100db1f54fe3be81a394dbca24a2" creator="" creation-date="05/20/2024 20:37:24" visibility="undefined">
+            <use-case>
+              <stakeholders />
+              <special-requirements />
+              <issues />
+            </use-case>
           </item>
           <item id="23844a1661604cc3ae0cf8c8ee4b3a76" cid="EX010" type="extend" owner="d04e100db1f54fe3be81a394dbca24a2" creator="" creation-date="05/20/2024 20:37:44" from="75289f0680814513873b00ee2af486ca" to="846fe9156972435bb957f25eedd39922" visibility="package">
             <stereotypes>
@@ -1317,12 +1278,12 @@
             </stereotype-instances>
             <extend extension-point="" condition="" />
           </item>
-          <item id="846fe9156972435bb957f25eedd39922" cid="UC013" type="use-case" name="Visualizar consultas" owner="d04e100db1f54fe3be81a394dbca24a2" creator="" creation-date="05/20/2024 20:37:24" visibility="undefined">
-            <use-case>
-              <stakeholders />
-              <special-requirements />
-              <issues />
-            </use-case>
+          <item id="01d3f2c7f52747089e57053f36bd8a4e" cid="REL023" type="relationship" creator="" creation-date="05/20/2024 20:40:56" from="9e07a80dbd1d477ba73c86cce2402a72" to="ba26ce16550045b9a28983b682a6b01b" visibility="package">
+            <owned-items />
+            <relation from="9e07a80dbd1d477ba73c86cce2402a72" to="ba26ce16550045b9a28983b682a6b01b" derived="false">
+              <start-role id="umlar-99c1c0cb-0c63-418f-b7b6-127d74e770f5" name="" navigability="" association-type="association" visibility="private" property-ref="e7b730bce27f4edba57cb1b294f274c3" />
+              <end-role id="umlar-28aa9fa1-bdea-4876-99f1-6cbee6ff0414" name="" navigability="" association-type="association" visibility="private" property-ref="ac5772097e664c7e9dc457c54980d362" />
+            </relation>
           </item>
         </abstract-items>
         <layer id="96254c21c44745178fb44f84764651b9" name="Default" visible="true" enabled="true" locked="false">
@@ -1491,7 +1452,7 @@
           </item>
         </layer>
       </diagram>
-      <diagram type="uml-usecase" id="p26babd47398f47bb89f3a19992f420ee_910639338" name="DCU_PsychoMeet_ModuloDeBuscaDeProfissionais" order-index="6" overview-order-index="4" uid="" name-style="" auto-routed-paths="false" default-line-style="default" view-location="0,12">
+      <diagram type="uml-usecase" id="p26babd47398f47bb89f3a19992f420ee_910639338" name="DCU_PsychoMeet_ModuloDeBuscaDeProfissionais" order-index="6" overview-order-index="4" uid="" name-style="" auto-routed-paths="false" default-line-style="default" view-location="0,-172">
         <style>
           <background-color index="1" color="#FFFFFFFF" />
           <background-color index="2" color="#FFFFFFFF" />

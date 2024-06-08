@@ -1,13 +1,11 @@
+
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
 
 @Component({
-  selector: 'app-root',
-  standalone: true,
-  imports: [RouterOutlet],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  selector: 'app-root', // O seletor do componente raiz
+  templateUrl: './app.component.html', // O arquivo HTML associado a este componente
+  styleUrls: ['./app.component.css'] // O arquivo CSS associado a este componente
 })
 export class AppComponent {
-  title = 'psychomeet';
+  title = 'Psychomeet'; // Uma propriedade que pode ser usada no template HTML
 }

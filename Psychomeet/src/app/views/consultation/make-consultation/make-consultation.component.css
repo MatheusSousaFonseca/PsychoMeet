@@ -1,0 +1,9 @@
+.custom-table {
+    width: 100%; /* Ajuste a largura da tabela conforme necessário */
+    max-width: 800px; /* Define um tamanho máximo para a tabela */
+  }
+  
+  .table-white {
+    background-color: #ffffff;
+  }
+  

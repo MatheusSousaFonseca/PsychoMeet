@@ -8,11 +8,11 @@ import { HomeComponent } from './views/app/home/home.component';
 
 export const routes: Routes = [
 {
-    path: 'account/sign-in',
+    path: 'account/sign-in-patient',
     component: SignInPatientComponent,
 },
 {
-    path: 'account/sign-up',
+    path: 'account/sign-up-patient',
     component: SignUpPatientComponent,
 },
 {

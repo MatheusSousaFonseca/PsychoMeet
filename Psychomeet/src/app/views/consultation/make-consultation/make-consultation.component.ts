@@ -37,4 +37,6 @@ export class MakeConsultationComponent {
     console.log(`Consulta marcada para ${this.selectedTime} na ${this.selectedDay}`);
     this.closeModal();
   }
+
+  
 }

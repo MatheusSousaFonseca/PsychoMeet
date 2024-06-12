@@ -3,10 +3,11 @@ import { SignInPatientComponent } from './views/account/sign-in-patient/sign-in-
 import { SignUpPatientComponent } from './views/account/sign-up-patient/sign-up-patient.component';
 
 import { HomeComponent } from './views/app/home/home.component';
+import { MakeConsultationComponent } from './views/consultation/make-consultation/make-consultation.component';
 
 
 
-export const routes: Routes = [
+export const AppRoutes: Routes = [
 {
     path: 'account/sign-in-patient',
     component: SignInPatientComponent,
@@ -22,6 +23,10 @@ export const routes: Routes = [
 {
     path: '',
     component: HomeComponent,
+},
+{
+    path: 'consultation/make-consultation',
+    component: MakeConsultationComponent,
 }
 ];
 

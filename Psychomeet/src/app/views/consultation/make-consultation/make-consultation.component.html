@@ -1,6 +1,20 @@
 <div class="container mt-5">
-  <div class="row justify-content-center">
-    <div class="col-md-8">
+  <div class="row">
+    <!-- Perfil do Usuário -->
+    <div class="col-md-6">
+      <div class="media">
+        <img src="assets/user.png" class="mr-3 rounded-circle" alt="User Image" width="100" height="100">
+        <div class="media-body">
+          <h5 class="mt-0">Nome: João da Silva</h5>
+          <p>CRP: 12345</p>
+          <p>Especialidade: Psicologia Clínica</p>
+          <p>Descrição: Especialista em terapia cognitivo-comportamental.</p>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Tabela de Agenda Semanal -->
+    <div class="col-md-6">
       <div class="text-center">
         <h1 class="text-warning">Agenda Semanal</h1>
         <table class="table table-bordered table-white custom-table mx-auto">
@@ -23,7 +37,7 @@
     </div>
   </div>
 
-  <!-- <div class="modal" tabindex="-1" role="dialog" [ngClass]="{'show': isModalOpen}" style="display: block;" *ngIf="isModalOpen"> -->
+  <!-- Modal para Marcar Consulta -->
   <div class="modal">
     <div class="modal-dialog" role="document">
       <div class="modal-content">

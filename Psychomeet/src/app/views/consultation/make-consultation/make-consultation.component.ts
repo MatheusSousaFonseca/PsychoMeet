@@ -47,7 +47,7 @@ export class MakeConsultationComponent implements OnInit {
   selectedDay: string | null = null;
 
   openModal(time: string, day: string): void {
-    this.router.navigate(['/']);
+    this.router.navigate(['pop-ups/pop-up-make-consultation']);
 
     this.selectedTime = time;
     this.selectedDay = day;
@@ -72,9 +72,9 @@ export class MakeConsultationComponent implements OnInit {
     this.closeModal();
   }
 
-  
 
-  
+
+
 
 }
 

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-pop-up-refuse-consultation',
@@ -8,5 +9,11 @@ import { Component } from '@angular/core';
   styleUrl: './pop-up-refuse-consultation.component.css'
 })
 export class PopUpRefuseConsultationComponent {
+  constructor(private router: Router) { }
+
+  recusarConsulta() {
+    this.router.navigate(['consultation/view-request-consultation']);
+  }
+
 
 }

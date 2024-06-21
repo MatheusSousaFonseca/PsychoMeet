@@ -93,8 +93,6 @@ create table agenda (
 create table consulta (
     id serial primary key,
     agenda_id int not null unique,
-    relato text not null,
-    diagnostico text not null,
     nota_paciente text not null,
     comentario_paciente text,
     constraint fk_agenda_consulta foreign key (agenda_id) references agenda(id),

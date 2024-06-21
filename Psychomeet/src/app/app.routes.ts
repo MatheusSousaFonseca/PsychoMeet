@@ -39,7 +39,7 @@ export const AppRoutes: Routes = [
         component: MakeConsultationComponent,
     },
     {
-        path: 'consultation/view-consultation-pacient',
+        path: 'consultation/view-consultation-patient',
         component: ViewConsultationPatientComponent,
     },
     {

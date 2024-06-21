@@ -1,4 +1,3 @@
-
 <div class="container mt-5">
   <div class="row">
     <!-- Perfil do Usuário -->
@@ -13,24 +12,24 @@
         </div>
       </div>
     </div>
-<div class="container mt-5">
-  <div class="row">    
-    <!-- Tabela de Agenda Semanal -->
-    <div class="col-md-12">
-      <div class="text-center">
-        <h1 class="text-warning">Agenda Semanal</h1>
-        <table class="table table-bordered table-white custom-table mx-auto">
-          <thead>
-            <tr>
-              <th>Hora</th>
-              @for(day of days; track $index){
-                <th>{{ day }}</th>
-              }
-              <!-- <th *ngFor="let day of days">{{ day }}</th> -->
-            </tr>
-          </thead>
-          <tbody>
-            @for(time of times; track $index){
+    <div class="container mt-5">
+      <div class="row">
+        <!-- Tabela de Agenda Semanal -->
+        <div class="col-md-12">
+          <div class="text-center">
+            <h1 class="text-warning">Agenda Semanal</h1>
+            <table class="table table-bordered table-white custom-table mx-auto">
+              <thead>
+                <tr>
+                  <th>Hora</th>
+                  @for(day of days; track $index){
+                  <th>{{ day }}</th>
+                  }
+                  <!-- <th *ngFor="let day of days">{{ day }}</th> -->
+                </tr>
+              </thead>
+              <tbody>
+                <!-- @for(time of times; track $index){
               <tr >
                 <td>{{ time }}</td>
                 @for(day of days; track $index){
@@ -43,41 +42,86 @@
                 }
                 
               </tr>
-            }
-            <!-- <tr *ngFor="let time of times">
+            } -->
+                @for(time of horarioLista; track $index){
+                <tr>
+                  <td>{{ time.hora }}</td>
+                  <td>
+                    <button (click)="openModal(time.hora, time.segunda)">
+                      <i class="fas fa-calendar-alt text-warning"></i>
+                    </button>
+                  </td>
+                  <td>
+                    <button (click)="openModal(time.hora, time.terca)">
+                      <i class="fas fa-calendar-alt text-warning"></i>
+                    </button>
+                  </td>
+                  <td>
+                    <button (click)="openModal(time.hora, time.quarta)">
+                      <i class="fas fa-calendar-alt text-warning"></i>
+                    </button>
+                  </td>
+                  <td>
+                    <button (click)="openModal(time.hora, time.quinta)">
+                      <i class="fas fa-calendar-alt text-warning"></i>
+                    </button>
+                  </td>
+                  <td>
+                    <button (click)="openModal(time.hora, time.sexta)">
+                      <i class="fas fa-calendar-alt text-warning"></i>
+                    </button>
+                  </td>
+                  <td>
+                    <button (click)="openModal(time.hora, time.sabado)">
+                      <i class="fas fa-calendar-alt text-warning"></i>
+                    </button>
+                  </td>
+                  <td>
+                    <button (click)="openModal(time.hora, time.domingo)">
+                      <i class="fas fa-calendar-alt text-warning"></i>
+                    </button>
+                  </td>
+                </tr>
+                }
+
+
+
+
+                <!-- <tr *ngFor="let time of times">
               <td>{{ time }}</td>
               <td *ngFor="let day of days" (click)="openModal(time, day)">
                 <i class="fas fa-calendar-alt text-warning"></i>
               </td>
             </tr> -->
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </div>
-
-    <!-- <div class="modal" tabindex="-1" role="dialog" [ngClass]="{'show': isModalOpen}" style="display: block;" *ngIf="isModalOpen"> -->
-
-
-  <!-- <div class="modal"> -->
-    <div class="modal" tabindex="-1" role="dialog" [class.show]="isModalOpen" style="display: block;" *ngIf="isModalOpen">
-
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title">Marcar Consulta</h5>
-          <button type="button" class="close" (click)="closeModal()" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <p>Consulta para {{ selectedTime }} na {{ selectedDay }}</p>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" (click)="closeModal()">Voltar</button>
-          <button type="button" class="btn btn-primary" (click)="makeConsultation()">Confirmar</button>
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
+
+      <!-- <div class="modal" tabindex="-1" role="dialog" [ngClass]="{'show': isModalOpen}" style="display: block;" *ngIf="isModalOpen"> -->
+
+
+      <!-- <div class="modal"> -->
+      <div class="modal" tabindex="-1" role="dialog" [class.show]="isModalOpen" style="display: block;"
+        *ngIf="isModalOpen">
+
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Marcar Consulta</h5>
+              <button type="button" class="close" (click)="closeModal()" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <p>Consulta para {{ selectedTime }} na {{ selectedDay }}</p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" (click)="closeModal()">Voltar</button>
+              <button type="button" class="btn btn-primary" (click)="makeConsultation()">Confirmar</button>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-  </div>
-</div>

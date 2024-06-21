@@ -72,14 +72,11 @@ export class MakeConsultationComponent implements OnInit {
     this.closeModal();
   }
 
-<<<<<<< HEAD
   
 
   
-=======
 
->>>>>>> bd44f8c7aa5506e47f4c61d8be716426e81639df
 }
 
-//teste
+
 

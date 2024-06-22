@@ -32,40 +32,44 @@ export class InformAvailabilityComponent {
       };
       this.horarioLista.push(horarios);
     }
-}
+  }
 
-horarioLista: Horario[] = [];
+  horarioLista: Horario[] = [];
 
 
 
-days: string[] = ['Segunda-feira', 'Terça-feira', 'Quarta-feira', 'Quinta-feira', 'Sexta-feira', 'Sábado', 'Domingo'];
-times: string[] = ['08:00', '09:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00'];
+  days: string[] = ['Segunda-feira', 'Terça-feira', 'Quarta-feira', 'Quinta-feira', 'Sexta-feira', 'Sábado', 'Domingo'];
+  times: string[] = ['08:00', '09:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00'];
 
-isModalOpen: boolean = true;
-helpRequested: boolean = false;
-selectedTime: string | null = null;
-selectedDay: string | null = null;
+  isModalOpen: boolean = true;
+  helpRequested: boolean = false;
+  selectedTime: string | null = null;
+  selectedDay: string | null = null;
 
-openModal(time: string, day: string): void {
-  this.router.navigate(['pop-ups/pop-up-inform-availability']);
+  voltar() {
+    this.router.navigate(['consultation/view-consultation-psychologist']);
+  }
 
-  this.selectedTime = time;
-  this.selectedDay = day;
-  this.isModalOpen = true;
-  this.helpRequested = false;
-}
+  openModal(time: string, day: string): void {
+    this.router.navigate(['pop-ups/pop-up-inform-availability']);
 
-closeModal(): void {
-  this.isModalOpen = false;
-}
+    this.selectedTime = time;
+    this.selectedDay = day;
+    this.isModalOpen = true;
+    this.helpRequested = false;
+  }
 
-requestHelp(): void {
-  this.helpRequested = true;
-}
+  closeModal(): void {
+    this.isModalOpen = false;
+  }
 
-confirmAndClose(): void {
-  this.isModalOpen = false;
-}
+  requestHelp(): void {
+    this.helpRequested = true;
+  }
+
+  confirmAndClose(): void {
+    this.isModalOpen = false;
+  }
 
 
 }

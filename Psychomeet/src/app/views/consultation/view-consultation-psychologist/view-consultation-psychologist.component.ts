@@ -17,7 +17,7 @@ export class ViewConsultationPsychologistComponent {
   }
 
   agenda() {
-    this.router.navigate(['pop-ups/pop-up-inform-availability']);
+    this.router.navigate(['consultation/inform-availability']);
   }
 
 }

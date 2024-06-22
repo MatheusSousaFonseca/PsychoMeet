@@ -12,7 +12,7 @@ export class ViewConsultationPatientComponent {
   constructor(private router: Router) { }
 
   marcarConsulta() {
-    this.router.navigate(['consultation/make-consultation']);
+    this.router.navigate(['consultation/search-psychologist']);
 
   }
 

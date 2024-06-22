@@ -16,7 +16,8 @@
   background-color: #fffbea;
 }
 
-.custom-table th, .custom-table td {
+.custom-table th,
+.custom-table td {
   text-align: center;
   vertical-align: middle;
 }
@@ -32,4 +33,11 @@
 
 .modal-content {
   background-color: #fffbea;
+}
+
+
+
+.btn-danger {
+  background-color: #dc3545;
+  border-color: #dc3545;
 }

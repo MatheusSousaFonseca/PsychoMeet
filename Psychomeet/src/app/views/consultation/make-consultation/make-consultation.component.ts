@@ -46,6 +46,10 @@ export class MakeConsultationComponent implements OnInit {
   selectedTime: string | null = null;
   selectedDay: string | null = null;
 
+  voltar() {
+    this.router.navigate(['consultation/search-psychologist']);
+  }
+
   openModal(time: string, day: string): void {
     this.router.navigate(['pop-ups/pop-up-make-consultation']);
 

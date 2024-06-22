@@ -18,6 +18,7 @@ import { ViewScheduledConsultationComponent } from './views/consultation/view-sc
 import { InformAvailabilityComponent } from './views/consultation/inform-availability/inform-availability.component';
 import { SignInPsychologistComponent } from './views/account/sign-in-psychologist/sign-in-psychologist.component';
 import { SignUpPsychologistComponent } from './views/account/sign-up-psychologist/sign-up-psychologist.component';
+import { SearchPsychologistComponent } from './views/consultation/search-psychologist/search-psychologist.component';
 
 
 
@@ -65,6 +66,10 @@ export const AppRoutes: Routes = [
     {
         path: 'consultation/view-scheduled-consultation',
         component: ViewScheduledConsultationComponent,
+    },
+    {
+        path: 'consultation/search-psychologist',
+        component: SearchPsychologistComponent,
     },
     {
         path: 'pop-ups/pop-up-accept-consultation',

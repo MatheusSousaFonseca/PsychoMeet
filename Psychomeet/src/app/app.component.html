@@ -10,8 +10,9 @@
         </div>
       </div>
       <div class="col-md-6 text-right">
-        <button class="btn btn-warning mr-2">Meu Perfil</button>
-        <button class="btn btn-danger">Logout</button>
+        <button class="btn btn-warning mr-2" (click)="acessarPerfilPaciente()">Meu Perfil - Paciente</button>
+        <button class="btn btn-warning mr-2" (click)="acessarPerfilPsicologo()">Meu Perfil - Psicólogo</button>
+        <button class="btn btn-danger" (click)="logout()">Logout</button>
       </div>
     </div>
   </div>

@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-pop-up-give-feedback',
@@ -8,5 +10,14 @@ import { Component } from '@angular/core';
   styleUrl: './pop-up-give-feedback.component.css'
 })
 export class PopUpGiveFeedbackComponent {
+
+  constructor(private router: Router) { }
+
+  voltar() {
+    this.router.navigate(['consultation/view-consultation-patient']);
+
+
+  }
+
 
 }

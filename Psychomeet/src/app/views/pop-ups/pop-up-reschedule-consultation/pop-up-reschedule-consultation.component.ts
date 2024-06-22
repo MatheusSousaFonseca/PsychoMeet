@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-pop-up-reschedule-consultation',
@@ -8,5 +9,10 @@ import { Component } from '@angular/core';
   styleUrl: './pop-up-reschedule-consultation.component.css'
 })
 export class PopUpRescheduleConsultationComponent {
+  constructor(private router: Router) { }
+
+  marcarConsulta() {
+    this.router.navigate(['consultation/make-consultation']);
+  }
 
 }

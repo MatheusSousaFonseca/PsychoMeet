@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-pop-up-cancel-consultation',
@@ -9,4 +10,9 @@ import { Component } from '@angular/core';
 })
 export class PopUpCancelConsultationComponent {
 
+  constructor(private router: Router) { }
+
+  cancelarConsulta() {
+    this.router.navigate(['consultation/view-scheduled-consultation']);
+  }
 }

@@ -12,11 +12,7 @@ export class ViewRequestConsultationComponent {
 
   constructor(private router: Router) { }
 
-  // consultas = [
-  //   { paciente: 'João Silva', data: '24/06/2024', hora: '16:00', descricao: 'Consulta de rotina' },
-  //   { paciente: 'Maria Oliveira', data: '25/06/2024', hora: '14:30', descricao: 'Sessão de terapia' },
-  //   { paciente: 'Carlos Souza', data: '26/06/2024', hora: '10:00', descricao: 'Consulta de acompanhamento' }
-  // ];
+
 
   aceitarConsulta() {
     this.router.navigate(['pop-ups/pop-up-accept-consultation']);

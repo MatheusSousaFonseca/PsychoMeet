@@ -14,6 +14,7 @@ import { PopUpGiveFeedbackComponent } from './views/pop-ups/pop-up-give-feedback
 import { PopUpInformAvailabilityComponent } from './views/pop-ups/pop-up-inform-availability/pop-up-inform-availability.component';
 import { PopUpMakeConsultationComponent } from './views/pop-ups/pop-up-make-consultation/pop-up-make-consultation.component';
 import { PopUpRescheduleConsultationComponent } from './views/pop-ups/pop-up-reschedule-consultation/pop-up-reschedule-consultation.component';
+import { ViewScheduledConsultationComponent } from './views/consultation/view-scheduled-consultation/view-scheduled-consultation.component';
 
 
 
@@ -49,6 +50,10 @@ export const AppRoutes: Routes = [
     {
         path: 'consultation/view-request-consultation',
         component: ViewRequestConsultationComponent,
+    },
+    {
+        path: 'consultation/view-scheduled-consultation',
+        component: ViewScheduledConsultationComponent,
     },
     {
         path: 'pop-ups/pop-up-accept-consultation',

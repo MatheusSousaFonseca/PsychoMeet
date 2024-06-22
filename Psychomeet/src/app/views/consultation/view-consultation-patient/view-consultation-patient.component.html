@@ -1,84 +1,167 @@
-<div class="container mt-4">
-    <div class="card">
-        <div class="card-header bg-warning text-white">
-            <h3>Histórico de Consultas</h3>
-            <button class="btn btn-danger">X</button>
-
-        </div>
+<div class="container mt-5">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <button class="btn btn-danger" (click)="marcarConsulta()">X</button>
+        <h2 class="text-primary">Histórico de Consultas</h2>
+        <button class="btn btn-danger" (click)="consultasMarcadas()">Consultas marcadas</button>
+    </div>
+    <div class="card mb-3">
         <div class="card-body">
-            <table class="table table-bordered">
-                <thead>
-                    <tr>
-                        <th>Psicólogo</th>
-                        <th>Data</th>
-                        <th>Hora</th>
-
-                    </tr>
-                </thead>
-                <thead>
-                    <tr>
-                        <th>José Alfredo</th>
-                        <th>05/08/2019</th>
-                        <th>08:00</th>
-                    </tr>
-                </thead>
-                <thead>
-                    <tr>
-                        <th>Maria Gabriela Ramos</th>
-                        <th>15/09/2020</th>
-                        <th>14:00</th>
-                    </tr>
-                </thead>
-                <thead>
-                    <tr>
-                        <th>Mateus Lima</th>
-                        <th>29/10/2020</th>
-                        <th>13:00</th>
-                    </tr>
-                </thead>
-                <thead>
-                    <tr>
-                        <th>Mateus Lima</th>
-                        <th>30/11/2020</th>
-                        <th>13:00</th>
-                    </tr>
-                </thead>
-                <thead>
-                    <tr>
-                        <th>Lucas Domingues</th>
-                        <th>13/06/2021</th>
-                        <th>11:00</th>
-                    </tr>
-                </thead>
-                <thead>
-                    <tr>
-                        <th>Lucas Domingues</th>
-                        <th>18/06/2022</th>
-                        <th>11:00</th>
-                    </tr>
-                </thead>
-                <thead>
-                    <tr>
-                        <th>Ana Gabriela Oliveira</th>
-                        <th>26/08/2023</th>
-                        <th>16:00</th>
-                    </tr>
-                </thead>
-                <!-- <tbody>
-                    <tr *ngFor="let consulta of consultas">
-                        <td>{{ consulta.data }}</td>
-                        <td>{{ consulta.hora }}</td>
-                        <td>{{ consulta.descricao }}</td>
-                    </tr>
-                </tbody>
-                <tbody>
-                    <tr *ngFor="let consulta of consultas">
-                        <td>{{ consulta.data }}</td>
-                        <td>{{ consulta.hora }}</td>
-                        <td>{{ consulta.descricao }}</td>
-                    </tr>
-                </tbody> -->
-            </table>
+            <div class="d-flex justify-content-between align-items-center">
+                <div>
+                    <h5 class="card-title">Psicólogo: João Silva</h5>
+                    <p class="card-text">Data: 20/06/2024 às 16:00</p>
+                    <p class="card-text">Descrição: Consulta de rotina</p>
+                </div>
+                <div>
+                    <button class="btn btn-primary" (click)="feedback()">
+                        <i class="fas fa-info-circle"></i> Fornecer feedback
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card mb-3">
+        <div class="card-body">
+            <div class="d-flex justify-content-between align-items-center">
+                <div>
+                    <h5 class="card-title">Psicólogo: Maria Oliveira</h5>
+                    <p class="card-text">Data: 18/06/2024 às 14:30</p>
+                    <p class="card-text">Descrição: Sessão de terapia</p>
+                </div>
+                <div>
+                    <button class="btn btn-primary" (click)="feedback()">
+                        <i class="fas fa-info-circle"></i> Fornecer feedback
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card mb-3">
+        <div class="card-body">
+            <div class="d-flex justify-content-between align-items-center">
+                <div>
+                    <h5 class="card-title">Psicólogo: Carlos Souza</h5>
+                    <p class="card-text">Data: 15/06/2024 às 10:00</p>
+                    <p class="card-text">Descrição: Consulta de acompanhamento</p>
+                </div>
+                <div>
+                    <button class="btn btn-primary" (click)="feedback()">
+                        <i class="fas fa-info-circle"></i> Fornecer feedback
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card mb-3">
+        <div class="card-body">
+            <div class="d-flex justify-content-between align-items-center">
+                <div>
+                    <h5 class="card-title">Psicólogo: Ana Pereira</h5>
+                    <p class="card-text">Data: 13/06/2024 às 11:00</p>
+                    <p class="card-text">Descrição: Consulta inicial</p>
+                </div>
+                <div>
+                    <button class="btn btn-primary" (click)="feedback()">
+                        <i class="fas fa-info-circle"></i> Fornecer feedback
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card mb-3">
+        <div class="card-body">
+            <div class="d-flex justify-content-between align-items-center">
+                <div>
+                    <h5 class="card-title">Psicólogo: Pedro Lima</h5>
+                    <p class="card-text">Data: 10/06/2024 às 09:00</p>
+                    <p class="card-text">Descrição: Sessão de terapia</p>
+                </div>
+                <div>
+                    <button class="btn btn-primary" (click)="feedback()">
+                        <i class="fas fa-info-circle"></i> Fornecer feedback
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card mb-3">
+        <div class="card-body">
+            <div class="d-flex justify-content-between align-items-center">
+                <div>
+                    <h5 class="card-title">Psicólogo: Lucas Fernandes</h5>
+                    <p class="card-text">Data: 08/06/2024 às 15:00</p>
+                    <p class="card-text">Descrição: Consulta de rotina</p>
+                </div>
+                <div>
+                    <button class="btn btn-primary" (click)="feedback()">
+                        <i class="fas fa-info-circle"></i> Fornecer feedback
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card mb-3">
+        <div class="card-body">
+            <div class="d-flex justify-content-between align-items-center">
+                <div>
+                    <h5 class="card-title">Psicólogo: Mariana Santos</h5>
+                    <p class="card-text">Data: 05/06/2024 às 13:00</p>
+                    <p class="card-text">Descrição: Consulta de acompanhamento</p>
+                </div>
+                <div>
+                    <button class="btn btn-primary" (click)="feedback()">
+                        <i class="fas fa-info-circle"></i> Fornecer feedback
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card mb-3">
+        <div class="card-body">
+            <div class="d-flex justify-content-between align-items-center">
+                <div>
+                    <h5 class="card-title">Psicólogo: Gabriel Costa</h5>
+                    <p class="card-text">Data: 02/06/2024 às 11:00</p>
+                    <p class="card-text">Descrição: Sessão de terapia</p>
+                </div>
+                <div>
+                    <button class="btn btn-primary" (click)="feedback()">
+                        <i class="fas fa-info-circle"></i> Fornecer feedback
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card mb-3">
+        <div class="card-body">
+            <div class="d-flex justify-content-between align-items-center">
+                <div>
+                    <h5 class="card-title">Psicólogo: Renata Alves</h5>
+                    <p class="card-text">Data: 30/05/2024 às 16:30</p>
+                    <p class="card-text">Descrição: Consulta inicial</p>
+                </div>
+                <div>
+                    <button class="btn btn-primary" (click)="feedback()">
+                        <i class="fas fa-info-circle"></i> Fornecer feedback
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card mb-3">
+        <div class="card-body">
+            <div class="d-flex justify-content-between align-items-center">
+                <div>
+                    <h5 class="card-title">Psicólogo: Felipe Duarte</h5>
+                    <p class="card-text">Data: 28/05/2024 às 10:00</p>
+                    <p class="card-text">Descrição: Consulta de rotina</p>
+                </div>
+                <div>
+                    <button class="btn btn-primary" (click)="feedback()">
+                        <i class="fas fa-info-circle"></i> Fornecer feedback
+                    </button>
+                </div>
+            </div>
         </div>
     </div>
 </div>

@@ -1,1 +1,46 @@
-<p>sign-up-patient works!</p>
+<body>
+    <div class="container mt-5">
+      <div class="row justify-content-center">
+        <div class="col-md-6">
+          <div class="card">
+            <div class="card-header">
+              <h3 class="text-center">Cadastro de Paciente</h3>
+            </div>
+            <div class="card-body">
+              <form>
+                <div class="form-group">
+                  <label for="nome"><i class="fas fa-user"></i> Nome</label>
+                  <input type="text" class="form-control" id="nome" required>
+                </div>
+                <div class="form-group">
+                  <label for="telefone"><i class="fas fa-phone"></i> Telefone</label>
+                  <input type="tel" class="form-control" id="telefone" required>
+                </div>
+                <div class="form-group">
+                  <label for="email"><i class="fas fa-envelope"></i> Email</label>
+                  <input type="email" class="form-control" id="email" required>
+                </div>
+                <div class="form-group">
+                  <label for="cpf"><i class="fas fa-id-card"></i> CPF</label>
+                  <input type="text" class="form-control" id="cpf" required>
+                </div>
+                <div class="form-group">
+                  <label for="data_nascimento"><i class="fas fa-calendar-alt"></i> Data de Nascimento</label>
+                  <input type="date" class="form-control" id="data_nascimento" required>
+                </div>
+                <div class="form-group">
+                  <label for="senha"><i class="fas fa-lock"></i> Senha</label>
+                  <input type="password" class="form-control" id="senha" required>
+                </div>
+                <div class="form-group">
+                  <label for="confirmar_senha"><i class="fas fa-lock"></i> Confirmar Senha</label>
+                  <input type="password" class="form-control" id="confirmar_senha" required>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block" (click)="entrarAreaPaciente()">Cadastrar</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>

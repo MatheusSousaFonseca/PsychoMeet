@@ -1,0 +1,49 @@
+body {
+    background-color: #fffacd; /* cor de fundo amarela clara */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.login-container {
+    background-color: #ffeb3b; /* cor de fundo do container */
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 100%; /* largura total disponível */
+    max-width: 600px; /* largura máxima desejada */
+    text-align: center;
+    margin: 0 auto; /* centraliza horizontalmente */
+}
+
+h2 {
+    color: #f57c00; /* cor do texto do título */
+    margin-bottom: 20px;
+}
+
+.form-control {
+    margin-bottom: 15px;
+}
+
+.form-control input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.btn-custom {
+    background-color: #fbc02d; /* cor do botão */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn-custom:hover {
+    background-color: #f57c00; /* cor do botão ao passar o mouse */
+}

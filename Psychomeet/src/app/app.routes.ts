@@ -15,6 +15,9 @@ import { PopUpInformAvailabilityComponent } from './views/pop-ups/pop-up-inform-
 import { PopUpMakeConsultationComponent } from './views/pop-ups/pop-up-make-consultation/pop-up-make-consultation.component';
 import { PopUpRescheduleConsultationComponent } from './views/pop-ups/pop-up-reschedule-consultation/pop-up-reschedule-consultation.component';
 import { ViewScheduledConsultationComponent } from './views/consultation/view-scheduled-consultation/view-scheduled-consultation.component';
+import { InformAvailabilityComponent } from './views/consultation/inform-availability/inform-availability.component';
+import { SignInPsychologistComponent } from './views/account/sign-in-psychologist/sign-in-psychologist.component';
+import { SignUpPsychologistComponent } from './views/account/sign-up-psychologist/sign-up-psychologist.component';
 
 
 
@@ -26,6 +29,14 @@ export const AppRoutes: Routes = [
     {
         path: 'account/sign-up-patient',
         component: SignUpPatientComponent,
+    },
+    {
+        path: 'account/sign-in-psychologist',
+        component: SignInPsychologistComponent,
+    },
+    {
+        path: 'account/sign-up-psychologist',
+        component: SignUpPsychologistComponent,
     },
     {
         path: 'app/home',
@@ -82,6 +93,14 @@ export const AppRoutes: Routes = [
     {
         path: 'pop-ups/pop-up-refuse-consultation',
         component: PopUpRefuseConsultationComponent,
+    },
+    {
+        path: 'pop-ups/pop-up-inform-availability',
+        component: PopUpInformAvailabilityComponent,
+    },
+    {
+        path: 'consultation/inform-availability',
+        component: InformAvailabilityComponent,
     }
 ];
 

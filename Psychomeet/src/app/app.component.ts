@@ -3,16 +3,16 @@ import { Component } from '@angular/core';
 import { Router, RouterOutlet } from '@angular/router';
 
 @Component({
-  selector: 'app-root', 
+  selector: 'app-root',
   imports: [RouterOutlet],
-  templateUrl: './app.component.html', 
+  templateUrl: './app.component.html',
   standalone: true,
-  styleUrls: ['./app.component.css'] 
+  styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'Psychomeet'; 
+  title = 'Psychomeet';
 
-  constructor(private router : Router){}
+  constructor(private router: Router) { }
 
   logout() {
     this.router.navigate(['app/home'])
@@ -23,6 +23,6 @@ export class AppComponent {
   }
 
   acessarPerfilPsicologo() {
-    this.router.navigate(['account/my-profile-psychologist'])
+    this.router.navigate(['account/my-profile-psichologist'])
   }
 }

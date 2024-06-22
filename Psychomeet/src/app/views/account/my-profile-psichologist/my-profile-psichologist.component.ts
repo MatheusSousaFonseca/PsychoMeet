@@ -10,10 +10,13 @@ import { Router } from '@angular/router';
 })
 export class MyProfilePsichologistComponent {
 
-  constructor( private router : Router){}
+  constructor(private router: Router) { }
 
   voltar() {
     this.router.navigate(['consultation/view-consultation-psychologist'])
+  }
+  editar() {
+    this.router.navigate(['account/edit-profile-psichologist'])
   }
 
 }

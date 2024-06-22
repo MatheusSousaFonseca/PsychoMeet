@@ -1,1 +1,47 @@
-<p>edit-profile-patient works!</p>
+<body>
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="text-center">Editar Perfil do Paciente</h3>
+                    </div>
+                    <div class="card-body text-center">
+                        <div class="profile-picture mb-4">
+                            <img src="assets/user.png" alt="Foto de Perfil" class="img-thumbnail">
+                            <input type="file" class="form-control-file mt-2">
+                        </div>
+                        <form>
+                            <div class="form-group">
+                                <label for="nome"><i class="fas fa-user"></i> Nome</label>
+                                <input type="text" class="form-control" id="nome" value="João da Silva">
+                            </div>
+                            <div class="form-group">
+                                <label for="telefone"><i class="fas fa-phone"></i> Telefone</label>
+                                <input type="tel" class="form-control" id="telefone" value="123456789">
+                            </div>
+                            <div class="form-group">
+                                <label for="email"><i class="fas fa-envelope"></i> Email</label>
+                                <input type="email" class="form-control" id="email" value="joao.silva@example.com">
+                            </div>
+                            <div class="form-group">
+                                <label for="cpf"><i class="fas fa-id-card"></i> CPF</label>
+                                <input type="text" class="form-control" id="cpf" value="123.456.789-10">
+                            </div>
+                            <div class="form-group">
+                                <label for="data_nascimento"><i class="fas fa-calendar-alt"></i> Data de
+                                    Nascimento</label>
+                                <input type="date" class="form-control" id="data_nascimento" value="1990-01-01">
+                            </div>
+
+                            <button type="button" class="btn btn-primary btn-block" (click)="salvar()">Salvar</button>
+                            <button type="button" class="btn btn-primary btn-block" (click)="voltar()">Voltar</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</body>

@@ -21,6 +21,8 @@ import { SignUpPsychologistComponent } from './views/account/sign-up-psychologis
 import { SearchPsychologistComponent } from './views/consultation/search-psychologist/search-psychologist.component';
 import { MyProfilePatientComponent } from './views/account/my-profile-patient/my-profile-patient.component';
 import { MyProfilePsichologistComponent } from './views/account/my-profile-psichologist/my-profile-psichologist.component';
+import { EditProfilePsichologistComponent } from './views/account/edit-profile-psichologist/edit-profile-psichologist.component';
+import { EditProfilePatientComponent } from './views/account/edit-profile-patient/edit-profile-patient.component';
 
 
 
@@ -28,6 +30,14 @@ export const AppRoutes: Routes = [
     {
         path: 'account/sign-in-patient',
         component: SignInPatientComponent,
+    },
+    {
+        path: 'account/edit-profile-psichologist',
+        component: EditProfilePsichologistComponent,
+    },
+    {
+        path: 'account/edit-profile-patient',
+        component: EditProfilePatientComponent,
     },
     {
         path: 'account/sign-up-patient',
@@ -118,7 +128,7 @@ export const AppRoutes: Routes = [
         component: MyProfilePatientComponent,
     },
     {
-        path: 'account/my-profile-psychologist',
+        path: 'account/my-profile-psichologist',
         component: MyProfilePsichologistComponent,
     }
 ];

@@ -25,9 +25,9 @@ create table foto (
 
 create table paciente (
     id serial primary key,
-    pessoa_id int not null unique,
-    constraint fk_pessoa_id foreign key (pessoa_id) references pessoa(id) on update cascade on delete no action,
-    constraint uk_paciente_pessoa_id unique (pessoa_id)
+    pessoa_email varchar(100) not null unique,
+    constraint fk_pessoa_email foreign key (pessoa_email) references pessoa(email) on update cascade on delete no action,
+    constraint uk_paciente_pessoa_email unique (pessoa_email)
 );
 
 create table psicologo (
@@ -62,11 +62,22 @@ create table especialidade (
     constraint uk_especialidade_descricao unique (descricao)
 );
 
+create table agenda (
+    id serial primary key,
+    data date not null,
+    hora_inicio time not null,
+    hora_fim time not null,
+    status varchar(50) not null,
+    constraint uk_agenda_data_hora unique (data, hora_inicio, hora_fim)
+);
+
 create table disponibilidade (
     id serial primary key,
     psicologo_id int not null,
+    data_fim date not null,
+    data_inicio date not null,
     constraint fk_psicologo_disponibilidade foreign key (psicologo_id) references psicologo(id) on update cascade on delete no action,
-    constraint uk_disponibilidade_psicologo_id unique (psicologo_id)
+    unique (data_fim, data_inicio)
 );
 
 create table dia (
@@ -81,14 +92,7 @@ create table dia (
     constraint uk_dia_disponibilidade_turno_dia_semana unique (disponibilidade_id, turno, dia_semana)
 );
 
-create table agenda (
-    id serial primary key,
-    data date not null,
-    hora_inicio time not null,
-    hora_fim time not null,
-    status varchar(50) not null,
-    constraint uk_agenda_data_hora unique (data, hora_inicio, hora_fim)
-);
+
 
 create table consulta (
     id serial primary key,
@@ -100,11 +104,12 @@ create table consulta (
 );
 
 create table psicologo_especialidade (
+    id serial primary key,
     psicologo_id int not null,
     especialidade_id int not null,
     constraint fk_psicologo_especialidade_psicologo foreign key (psicologo_id) references psicologo(id) on update cascade on delete no action,
     constraint fk_psicologo_especialidade_especialidade foreign key (especialidade_id) references especialidade(id) on update cascade on delete no action,
-    primary key (psicologo_id, especialidade_id)
+    unique (psicologo_id, especialidade_id)
 );
 
 commit;

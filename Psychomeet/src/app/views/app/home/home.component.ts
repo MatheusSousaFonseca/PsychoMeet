@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -8,5 +9,15 @@ import { Component } from '@angular/core';
   styleUrl: './home.component.css'
 })
 export class HomeComponent {
+
+  constructor(private router : Router){}
+
+  loginPaciente(){
+    this.router.navigate(['account/sign-in-patient'])
+  }
+
+  loginPsicologo(){
+    this.router.navigate(['account/sign-in-psychologist'])
+  }
 
 }

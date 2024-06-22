@@ -19,6 +19,8 @@ import { InformAvailabilityComponent } from './views/consultation/inform-availab
 import { SignInPsychologistComponent } from './views/account/sign-in-psychologist/sign-in-psychologist.component';
 import { SignUpPsychologistComponent } from './views/account/sign-up-psychologist/sign-up-psychologist.component';
 import { SearchPsychologistComponent } from './views/consultation/search-psychologist/search-psychologist.component';
+import { MyProfilePatientComponent } from './views/account/my-profile-patient/my-profile-patient.component';
+import { MyProfilePsichologistComponent } from './views/account/my-profile-psichologist/my-profile-psichologist.component';
 
 
 
@@ -106,6 +108,18 @@ export const AppRoutes: Routes = [
     {
         path: 'consultation/inform-availability',
         component: InformAvailabilityComponent,
+    },
+    {
+        path: 'consultation/search-psychologist',
+        component: SearchPsychologistComponent
+    },
+    {
+        path: 'account/my-profile-patient',
+        component: MyProfilePatientComponent,
+    },
+    {
+        path: 'account/my-profile-psychologist',
+        component: MyProfilePsichologistComponent,
     }
 ];
 

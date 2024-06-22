@@ -1,6 +1,6 @@
 
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Router, RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-root', 
@@ -11,4 +11,18 @@ import { RouterOutlet } from '@angular/router';
 })
 export class AppComponent {
   title = 'Psychomeet'; 
+
+  constructor(private router : Router){}
+
+  logout() {
+    this.router.navigate(['app/home'])
+  }
+
+  acessarPerfilPaciente() {
+    this.router.navigate(['account/my-profile-patient'])
+  }
+
+  acessarPerfilPsicologo() {
+    this.router.navigate(['account/my-profile-psychologist'])
+  }
 }

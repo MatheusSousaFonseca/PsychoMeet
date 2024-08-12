@@ -23,6 +23,7 @@ import { MyProfilePatientComponent } from './views/account/my-profile-patient/my
 import { MyProfilePsichologistComponent } from './views/account/my-profile-psichologist/my-profile-psichologist.component';
 import { EditProfilePsichologistComponent } from './views/account/edit-profile-psichologist/edit-profile-psichologist.component';
 import { EditProfilePatientComponent } from './views/account/edit-profile-patient/edit-profile-patient.component';
+import { EditPasswordComponent } from './views/account/edit-password/edit-password.component';
 
 
 
@@ -130,6 +131,10 @@ export const AppRoutes: Routes = [
     {
         path: 'account/my-profile-psichologist',
         component: MyProfilePsichologistComponent,
+    },
+    {
+        path: 'account/edit-password',
+        component: EditPasswordComponent,
     }
 ];
 

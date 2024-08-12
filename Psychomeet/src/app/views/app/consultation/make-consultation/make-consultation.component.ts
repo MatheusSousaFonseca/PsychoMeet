@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Horario } from '../../../domain/model/horario-model';
+import { Horario } from '../../../../domain/model/horario-model';
+
 
 @Component({
   selector: 'app-make-consultation',

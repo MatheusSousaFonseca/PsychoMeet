@@ -3,22 +3,22 @@ import { SignInPatientComponent } from './views/account/sign-in-patient/sign-in-
 import { SignUpPatientComponent } from './views/account/sign-up-patient/sign-up-patient.component';
 
 import { HomeComponent } from './views/app/home/home.component';
-import { MakeConsultationComponent } from './views/consultation/make-consultation/make-consultation.component';
-import { PopUpAcceptConsultationComponent } from './views/pop-ups/pop-up-accept-consultation/pop-up-accept-consultation.component';
-import { PopUpCancelConsultationComponent } from './views/pop-ups/pop-up-cancel-consultation/pop-up-cancel-consultation.component';
-import { PopUpRefuseConsultationComponent } from './views/pop-ups/pop-up-refuse-consultation/pop-up-refuse-consultation.component';
-import { ViewConsultationPatientComponent } from './views/consultation/view-consultation-patient/view-consultation-patient.component';
-import { ViewConsultationPsychologistComponent } from './views/consultation/view-consultation-psychologist/view-consultation-psychologist.component';
-import { ViewRequestConsultationComponent } from './views/consultation/view-request-consultation/view-request-consultation.component';
-import { PopUpGiveFeedbackComponent } from './views/pop-ups/pop-up-give-feedback/pop-up-give-feedback.component';
-import { PopUpInformAvailabilityComponent } from './views/pop-ups/pop-up-inform-availability/pop-up-inform-availability.component';
-import { PopUpMakeConsultationComponent } from './views/pop-ups/pop-up-make-consultation/pop-up-make-consultation.component';
-import { PopUpRescheduleConsultationComponent } from './views/pop-ups/pop-up-reschedule-consultation/pop-up-reschedule-consultation.component';
-import { ViewScheduledConsultationComponent } from './views/consultation/view-scheduled-consultation/view-scheduled-consultation.component';
-import { InformAvailabilityComponent } from './views/consultation/inform-availability/inform-availability.component';
+import { MakeConsultationComponent } from './views/app/consultation/make-consultation/make-consultation.component';
+import { PopUpAcceptConsultationComponent } from './views/app/pop-ups/pop-up-accept-consultation/pop-up-accept-consultation.component';
+import { PopUpCancelConsultationComponent } from './views/app/pop-ups/pop-up-cancel-consultation/pop-up-cancel-consultation.component';
+import { PopUpRefuseConsultationComponent } from './views/app/pop-ups/pop-up-refuse-consultation/pop-up-refuse-consultation.component';
+import { ViewConsultationPatientComponent } from './views/app/consultation/view-consultation-patient/view-consultation-patient.component';
+import { ViewConsultationPsychologistComponent } from './views/app/consultation/view-consultation-psychologist/view-consultation-psychologist.component';
+import { ViewRequestConsultationComponent } from './views/app/consultation/view-request-consultation/view-request-consultation.component';
+import { PopUpGiveFeedbackComponent } from './views/app/pop-ups/pop-up-give-feedback/pop-up-give-feedback.component';
+import { PopUpInformAvailabilityComponent } from './views/app/pop-ups/pop-up-inform-availability/pop-up-inform-availability.component';
+import { PopUpMakeConsultationComponent } from './views/app/pop-ups/pop-up-make-consultation/pop-up-make-consultation.component';
+import { PopUpRescheduleConsultationComponent } from './views/app/pop-ups/pop-up-reschedule-consultation/pop-up-reschedule-consultation.component';
+import { ViewScheduledConsultationComponent } from './views/app/consultation/view-scheduled-consultation/view-scheduled-consultation.component';
+import { InformAvailabilityComponent } from './views/app/consultation/inform-availability/inform-availability.component';
 import { SignInPsychologistComponent } from './views/account/sign-in-psychologist/sign-in-psychologist.component';
 import { SignUpPsychologistComponent } from './views/account/sign-up-psychologist/sign-up-psychologist.component';
-import { SearchPsychologistComponent } from './views/consultation/search-psychologist/search-psychologist.component';
+import { SearchPsychologistComponent } from './views/app/consultation/search-psychologist/search-psychologist.component';
 import { MyProfilePatientComponent } from './views/account/my-profile-patient/my-profile-patient.component';
 import { MyProfilePsichologistComponent } from './views/account/my-profile-psichologist/my-profile-psichologist.component';
 import { EditProfilePsichologistComponent } from './views/account/edit-profile-psichologist/edit-profile-psichologist.component';
@@ -100,7 +100,7 @@ export const AppRoutes: Routes = [
         component: PopUpInformAvailabilityComponent,
     },
     {
-        path: 'pop-ups/pop-up-make-consultation',
+        path: 'app/pop-ups/pop-up-make-consultation',
         component: PopUpMakeConsultationComponent,
     },
     {

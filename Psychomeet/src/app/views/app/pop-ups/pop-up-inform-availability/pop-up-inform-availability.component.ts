@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Route, Router } from '@angular/router';
-import { Horario } from '../../../domain/model/horario-model';
+import { Horario } from '../../../../domain/model/horario-model';
 import { CommonModule } from '@angular/common';
 
 @Component({

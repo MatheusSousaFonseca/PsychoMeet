@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { Horario } from '../../../../domain/model/horario-model';
+import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-inform-availability',
@@ -12,8 +13,10 @@ import { Horario } from '../../../../domain/model/horario-model';
 })
 export class InformAvailabilityComponent {
 
-  constructor(private router: Router) {
-  }
+  modalRef: NgbModalRef | null = null;
+
+  constructor(private router: Router, private modalService: NgbModal) {
+  }
 
   ngOnInit(): void {
     this.times = ['08:00', '09:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00'];
@@ -70,6 +73,23 @@ export class InformAvailabilityComponent {
   confirmAndClose(): void {
     this.isModalOpen = false;
   }
+
+  openMyModal(content: any) {
+    this.modalRef = this.modalService.open(content);
+  }
+
+  closeMyModal() {
+    if (this.modalRef) {
+      this.modalRef.close();
+    }
+  }
+
+  confirmarConsulta() {
+    if (this.modalRef) {
+      this.modalRef.close();
+    }
+    this.router.navigate(['consultation/make-consultation']);
+  }
 
 
 }

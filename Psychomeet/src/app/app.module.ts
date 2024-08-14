@@ -3,8 +3,10 @@ import { BrowserModule } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
-import { MakeConsultationComponent } from './views/consultation/make-consultation/make-consultation.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
 import { RouterModule } from '@angular/router';
+import { MakeConsultationComponent } from './views/app/consultation/make-consultation/make-consultation.component';
 //import { AppRoutes } from './app.routes';
 
 @NgModule({
@@ -13,8 +15,9 @@ import { RouterModule } from '@angular/router';
     MakeConsultationComponent
   ],
   imports: [
-    BrowserModule,
     CommonModule,
+    NgbModule,
+    BrowserModule,
     FormsModule,
  //   RouterModule.forRoot(AppRoutes)
   ],

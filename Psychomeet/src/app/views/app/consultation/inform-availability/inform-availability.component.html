@@ -39,11 +39,14 @@
                 @for(time of horarioLista; track $index){
                 <tr>
                   <td>{{ time.hora }}</td>
-                  <td>
+                  <!-- <td>
                     <button (click)="openModal(time.hora, time.segunda)">
                       <i class="fas fa-calendar-alt text-warning"></i>
                     </button>
-                  </td>
+                  </td> -->
+                  <button (click)="openMyModal(content)">
+                    <i class="fas fa-calendar-alt text-warning"></i>
+                  </button>
                   <td>
                     <button (click)="openModal(time.hora, time.terca)">
                       <i class="fas fa-calendar-alt text-warning"></i>
@@ -92,4 +95,25 @@
         </div>
       </div>
 
+
+
       <!-- <div class="modal" tabindex="-1" role="dialog" [ngClass]="{'show': isModalOpen}" style="display: block;" *ngIf="isModalOpen"> -->
+        <ng-template #content let-modal="modal">
+          <div class="modal-header">
+            <h4 class="modal-title" id="modal-basic-title">Confirmação de consulta</h4>
+            <button type="button" class="close" aria-label="Close" (click)="closeMyModal()">
+              <span aria-hidden="true">&times;</span>  
+  
+            </button>
+          </div>
+          <div class="modal-body">  
+  
+            <p>Confirmar agendamento com Dr. Jaão da Silva dia 24/06/2024 às 08:00.</p>
+            <button class="btn btn-success" (click)="confirmarConsulta()">CONFIRMAR CONSULTA</button>
+          </div>
+  
+          <div class="modal-footer">
+            <button type="button" class="btn btn-outline-dark" (click)="closeMyModal()">Close</button>
+          </div>  
+  
+        </ng-template>

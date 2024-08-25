@@ -39,19 +39,11 @@
                 @for(time of horarioLista; track $index){
                 <tr>
                   <td>{{ time.hora }}</td>
-                  <!-- <td>
-                    <button (click)="openModal(time.hora, time.segunda)">
-                      <i class="fas fa-calendar-alt text-warning"></i>
-                    </button>
-                  </td> -->
-                  <button (click)="openMyModal(content)">
-                    <i class="fas fa-calendar-alt text-warning"></i>
-                  </button>
-                  <td>
+                  <td>                    
                     <button class="btn calendar-button" (click)="openMyModal(content)">
-                      <i class="fas fa-calendar-alt text-warning"></i>
+                    <i class="fas fa-calendar-alt text-warning"></i>
                   </button>
-                  </td>
+                </td>
                   <td>
                     <button class="btn calendar-button" (click)="openMyModal(content)">
                       <i class="fas fa-calendar-alt text-warning"></i>

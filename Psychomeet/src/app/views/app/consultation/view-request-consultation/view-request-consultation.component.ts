@@ -16,18 +16,6 @@ export class ViewRequestConsultationComponent {
   constructor(private router: Router, private modalService: NgbModal) { }
 
 
-
-  aceitarConsulta() {
-    this.router.navigate(['pop-ups/pop-up-accept-consultation']);
-
-
-  }
-
-  recusarConsulta() {
-    this.router.navigate(['pop-ups/pop-up-refuse-consultation']);
-
-  }
-
   vizualizarConsulta() {
     this.router.navigate(['consultation/view-consultation-psychologist']);
 

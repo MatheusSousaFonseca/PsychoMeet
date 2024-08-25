@@ -8,7 +8,6 @@ import { PopUpRefuseConsultationComponent } from './views/app/pop-ups/pop-up-ref
 import { ViewConsultationPatientComponent } from './views/app/consultation/view-consultation-patient/view-consultation-patient.component';
 import { ViewConsultationPsychologistComponent } from './views/app/consultation/view-consultation-psychologist/view-consultation-psychologist.component';
 import { ViewRequestConsultationComponent } from './views/app/consultation/view-request-consultation/view-request-consultation.component';
-import { PopUpGiveFeedbackComponent } from './views/app/pop-ups/pop-up-give-feedback/pop-up-give-feedback.component';
 import { PopUpInformAvailabilityComponent } from './views/app/pop-ups/pop-up-inform-availability/pop-up-inform-availability.component';
 import { PopUpMakeConsultationComponent } from './views/app/pop-ups/pop-up-make-consultation/pop-up-make-consultation.component';
 import { PopUpRescheduleConsultationComponent } from './views/app/pop-ups/pop-up-reschedule-consultation/pop-up-reschedule-consultation.component';
@@ -80,10 +79,6 @@ export const AppRoutes: Routes = [
     {
         path: 'consultation/search-psychologist',
         component: SearchPsychologistComponent,
-    },
-    {
-        path: 'pop-ups/pop-up-give-feedback',
-        component: PopUpGiveFeedbackComponent,
     },
     {
         path: 'pop-ups/pop-up-inform-availability',

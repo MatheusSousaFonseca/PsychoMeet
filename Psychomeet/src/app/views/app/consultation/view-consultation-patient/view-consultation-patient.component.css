@@ -2,3 +2,20 @@
 .table td {
     vertical-align: middle;
 }
+
+.rating-input-container {
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+}
+.rating-input-container label {
+    margin-right: 10px;
+    font-weight: bold;
+}
+.rating-input {
+    width: 80px;
+    padding: 5px;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    text-align: center;
+}

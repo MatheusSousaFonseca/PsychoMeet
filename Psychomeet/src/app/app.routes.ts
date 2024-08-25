@@ -1,16 +1,11 @@
 import { Routes } from '@angular/router';
 import { SignInPatientComponent } from './views/account/sign-in-patient/sign-in-patient.component';
 import { SignUpPatientComponent } from './views/account/sign-up-patient/sign-up-patient.component';
-
 import { HomeComponent } from './views/app/home/home.component';
 import { MakeConsultationComponent } from './views/app/consultation/make-consultation/make-consultation.component';
-import { PopUpRefuseConsultationComponent } from './views/app/pop-ups/pop-up-refuse-consultation/pop-up-refuse-consultation.component';
 import { ViewConsultationPatientComponent } from './views/app/consultation/view-consultation-patient/view-consultation-patient.component';
 import { ViewConsultationPsychologistComponent } from './views/app/consultation/view-consultation-psychologist/view-consultation-psychologist.component';
 import { ViewRequestConsultationComponent } from './views/app/consultation/view-request-consultation/view-request-consultation.component';
-import { PopUpInformAvailabilityComponent } from './views/app/pop-ups/pop-up-inform-availability/pop-up-inform-availability.component';
-import { PopUpMakeConsultationComponent } from './views/app/pop-ups/pop-up-make-consultation/pop-up-make-consultation.component';
-import { PopUpRescheduleConsultationComponent } from './views/app/pop-ups/pop-up-reschedule-consultation/pop-up-reschedule-consultation.component';
 import { ViewScheduledConsultationComponent } from './views/app/consultation/view-scheduled-consultation/view-scheduled-consultation.component';
 import { InformAvailabilityComponent } from './views/app/consultation/inform-availability/inform-availability.component';
 import { SignInPsychologistComponent } from './views/account/sign-in-psychologist/sign-in-psychologist.component';
@@ -20,6 +15,7 @@ import { MyProfilePatientComponent } from './views/account/my-profile-patient/my
 import { MyProfilePsichologistComponent } from './views/account/my-profile-psichologist/my-profile-psichologist.component';
 import { EditProfilePsichologistComponent } from './views/account/edit-profile-psichologist/edit-profile-psichologist.component';
 import { EditProfilePatientComponent } from './views/account/edit-profile-patient/edit-profile-patient.component';
+import { EditPasswordComponent } from './views/account/edit-password/edit-password.component';
 
 
 
@@ -81,26 +77,6 @@ export const AppRoutes: Routes = [
         component: SearchPsychologistComponent,
     },
     {
-        path: 'pop-ups/pop-up-inform-availability',
-        component: PopUpInformAvailabilityComponent,
-    },
-    {
-        path: 'app/pop-ups/pop-up-make-consultation',
-        component: PopUpMakeConsultationComponent,
-    },
-    {
-        path: 'pop-ups/pop-up-reschedule-consultation',
-        component: PopUpRescheduleConsultationComponent,
-    },
-    {
-        path: 'pop-ups/pop-up-refuse-consultation',
-        component: PopUpRefuseConsultationComponent,
-    },
-    {
-        path: 'pop-ups/pop-up-inform-availability',
-        component: PopUpInformAvailabilityComponent,
-    },
-    {
         path: 'consultation/inform-availability',
         component: InformAvailabilityComponent,
     },
@@ -111,6 +87,10 @@ export const AppRoutes: Routes = [
     {
         path: 'account/my-profile-patient',
         component: MyProfilePatientComponent,
+    },
+    {
+        path: 'account/edit-password',
+        component: EditPasswordComponent,
     },
     {
         path: 'account/my-profile-psichologist',

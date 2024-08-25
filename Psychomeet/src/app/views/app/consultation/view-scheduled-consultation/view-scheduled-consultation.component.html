@@ -16,12 +16,12 @@
 
                 </div>
                 <div>
-                    <button class="btn btn-success me-2" (click)="remarcarConsulta()">
+                    <button class= "btn btn-success me-2"(click)= "openMyModal(content)">
                         <i class="fas fa-check"></i> Remarcar
-                    </button>
-                    <button class="btn btn-danger" (click)="cancelarConsulta()">
-                        <i class="fas fa-times"></i> Cancelar
-                    </button>
+                      </button>
+               <button class= "btn btn-danger"(click)= "openMyModal(content2)">
+                <i class="fas fa-times"></i> Desmarcar
+              </button>
                 </div>
             </div>
         </div>
@@ -39,14 +39,54 @@
 
                 </div>
                 <div>
-                    <button class="btn btn-success me-2" (click)="remarcarConsulta()">
+                    <button class= "btn btn-success me-2"(click)= "openMyModal(content)">
                         <i class="fas fa-check"></i> Remarcar
-                    </button>
-                    <button class="btn btn-danger" (click)="cancelarConsulta()">
-                        <i class="fas fa-times"></i> Cancelar
-                    </button>
+                      </button>
+               <button class= "btn btn-danger"(click)= "openMyModal(content2)">
+                <i class="fas fa-times"></i> Desmarcar
+              </button>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+<ng-template #content let-modal="modal">
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Remarcar consulta</h4>
+      <button type="button" class="close" aria-label="Close" (click)="closeMyModal()">
+        <span aria-hidden="true">&times;</span>  
+
+      </button>
+    </div>
+    <div class="modal-body">  
+
+      <p>Deseja remarcar a consulta?</p>
+      <button class="btn btn-success" (click)="remarcarConsulta()">REMARCAR</button>
+    </div>
+
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-dark" (click)="closeMyModal()">Fechar</button>
+    </div>  
+
+  </ng-template>
+
+<ng-template #content2 let-modal="modal">
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Desmarcar consulta</h4>
+      <button type="button" class="close" aria-label="Close" (click)="closeMyModal()">
+        <span aria-hidden="true">&times;</span>  
+
+      </button>
+    </div>
+    <div class="modal-body">  
+
+      <p>Deseja desmarcar a consulta?</p>
+      <button class="btn btn-danger" (click)="desmarcarConsulta()">DESMARCAR</button>
+    </div>
+
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-dark" (click)="closeMyModal()">Fechar</button>
+    </div>  
+
+  </ng-template>

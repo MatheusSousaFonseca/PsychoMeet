@@ -40,39 +40,39 @@
                 <tr>
                   <td>{{ time.hora }}</td>
                   <td>
-                    <button (click)="openModal(time.hora, time.segunda)">
+                    <button class="btn calendar-button" (click)="openMyModal(content)">
                       <i class="fas fa-calendar-alt text-warning"></i>
-                    </button>
+                  </button>
                   </td>
                   <td>
-                    <button (click)="openModal(time.hora, time.terca)">
+                    <button class="btn calendar-button" (click)="openMyModal(content)">
                       <i class="fas fa-calendar-alt text-warning"></i>
-                    </button>
+                  </button>
                   </td>
                   <td>
-                    <button (click)="openModal(time.hora, time.quarta)">
+                    <button class="btn calendar-button" (click)="openMyModal(content)">
                       <i class="fas fa-calendar-alt text-warning"></i>
-                    </button>
+                  </button>
                   </td>
                   <td>
-                    <button (click)="openModal(time.hora, time.quinta)">
+                    <button class="btn calendar-button" (click)="openMyModal(content)">
                       <i class="fas fa-calendar-alt text-warning"></i>
-                    </button>
+                  </button>
                   </td>
                   <td>
-                    <button (click)="openModal(time.hora, time.sexta)">
+                    <button class="btn calendar-button" (click)="openMyModal(content)">
                       <i class="fas fa-calendar-alt text-warning"></i>
-                    </button>
+                  </button>
                   </td>
                   <td>
-                    <button (click)="openModal(time.hora, time.sabado)">
+                    <button class="btn calendar-button" (click)="openMyModal(content)">
                       <i class="fas fa-calendar-alt text-warning"></i>
-                    </button>
+                  </button>
                   </td>
                   <td>
-                    <button (click)="openModal(time.hora, time.domingo)">
+                    <button class="btn calendar-button" (click)="openMyModal(content)">
                       <i class="fas fa-calendar-alt text-warning"></i>
-                    </button>
+                  </button>
                   </td>
                 </tr>
                 }
@@ -93,3 +93,23 @@
       </div>
 
       <!-- <div class="modal" tabindex="-1" role="dialog" [ngClass]="{'show': isModalOpen}" style="display: block;" *ngIf="isModalOpen"> -->
+
+        <ng-template #content let-modal="modal">
+          <div class="modal-header">
+            <h4 class="modal-title" id="modal-basic-title">Confirmação de disponibilidade</h4>
+            <button type="button" class="close" aria-label="Close" (click)="closeMyModal()">
+              <span aria-hidden="true">&times;</span>  
+    
+            </button>
+          </div>
+          <div class="modal-body">  
+    
+            <p>Confirmar disponibilidade de horário no dia 24/06/2024 às 16:00.</p>
+            <button class="btn btn-success" (click)="informarDisponibilidade()">CONFIRMAR DISPONIBILIDADE</button>
+          </div>
+    
+          <div class="modal-footer">
+            <button type="button" class="btn btn-outline-dark" (click)="closeMyModal()">Fechar</button>
+          </div>  
+    
+        </ng-template>

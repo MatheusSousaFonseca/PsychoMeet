@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
+
 
 @Component({
   selector: 'app-view-scheduled-consultation',
@@ -10,24 +12,38 @@ import { Router } from '@angular/router';
 })
 export class ViewScheduledConsultationComponent {
 
-  constructor(private router: Router) { }
+  modalRef: NgbModalRef | null = null;
+
+  constructor(private router: Router, private modalService: NgbModal) { }
 
 
 
   remarcarConsulta() {
-    this.router.navigate(['pop-ups/pop-up-reschedule-consultation']);
-
-
-  }
-
-  cancelarConsulta() {
-    this.router.navigate(['pop-ups/pop-up-cancel-consultation']);
-
-  }
+    if (this.modalRef) {
+      this.modalRef.close();
+    }
+    this.router.navigate(['consultation/make-consultation']);
+  }
+  desmarcarConsulta() {
+    if (this.modalRef) {
+      this.modalRef.close();
+    }
+    this.router.navigate(['consultation/view-scheduled-consultation']);
+  }
 
   vizualizarConsulta() {
     this.router.navigate(['consultation/view-consultation-patient']);
 
+  }
+
+  openMyModal(content: any) {
+    this.modalRef = this.modalService.open(content);
+  }
+
+  closeMyModal() {
+    if (this.modalRef) {
+      this.modalRef.close();
+    }
   }
 
 }

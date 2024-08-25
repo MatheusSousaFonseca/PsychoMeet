@@ -53,14 +53,14 @@ export class InformAvailabilityComponent {
     this.router.navigate(['consultation/view-consultation-psychologist']);
   }
 
-  openModal(time: string, day: string): void {
-    this.router.navigate(['pop-ups/pop-up-inform-availability']);
+  // openModal(time: string, day: string): void {
+  //   this.router.navigate(['pop-ups/pop-up-inform-availability']);
 
-    this.selectedTime = time;
-    this.selectedDay = day;
-    this.isModalOpen = true;
-    this.helpRequested = false;
-  }
+  //   this.selectedTime = time;
+  //   this.selectedDay = day;
+  //   this.isModalOpen = true;
+  //   this.helpRequested = false;
+  // }
 
   closeModal(): void {
     this.isModalOpen = false;
@@ -84,11 +84,11 @@ export class InformAvailabilityComponent {
     }
   }
 
-  confirmarConsulta() {
+  informarDisponibilidade() {
     if (this.modalRef) {
       this.modalRef.close();
     }
-    this.router.navigate(['consultation/make-consultation']);
+    this.router.navigate(['consultation/inform-consultation']);
   }
 
 

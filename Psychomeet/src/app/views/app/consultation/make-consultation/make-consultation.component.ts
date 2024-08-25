@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Horario } from '../../../../domain/model/horario-model';
+import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
+
 
 
 @Component({
@@ -10,7 +12,9 @@ import { Horario } from '../../../../domain/model/horario-model';
 })
 export class MakeConsultationComponent implements OnInit {
 
-  constructor(private router: Router) {
+  modalRef: NgbModalRef | null = null;
+
+  constructor(private router: Router, private modalService: NgbModal) {
   }
 
   ngOnInit(): void {
@@ -51,14 +55,14 @@ export class MakeConsultationComponent implements OnInit {
     this.router.navigate(['consultation/search-psychologist']);
   }
 
-  openModal(time: string, day: string): void {
-    this.router.navigate(['pop-ups/pop-up-make-consultation']);
+  // openModal(time: string, day: string): void {
+  //   this.router.navigate(['pop-up/pop-up-make-consultation']);
 
-    this.selectedTime = time;
-    this.selectedDay = day;
-    this.isModalOpen = true;
-    this.helpRequested = false;
-  }
+  //   this.selectedTime = time;
+  //   this.selectedDay = day;
+  //   this.isModalOpen = true;
+  //   this.helpRequested = false;
+  // }
 
   closeModal(): void {
     this.isModalOpen = false;
@@ -76,6 +80,23 @@ export class MakeConsultationComponent implements OnInit {
     console.log(`Consulta marcada para ${this.selectedTime} na ${this.selectedDay}`);
     this.closeModal();
   }
+
+  openMyModal(content: any) {
+    this.modalRef = this.modalService.open(content);
+  }
+
+  closeMyModal() {
+    if (this.modalRef) {
+      this.modalRef.close();
+    }
+  }
+
+  marcarConsulta() {
+    if (this.modalRef) {
+      this.modalRef.close();
+    }
+    this.router.navigate(['consultation/make-consultation']);
+  }
 
 
 

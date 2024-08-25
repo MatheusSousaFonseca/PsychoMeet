@@ -13,9 +13,9 @@
                     <p class="card-text">Descrição: Consulta de rotina</p>
                 </div>
                 <div>
-                    <button class="btn btn-primary" (click)="feedback()">
+                    <button class= "btn btn-primary"(click)= "openMyModal(content)">
                         <i class="fas fa-info-circle"></i> Fornecer feedback
-                    </button>
+                      </button>
                 </div>
             </div>
         </div>
@@ -29,9 +29,9 @@
                     <p class="card-text">Descrição: Sessão de terapia</p>
                 </div>
                 <div>
-                    <button class="btn btn-primary" (click)="feedback()">
+                    <button class= "btn btn-primary"(click)= "openMyModal(content)">
                         <i class="fas fa-info-circle"></i> Fornecer feedback
-                    </button>
+                      </button>
                 </div>
             </div>
         </div>
@@ -45,9 +45,9 @@
                     <p class="card-text">Descrição: Consulta de acompanhamento</p>
                 </div>
                 <div>
-                    <button class="btn btn-primary" (click)="feedback()">
+                    <button class= "btn btn-primary"(click)= "openMyModal(content)">
                         <i class="fas fa-info-circle"></i> Fornecer feedback
-                    </button>
+                      </button>
                 </div>
             </div>
         </div>
@@ -61,9 +61,9 @@
                     <p class="card-text">Descrição: Consulta inicial</p>
                 </div>
                 <div>
-                    <button class="btn btn-primary" (click)="feedback()">
+                    <button class= "btn btn-primary"(click)= "openMyModal(content)">
                         <i class="fas fa-info-circle"></i> Fornecer feedback
-                    </button>
+                      </button>
                 </div>
             </div>
         </div>
@@ -77,9 +77,9 @@
                     <p class="card-text">Descrição: Sessão de terapia</p>
                 </div>
                 <div>
-                    <button class="btn btn-primary" (click)="feedback()">
+                    <button class= "btn btn-primary"(click)= "openMyModal(content)">
                         <i class="fas fa-info-circle"></i> Fornecer feedback
-                    </button>
+                      </button>
                 </div>
             </div>
         </div>
@@ -93,9 +93,9 @@
                     <p class="card-text">Descrição: Consulta de rotina</p>
                 </div>
                 <div>
-                    <button class="btn btn-primary" (click)="feedback()">
+                    <button class= "btn btn-primary"(click)= "openMyModal(content)">
                         <i class="fas fa-info-circle"></i> Fornecer feedback
-                    </button>
+                      </button>
                 </div>
             </div>
         </div>
@@ -109,9 +109,9 @@
                     <p class="card-text">Descrição: Consulta de acompanhamento</p>
                 </div>
                 <div>
-                    <button class="btn btn-primary" (click)="feedback()">
+                    <button class= "btn btn-primary"(click)= "openMyModal(content)">
                         <i class="fas fa-info-circle"></i> Fornecer feedback
-                    </button>
+                      </button>
                 </div>
             </div>
         </div>
@@ -125,9 +125,9 @@
                     <p class="card-text">Descrição: Sessão de terapia</p>
                 </div>
                 <div>
-                    <button class="btn btn-primary" (click)="feedback()">
+                    <button class= "btn btn-primary"(click)= "openMyModal(content)">
                         <i class="fas fa-info-circle"></i> Fornecer feedback
-                    </button>
+                      </button>
                 </div>
             </div>
         </div>
@@ -141,9 +141,9 @@
                     <p class="card-text">Descrição: Consulta inicial</p>
                 </div>
                 <div>
-                    <button class="btn btn-primary" (click)="feedback()">
+                    <button class= "btn btn-primary"(click)= "openMyModal(content)">
                         <i class="fas fa-info-circle"></i> Fornecer feedback
-                    </button>
+                      </button>
                 </div>
             </div>
         </div>
@@ -157,11 +157,31 @@
                     <p class="card-text">Descrição: Consulta de rotina</p>
                 </div>
                 <div>
-                    <button class="btn btn-primary" (click)="feedback()">
+                    <button class= "btn btn-primary"(click)= "openMyModal(content)">
                         <i class="fas fa-info-circle"></i> Fornecer feedback
-                    </button>
+                      </button>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+<ng-template #content let-modal="modal">
+    <div class="container mt-4 p-4">
+        <h2>Feedback da Consulta</h2>
+        <form>
+            <div class="form-group">
+                <label for="rating">Avaliação:</label>
+                <textarea class="form-control" name="feedback" rows="4" required></textarea>
+            </div>
+            <div class="rating-input-container mb-3">
+                <label for="rating-input">Nota:</label>
+                <input type="number" id="rating-input" class="rating-input" min="0" max="10" value="0">
+            </div>
+            <button type="submit" class="btn btn-primary mt-3" (click)="voltar()">
+                Enviar Feedback <i class="fas fa-paper-plane"></i>
+            </button>
+        </form>
+    </div>
+</ng-template>
+

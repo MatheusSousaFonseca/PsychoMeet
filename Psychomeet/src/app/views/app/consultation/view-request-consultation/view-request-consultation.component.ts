@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-view-request-consultation',
@@ -10,24 +11,38 @@ import { Router } from '@angular/router';
 })
 export class ViewRequestConsultationComponent {
 
-  constructor(private router: Router) { }
+  modalRef: NgbModalRef | null = null;
 
+  constructor(private router: Router, private modalService: NgbModal) { }
 
-
-  aceitarConsulta() {
-    this.router.navigate(['pop-ups/pop-up-accept-consultation']);
-
-
-  }
-
-  recusarConsulta() {
-    this.router.navigate(['pop-ups/pop-up-refuse-consultation']);
-
-  }
 
   vizualizarConsulta() {
     this.router.navigate(['consultation/view-consultation-psychologist']);
 
   }
+
+  openMyModal(content: any) {
+    this.modalRef = this.modalService.open(content);
+  }
+
+  closeMyModal() {
+    if (this.modalRef) {
+      this.modalRef.close();
+    }
+  }
+
+  confirmarConsulta() {
+    if (this.modalRef) {
+      this.modalRef.close();
+    }
+    this.router.navigate(['consultation/view-request-consultation']);
+  }
+
+desrmarcarConsulta() {
+  if (this.modalRef) {
+    this.modalRef.close();
+  }
+  this.router.navigate(['consultation/view-request-consultation']);
+  }
 
 }

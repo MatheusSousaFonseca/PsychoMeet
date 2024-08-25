@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-view-consultation-patient',
@@ -9,7 +10,10 @@ import { Router } from '@angular/router';
   styleUrl: './view-consultation-patient.component.css'
 })
 export class ViewConsultationPatientComponent {
-  constructor(private router: Router) { }
+
+  modalRef: NgbModalRef | null = null;
+
+  constructor(private router: Router, private modalService: NgbModal) { }
 
   marcarConsulta() {
     this.router.navigate(['consultation/search-psychologist']);
@@ -21,9 +25,21 @@ export class ViewConsultationPatientComponent {
 
   }
 
-  feedback() {
-    this.router.navigate(['pop-ups/pop-up-give-feedback']);
-
+  openMyModal(content: any) {
+    this.modalRef = this.modalService.open(content);
   }
+
+  closeMyModal() {
+    if (this.modalRef) {
+      this.modalRef.close();
+    }
+  }
+
+  voltar() {
+    if (this.modalRef) {
+      this.modalRef.close();
+    }
+    this.router.navigate(['consultation/view-consultation-patient']);
+    }
 
 }

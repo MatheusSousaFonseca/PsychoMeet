@@ -7,8 +7,6 @@ export interface Psychologist {
     crp: number,
     abordagem: string,
     foto: string,
-
-
-
-
+    preco: number,
+    especialidade: string
 }

@@ -1,5 +1,5 @@
 {
-    "user": [
+    "psychologist": [
       {
         "id": "1",
         "nome": "Maria Silva",
@@ -8,7 +8,9 @@
         "descricao": "Psicóloga com especialização em terapia cognitivo-comportamental.",
         "crp": 123456,
         "abordagem": "Terapia Cognitivo-Comportamental",
-        "foto": "maria_silva.jpg"
+        "foto": "maria_silva.jpg",
+        "especialidade": "Psicologia Clínica",
+        "preco": "30,0"
       },
       {
         "id": "2",
@@ -18,7 +20,9 @@
         "descricao": "Experiência em psicologia infantil e adolescente.",
         "crp": 789012,
         "abordagem": "Psicologia Infantil",
-        "foto": "joao_pereira.jpg"
+        "foto": "joao_pereira.jpg",
+        "especialidade": "Psicologia Clínica",
+        "preco": "30,0"
       },
       {
         "id": "3",
@@ -28,7 +32,9 @@
         "descricao": "Especialista em terapia familiar e de casais.",
         "crp": 345678,
         "abordagem": "Terapia Familiar",
-        "foto": "ana_costa.jpg"
+        "foto": "ana_costa.jpg",
+        "especialidade": "Psicologia Clínica",
+        "preco": "30,0"
       }
     ],
     "user" : [

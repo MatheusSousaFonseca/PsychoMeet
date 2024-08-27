@@ -13,7 +13,7 @@ import { PsychologistReadService } from '../../../../services/psychologist/psych
 export class SearchPsychologistComponent implements OnInit {
 
   psychologists: Psychologist[] = [];
-  
+
 
   constructor(private router: Router, private psychologistReadService: PsychologistReadService) { }
 
@@ -21,8 +21,8 @@ export class SearchPsychologistComponent implements OnInit {
     this.loadPsychologists();
   }
 
-  marcarConsulta() {
-    this.router.navigate(['consultation/make-consultation']);
+  marcarConsulta(id: string) {
+    this.router.navigate([`/consultation/make-consultation/${id}`]);
   }
 
   historico() {

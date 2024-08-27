@@ -53,7 +53,7 @@ export const AppRoutes: Routes = [
         component: HomeComponent,
     },
     {
-        path: 'consultation/make-consultation',
+        path: 'consultation/make-consultation/:id',
         component: MakeConsultationComponent,
     },
     {
@@ -79,10 +79,6 @@ export const AppRoutes: Routes = [
     {
         path: 'consultation/inform-availability',
         component: InformAvailabilityComponent,
-    },
-    {
-        path: 'consultation/search-psychologist',
-        component: SearchPsychologistComponent
     },
     {
         path: 'account/my-profile-patient',

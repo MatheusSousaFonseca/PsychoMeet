@@ -1,6 +1,10 @@
 export interface User {
     id?: string,
-    fullName: string,
+    nome: string,
     email: string,
-    password: string
+    senha: string,
+    telefone: string,
+    foto: string,
+    data_nascimento: Date,
+    cpf: number
 }

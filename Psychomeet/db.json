@@ -1,0 +1,65 @@
+{
+    "user": [
+      {
+        "id": "1",
+        "nome": "Maria Silva",
+        "email": "maria.silva@example.com",
+        "publico": "adultos",
+        "descricao": "Psicóloga com especialização em terapia cognitivo-comportamental.",
+        "crp": 123456,
+        "abordagem": "Terapia Cognitivo-Comportamental",
+        "foto": "maria_silva.jpg"
+      },
+      {
+        "id": "2",
+        "nome": "João Pereira",
+        "email": "joao.pereira@example.com",
+        "publico": "crianças e adolescentes",
+        "descricao": "Experiência em psicologia infantil e adolescente.",
+        "crp": 789012,
+        "abordagem": "Psicologia Infantil",
+        "foto": "joao_pereira.jpg"
+      },
+      {
+        "id": "3",
+        "nome": "Ana Costa",
+        "email": "ana.costa@example.com",
+        "publico": "famílias",
+        "descricao": "Especialista em terapia familiar e de casais.",
+        "crp": 345678,
+        "abordagem": "Terapia Familiar",
+        "foto": "ana_costa.jpg"
+      }
+    ],
+    "user" : [
+    {"id": "1",
+    "nome": "Carlos Souza",
+    "email": "carlos.souza@example.com",
+    "senha": "senha123",
+    "telefone": "(11) 98765-4321",
+    "foto": "carlos_souza.jpg",
+    "data_nascimento": "1985-04-15",
+    "cpf": 12345678901
+    },
+    {
+    "id": "2",
+    "nome": "Fernanda Lima",
+    "email": "fernanda.lima@example.com",
+    "senha": "minhasenha456",
+    "telefone": "(21) 91234-5678",
+    "foto": "fernanda_lima.jpg",
+    "data_nascimento": "1990-08-22",
+    "cpf": 23456789012
+     },
+     {
+    "id": "3",
+    "nome": "Paulo Almeida",
+    "email": "paulo.almeida@example.com",
+    "senha": "segura789",
+    "telefone": "(31) 99876-5432",
+    "foto": "paulo_almeida.jpg",
+    "data_nascimento": "1978-01-30",
+    "cpf": 34567890123
+     }
+    ]
+}

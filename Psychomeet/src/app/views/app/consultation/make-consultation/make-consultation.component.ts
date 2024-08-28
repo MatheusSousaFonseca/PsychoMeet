@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Horario } from '../../../../domain/model/horario-model';
 import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
+import { PsychologistReadService } from '../../../../services/psychologist/psychologist-read.service';
+import { FormBuilder, FormGroup, FormsModule } from '@angular/forms';
 
 
 
@@ -12,12 +14,17 @@ import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 })
 export class MakeConsultationComponent implements OnInit {
 
+  form!: FormGroup;
+
   modalRef: NgbModalRef | null = null;
 
-  constructor(private router: Router, private modalService: NgbModal) {
+  constructor(private router: Router, private modalService: NgbModal, private activatedRoute: ActivatedRoute, private psychologistReadService: PsychologistReadService, private formBuilder: FormBuilder) {
   }
 
   ngOnInit(): void {
+    let psychologistId = this.activatedRoute.snapshot.paramMap.get('id');
+    this.loadPsychologistById(psychologistId!);
+
     this.times = ['08:00', '09:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00'];
 
     for (let i = 8; i < 18; i++) {
@@ -37,6 +44,19 @@ export class MakeConsultationComponent implements OnInit {
 
 
 
+  }
+
+  async loadPsychologistById(psychologistId: string) {
+    let psychologist = await this.psychologistReadService.findById(psychologistId!);
+
+    console.log(psychologist);
+
+
+
+    this.form.controls['nome'].setValue(psychologist.nome);
+    this.form.controls['crp'].setValue(psychologist.crp);
+    this.form.controls['especialidade'].setValue(psychologist.especialidade);
+    this.form.controls['descricao'].setValue(psychologist.descricao);
   }
 
   horarioLista: Horario[] = [];
@@ -96,7 +116,7 @@ export class MakeConsultationComponent implements OnInit {
       this.modalRef.close();
     }
     this.router.navigate(['consultation/make-consultation']);
-  }
+  }
 
 
 

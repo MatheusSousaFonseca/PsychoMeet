@@ -1,12 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { Psychologist } from '../../../../domain/model/psychologist-model';
 import { PsychologistReadService } from '../../../../services/psychologist/psychologist-read.service';
 
 @Component({
   selector: 'app-search-psychologist',
   standalone: true,
-  imports: [],
+  imports: [
+    RouterModule
+  ],
   templateUrl: './search-psychologist.component.html',
   styleUrl: './search-psychologist.component.css'
 })

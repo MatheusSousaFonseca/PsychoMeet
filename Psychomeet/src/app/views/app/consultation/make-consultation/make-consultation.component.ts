@@ -4,13 +4,16 @@ import { Horario } from '../../../../domain/model/horario-model';
 import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { PsychologistReadService } from '../../../../services/psychologist/psychologist-read.service';
 import { FormBuilder, FormGroup, FormsModule } from '@angular/forms';
+import { Psychologist } from '../../../../domain/model/psychologist-model';
+import { CommonModule } from '@angular/common';
 
 
 
 @Component({
   selector: 'app-make-consultation',
   templateUrl: './make-consultation.component.html',
-  styleUrls: ['./make-consultation.component.css']
+  styleUrls: ['./make-consultation.component.css'],
+
 })
 export class MakeConsultationComponent implements OnInit {
 
@@ -18,10 +21,20 @@ export class MakeConsultationComponent implements OnInit {
 
   modalRef: NgbModalRef | null = null;
 
+  psychologist!: Psychologist
+
   constructor(private router: Router, private modalService: NgbModal, private activatedRoute: ActivatedRoute, private psychologistReadService: PsychologistReadService, private formBuilder: FormBuilder) {
   }
 
   ngOnInit(): void {
+
+    this.form = this.formBuilder.group({
+      nome: [''],
+      crp: [''],
+      especialidade: [''],
+      descricao: ['']
+    });
+
     let psychologistId = this.activatedRoute.snapshot.paramMap.get('id');
     this.loadPsychologistById(psychologistId!);
 
@@ -47,16 +60,16 @@ export class MakeConsultationComponent implements OnInit {
   }
 
   async loadPsychologistById(psychologistId: string) {
-    let psychologist = await this.psychologistReadService.findById(psychologistId!);
+    this.psychologist = await this.psychologistReadService.findById(psychologistId!);
 
-    console.log(psychologist);
+    console.log(this.psychologist);
 
 
 
-    this.form.controls['nome'].setValue(psychologist.nome);
-    this.form.controls['crp'].setValue(psychologist.crp);
-    this.form.controls['especialidade'].setValue(psychologist.especialidade);
-    this.form.controls['descricao'].setValue(psychologist.descricao);
+    this.form.controls['nome'].setValue(this.psychologist.nome);
+    this.form.controls['crp'].setValue(this.psychologist.crp);
+    this.form.controls['especialidade'].setValue(this.psychologist.especialidade);
+    this.form.controls['descricao'].setValue(this.psychologist.descricao);
   }
 
   horarioLista: Horario[] = [];
@@ -101,8 +114,9 @@ export class MakeConsultationComponent implements OnInit {
     this.closeModal();
   }
 
-  openMyModal(content: any) {
+  openMyModal(content: any, time: any) {
     this.modalRef = this.modalService.open(content);
+    console.log(time);
   }
 
   closeMyModal() {

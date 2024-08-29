@@ -11,10 +11,10 @@
         <img src="assets/user.png" class="mr-3 rounded-circle" alt="User Image" width="100" height="100">
         <div class="media-body">
 
-          <h5 class="mt-0">Nome: João da Silva</h5>
-          <p>CRP: 12345</p>
-          <p>Especialidade: Psicologia Clínica</p>
-          <p>Descrição: Especialista em terapia cognitivo-comportamental.</p>
+          <h5 class="mt-0">Nome: {{psychologist.nome}}</h5>
+          <p>CRP: {{psychologist.crp}}</p>
+          <p>Especialidade: {{psychologist.especialidade}}</p>
+          <p>Descrição: {{psychologist.descricao}}</p>
 
         </div>
       </div>
@@ -54,37 +54,37 @@
                 <tr>
                   <td>{{ time.hora }}</td>
                   <td>
-                    <button class="btn calendar-button" (click)="openMyModal(content)">
+                    <button class="btn calendar-button" (click)="openMyModal(content, time)">
                       <i class="fas fa-calendar-alt text-warning"></i>
                     </button>
                   </td>
                   <td>
-                    <button class="btn calendar-button" (click)="openMyModal(content)">
+                    <button class="btn calendar-button" (click)="openMyModal(content, time)">
                       <i class="fas fa-calendar-alt text-warning"></i>
                     </button>
                   </td>
                   <td>
-                    <button class="btn calendar-button" (click)="openMyModal(content)">
+                    <button class="btn calendar-button" (click)="openMyModal(content, time)">
                       <i class="fas fa-calendar-alt text-warning"></i>
                     </button>
                   </td>
                   <td>
-                    <button class="btn calendar-button" (click)="openMyModal(content)">
+                    <button class="btn calendar-button" (click)="openMyModal(content, time)">
                       <i class="fas fa-calendar-alt text-warning"></i>
                     </button>
                   </td>
                   <td>
-                    <button class="btn calendar-button" (click)="openMyModal(content)">
+                    <button class="btn calendar-button" (click)="openMyModal(content, time)">
                       <i class="fas fa-calendar-alt text-warning"></i>
                     </button>
                   </td>
                   <td>
-                    <button class="btn calendar-button" (click)="openMyModal(content)">
+                    <button class="btn calendar-button" (click)="openMyModal(content, time)">
                       <i class="fas fa-calendar-alt text-warning"></i>
                     </button>
                   </td>
                   <td>
-                    <button class="btn calendar-button" (click)="openMyModal(content)">
+                    <button class="btn calendar-button" (click)="openMyModal(content, time)">
                       <i class="fas fa-calendar-alt text-warning"></i>
                     </button>
                   </td>
@@ -143,7 +143,7 @@
       </div>
       <div class="modal-body">  
 
-        <p>Marcar consulta com Dr. João da Silva dia 24/06/2024 às 08:00.</p>
+        <p>Marcar consulta com Dr. {{psychologist.nome}} dia 24/06/2024 às 08:00.</p>
         <button class="btn btn-success" (click)="marcarConsulta()">MARCAR CONSULTA</button>
       </div>
 
@@ -153,3 +153,6 @@
 
         
     </ng-template>
+
+  </div>
+</div>

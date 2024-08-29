@@ -11,17 +11,17 @@ import { MakeConsultationComponent } from './views/app/consultation/make-consult
 
 @NgModule({
   declarations: [
-//    AppComponent,
-    MakeConsultationComponent
+    //    AppComponent,
+    //MakeConsultationComponent
   ],
   imports: [
     CommonModule,
     NgbModule,
     BrowserModule,
     FormsModule,
- //   RouterModule.forRoot(AppRoutes)
+    //   RouterModule.forRoot(AppRoutes)
   ],
   providers: [],
- // bootstrap: [AppComponent]
+  // bootstrap: [AppComponent]
 })
 export class AppModule { }

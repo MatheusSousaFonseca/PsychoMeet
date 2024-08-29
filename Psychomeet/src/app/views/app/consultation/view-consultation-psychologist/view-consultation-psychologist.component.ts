@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { User } from '../../../../domain/model/user-model';
+import { UserReadServiceService } from '../../../../services/user/user-read-service.service';
 
 @Component({
   selector: 'app-view-consultation-psychologist',
@@ -10,7 +12,13 @@ import { Router } from '@angular/router';
 })
 export class ViewConsultationPsychologistComponent {
 
-  constructor(private router: Router) { }
+  users: User[] = [];
+
+  constructor(private router: Router, private userReadService: UserReadServiceService) { }
+
+  ngOnInit(): void {
+    this.loadUsers();
+  }
 
   consultasPendentes() {
     this.router.navigate(['consultation/view-request-consultation']);
@@ -18,6 +26,10 @@ export class ViewConsultationPsychologistComponent {
 
   agenda() {
     this.router.navigate(['consultation/inform-availability']);
+  }
+
+  async loadUsers() {
+    this.users = await this.userReadService.findAll();
   }
 
 }

@@ -3,7 +3,8 @@ import { provideRouter } from '@angular/router';
 
 import { AppRoutes } from './app.routes';
 import { provideHttpClient } from '@angular/common/http';
+import { provideNativeDateAdapter } from '@angular/material/core';
 
 export const appConfig: ApplicationConfig = {
-  providers: [provideRouter(AppRoutes), provideHttpClient()]
+  providers: [provideRouter(AppRoutes), provideHttpClient(), provideNativeDateAdapter()]
 };

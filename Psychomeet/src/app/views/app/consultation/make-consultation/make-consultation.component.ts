@@ -5,7 +5,7 @@ import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { PsychologistReadService } from '../../../../services/psychologist/psychologist-read.service';
 import { FormBuilder, FormGroup, FormsModule } from '@angular/forms';
 import { Psychologist } from '../../../../domain/model/psychologist-model';
-import { CommonModule } from '@angular/common';
+
 
 
 
@@ -13,6 +13,7 @@ import { CommonModule } from '@angular/common';
   selector: 'app-make-consultation',
   templateUrl: './make-consultation.component.html',
   styleUrls: ['./make-consultation.component.css'],
+
 
 })
 export class MakeConsultationComponent implements OnInit {

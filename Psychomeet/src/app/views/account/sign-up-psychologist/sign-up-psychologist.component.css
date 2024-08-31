@@ -1,22 +1,25 @@
 body {
-    background-color: #fffbea;
-    color: #333;
-  }
-  .card {
-    margin-top: 20px;
-    background-color: #fff5d7;
-    border: none;
-  }
-  .card-header {
-    background-color: #ffeb99;
-    border-bottom: none;
-  }
-  .btn-primary {
-    background-color: #ffc107;
-    border-color: #ffc107;
-  }
-  .btn-primary:hover {
-    background-color: #e0a800;
-    border-color: #e0a800;
-  }
-  
+  background-color: #fffbea;
+  color: #333;
+}
+
+.card {
+  margin-top: 20px;
+  background-color: #fff5d7;
+  border: none;
+}
+
+.card-header {
+  background-color: #ffeb99;
+  border-bottom: none;
+}
+
+.btn-primary {
+  background-color: #ffc107;
+  border-color: #ffc107;
+}
+
+.btn-primary:hover {
+  background-color: #e0a800;
+  border-color: #e0a800;
+}

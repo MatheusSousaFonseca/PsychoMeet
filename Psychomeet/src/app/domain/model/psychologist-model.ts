@@ -4,9 +4,12 @@ export interface Psychologist {
     email: string,
     publico: string,
     descricao: string,
-    crp: number,
+    crp: string,
+    cpf: string,
     abordagem: string,
-    foto: string,
+    data_nascimento: string,
     preco: number,
-    especialidade: string
+    especialidade: string,
+    senha: string,
+    telefone: string
 }

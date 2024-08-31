@@ -9,13 +9,13 @@ import { ViewRequestConsultationComponent } from './views/app/consultation/view-
 import { ViewScheduledConsultationComponent } from './views/app/consultation/view-scheduled-consultation/view-scheduled-consultation.component';
 import { InformAvailabilityComponent } from './views/app/consultation/inform-availability/inform-availability.component';
 import { SignInPsychologistComponent } from './views/account/sign-in-psychologist/sign-in-psychologist.component';
-import { SignUpPsychologistComponent } from './views/account/sign-up-psychologist/sign-up-psychologist.component';
 import { SearchPsychologistComponent } from './views/app/consultation/search-psychologist/search-psychologist.component';
 import { MyProfilePatientComponent } from './views/account/my-profile-patient/my-profile-patient.component';
 import { MyProfilePsichologistComponent } from './views/account/my-profile-psichologist/my-profile-psichologist.component';
 import { EditProfilePsichologistComponent } from './views/account/edit-profile-psichologist/edit-profile-psichologist.component';
 import { EditProfilePatientComponent } from './views/account/edit-profile-patient/edit-profile-patient.component';
 import { EditPasswordComponent } from './views/account/edit-password/edit-password.component';
+import { SignUpPsychologistComponent } from './views/account/sign-up-psychologist/sign-up-psychologist.component';
 
 
 

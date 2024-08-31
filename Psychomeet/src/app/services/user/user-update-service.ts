@@ -14,5 +14,6 @@ export class UserUpdateService {
   async update(user: User) {
     console.log(`atualizando usuário...`);
     console.log(user);
-    return await firstValueFrom(this.http.put(`http://localhost:3000/product/${user.id}`, user));
-  }}
+    return await firstValueFrom(this.http.put(`http://localhost:3000/user/${user.id}`, user));
+  }
+}

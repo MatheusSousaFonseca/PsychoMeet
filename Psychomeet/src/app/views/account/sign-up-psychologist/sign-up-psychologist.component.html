@@ -8,55 +8,70 @@
           </div>
           <div class="card-body">
             <form>
-              <div class="form-group">
-                <label for="nome"><i class="fas fa-user"></i> Nome</label>
-                <input type="text" class="form-control" id="nome" required>
-              </div>
-              <div class="form-group">
-                <label for="telefone"><i class="fas fa-phone"></i> Telefone</label>
-                <input type="tel" class="form-control" id="telefone" required>
-              </div>
-              <div class="form-group">
-                <label for="email"><i class="fas fa-envelope"></i> Email</label>
-                <input type="email" class="form-control" id="email" required>
-              </div>
-              <div class="form-group">
-                <label for="cpf"><i class="fas fa-id-card"></i> CPF</label>
-                <input type="text" class="form-control" id="cpf" required>
-              </div>
-              <div class="form-group">
-                <label for="data_nascimento"><i class="fas fa-calendar-alt"></i> Data de Nascimento</label>
-                <input type="date" class="form-control" id="data_nascimento" required>
-              </div>
-              <div class="form-group">
-                <label for="crp"><i class="fas fa-id-badge"></i> CRP</label>
-                <input type="text" class="form-control" id="crp" required>
-              </div>
-              <div class="form-group">
-                <label for="publico"><i class="fas fa-users"></i> Público</label>
-                <input type="text" class="form-control" id="publico" required>
-              </div>
-              <div class="form-group">
-                <label for="descricao"><i class="fas fa-info-circle"></i> Descrição</label>
-                <textarea class="form-control" id="descricao" rows="3" required></textarea>
-              </div>
-              <div class="form-group">
-                <label for="abordagem"><i class="fas fa-book"></i> Abordagem</label>
-                <input type="text" class="form-control" id="abordagem" required>
-              </div>
-              <div class="form-group">
-                <label for="abordagem"><i class="fas fa-book"></i> Especialidade</label>
-                <input type="text" class="form-control" id="especialidade" required>
-              </div>
-              <div class="form-group">
-                <label for="senha"><i class="fas fa-lock"></i> Senha</label>
-                <input type="password" class="form-control" id="senha" required>
-              </div>
+              <mat-form-field>
+                <mat-label>Nome completo</mat-label>
+                <input matInput placeholder="Nome completo" required="" formControlName="nome">
+              </mat-form-field>
+              <mat-form-field>
+                <mat-label>Telefone</mat-label>
+                <input matInput placeholder="Telefone" required="" formControlName="telefone">
+              </mat-form-field>
+
+              <mat-form-field>
+                <mat-label>Email</mat-label>
+                <input matInput placeholder="Email" required="" formControlName="email">
+              </mat-form-field>
+
+              <mat-form-field>
+                <mat-label>cpf</mat-label>
+                <input matInput placeholder="Cpf" required="" formControlName="cpf">
+              </mat-form-field>
+
+              <mat-form-field>
+                <mat-label>Data de nascimento</mat-label>
+                <input matInput placeholder="Data" required="" formControlName="data">
+              </mat-form-field>
+
+              <mat-form-field>
+                <mat-label>CRP</mat-label>
+                <input matInput placeholder="Crp" required="" formControlName="crp">
+              </mat-form-field>
+
+              <mat-form-field>
+                <mat-label>Publico</mat-label>
+                <input matInput placeholder="Publico" required="" formControlName="publico">
+              </mat-form-field>
+
+              <mat-form-field>
+                <mat-label>Descrição</mat-label>
+                <input matInput placeholder="Descrição" required="" formControlName="descricao">
+              </mat-form-field>
+
+              <mat-form-field>
+                <mat-label>Abordagem</mat-label>
+                <input matInput placeholder="Abordagem" required="" formControlName="abordagem">
+              </mat-form-field>
+
+              <mat-form-field>
+                <mat-label>Especialidade</mat-label>
+                <input matInput placeholder="Especialidade" required="" formControlName="especialidade">
+              </mat-form-field>
+
+              <mat-form-field>
+                <mat-label>Preço</mat-label>
+                <input matInput placeholder="Preço" required="" formControlName="preco">
+              </mat-form-field>
+
+              <mat-form-field>
+                <mat-label>Senha</mat-label>
+                <input matInput placeholder="Senha" required="" formControlName="senha">
+              </mat-form-field>
+
               <div class="form-group">
                 <label for="confirmar_senha"><i class="fas fa-lock"></i> Confirmar Senha</label>
                 <input type="password" class="form-control" id="confirmar_senha" required>
               </div>
-              <button type="submit" class="btn btn-primary btn-block" (click)="entrarAreaPsicologo()">Cadastrar</button>
+              <button type="submit" class="btn btn-primary btn-block" (click)="createAccount()">Cadastrar</button>
             </form>
           </div>
         </div>

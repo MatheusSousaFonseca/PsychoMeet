@@ -21,7 +21,6 @@
     </div>
     <div class="container mt-5">
       <div class="row">
-        <!-- Tabela de Agenda Semanal -->
         <div class="col-md-12">
           <div class="text-center">
             <h1 class="text-warning">Agenda Semanal</h1>
@@ -32,7 +31,7 @@
                   @for(day of days; track $index){
                   <th>{{ day }}</th>
                   }
-                  <!-- <th *ngFor="let day of days">{{ day }}</th> -->
+
                 </tr>
               </thead>
               <tbody>
@@ -143,7 +142,7 @@
       </div>
       <div class="modal-body">  
 
-        <p>Marcar consulta com Dr. {{psychologist.nome}} dia {{diaSelecionada}} às {{horaSelecionada}}.</p>
+        <p>Marcar consulta com Dr. {{psychologist.nome}} dia 24/06/2024 às 08:00.</p>
         <button class="btn btn-success" (click)="marcarConsulta()">MARCAR CONSULTA</button>
       </div>
 

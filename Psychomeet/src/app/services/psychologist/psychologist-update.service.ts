@@ -12,8 +12,8 @@ export class PsychologistUpdateService {
   }
 
   async update(psychologist: Psychologist) {
-    console.log(`atualizando o produto...`);
+    console.log(`atualizando o psicologo...`);
     console.log(psychologist);
-    return await firstValueFrom(this.http.put(`http://localhost:3000/product/${psychologist.id}`, psychologist));
+    return await firstValueFrom(this.http.put(`http://localhost:3000/psychologist/${psychologist.id}`, psychologist));
   }
 }

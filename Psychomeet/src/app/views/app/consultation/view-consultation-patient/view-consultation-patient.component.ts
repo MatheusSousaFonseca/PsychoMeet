@@ -4,7 +4,7 @@ import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { Psychologist } from '../../../../domain/model/psychologist-model';
 import { PsychologistReadService } from '../../../../services/psychologist/psychologist-read.service';
 import { Consultation } from '../../../../domain/model/consultation-model';
-import { ConsultationReadServiceService } from '../../../../services/consultation/consultation-read-service.service';
+import { ConsultationReadServiceService } from '../../../../services/consultation/consultation-read-service';
 
 @Component({
   selector: 'app-view-consultation-patient',

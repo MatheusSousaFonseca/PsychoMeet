@@ -6,7 +6,7 @@ import { firstValueFrom } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class ConsultationCreateServiceService {
+export class ConsultationCreateService {
 
   constructor(private http: HttpClient) { }
 

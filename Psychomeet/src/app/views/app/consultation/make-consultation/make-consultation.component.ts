@@ -6,7 +6,7 @@ import { PsychologistReadService } from '../../../../services/psychologist/psych
 import { FormBuilder, FormGroup, FormsModule } from '@angular/forms';
 import { Psychologist } from '../../../../domain/model/psychologist-model';
 import { Consultation } from '../../../../domain/model/consultation-model';
-import { ConsultationCreateServiceService } from '../../../../services/consultation/consultation-create-service.service';
+import { ConsultationCreateServiceService } from '../../../../services/consultation/consultation-create-service';
 import { ToastrService } from 'ngx-toastr';
 
 

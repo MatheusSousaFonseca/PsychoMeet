@@ -6,7 +6,7 @@ import { Consultation } from '../../domain/model/consultation-model';
 @Injectable({
   providedIn: 'root'
 })
-export class ConsultationReadServiceService {
+export class ConsultationReadService {
 
   constructor(private http: HttpClient) { }
 

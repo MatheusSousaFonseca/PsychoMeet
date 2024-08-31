@@ -3,9 +3,9 @@ import { Injectable } from '@angular/core';
 import { firstValueFrom } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'  //Feito 31/08 - Bruno
+  providedIn: 'root' 
 })
-export class ConsultationDeleteServiceService {
+export class ConsultationDeleteService {
 
   constructor(private http: HttpClient) { }
 

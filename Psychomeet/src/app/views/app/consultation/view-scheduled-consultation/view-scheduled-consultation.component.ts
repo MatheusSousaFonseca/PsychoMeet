@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { PsychologistReadService } from '../../../../services/psychologist/psychologist-read.service';
-import { ConsultationReadServiceService } from '../../../../services/consultation/consultation-read-service.service';
+import { ConsultationReadServiceService } from '../../../../services/consultation/consultation-read-service';
 import { Psychologist } from '../../../../domain/model/psychologist-model';
 import { Consultation } from '../../../../domain/model/consultation-model';
 

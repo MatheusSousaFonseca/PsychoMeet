@@ -1,6 +1,10 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
+import { PsychologistReadService } from '../../../../services/psychologist/psychologist-read.service';
+import { ConsultationReadServiceService } from '../../../../services/consultation/consultation-read-service.service';
+import { Psychologist } from '../../../../domain/model/psychologist-model';
+import { Consultation } from '../../../../domain/model/consultation-model';
 
 
 @Component({
@@ -14,9 +18,17 @@ export class ViewScheduledConsultationComponent {
 
   modalRef: NgbModalRef | null = null;
 
-  constructor(private router: Router, private modalService: NgbModal) { }
+  
+
+  consultations: Consultation[] = [];
 
 
+
+  constructor(private router: Router, private modalService: NgbModal, private consultationReadService: ConsultationReadServiceService) { }
+
+  ngOnInit(): void {
+    this.loadConsultations();
+  }
 
   remarcarConsulta() {
     if (this.modalRef) {
@@ -46,4 +58,7 @@ export class ViewScheduledConsultationComponent {
     }
   }
 
+  async loadConsultations() {
+    this.consultations = await this.consultationReadService.findAll();
+  }
 }

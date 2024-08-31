@@ -1,9 +1,38 @@
 <div class="container mt-5">
-    <div class="d-flex justify-content-between align-items-center mb-4">
-        <h2 class="text-primary">Consultas marcadas</h2>
-        <button class="btn btn-danger" (click)="vizualizarConsulta()">X</button>
-    </div>
-    <div class="card mb-3">
+  <div class="d-flex justify-content-between align-items-center">
+      <h2 class="text-primary">Consultas marcadas</h2>
+      <button class="btn btn-danger" (click)="vizualizarConsulta()">X</button>
+  </div>
+
+  <!-- Loop through each consultation -->
+  @for (consultation of consultations; track $index) {
+      <div class="card mb-3"> <!-- Envolvendo cada consulta em um cartão separado -->
+          <div class="card-body">
+              <div class="d-flex justify-content-between align-items-center">
+                  <div>
+                      <h5 class="card-title">{{consultation.nomePsicologo}}</h5>
+                      <p class="card-text">Data: {{consultation.diaDaSemana}} às {{consultation.hora}}</p>
+                      <p class="card-text">Descrição: {{consultation.descricao}}</p>
+                  </div>
+                  <div>
+                      <button class="btn btn-success me-2" (click)="openMyModal(content)">
+                          <i class="fas fa-check"></i> Remarcar
+                      </button>
+                      <button class="btn btn-danger" (click)="openMyModal(content2)">
+                          <i class="fas fa-times"></i> Desmarcar
+                      </button>
+                  </div>
+              </div>
+          </div>
+      </div>
+  }
+
+
+
+
+
+                
+    <!-- <div class="card mb-3">
         <div class="card-body">
             <div class="d-flex justify-content-between align-items-center">
                 <div>
@@ -49,7 +78,7 @@
             </div>
         </div>
     </div>
-</div>
+</div> -->
 
 <ng-template #content let-modal="modal">
     <div class="modal-header">
@@ -72,21 +101,3 @@
   </ng-template>
 
 <ng-template #content2 let-modal="modal">
-    <div class="modal-header">
-      <h4 class="modal-title" id="modal-basic-title">Desmarcar consulta</h4>
-      <button type="button" class="close" aria-label="Close" (click)="closeMyModal()">
-        <span aria-hidden="true">&times;</span>  
-
-      </button>
-    </div>
-    <div class="modal-body">  
-
-      <p>Deseja desmarcar a consulta?</p>
-      <button class="btn btn-danger" (click)="desmarcarConsulta()">DESMARCAR</button>
-    </div>
-
-    <div class="modal-footer">
-      <button type="button" class="btn btn-outline-dark" (click)="closeMyModal()">Fechar</button>
-    </div>  
-
-  </ng-template>

@@ -16,6 +16,7 @@ import { EditProfilePsichologistComponent } from './views/account/edit-profile-p
 import { EditProfilePatientComponent } from './views/account/edit-profile-patient/edit-profile-patient.component';
 import { EditPasswordComponent } from './views/account/edit-password/edit-password.component';
 import { SignUpPsychologistComponent } from './views/account/sign-up-psychologist/sign-up-psychologist.component';
+//import { authenticationGuard } from './services/security/guard/authentication.guard';
 
 
 
@@ -98,3 +99,83 @@ export const AppRoutes: Routes = [
     }
 ];
 
+// export const AppRoutes: Routes = [
+
+//     {
+//         path: 'account/sign-in-patient',
+//         component: SignInPatientComponent,
+//     },
+//     {
+//         path: 'account/sign-up-patient',
+//         component: SignUpPatientComponent,
+//     },
+//     {
+//         path: 'account/sign-in-psychologist',
+//         component: SignInPsychologistComponent,
+//     },
+//     {
+//         path: 'account/sign-up-psychologist',
+//         component: SignUpPsychologistComponent,
+//     },
+//     {
+//         path: '',
+//         component: HomeComponent,
+//         canActivate: [authenticationGuard],
+//         children: [
+//             {
+//                 path: 'account/edit-profile-psichologist',
+//                 component: EditProfilePsichologistComponent,
+//             },
+//             {
+//                 path: 'account/edit-profile-patient',
+//                 component: EditProfilePatientComponent,
+//             },
+//             {
+//                 path: 'consultation/make-consultation/:id',
+//                 component: MakeConsultationComponent,
+//             },
+//             {
+//                 path: 'consultation/view-consultation-patient',
+//                 component: ViewConsultationPatientComponent,
+//             },
+//             {
+//                 path: 'consultation/view-consultation-psychologist',
+//                 component: ViewConsultationPsychologistComponent,
+//             },
+//             {
+//                 path: 'consultation/view-request-consultation',
+//                 component: ViewRequestConsultationComponent,
+//             },
+//             {
+//                 path: 'consultation/view-scheduled-consultation',
+//                 component: ViewScheduledConsultationComponent,
+//             },
+//             {
+//                 path: 'consultation/search-psychologist',
+//                 component: SearchPsychologistComponent,
+//             },
+//             {
+//                 path: 'consultation/inform-availability',
+//                 component: InformAvailabilityComponent,
+//             },
+//             {
+//                 path: 'account/my-profile-patient',
+//                 component: MyProfilePatientComponent,
+//             },
+//             {
+//                 path: 'account/edit-password',
+//                 component: EditPasswordComponent,
+//             },
+//             {
+//                 path: 'account/my-profile-psichologist',
+//                 component: MyProfilePsichologistComponent,
+//             },
+//             {
+//                 path: 'account/edit-password',
+//                 component: EditPasswordComponent,
+//             }
+
+//         ]
+//     }
+    
+// ]

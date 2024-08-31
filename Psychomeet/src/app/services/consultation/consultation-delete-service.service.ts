@@ -1,9 +1,15 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { firstValueFrom } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root'  //Feito 31/08 - Bruno
 })
 export class ConsultationDeleteServiceService {
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
+
+  delete(id: string){
+    return firstValueFrom(this.http.delete(`http://localhost:3000/product/${id}`));
+  }
 }

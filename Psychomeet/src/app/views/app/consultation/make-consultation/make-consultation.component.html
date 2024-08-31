@@ -54,37 +54,37 @@
                 <tr>
                   <td>{{ time.hora }}</td>
                   <td>
-                    <button class="btn calendar-button" (click)="openMyModal(content, time)">
+                    <button class="btn calendar-button" (click)="openMyModal(content, time.hora, time.segunda)">
                       <i class="fas fa-calendar-alt text-warning"></i>
                     </button>
                   </td>
                   <td>
-                    <button class="btn calendar-button" (click)="openMyModal(content, time)">
+                    <button class="btn calendar-button" (click)="openMyModal(content, time.hora, time.terca)">
                       <i class="fas fa-calendar-alt text-warning"></i>
                     </button>
                   </td>
                   <td>
-                    <button class="btn calendar-button" (click)="openMyModal(content, time)">
+                    <button class="btn calendar-button" (click)="openMyModal(content, time.hora, time.quarta)">
                       <i class="fas fa-calendar-alt text-warning"></i>
                     </button>
                   </td>
                   <td>
-                    <button class="btn calendar-button" (click)="openMyModal(content, time)">
+                    <button class="btn calendar-button" (click)="openMyModal(content, time.hora, time.quinta)">
                       <i class="fas fa-calendar-alt text-warning"></i>
                     </button>
                   </td>
                   <td>
-                    <button class="btn calendar-button" (click)="openMyModal(content, time)">
+                    <button class="btn calendar-button" (click)="openMyModal(content, time.hora, time.sexta)">
                       <i class="fas fa-calendar-alt text-warning"></i>
                     </button>
                   </td>
                   <td>
-                    <button class="btn calendar-button" (click)="openMyModal(content, time)">
+                    <button class="btn calendar-button" (click)="openMyModal(content, time.hora, time.sabado)">
                       <i class="fas fa-calendar-alt text-warning"></i>
                     </button>
                   </td>
                   <td>
-                    <button class="btn calendar-button" (click)="openMyModal(content, time)">
+                    <button class="btn calendar-button" (click)="openMyModal(content, time.hora, time.domingo)">
                       <i class="fas fa-calendar-alt text-warning"></i>
                     </button>
                   </td>
@@ -143,7 +143,7 @@
       </div>
       <div class="modal-body">  
 
-        <p>Marcar consulta com Dr. {{psychologist.nome}} dia 24/06/2024 às 08:00.</p>
+        <p>Marcar consulta com Dr. {{psychologist.nome}} dia {{diaSelecionada}} às {{horaSelecionada}}.</p>
         <button class="btn btn-success" (click)="marcarConsulta()">MARCAR CONSULTA</button>
       </div>
 

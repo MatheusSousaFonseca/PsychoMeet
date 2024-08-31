@@ -5,6 +5,9 @@ import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { PsychologistReadService } from '../../../../services/psychologist/psychologist-read.service';
 import { FormBuilder, FormGroup, FormsModule } from '@angular/forms';
 import { Psychologist } from '../../../../domain/model/psychologist-model';
+import { Consultation } from '../../../../domain/model/consultation-model';
+import { ConsultationCreateServiceService } from '../../../../services/consultation/consultation-create-service.service';
+import { ToastrService } from 'ngx-toastr';
 
 
 
@@ -24,7 +27,11 @@ export class MakeConsultationComponent implements OnInit {
 
   psychologist!: Psychologist
 
-  constructor(private router: Router, private modalService: NgbModal, private activatedRoute: ActivatedRoute, private psychologistReadService: PsychologistReadService, private formBuilder: FormBuilder) {
+  horaSelecionada!: string
+
+  diaSelecionada!: string
+
+  constructor(private router: Router, private modalService: NgbModal, private activatedRoute: ActivatedRoute, private psychologistReadService: PsychologistReadService, private formBuilder: FormBuilder, private consultationCreateService:ConsultationCreateServiceService, private toastrService: ToastrService) {
   }
 
   ngOnInit(): void {
@@ -49,9 +56,9 @@ export class MakeConsultationComponent implements OnInit {
         terca: "Terça-feira",
         quarta: "Quarta-feira",
         quinta: "Quinta-feira",
-        sexta: "Segunda-feira",
+        sexta: "Sexta-feira",
         sabado: "Sabado",
-        domingo: "Segunda-feira",
+        domingo: "Domingo",
       };
       this.horarioLista.push(horarios);
     }
@@ -115,9 +122,10 @@ export class MakeConsultationComponent implements OnInit {
     this.closeModal();
   }
 
-  openMyModal(content: any, time: any) {
+  openMyModal(content: any, hora: string, diaDaSemana: string ) {
     this.modalRef = this.modalService.open(content);
-    console.log(time);
+    this.horaSelecionada = hora
+    this.diaSelecionada = diaDaSemana
   }
 
   closeMyModal() {
@@ -126,11 +134,38 @@ export class MakeConsultationComponent implements OnInit {
     }
   }
 
-  marcarConsulta() {
+  async marcarConsulta() {
+    await this.create() 
     if (this.modalRef) {
       this.modalRef.close();
     }
-    this.router.navigate(['consultation/make-consultation']);
+  }
+
+  async create() {
+    let consultation : Consultation = {
+      hora: this.horaSelecionada,
+      diaDaSemana: this.diaSelecionada,
+      descricao: this.psychologist.descricao,
+      nomePsicologo: this.psychologist.nome,
+      idPsicologo: this.psychologist.id!
+    }
+
+    let consultationResponse = await this.consultationCreateService.create(consultation)
+    console.log(consultationResponse);
+
+    if(consultationResponse.id==''){
+      console.log('Entrando...');
+      
+      this.toastrService.error('Não foi possivel marcar consulta.')
+      return;
+    }
+    console.log('Saindo');
+    
+    this.toastrService.success('Consulta marcada com sucesso.')
+
+
+
+
   }
 
 

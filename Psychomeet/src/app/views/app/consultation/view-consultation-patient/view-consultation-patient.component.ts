@@ -4,7 +4,7 @@ import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { Psychologist } from '../../../../domain/model/psychologist-model';
 import { PsychologistReadService } from '../../../../services/psychologist/psychologist-read.service';
 import { Consultation } from '../../../../domain/model/consultation-model';
-import { ConsultationReadServiceService } from '../../../../services/consultation/consultation-read-service';
+import { ConsultationReadService } from '../../../../services/consultation/consultation-read-service';
 
 @Component({
   selector: 'app-view-consultation-patient',
@@ -21,7 +21,7 @@ export class ViewConsultationPatientComponent implements OnInit {
 
   modalRef: NgbModalRef | null = null;
 
-  constructor(private router: Router, private modalService: NgbModal, private psychologistReadService: PsychologistReadService, private consultationReadService: ConsultationReadServiceService) { }
+  constructor(private router: Router, private modalService: NgbModal, private psychologistReadService: PsychologistReadService, private consultationReadService: ConsultationReadService) { }
 
   ngOnInit(): void {
     this.loadConsultations();

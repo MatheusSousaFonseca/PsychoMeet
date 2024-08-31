@@ -10,7 +10,7 @@
       "abordagem": "Terapia Cognitivo-Comportamental",
       "foto": "maria_silva.jpg",
       "especialidade": "Psicologia Clínica",
-      "preco": "30,0"
+      "preco": " R$30,00"
     },
     {
       "id": "2",
@@ -22,7 +22,7 @@
       "abordagem": "Psicologia Infantil",
       "foto": "joao_pereira.jpg",
       "especialidade": "Psicologia Clínica",
-      "preco": "30,0"
+      "preco": " R$30,00"
     },
     {
       "id": "3",
@@ -34,7 +34,7 @@
       "abordagem": "Terapia Familiar",
       "foto": "ana_costa.jpg",
       "especialidade": "Psicologia Clínica",
-      "preco": "30,0"
+      "preco": " R$30,00"
     }
   ],
   "user": [
@@ -128,7 +128,7 @@
     },
     {
       "id": "b504",
-      "hora": "13:00 - 14:00",
+      "hora": "13:00 - 14 :00",
       "diaDaSemana": "Segunda-feira",
       "descricao": "Psicóloga com especialização em terapia cognitivo-comportamental.",
       "nomePsicologo": "Maria Silva",

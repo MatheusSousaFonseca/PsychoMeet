@@ -10,7 +10,7 @@
       "abordagem": "Terapia Cognitivo-Comportamental",
       "foto": "maria_silva.jpg",
       "especialidade": "Psicologia Clínica",
-      "preco": "30,0"
+      "preco": " R$30,00"
     },
     {
       "id": "2",
@@ -22,7 +22,7 @@
       "abordagem": "Psicologia Infantil",
       "foto": "joao_pereira.jpg",
       "especialidade": "Psicologia Clínica",
-      "preco": "30,0"
+      "preco": " R$30,00"
     },
     {
       "id": "3",
@@ -34,7 +34,7 @@
       "abordagem": "Terapia Familiar",
       "foto": "ana_costa.jpg",
       "especialidade": "Psicologia Clínica",
-      "preco": "30,0"
+      "preco": " R$30,00"
     }
   ],
   "user": [
@@ -74,95 +74,6 @@
       "id": "1",
       "hora": "08:00",
       "diaDaSemana": "Segunda-feira",
-      "descricao": "Psicóloga com especialização em terapia cognitivo-comportamental.",
-      "nomePsicologo": "Maria Silva",
-      "idPsicologo": "1"
-    },
-    {
-      "id": "f88c",
-      "hora": "8:00 - 9:00",
-      "diaDaSemana": "Segunda-feira",
-      "descricao": "Psicóloga com especialização em terapia cognitivo-comportamental.",
-      "nomePsicologo": "Maria Silva",
-      "idPsicologo": "1"
-    },
-    {
-      "id": "1fb0",
-      "hora": "8:00 - 9:00",
-      "diaDaSemana": "Segunda-feira",
-      "descricao": "Psicóloga com especialização em terapia cognitivo-comportamental.",
-      "nomePsicologo": "Maria Silva",
-      "idPsicologo": "1"
-    },
-    {
-      "id": "6811",
-      "hora": "9:00 - 10:00",
-      "diaDaSemana": "Sexta-feira",
-      "descricao": "Psicóloga com especialização em terapia cognitivo-comportamental.",
-      "nomePsicologo": "Maria Silva",
-      "idPsicologo": "1"
-    },
-    {
-      "id": "f40e",
-      "hora": "8:00 - 9:00",
-      "diaDaSemana": "Segunda-feira",
-      "descricao": "Psicóloga com especialização em terapia cognitivo-comportamental.",
-      "nomePsicologo": "Maria Silva",
-      "idPsicologo": "1"
-    },
-    {
-      "id": "e302",
-      "hora": "11:00 - 12:00",
-      "diaDaSemana": "Terça-feira",
-      "descricao": "Psicóloga com especialização em terapia cognitivo-comportamental.",
-      "nomePsicologo": "Maria Silva",
-      "idPsicologo": "1"
-    },
-    {
-      "id": "fb85",
-      "hora": "15:00 - 16:00",
-      "diaDaSemana": "Terça-feira",
-      "descricao": "Psicóloga com especialização em terapia cognitivo-comportamental.",
-      "nomePsicologo": "Maria Silva",
-      "idPsicologo": "1"
-    },
-    {
-      "id": "b504",
-      "hora": "13:00 - 14:00",
-      "diaDaSemana": "Segunda-feira",
-      "descricao": "Psicóloga com especialização em terapia cognitivo-comportamental.",
-      "nomePsicologo": "Maria Silva",
-      "idPsicologo": "1"
-    },
-    {
-      "id": "3ad7",
-      "hora": "8:00 - 9:00",
-      "diaDaSemana": "Segunda-feira",
-      "descricao": "Psicóloga com especialização em terapia cognitivo-comportamental.",
-      "nomePsicologo": "Maria Silva",
-      "idPsicologo": "1"
-    },
-    {
-      "id": "52f8",
-      "hora": "16:00 - 17:00",
-      "diaDaSemana": "Segunda-feira",
-      "descricao": "Psicóloga com especialização em terapia cognitivo-comportamental.",
-      "nomePsicologo": "Maria Silva",
-      "idPsicologo": "1"
-    },
-    {
-      "id": "3258",
-      "hora": "8:00 - 9:00",
-      "diaDaSemana": "Segunda-feira",
-      "descricao": "Psicóloga com especialização em terapia cognitivo-comportamental.",
-      "nomePsicologo": "Maria Silva",
-      "idPsicologo": "1"
-    },
-    {
-      "id": "1196",
-      "hora": "8:00 - 9:00",
-      "diaDaSemana": "Quarta-feira",
-      "descricao": "Psicóloga com especialização em terapia cognitivo-comportamental.",
       "nomePsicologo": "Maria Silva",
       "idPsicologo": "1"
     },
@@ -170,7 +81,6 @@
       "id": "f897",
       "hora": "8:00 - 9:00",
       "diaDaSemana": "Segunda-feira",
-      "descricao": "Experiência em psicologia infantil e adolescente.",
       "nomePsicologo": "João Pereira",
       "idPsicologo": "2"
     },
@@ -178,41 +88,15 @@
       "id": "6103",
       "hora": "10:00 - 11:00",
       "diaDaSemana": "Quarta-feira",
-      "descricao": "Experiência em psicologia infantil e adolescente.",
       "nomePsicologo": "João Pereira",
       "idPsicologo": "2"
-    },
+    }
+  ],
+  "availability": [
     {
-      "id": "9dd3",
+      "id": "6248",
       "hora": "8:00 - 9:00",
-      "diaDaSemana": "Segunda-feira",
-      "descricao": "Psicóloga com especialização em terapia cognitivo-comportamental.",
-      "nomePsicologo": "Maria Silva",
-      "idPsicologo": "1"
-    },
-    {
-      "id": "3213",
-      "hora": "8:00 - 9:00",
-      "diaDaSemana": "Segunda-feira",
-      "descricao": "Psicóloga com especialização em terapia cognitivo-comportamental.",
-      "nomePsicologo": "Maria Silva",
-      "idPsicologo": "1"
-    },
-    {
-      "id": "7349",
-      "hora": "8:00 - 9:00",
-      "diaDaSemana": "Quarta-feira",
-      "descricao": "Psicóloga com especialização em terapia cognitivo-comportamental.",
-      "nomePsicologo": "Maria Silva",
-      "idPsicologo": "1"
-    },
-    {
-      "id": "edf3",
-      "hora": "8:00 - 9:00",
-      "diaDaSemana": "Segunda-feira",
-      "descricao": "Psicóloga com especialização em terapia cognitivo-comportamental.",
-      "nomePsicologo": "Maria Silva",
-      "idPsicologo": "1"
+      "diaDaSemana": "Domingo"
     }
   ]
 }

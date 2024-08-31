@@ -6,100 +6,37 @@
 
   <ul class="list-group mb-3">
     @for (user of users; track $index) {
-    <li class="list-group-item">
+      @for (consultation of consultations; track $index){
+        <li class="list-group-item">
 
-      <div class="card mb-3">
-        <div class="card-body">
-          <div class="d-flex justify-content-between align-items-center">
-            <div>
-              <h5 class="card-title">{{user.nome}}</h5>
-              <p class="card-text">Data: 24/06/2024 às 16:00</p>
-              <p class="card-text">Descrição: Sessão de terapia</p>
+          <div class="card mb-3">
+            <div class="card-body">
+              <div class="d-flex justify-content-between align-items-center">
+                <div>
+                  <h5 class="card-title">{{user.nome}}</h5>
+                  <p class="card-text">Data: {{consultation.diaDaSemana}} às {{consultation.hora}}</p>
+                  <!-- <p class="card-text">Descrição: {{consultation.descricao}}</p> -->
+                </div>
+                <div>
+                  <button class="btn btn-success me-2" (click)="openMyModal(content)">
+                    <i class="fas fa-check"></i> Aceitar
+                           </button>
+                  <button class="btn btn-danger me-2" (click)="openMyModal(content2)">
+                    <i class="fas fa-check"></i> Recusar
+                           </button>
+                </div>
+    
+    
+              </div>
             </div>
-            <div>
-              <button class="btn btn-success me-2" (click)="openMyModal(content)">
-                <i class="fas fa-check"></i> Aceitar
-                       </button>
-              <button class="btn btn-danger me-2" (click)="openMyModal(content4)">
-                <i class="fas fa-check"></i> Recusar
-                       </button>
-            </div>
-
-
           </div>
-        </div>
-      </div>
+    
+        </li>
 
-    </li>
-
+      }
     }
-
-
   </ul>
 
-
-
-
-
-  <!-- 
-  <div class="card mb-3">
-    <div class="card-body">
-      <div class="d-flex justify-content-between align-items-center">
-        <div>
-          <h5 class="card-title">João Silva</h5>
-          <p class="card-text">Data: 24/06/2024 às 16:00</p>
-          <p class="card-text">Descrição: Sessão de terapia</p>
-        </div>
-        <div>
-          <button class="btn btn-success me-2" (click)="openMyModal(content)">
-            <i class="fas fa-check"></i> Aceitar
-                   </button>
-          <button class="btn btn-danger me-2" (click)="openMyModal(content4)">
-            <i class="fas fa-check"></i> Recusar
-                   </button>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="card mb-3">
-    <div class="card-body">
-      <div class="d-flex justify-content-between align-items-center">
-        <div>
-          <h5 class="card-title">Maria Oliveira</h5>
-          <p class="card-text">Data: 25/06/2024 às 14:00</p>
-          <p class="card-text">Descrição: Sessão de terapia</p>
-        </div>
-        <div>
-          <button class="btn btn-success me-2" (click)="openMyModal(content2)">
-            <i class="fas fa-check"></i> Aceitar
-                   </button>
-          <button class="btn btn-danger me-2" (click)="openMyModal(content5)">
-            <i class="fas fa-check"></i> Recusar
-                   </button>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="card mb-3">
-    <div class="card-body">
-      <div class="d-flex justify-content-between align-items-center">
-        <div>
-          <h5 class="card-title">Carlos Souza</h5>
-          <p class="card-text">Data: 26/06/2024 às 10:00</p>
-          <p class="card-text">Descrição: Sessão de terapia</p>
-        </div>
-        <div>
-          <button class="btn btn-success me-2" (click)="openMyModal(content3)">
-            <i class="fas fa-check"></i> Aceitar
-                   </button>
-          <button class="btn btn-danger me-2" (click)="openMyModal(content6)">
-            <i class="fas fa-check"></i> Recusar
-                   </button>
-        </div>
-      </div>
-    </div>
-  </div>
-</div> -->
 
   <ng-template #content let-modal="modal">
     <div class="modal-header">
@@ -111,7 +48,7 @@
     </div>
     <div class="modal-body">  
 
-      <p>Confirmar agendamento com Dr. João da Silva dia 24/06/2024 às 08:00.</p>
+      <p>Confirmar agendamento da consulta.</p>
       <button class="btn btn-success" (click)="confirmarConsulta()">CONFIRMAR CONSULTA</button>
     </div>
 
@@ -122,50 +59,9 @@
       
   </ng-template>
 
+ 
   <ng-template #content2 let-modal="modal">
     <div class="modal-header">
-      <h4 class="modal-title" id="modal-basic-title">Confirmação de consulta</h4>
-      <button type="button" class="close" aria-label="Close" (click)="closeMyModal()">
-        <span aria-hidden="true">&times;</span>  
-
-      </button>
-    </div>
-    <div class="modal-body">  
-
-      <p>Confirmar agendamento com Dra. Maria Oliveira dia 25/06/2024 às 14:00.</p>
-      <button class="btn btn-success" (click)="confirmarConsulta()">CONFIRMAR CONSULTA</button>
-    </div>
-
-    <div class="modal-footer">
-      <button type="button" class="btn btn-outline-dark" (click)="closeMyModal()">Fechar</button>
-    </div>  
-
-      
-  </ng-template>
-
-  <ng-template #content3 let-modal="modal">
-    <div class="modal-header">
-      <h4 class="modal-title" id="modal-basic-title">Confirmação de consulta</h4>
-      <button type="button" class="close" aria-label="Close" (click)="closeMyModal()">
-        <span aria-hidden="true">&times;</span>  
-
-      </button>
-    </div>
-    <div class="modal-body">  
-
-      <p>Confirmar agendamento com Dr. Carlos Souza dia 26/06/2024 às 10:00.</p>
-      <button class="btn btn-success" (click)="confirmarConsulta()">CONFIRMAR CONSULTA</button>
-    </div>
-
-    <div class="modal-footer">
-      <button type="button" class="btn btn-outline-dark" (click)="closeMyModal()">Fechar</button>
-    </div>  
-
-      
-  </ng-template>
-
-  <ng-template #content4 let-modal="modal">
-    <div class="modal-header">
       <h4 class="modal-title" id="modal-basic-title">Confirmação de cancelamento</h4>
       <button type="button" class="close" aria-label="Close" (click)="closeMyModal()">
         <span aria-hidden="true">&times;</span>  
@@ -174,8 +70,8 @@
     </div>
     <div class="modal-body">  
 
-      <p>Recusar agendamento, dia 24/06/2024 às 08:00.</p>
-      <button class="btn btn-danger" (click)="desrmarcarConsulta()">DESMARCAR CONSULTA</button>
+      <p>Recusar agendamento da consulta</p>
+      <button class="btn btn-danger" (click)="desmarcarConsulta()">DESMARCAR CONSULTA</button>
     </div>
 
     <div class="modal-footer">
@@ -183,46 +79,3 @@
     </div>  
 
       
-  </ng-template>
-
-  <ng-template #content5 let-modal="modal">
-    <div class="modal-header">
-      <h4 class="modal-title" id="modal-basic-title">Confirmação de cancelamento</h4>
-      <button type="button" class="close" aria-label="Close" (click)="closeMyModal()">
-        <span aria-hidden="true">&times;</span>  
-
-      </button>
-    </div>
-    <div class="modal-body">  
-
-      <p>Recusar agendamento, dia 25/06/2024 às 14:00.</p>
-      <button class="btn btn-danger" (click)="desrmarcarConsulta()">DESMARCAR CONSULTA</button>
-    </div>
-
-    <div class="modal-footer">
-      <button type="button" class="btn btn-outline-dark" (click)="closeMyModal()">Fechar</button>
-    </div>  
-
-      
-  </ng-template>
-
-  <ng-template #content6 let-modal="modal">
-    <div class="modal-header">
-      <h4 class="modal-title" id="modal-basic-title">Confirmação de cancelamento</h4>
-      <button type="button" class="close" aria-label="Close" (click)="closeMyModal()">
-        <span aria-hidden="true">&times;</span>  
-
-      </button>
-    </div>
-    <div class="modal-body">  
-
-      <p>Recusar agendamento, dia 26/06/2024 às 10:00</p>
-      <button class="btn btn-danger" (click)="desrmarcarConsulta()">DESMARCAR CONSULTA</button>
-    </div>
-
-    <div class="modal-footer">
-      <button type="button" class="btn btn-outline-dark" (click)="closeMyModal()">Fechar</button>
-    </div>  
-
-      
-  </ng-template>

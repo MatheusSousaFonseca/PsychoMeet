@@ -22,23 +22,12 @@ export class SignUpPsychologistComponent implements OnInit {
 
   form!: FormGroup;
 
-  // fullNameMinLength: number = 2;
-  // fullNameMaxLength: number = 10;
-  // passwordMinLength: number = 2;
-  // passwordMaxLength: number = 10;
 
   constructor(private formBuilder: FormBuilder, private createPsychologistService: PsychologistCreateService, private router: Router) {
 
   }
   ngOnInit(): void {
   }
-
-
-
-  // fullName = new FormControl(null, [Validators.minLength(3), Validators.maxLength(10)]);
-  // email = new FormControl(null, Validators.email);
-  // password = new FormControl(null, [Validators.minLength(3), Validators.maxLength(10)]);
-  // repeatPassword = new FormControl(null, [Validators.minLength(3), Validators.maxLength(10)]);
 
 
 
@@ -67,8 +56,8 @@ export class SignUpPsychologistComponent implements OnInit {
 
   }
 
-  // arePasswordsValid() {
-  //   return this.form.controls['password'].value === this.form.controls['repeatPassword'].value;
-  // }
+  arePasswordsValid() {
+    return this.form.controls['password'].value === this.form.controls['repeatPassword'].value;
+  }
 
 }

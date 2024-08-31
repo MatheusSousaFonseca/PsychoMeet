@@ -3,6 +3,9 @@ import { Router } from '@angular/router';
 import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { User } from '../../../../domain/model/user-model';
 import { UserReadService } from '../../../../services/user/user-read-service';
+import { Psychologist } from '../../../../domain/model/psychologist-model';
+import { Consultation } from '../../../../domain/model/consultation-model';
+import { ConsultationReadService } from '../../../../services/consultation/consultation-read-service';
 
 @Component({
   selector: 'app-view-request-consultation',
@@ -17,10 +20,13 @@ export class ViewRequestConsultationComponent {
 
   users: User[] = [];
 
-  constructor(private router: Router, private modalService: NgbModal, private userReadService: UserReadService) { }
+  consultations: Consultation[] = [];
+
+  constructor(private router: Router, private modalService: NgbModal, private userReadService: UserReadService, private consultationReadService: ConsultationReadService) { }
 
   ngOnInit(): void {
     this.loadUsers();
+    this.loadConsultations();
   }
 
 
@@ -46,7 +52,7 @@ export class ViewRequestConsultationComponent {
     this.router.navigate(['consultation/view-request-consultation']);
   }
 
-  desrmarcarConsulta() {
+  desmarcarConsulta() {
     if (this.modalRef) {
       this.modalRef.close();
     }
@@ -55,6 +61,10 @@ export class ViewRequestConsultationComponent {
 
   async loadUsers() {
     this.users = await this.userReadService.findAll();
+  }
+
+  async loadConsultations() {
+    this.consultations = await this.consultationReadService.findAll();
   }
 
 }

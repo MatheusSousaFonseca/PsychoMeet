@@ -57,7 +57,7 @@ export class MakeConsultationComponent implements OnInit {
         quarta: "Quarta-feira",
         quinta: "Quinta-feira",
         sexta: "Sexta-feira",
-        sabado: "Sabado",
+        sabado: "Sábado",
         domingo: "Domingo",
       };
       this.horarioLista.push(horarios);
@@ -77,7 +77,7 @@ export class MakeConsultationComponent implements OnInit {
     this.form.controls['nome'].setValue(this.psychologist.nome);
     this.form.controls['crp'].setValue(this.psychologist.crp);
     this.form.controls['especialidade'].setValue(this.psychologist.especialidade);
-    this.form.controls['descricao'].setValue(this.psychologist.descricao);
+
   }
 
   horarioLista: Horario[] = [];
@@ -145,7 +145,6 @@ export class MakeConsultationComponent implements OnInit {
     let consultation : Consultation = {
       hora: this.horaSelecionada,
       diaDaSemana: this.diaSelecionada,
-      descricao: this.psychologist.descricao,
       nomePsicologo: this.psychologist.nome,
       idPsicologo: this.psychologist.id!
     }

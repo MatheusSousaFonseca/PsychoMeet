@@ -11,21 +11,23 @@
 
     <ul class="list-group mb-3">
         @for (user of users; track $index) {
-        <li class="list-group-item">
+            @for (consultation of consultations; track $index) {
+                <li class="list-group-item">
 
-            <div class="card mb-3">
-                <div class="card-body">
-                    <div class="d-flex justify-content-between align-items-center">
-                        <div>
-                            <h5 class="card-title">{{user.nome}}</h5>
-                            <p class="card-text">Data: 20/06/2024 às 16:00</p>
-                            <p class="card-text">Descrição: Consulta de rotina</p>
+                    <div class="card mb-3">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div>
+                                    <h5 class="card-title">{{user.nome}}</h5>
+                                    <p class="card-text">Data: {{consultation.diaDaSemana}} às {{consultation.hora}}</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </div>
+        
+                </li>
+            }
 
-        </li>
 
         }
 
@@ -33,114 +35,4 @@
     </ul>
 
 
-    <!-- <div class="card mb-3">
-        <div class="card-body">
-            <div class="d-flex justify-content-between align-items-center">
-                <div>
-                    <h5 class="card-title">João Silva</h5>
-                    <p class="card-text">Data: 20/06/2024 às 16:00</p>
-                    <p class="card-text">Descrição: Consulta de rotina</p>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="card mb-3">
-        <div class="card-body">
-            <div class="d-flex justify-content-between align-items-center">
-                <div>
-                    <h5 class="card-title">Maria Oliveira</h5>
-                    <p class="card-text">Data: 18/06/2024 às 14:30</p>
-                    <p class="card-text">Descrição: Sessão de terapia</p>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="card mb-3">
-        <div class="card-body">
-            <div class="d-flex justify-content-between align-items-center">
-                <div>
-                    <h5 class="card-title">Carlos Souza</h5>
-                    <p class="card-text">Data: 15/06/2024 às 10:00</p>
-                    <p class="card-text">Descrição: Consulta de acompanhamento</p>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="card mb-3">
-        <div class="card-body">
-            <div class="d-flex justify-content-between align-items-center">
-                <div>
-                    <h5 class="card-title">Ana Pereira</h5>
-                    <p class="card-text">Data: 13/06/2024 às 11:00</p>
-                    <p class="card-text">Descrição: Consulta inicial</p>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="card mb-3">
-        <div class="card-body">
-            <div class="d-flex justify-content-between align-items-center">
-                <div>
-                    <h5 class="card-title">Pedro Lima</h5>
-                    <p class="card-text">Data: 10/06/2024 às 09:00</p>
-                    <p class="card-text">Descrição: Sessão de terapia</p>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="card mb-3">
-        <div class="card-body">
-            <div class="d-flex justify-content-between align-items-center">
-                <div>
-                    <h5 class="card-title">Lucas Fernandes</h5>
-                    <p class="card-text">Data: 08/06/2024 às 15:00</p>
-                    <p class="card-text">Descrição: Consulta de rotina</p>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="card mb-3">
-        <div class="card-body">
-            <div class="d-flex justify-content-between align-items-center">
-                <div>
-                    <h5 class="card-title">Mariana Santos</h5>
-                    <p class="card-text">Data: 05/06/2024 às 13:00</p>
-                    <p class="card-text">Descrição: Consulta de acompanhamento</p>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="card mb-3">
-        <div class="card-body">
-            <div class="d-flex justify-content-between align-items-center">
-                <div>
-                    <h5 class="card-title">Gabriel Costa</h5>
-                    <p class="card-text">Data: 02/06/2024 às 11:00</p>
-                    <p class="card-text">Descrição: Sessão de terapia</p>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="card mb-3">
-        <div class="card-body">
-            <div class="d-flex justify-content-between align-items-center">
-                <div>
-                    <h5 class="card-title">Renata Alves</h5>
-                    <p class="card-text">Data: 30/05/2024 às 16:30</p>
-                    <p class="card-text">Descrição: Consulta inicial</p>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="card mb-3">
-        <div class="card-body">
-            <div class="d-flex justify-content-between align-items-center">
-                <div>
-                    <h5 class="card-title">Felipe Duarte</h5>
-                    <p class="card-text">Data: 28/05/2024 às 10:00</p>
-                    <p class="card-text">Descrição: Consulta de rotina</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</div> -->
+   

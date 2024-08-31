@@ -1,13 +1,15 @@
 <div class="container mt-5">
-  <button class="btn btn-danger" (click)="voltar()">X</button>
+  <div class="d-flex justify-content-between align-items-center mb-4">
+
+    <button class="btn btn-danger" (click)="voltar()">X</button>
+  </div>
   <div class="row">
-    <!-- Perfil do Usuário -->
     <div class="col-md-6">
+
 
     </div>
     <div class="container mt-5">
       <div class="row">
-        <!-- Tabela de Agenda Semanal -->
         <div class="col-md-12">
           <div class="text-center">
             <h1 class="text-warning">Informar Disponibilidade</h1>
@@ -18,99 +20,104 @@
                   @for(day of days; track $index){
                   <th>{{ day }}</th>
                   }
-                  <!-- <th *ngFor="let day of days">{{ day }}</th> -->
                 </tr>
               </thead>
               <tbody>
-                <!-- @for(time of times; track $index){
-                <tr >
-                  <td>{{ time }}</td>
-                  @for(day of days; track $index){
-                    <td  >
-                     <button (click)="openModal(time, day)">
-                      <i class="fas fa-calendar-alt text-warning"></i>
-                     </button>
-                     
-                    </td>
-                  }
-                  
-                </tr>
-              } -->
+
                 @for(time of horarioLista; track $index){
                 <tr>
                   <td>{{ time.hora }}</td>
-                  <td>                    
-                    <button class="btn calendar-button" (click)="openMyModal(content)">
-                    <i class="fas fa-calendar-alt text-warning"></i>
-                  </button>
-                </td>
                   <td>
-                    <button class="btn calendar-button" (click)="openMyModal(content)">
+                    <button class="btn calendar-button" (click)="openMyModal(content, time.hora, time.segunda)">
                       <i class="fas fa-calendar-alt text-warning"></i>
-                  </button>
+                    </button>
                   </td>
                   <td>
-                    <button class="btn calendar-button" (click)="openMyModal(content)">
+                    <button class="btn calendar-button" (click)="openMyModal(content, time.hora, time.terca)">
                       <i class="fas fa-calendar-alt text-warning"></i>
-                  </button>
+                    </button>
                   </td>
                   <td>
-                    <button class="btn calendar-button" (click)="openMyModal(content)">
+                    <button class="btn calendar-button" (click)="openMyModal(content, time.hora, time.quarta)">
                       <i class="fas fa-calendar-alt text-warning"></i>
-                  </button>
+                    </button>
                   </td>
                   <td>
-                    <button class="btn calendar-button" (click)="openMyModal(content)">
+                    <button class="btn calendar-button" (click)="openMyModal(content, time.hora, time.quinta)">
                       <i class="fas fa-calendar-alt text-warning"></i>
-                  </button>
+                    </button>
                   </td>
                   <td>
-                    <button class="btn calendar-button" (click)="openMyModal(content)">
+                    <button class="btn calendar-button" (click)="openMyModal(content, time.hora, time.sexta)">
                       <i class="fas fa-calendar-alt text-warning"></i>
-                  </button>
+                    </button>
                   </td>
                   <td>
-                    <button class="btn calendar-button" (click)="openMyModal(content)">
+                    <button class="btn calendar-button" (click)="openMyModal(content, time.hora, time.sabado)">
                       <i class="fas fa-calendar-alt text-warning"></i>
-                  </button>
+                    </button>
+                  </td>
+                  <td>
+                    <button class="btn calendar-button" (click)="openMyModal(content, time.hora, time.domingo)">
+                      <i class="fas fa-calendar-alt text-warning"></i>
+                    </button>
                   </td>
                 </tr>
                 }
 
-
-
-
-                <!-- <tr *ngFor="let time of times">
-                <td>{{ time }}</td>
-                <td *ngFor="let day of days" (click)="openModal(time, day)">
-                  <i class="fas fa-calendar-alt text-warning"></i>
-                </td>
-              </tr> -->
               </tbody>
             </table>
           </div>
         </div>
       </div>
 
-  
       <!-- <div class="modal" tabindex="-1" role="dialog" [ngClass]="{'show': isModalOpen}" style="display: block;" *ngIf="isModalOpen"> -->
 
-        <ng-template #content let-modal="modal">
-          <div class="modal-header">
-            <h4 class="modal-title" id="modal-basic-title">Confirmação de disponibilidade</h4>
-            <button type="button" class="close" aria-label="Close" (click)="closeMyModal()">
-              <span aria-hidden="true">&times;</span>  
-    
-            </button>
+
+      <!-- <div class="modal"> -->
+      <!-- <div class="modal" tabindex="-1" role="dialog" [class.show]="isModalOpen" style="display: block;"
+        *ngIf="isModalOpen">
+
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Marcar Consulta</h5>
+              <button type="button" class="close" (click)="closeModal()" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <p>Consulta para {{ selectedTime }} na {{ selectedDay }}</p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" (click)="closeModal()">Voltar</button>
+              <button type="button" class="btn btn-primary" (click)="informarDisponibilidade()">Confirmar</button>
+            </div>
           </div>
-          <div class="modal-body">  
-    
-            <p>Confirmar disponibilidade de horário no dia 24/06/2024 às 16:00.</p>
-            <button class="btn btn-success" (click)="informarDisponibilidade()">CONFIRMAR DISPONIBILIDADE</button>
-          </div>
-    
-          <div class="modal-footer">
-            <button type="button" class="btn btn-outline-dark" (click)="closeMyModal()">Fechar</button>
-          </div>  
-    
-        </ng-template>
+        </div>
+      </div> -->
+    </div>
+
+    <ng-template #content let-modal="modal">
+      <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Informar Disponibilidade</h4>
+        <button type="button" class="close" aria-label="Close" (click)="closeMyModal()">
+          <span aria-hidden="true">&times;</span>  
+
+        </button>
+      </div>
+      <div class="modal-body">  
+
+        <p>Salvar disponbilidade dia {{diaSelecionada}} às {{horaSelecionada}}.</p>
+        <button class="btn btn-success" (click)="salvarDisponibilidade()">SALVAR</button>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-dark" (click)="closeMyModal()">Fechar</button>
+      </div>  
+
+        
+    </ng-template>
+
+  </div>
+</div>

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { User } from '../../../../domain/model/user-model';
-import { UserReadServiceService } from '../../../../services/user/user-read-service.service';
+import { UserReadServiceService } from '../../../../services/user/user-read-service';
 
 @Component({
   selector: 'app-view-consultation-psychologist',

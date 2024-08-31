@@ -5,7 +5,7 @@ import { User } from '../../domain/model/user-model';
 @Injectable({
   providedIn: 'root'
 })
-export class UserCreateServiceService {
+export class UserCreateService {
 
   constructor(private http: HttpClient) { }
 

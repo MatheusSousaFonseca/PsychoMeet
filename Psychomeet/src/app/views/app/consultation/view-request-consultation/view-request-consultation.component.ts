@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { User } from '../../../../domain/model/user-model';
-import { UserReadServiceService } from '../../../../services/user/user-read-service.service';
+import { UserReadService } from '../../../../services/user/user-read-service';
 
 @Component({
   selector: 'app-view-request-consultation',
@@ -17,7 +17,7 @@ export class ViewRequestConsultationComponent {
 
   users: User[] = [];
 
-  constructor(private router: Router, private modalService: NgbModal, private userReadService: UserReadServiceService) { }
+  constructor(private router: Router, private modalService: NgbModal, private userReadService: UserReadService) { }
 
   ngOnInit(): void {
     this.loadUsers();

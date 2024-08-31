@@ -10,6 +10,6 @@ export class ConsultationDeleteService {
   constructor(private http: HttpClient) { }
 
   delete(id: string){
-    return firstValueFrom(this.http.delete(`http://localhost:3000/product/${id}`));
+    return firstValueFrom(this.http.delete(`http://localhost:3000/consultation/${id}`));
   }
 }

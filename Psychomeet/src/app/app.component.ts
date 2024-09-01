@@ -19,9 +19,7 @@ export class AppComponent {
 
   constructor(private router: Router) { }
 
-  logout() {
-    this.router.navigate(['app/home'])
-  }
+
 
 
 }

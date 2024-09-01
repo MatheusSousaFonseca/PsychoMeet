@@ -34,8 +34,13 @@ export class SearchPsychologistComponent implements OnInit {
   async loadPsychologists() {
     this.psychologists = await this.psychologistReadService.findAll();
   }
+
   acessarPerfilPaciente() {
     this.router.navigate(['account/my-profile-patient'])
+  }
+
+  logout() {
+    this.router.navigate(['app/home'])
   }
 
 

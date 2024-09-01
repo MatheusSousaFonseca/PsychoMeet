@@ -95,6 +95,21 @@
       "preco": "25",
       "especialidade": "lalalal",
       "telefone": "123456"
+    },
+    {
+      "id": "ecd8",
+      "nome": "psi",
+      "email": "psi@teste.com",
+      "senha": "123",
+      "publico": "infantil",
+      "descricao": "lalalla",
+      "crp": "123",
+      "cpf": "5454545",
+      "abordagem": "lalala",
+      "data_nascimento": "2024-08-14",
+      "preco": "10",
+      "especialidade": "lalala",
+      "telefone": "55151"
     }
   ],
   "user": [
@@ -138,31 +153,13 @@
       "telefone": "123456"
     },
     {
-      "id": "e3e1",
-      "nome": "Matheus Sousa",
-      "email": "matheus@teste.com",
+      "id": "0db7",
+      "nome": "pac",
+      "email": "pac@teste.com",
       "senha": "123",
-      "cpf": "121212121",
-      "data_nascimento": "2024-06-19",
-      "telefone": "111111"
-    },
-    {
-      "id": "ab4e",
-      "nome": "teste",
-      "email": "teste@teste.com",
-      "senha": "123",
-      "cpf": "2121212",
-      "data_nascimento": "2024-06-06",
-      "telefone": "121212"
-    },
-    {
-      "id": "43ea",
-      "nome": "teste",
-      "email": "teste@teste.com",
-      "senha": "123",
-      "cpf": "2121212",
-      "data_nascimento": "2024-06-06",
-      "telefone": "121212"
+      "cpf": "1232",
+      "data_nascimento": "2024-09-19",
+      "telefone": "123"
     }
   ],
   "consultation": [
@@ -186,6 +183,13 @@
       "diaDaSemana": "Quarta-feira",
       "nomePsicologo": "João Pereira",
       "idPsicologo": "2"
+    },
+    {
+      "id": "bdf6",
+      "hora": "11:00 - 12:00",
+      "diaDaSemana": "Sexta-feira",
+      "nomePsicologo": "bruno",
+      "idPsicologo": "7516"
     }
   ],
   "availability": [

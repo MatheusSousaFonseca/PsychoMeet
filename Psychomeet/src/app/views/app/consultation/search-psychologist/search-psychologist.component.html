@@ -6,8 +6,14 @@
             Histórico de consultas
         </button>
 
-        <!-- Botão Meu Perfil alinhado à direita -->
-        <button class="btn btn-warning" (click)="acessarPerfilPaciente()">Meu Perfil</button>
+
+
+        <div class="col-auto">
+            <div class="d-flex flex-column">
+                <button class="btn btn-warning mb-2" (click)="acessarPerfilPaciente()">Meu Perfil</button>
+                <button class="btn btn-danger" (click)="logout()">Sair</button>
+            </div>
+        </div>
     </div>
 
     <!-- Texto Buscar Profissionais -->

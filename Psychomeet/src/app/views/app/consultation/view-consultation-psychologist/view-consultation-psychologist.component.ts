@@ -54,5 +54,9 @@ export class ViewConsultationPsychologistComponent {
     this.router.navigate(['account/my-profile-psichologist']);
   }
 
+  logout() {
+    this.router.navigate(['app/home'])
+  }
+
 
 }

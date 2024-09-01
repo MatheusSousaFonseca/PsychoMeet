@@ -1,13 +1,19 @@
 <div class="container mt-4">
+    <!-- Linha para botões e título -->
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <!-- Botão Histórico de consultas -->
+        <button type="submit" class="btn btn-primary" (click)="historico()">
+            Histórico de consultas
+        </button>
 
-    <button type="submit" class="btn btn-primary" (click)="historico()">
-        Histórico de consultas
-    </button>
+        <!-- Botão Meu Perfil alinhado à direita -->
+        <button class="btn btn-warning" (click)="acessarPerfilPaciente()">Meu Perfil</button>
+    </div>
 
-    <h2>Buscar Profissionais</h2>
+    <!-- Texto Buscar Profissionais -->
+    <h2 class="mb-3">Buscar Profissionais</h2>
 
-
-
+    <!-- Formulário de busca -->
     <form>
         <div class="form-row align-items-center mb-3">
             <div class="col-md-6">
@@ -33,36 +39,29 @@
         </div>
     </form>
 
+    <!-- Lista de profissionais sugeridos -->
     <div>
         <h4>Profissionais Sugeridos:</h4>
-
         <ul class="list-group mb-3">
+            <!-- Loop para listar psicólogos -->
             @for (psychologist of psychologists; track $index) {
-            <li class="list-group-item">
-                <div class="row align-items-center">
-                    <div class="col-md-2">
-                        <img src="assets/user.png" alt="Foto de João dos Santos" class="img-thumbnail">
+                <li class="list-group-item">
+                    <div class="row align-items-center">
+                        <div class="col-md-2">
+                            <img src="assets/user.png" alt="Foto de João dos Santos" class="img-thumbnail">
+                        </div>
+                        <div class="col-md-9">
+                            <h5 class="card-title mb-1">Psicólogo: {{psychologist.nome}}</h5>
+                            <p class="card-text mb-1"><strong>Atuação:</strong> {{psychologist.abordagem}}</p>
+                            <p class="card-text mb-0"><strong>Descrição:</strong> {{psychologist.descricao}}</p>
+                            <p class="card-text mb-1"><strong>Valor:</strong> {{psychologist.preco}}</p>
+                        </div>
+                        <div class="col-md-1 text-right">
+                            <a class="btn btn-success btn-sm" routerLink="/consultation/make-consultation/{{psychologist.id}}">Ver perfil</a>
+                        </div>
                     </div>
-                    <div class="col-md-9">
-                        <h5 class="card-title mb-1">Psicólogo: {{psychologist.nome}}</h5>
-                        <p class="card-text mb-1"><strong>Atuação:</strong> {{psychologist.abordagem}}</p>
-                        <p class="card-text mb-0"><strong>Descrição:</strong> {{psychologist.descricao}}</p>
-                        <p class="card-text mb-1"><strong>Valor:</strong>{{psychologist.preco}}</p>
-
-                    </div>
-                    <div class="col-md-1 text-right">
-                        <a class="btn btn-success btn-sm"
-                            routerLink="/consultation/make-consultation/{{psychologist.id}}">Ver perfil
-                        </a>
-                    </div>
-                </div>
-            </li>
-
+                </li>
             }
-
-
         </ul>
     </div>
-
-
 </div>

@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
+import { User } from '../../../domain/model/user-model';
 
 @Component({
   selector: 'app-my-profile-patient',
@@ -10,13 +12,33 @@ import { Router } from '@angular/router';
 })
 export class MyProfilePatientComponent {
 
-  constructor(private router: Router) { }
+  modalRef: NgbModalRef | null = null;
+
+  userId?: string;
+
+  constructor(private router: Router, private modalService: NgbModal) { }
 
   voltar() {
     this.router.navigate(['consultation/search-psychologist'])
   }
-  editar() {
-    this.router.navigate(['account/edit-profile-patient'])
+
+  salvar() {
+    this.router.navigate(['account/my-profile-patient']);
+
   }
+
+  closeMyModal() {
+    if (this.modalRef) {
+      this.modalRef.close();
+    }
+  }
+
+  openMyModal(content: any) {
+    this.modalRef = this.modalService.open(content);
+  }
+
+
+
+
 
 }

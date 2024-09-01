@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-my-profile-psichologist',
@@ -10,13 +11,28 @@ import { Router } from '@angular/router';
 })
 export class MyProfilePsichologistComponent {
 
-  constructor(private router: Router) { }
+  modalRef: NgbModalRef | null = null;
+
+  constructor(private router: Router, private modalService: NgbModal) { }
 
   voltar() {
     this.router.navigate(['consultation/view-consultation-psychologist'])
   }
-  editar() {
-    this.router.navigate(['account/edit-profile-psichologist'])
+
+  salvar() {
+    this.router.navigate(['account/my-profile-psichologist']);
+
   }
+
+  closeMyModal() {
+    if (this.modalRef) {
+      this.modalRef.close();
+    }
+  }
+
+  openMyModal(content: any) {
+    this.modalRef = this.modalService.open(content);
+  }
+
 
 }

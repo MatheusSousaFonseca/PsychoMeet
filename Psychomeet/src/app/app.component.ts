@@ -23,11 +23,5 @@ export class AppComponent {
     this.router.navigate(['app/home'])
   }
 
-  acessarPerfilPaciente() {
-    this.router.navigate(['account/my-profile-patient'])
-  }
 
-  acessarPerfilPsicologo() {
-    this.router.navigate(['account/my-profile-psichologist'])
-  }
 }

@@ -41,4 +41,18 @@ export class ViewConsultationPsychologistComponent {
     this.consultations = await this.consultationReadService.findAll();
   }
 
+  acessarPerfilPsicologo() {
+    this.router.navigate(['account/my-profile-psichologist'])
+  }
+
+  salvar() {
+    this.router.navigate(['account/my-profile-psichologist']);
+
+  }
+
+  voltar() {
+    this.router.navigate(['account/my-profile-psichologist']);
+  }
+
+
 }

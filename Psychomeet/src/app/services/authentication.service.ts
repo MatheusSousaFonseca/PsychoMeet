@@ -20,7 +20,7 @@ export class AuthenticationService {
     let apiResponse = await firstValueFrom(this.http.get<UserCredential[]>(`http://localhost:3000/user?email=${credential.email}&senha=${credential.senha}`));
     console.log(apiResponse);
     if (apiResponse == null || apiResponse.length != 1) {
-      throw new Error('dados invalidos');
+      throw new Error('Dados inválidos');
     }
     return true;
   }
@@ -33,7 +33,7 @@ export class AuthenticationService {
     let apiResponse = await firstValueFrom(this.http.get<PsychologistCredential[]>(`http://localhost:3000/psychologist?email=${credential.email}&senha=${credential.senha}`));
     console.log(apiResponse);
     if (apiResponse == null || apiResponse.length != 1) {
-      throw new Error('dados invalidos');
+      throw new Error('Dados inválidos');
     }
     return true;
   }

@@ -7,7 +7,7 @@ export interface Psychologist {
     crp: string,
     cpf: string,
     abordagem: string,
-    data_nascimento: string,
+    data_nascimento: Date,
     preco: number,
     especialidade: string,
     senha: string,

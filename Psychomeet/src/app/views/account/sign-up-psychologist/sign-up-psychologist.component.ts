@@ -16,23 +16,42 @@ import { MatInputModule } from '@angular/material/input';
     ReactiveFormsModule,
   ],
   templateUrl: './sign-up-psychologist.component.html',
-  styleUrl: './sign-up-psychologist.component.css'
+  styleUrls: ['./sign-up-psychologist.component.css'] // Corrigido para 'styleUrls'
 })
 export class SignUpPsychologistComponent implements OnInit {
 
   form!: FormGroup;
+  successMessage: string | null = null;
 
+  constructor(
+    private formBuilder: FormBuilder,
+    private createPsychologistService: PsychologistCreateService,
+    private router: Router
+  ) { }
 
-  constructor(private formBuilder: FormBuilder, private createPsychologistService: PsychologistCreateService, private router: Router) {
-
-  }
   ngOnInit(): void {
+    this.form = this.formBuilder.group({
+      nome: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
+      senha: ['', Validators.required],
+      repeatPassword: ['', Validators.required],
+      publico: ['', Validators.required],
+      descricao: ['', Validators.required],
+      crp: ['', Validators.required],
+      cpf: ['', Validators.required],
+      abordagem: ['', Validators.required],
+      data: ['', Validators.required],
+      preco: ['', Validators.required],
+      especialidade: ['', Validators.required],
+      telefone: ['', Validators.required]
+    });
   }
 
-
-
-  createAccount() {
-    console.log('Criando conta....');
+  async createAccount() {
+    if (!this.form.valid || !this.arePasswordsValid()) {
+      console.log('Formulário inválido ou senhas não coincidem');
+      return;
+    }
 
     let psychologist: Psychologist = {
       nome: this.form.controls['nome'].value,
@@ -49,15 +68,19 @@ export class SignUpPsychologistComponent implements OnInit {
       telefone: this.form.controls['telefone'].value
     };
 
-    this.createPsychologistService.create(psychologist);
-
-    this.router.navigate(['account/sign-in-psychologist']);
-
-
+    try {
+      await this.createPsychologistService.create(psychologist);
+      this.successMessage = 'Conta criada com sucesso! Redirecionando para login...';
+      setTimeout(() => {
+        this.router.navigate(['account/sign-in-psychologist']);
+      }, 2000); // Aguardar 2 segundos antes de redirecionar
+    } catch (error) {
+      console.error('Erro ao criar conta:', error);
+    }
   }
 
   arePasswordsValid() {
-    return this.form.controls['password'].value === this.form.controls['repeatPassword'].value;
+    return this.form.controls['senha'].value === this.form.controls['repeatPassword'].value;
   }
 
 }

@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { MatCardModule } from '@angular/material/card';
 import { provideNativeDateAdapter } from '@angular/material/core';
@@ -20,7 +20,8 @@ import { MakeConsultationComponent } from './views/app/consultation/make-consult
     FormsModule,
     MatCardModule,
     MatDatepickerModule,
-    RouterModule
+    RouterModule,
+    ReactiveFormsModule
     // RouterModule.forRoot(AppRoutes)
   ],
   providers: [

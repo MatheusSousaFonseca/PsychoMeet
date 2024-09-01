@@ -10,13 +10,13 @@ import { Router } from '@angular/router';
 })
 export class HomeComponent {
 
-  constructor(private router : Router){}
+  constructor(private router: Router) { }
 
-  loginPaciente(){
+  loginPaciente() {
     this.router.navigate(['account/sign-in-patient'])
   }
 
-  loginPsicologo(){
+  loginPsicologo() {
     this.router.navigate(['account/sign-in-psychologist'])
   }
 

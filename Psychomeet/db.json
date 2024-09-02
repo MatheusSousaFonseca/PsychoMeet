@@ -10,7 +10,10 @@
       "abordagem": "Terapia Cognitivo-Comportamental",
       "foto": "maria_silva.jpg",
       "especialidade": "Psicologia Clínica",
-      "preco": " R$30,00"
+      "preco": " R$30,00",
+      "senha": "123",
+      "telefone": "(35) 9 9900 - 1234",
+      "data_nascimento": "12/02/1980"
     },
     {
       "id": "2",
@@ -22,7 +25,10 @@
       "abordagem": "Psicologia Infantil",
       "foto": "joao_pereira.jpg",
       "especialidade": "Psicologia Clínica",
-      "preco": " R$30,00"
+      "preco": " R$30,00",
+      "senha": "123",
+      "telefone": "(35) 9 9900 - 1204",
+      "data_nascimento": "12/02/1989"
     },
     {
       "id": "3",
@@ -34,82 +40,10 @@
       "abordagem": "Terapia Familiar",
       "foto": "ana_costa.jpg",
       "especialidade": "Psicologia Clínica",
-      "preco": " R$30,00"
-    },
-    {
-      "id": "03ad",
-      "nome": "karen",
-      "email": "karen@gmail.com",
+      "preco": " R$30,00",
       "senha": "123",
-      "publico": "infantil",
-      "descricao": "lalala",
-      "crp": "1234",
-      "cpf": "123456789",
-      "abordagem": "lalala",
-      "data_nascimento": "12/02/2003",
-      "preco": "25",
-      "especialidade": "lalala",
-      "telefone": "12345"
-    },
-    {
-      "id": "34e8",
-      "nome": "matheus",
-      "email": "matheus@gmail.com",
-      "senha": "12345",
-      "publico": "infantil",
-      "descricao": "lalal",
-      "crp": "1234",
-      "cpf": "098765432",
-      "abordagem": "lalal",
-      "data_nascimento": "12/12/2000",
-      "preco": "30",
-      "especialidade": "lalal",
-      "telefone": "12345"
-    },
-    {
-      "id": "7516",
-      "nome": "bruno",
-      "email": "bruno@gmail",
-      "senha": "lala",
-      "publico": "lala",
-      "descricao": "lala",
-      "crp": "12345",
-      "cpf": "213124456",
-      "abordagem": "lalal",
-      "data_nascimento": "13/09/2000",
-      "preco": "12",
-      "especialidade": "lala",
-      "telefone": "12345"
-    },
-    {
-      "id": "45fc",
-      "nome": "Joana",
-      "email": "karen@gmail",
-      "senha": "12345",
-      "publico": "infantil",
-      "descricao": "lalalala",
-      "crp": "12345",
-      "cpf": "12345",
-      "abordagem": "lallalala",
-      "data_nascimento": "2024-07-02",
-      "preco": "25",
-      "especialidade": "lalalal",
-      "telefone": "123456"
-    },
-    {
-      "id": "ecd8",
-      "nome": "psi",
-      "email": "psi@teste.com",
-      "senha": "123",
-      "publico": "infantil",
-      "descricao": "lalalla",
-      "crp": "123",
-      "cpf": "5454545",
-      "abordagem": "lalala",
-      "data_nascimento": "2024-08-14",
-      "preco": "10",
-      "especialidade": "lalala",
-      "telefone": "55151"
+      "telefone": "(35) 9 9990 - 1234",
+      "data_nascimento": "12/02/1988"
     }
   ],
   "user": [
@@ -142,24 +76,6 @@
       "foto": "paulo_almeida.jpg",
       "data_nascimento": "1978-01-30",
       "cpf": 34567890123
-    },
-    {
-      "id": "3186",
-      "nome": "karen",
-      "email": "karen@gmail",
-      "senha": "123",
-      "cpf": "12345",
-      "data_nascimento": "2024-08-02",
-      "telefone": "123456"
-    },
-    {
-      "id": "0db7",
-      "nome": "pac",
-      "email": "pac@teste.com",
-      "senha": "123",
-      "cpf": "1232",
-      "data_nascimento": "2024-09-19",
-      "telefone": "123"
     }
   ],
   "consultation": [

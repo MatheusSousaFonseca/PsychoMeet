@@ -1,0 +1,225 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<sim-project version="14.30" multi-file="no" uid="simp53fd63ec45b74748be7ea972a75eca95" creation-date="08/29/2024 20:24:06">
+  <meta>
+    <name>Diagrama de Implantação PsychoMeet</name>
+    <authors>Matheus Sousa</authors>
+    <description />
+  </meta>
+  <counters models="1">
+    <entity-names>
+      <counter>
+        <item-type type-id="node" type="Node" />
+        <value>3</value>
+      </counter>
+      <counter>
+        <item-type stereotype="component" type-id="component" type="Component" />
+        <value>3</value>
+      </counter>
+    </entity-names>
+    <entity-ids>
+      <counter>
+        <item-type type-id="node" type="Node" />
+        <value>4</value>
+      </counter>
+      <counter>
+        <item-type type-id="component" type="Component" />
+        <value>4</value>
+      </counter>
+      <counter>
+        <item-type type-id="relationship" type="Association" />
+        <value>3</value>
+      </counter>
+      <counter>
+        <item-type type-id="property" type="Property" />
+        <value>5</value>
+      </counter>
+    </entity-ids>
+    <diagrams>
+      <counter>
+        <type>SoftwareIdeasModeler.Core.Diagrams.UmlDiagrams.UmlDeploymentDiagram</type>
+        <value>1</value>
+      </counter>
+    </diagrams>
+    <fields />
+  </counters>
+  <alias-groups />
+  <management uid="md-8f7308f6bb364514aeea4bbcb331bfa3" name="" task-id-sequence="0">
+    <working-schedule uid="ws-ba0a15c2670540be94bb1128bf3ccae8" hours="8" monday="8" tuesday="8" wednesday="8" thursday="8" friday="8" saturday="0" sunday="0" />
+    <persons>
+      <person id="">
+        <first-name>Matheus</first-name>
+        <last-name>Sousa</last-name>
+        <role />
+        <e-mail />
+        <phone-number />
+        <description />
+        <color>#00000000</color>
+        <working-schedule uid="ws-474f7a421256451c8a0dc444ac8bcaa3" hours="8" monday="8" tuesday="8" wednesday="8" thursday="8" friday="8" saturday="0" sunday="0" />
+      </person>
+      <person id="">
+        <first-name>Matheus</first-name>
+        <last-name>Sousa</last-name>
+        <role />
+        <e-mail />
+        <phone-number />
+        <description />
+        <color>#00000000</color>
+      </person>
+    </persons>
+    <teams />
+    <sprints />
+    <projects />
+    <modules />
+    <tasks />
+    <to-dos />
+  </management>
+  <glossary id="glsr-1b75379db8974524a3561c2e513c785f" name="" order-index="-1" />
+  <types default="UML">
+    <type-sets>
+      <type-set file="UmlTypes.xml" />
+    </type-sets>
+    <custom-types>
+      <parameters />
+      <types>
+        <type id="Class:c953f9e3d9e64d6a9ba7aca00cf90ac1" name="Banco de Dados" class-ref="c953f9e3d9e64d6a9ba7aca00cf90ac1" />
+        <type id="Class:8ebcdf9136554ee69f5cb892e6accad0" name="Sistema Web" class-ref="8ebcdf9136554ee69f5cb892e6accad0" />
+        <type id="Class:16fa3ebd56b4401b94b86a4d64b681c8" name="Dispositivo do usuário" class-ref="16fa3ebd56b4401b94b86a4d64b681c8" />
+      </types>
+    </custom-types>
+  </types>
+  <items>
+    <item id="550da21f5e4a4f15a4ea6da766fc3a33" cid="PROP002" type="property" owner="f9ed6c0615134848880a6c1f9d56273c" creator="" creation-date="08/29/2024 20:26:59" visibility="private">
+      <structural-feature type="Sistema Web" type-id="Class:8ebcdf9136554ee69f5cb892e6accad0" />
+    </item>
+    <item id="063aa4dd20ea4ac09a80abce2d2f034f" cid="PROP003" type="property" owner="3c1a817cbbd1449d8683a67fc310d289" creator="" creation-date="08/29/2024 20:29:48" visibility="private">
+      <structural-feature type="Dispositivo do usuário" type-id="Class:16fa3ebd56b4401b94b86a4d64b681c8" />
+    </item>
+    <item id="c33f375d554843b2bd357f003bc68d6d" cid="PROP004" type="property" owner="3c1a817cbbd1449d8683a67fc310d289" creator="" creation-date="08/29/2024 20:29:48" visibility="private">
+      <structural-feature type="Sistema Web" type-id="Class:8ebcdf9136554ee69f5cb892e6accad0" />
+    </item>
+    <item id="b86e850be5eb4a27be94b3a7852a605c" cid="PROP001" type="property" owner="f9ed6c0615134848880a6c1f9d56273c" creator="" creation-date="08/29/2024 20:26:59" visibility="private">
+      <structural-feature type="Banco de Dados" type-id="Class:c953f9e3d9e64d6a9ba7aca00cf90ac1" />
+    </item>
+  </items>
+  <models>
+    <model id="pd42fc001a91d4978b91e419df74c03da_574617583" name="Model1" namespace="" order-index="1">
+      <meta>
+        <authors>
+          <author> </author>
+        </authors>
+        <description />
+        <creation-date>08/29/2024 20:24:14</creation-date>
+        <change-date>01/01/0001 00:00:00</change-date>
+        <revision-count>0</revision-count>
+        <version />
+      </meta>
+      <abstract-items />
+      <sub-models />
+      <diagram type="uml-deployment" id="pfbd9fbcbbf4147549428355d9045ebb2_719307272" name="Diagrama De Implantação PsychoMeet" order-index="1" uid="" name-style="" auto-routed-paths="false" default-line-style="default" view-location="544,-103">
+        <style>
+          <background-color index="1" color="#FFFFFFFF" />
+          <background-color index="2" color="#FFFFFFFF" />
+          <background-type type="solid" />
+        </style>
+        <meta>
+          <authors>
+            <author> </author>
+          </authors>
+          <description />
+          <creation-date>08/29/2024 20:24:14</creation-date>
+          <change-date>08/29/2024 20:29:48</change-date>
+          <revision-count>0</revision-count>
+          <version />
+        </meta>
+        <abstract-items>
+          <item id="3c1a817cbbd1449d8683a67fc310d289" cid="REL002" type="relationship" name="TCP/IP" creator="" creation-date="08/29/2024 20:29:48" from="16fa3ebd56b4401b94b86a4d64b681c8" to="8ebcdf9136554ee69f5cb892e6accad0" visibility="package">
+            <owned-items />
+            <relation from="16fa3ebd56b4401b94b86a4d64b681c8" to="8ebcdf9136554ee69f5cb892e6accad0" derived="false">
+              <start-role id="umlar-96ebadf2-30b9-4927-9850-0c1188c5992b" name="" navigability="" association-type="association" visibility="private" property-ref="063aa4dd20ea4ac09a80abce2d2f034f" />
+              <end-role id="umlar-c8e878ff-2450-42a7-8c71-1d7187dd11a6" name="" navigability="" association-type="association" visibility="private" property-ref="c33f375d554843b2bd357f003bc68d6d" />
+            </relation>
+          </item>
+          <item id="f9ed6c0615134848880a6c1f9d56273c" cid="REL001" type="relationship" name="TCP/IP" creator="" creation-date="08/29/2024 20:26:59" from="c953f9e3d9e64d6a9ba7aca00cf90ac1" to="8ebcdf9136554ee69f5cb892e6accad0" visibility="package">
+            <owned-items />
+            <relation from="c953f9e3d9e64d6a9ba7aca00cf90ac1" to="8ebcdf9136554ee69f5cb892e6accad0" derived="false">
+              <start-role id="umlar-6739d78b-c8e6-4275-81a3-3a8eb43dd2ea" name="" navigability="" association-type="association" visibility="private" property-ref="b86e850be5eb4a27be94b3a7852a605c" />
+              <end-role id="umlar-c74a5d34-2720-4880-aab2-83751b8103f2" name="" navigability="" association-type="association" visibility="private" property-ref="550da21f5e4a4f15a4ea6da766fc3a33" />
+            </relation>
+          </item>
+          <item id="f2414be1bf6d44179cf20c0b110b38c1" cid="CPT001" type="component" name="SGBD PostgresSQL" owner="c953f9e3d9e64d6a9ba7aca00cf90ac1" creator="" creation-date="08/29/2024 20:24:57" visibility="undefined">
+            <stereotypes>
+              <stereotype name="component" />
+            </stereotypes>
+            <stereotype-instances>
+              <stereotype id="f2414be1bf6d44179cf20c0b110b38c1_component_c" type="component" creation-date="08/29/2024 20:24:57" ref="" />
+            </stereotype-instances>
+            <component />
+          </item>
+          <item id="3bec073415ac42b1bd563cd7cd6b8b70" cid="CPT003" type="component" name="Java" owner="8ebcdf9136554ee69f5cb892e6accad0" creator="" creation-date="08/29/2024 20:28:08" visibility="undefined">
+            <stereotypes>
+              <stereotype name="component" />
+            </stereotypes>
+            <stereotype-instances>
+              <stereotype id="3bec073415ac42b1bd563cd7cd6b8b70_component_c" type="component" creation-date="08/29/2024 20:28:08" ref="" />
+            </stereotype-instances>
+            <component />
+          </item>
+          <item id="16fa3ebd56b4401b94b86a4d64b681c8" cid="NOD003" type="node" name="Dispositivo do usuário" creator="" creation-date="08/29/2024 20:29:15" visibility="undefined" />
+          <item id="8ebcdf9136554ee69f5cb892e6accad0" cid="NOD002" type="node" name="Sistema Web" creator="" creation-date="08/29/2024 20:24:47" visibility="undefined">
+            <owned-items />
+          </item>
+          <item id="c953f9e3d9e64d6a9ba7aca00cf90ac1" cid="NOD001" type="node" name="Banco de Dados" creator="" creation-date="08/29/2024 20:24:37" visibility="undefined">
+            <owned-items />
+          </item>
+          <item id="99a46521ad9542e3be2e59dfe95c2a89" cid="CPT002" type="component" name="Angular" owner="8ebcdf9136554ee69f5cb892e6accad0" creator="" creation-date="08/29/2024 20:25:45" visibility="undefined">
+            <stereotypes>
+              <stereotype name="component" />
+            </stereotypes>
+            <stereotype-instances>
+              <stereotype id="99a46521ad9542e3be2e59dfe95c2a89_component_c" type="component" creation-date="08/29/2024 20:25:45" ref="" />
+            </stereotype-instances>
+            <component />
+          </item>
+        </abstract-items>
+        <layer id="50891b1d06ba43729b81df501c7b8306" name="Default" visible="true" enabled="true" locked="false">
+          <item id="c953f9e3d9e64d6a9ba7aca00cf90ac1" iid="a6e89aba0f534807950e57f9081195c9" creation-date="08/29/2024 20:24:37" order-index="0" type="entity">
+            <layout ax="77" ay="58" awidth="200" aheight="200" x="77" y="58" width="200" height="200" expanded="77,58,200,200" collapsed="0,0,0,0" />
+          </item>
+          <item id="8ebcdf9136554ee69f5cb892e6accad0" iid="e1a0d111eb48489dadee73d0ad5f7ad0" creation-date="08/29/2024 20:24:47" order-index="1" type="entity">
+            <layout ax="477" ay="78" awidth="200" aheight="243" x="477" y="78" width="200" height="243" expanded="477,78,200,243" collapsed="0,0,0,0" />
+          </item>
+          <item id="3bec073415ac42b1bd563cd7cd6b8b70" iid="f845c5e8d21d472b967e9175618834c4" container="8ebcdf9136554ee69f5cb892e6accad0" container-iid="e1a0d111eb48489dadee73d0ad5f7ad0" show-fields="false" creation-date="08/29/2024 20:28:08" order-index="5" type="entity">
+            <layout ax="515" ay="244" awidth="124" aheight="50" x="515" y="244" width="124" height="50" expanded="515,244,124,50" collapsed="0,0,0,0" />
+          </item>
+          <item id="99a46521ad9542e3be2e59dfe95c2a89" iid="94da9fbbe56f44c58d62369d6f8048fe" container="8ebcdf9136554ee69f5cb892e6accad0" container-iid="e1a0d111eb48489dadee73d0ad5f7ad0" show-fields="false" creation-date="08/29/2024 20:25:45" order-index="3" type="entity">
+            <layout ax="498" ay="139" awidth="108" aheight="69" x="423" y="187" width="108" height="69" expanded="498,139,108,69" collapsed="0,0,0,0" />
+          </item>
+          <item id="f2414be1bf6d44179cf20c0b110b38c1" iid="6a5746d48b1e42f6a93ab9cb87a65727" container="c953f9e3d9e64d6a9ba7aca00cf90ac1" container-iid="a6e89aba0f534807950e57f9081195c9" show-fields="false" creation-date="08/29/2024 20:24:57" order-index="2" type="entity">
+            <layout ax="99" ay="128" awidth="108" aheight="100" x="67" y="68" width="108" height="100" expanded="89,128,108,100" collapsed="0,0,0,0" />
+          </item>
+          <item id="f9ed6c0615134848880a6c1f9d56273c" iid="d975d3878ed44ad58b5415da7e2e3f8c" creation-date="08/29/2024 20:26:59" order-index="4" type="relation">
+            <layout start-role-position="25,15" end-role-position="25,-15" start-multiplicity-position="25,-15" end-multiplicity-position="25,15" line-style="oblique" lock-start-point="true" lock-end-point="true" lock-to-fields="false" auto-path="" x1="277" y1="160" x2="477" y2="158" start-border-pos="0.3775" end-border-pos="0.917695477604866" start-local-pos="102" end-local-pos="80" name-position="0,20">
+              <points>
+                <point x="277" y="160" />
+                <point x="477" y="158" />
+              </points>
+            </layout>
+            <relation from="c953f9e3d9e64d6a9ba7aca00cf90ac1" from-iid="a6e89aba0f534807950e57f9081195c9" to="8ebcdf9136554ee69f5cb892e6accad0" to-iid="e1a0d111eb48489dadee73d0ad5f7ad0" />
+          </item>
+          <item id="16fa3ebd56b4401b94b86a4d64b681c8" iid="076e4dd9686545cca876e8a8d14ce2f5" creation-date="08/29/2024 20:29:15" order-index="6" type="entity">
+            <layout ax="855" ay="99.5" awidth="200" aheight="200" x="855" y="99.5" width="200" height="200" expanded="855,99.5,200,200" collapsed="0,0,0,0" />
+          </item>
+          <item id="3c1a817cbbd1449d8683a67fc310d289" iid="00e00952b1394bc4ad1c3a54c19a28cf" creation-date="08/29/2024 20:29:48" order-index="7" type="relation">
+            <layout start-role-position="25,15" end-role-position="25,-15" start-multiplicity-position="25,-15" end-multiplicity-position="25,15" line-style="oblique" lock-start-point="true" lock-end-point="true" lock-to-fields="false" auto-path="" x1="855" y1="167" x2="677" y2="158" start-border-pos="0.915625" end-border-pos="0.3323045267489712" start-local-pos="67.5" end-local-pos="80" name-position="0,20">
+              <points>
+                <point x="855" y="167" />
+                <point x="677" y="158" />
+              </points>
+            </layout>
+            <relation from="16fa3ebd56b4401b94b86a4d64b681c8" from-iid="076e4dd9686545cca876e8a8d14ce2f5" to="8ebcdf9136554ee69f5cb892e6accad0" to-iid="e1a0d111eb48489dadee73d0ad5f7ad0" />
+          </item>
+        </layer>
+      </diagram>
+    </model>
+  </models>
+</sim-project>

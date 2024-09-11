@@ -7,13 +7,13 @@
       "publico": "adultos",
       "descricao": "Psicóloga com especialização em terapia cognitivo-comportamental.",
       "crp": 123456,
+      "cpf": 12345678921,
       "abordagem": "Terapia Cognitivo-Comportamental",
-      "foto": "maria_silva.jpg",
-      "especialidade": "Psicologia Clínica",
+      "data_nascimento": "1980-02-21",
       "preco": " R$30,00",
+      "especialidade": "Psicologia Clínica",
       "senha": "123",
-      "telefone": "(35) 9 9900 - 1234",
-      "data_nascimento": "12/02/1980"
+      "telefone": "(35) 9 9900 - 1234"
     },
     {
       "id": "2",
@@ -44,6 +44,21 @@
       "senha": "123",
       "telefone": "(35) 9 9990 - 1234",
       "data_nascimento": "12/02/1988"
+    },
+    {
+      "id": "1",
+      "nome": "Maria Silva Costa",
+      "email": "maria.silva@example.com",
+      "publico": "adultos",
+      "descricao": "Psicóloga com especialização em terapia cognitivo-comportamental.",
+      "crp": 123456,
+      "cpf": 12345678921,
+      "abordagem": "Terapia Cognitivo-Comportamental",
+      "data_nascimento": "1980-02-12T00:00:00.000Z",
+      "preco": " R$30,00",
+      "especialidade": "Psicologia Clínica",
+      "senha": "123",
+      "telefone": "(35) 9 9900 - 1234"
     }
   ],
   "user": [

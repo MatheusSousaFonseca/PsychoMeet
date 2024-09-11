@@ -10,15 +10,19 @@ export class PsychologistReadService {
 
   constructor(private http: HttpClient) { }
 
-   findById(id: string): Promise<Psychologist> {
-     return firstValueFrom(this.http.get<Psychologist>(`http://localhost:3000/psychologist/${id}`));
-   }
+  findById(id: string): Promise<Psychologist> {
+    return firstValueFrom(this.http.get<Psychologist>(`http://localhost:3000/psychologist/${id}`));
+  }
 
-   findByName(nome: string): Promise<Psychologist[]> {
-     return firstValueFrom(this.http.get<Psychologist[]>(`http://localhost:3000/psychologist?nome=${nome}`));
-   }
+  findByName(nome: string): Promise<Psychologist[]> {
+    return firstValueFrom(this.http.get<Psychologist[]>(`http://localhost:3000/psychologist?nome=${nome}`));
+  }
 
-   findAll(): Promise<Psychologist[]> {
-     return firstValueFrom(this.http.get<Psychologist[]>('http://localhost:3000/psychologist'));
+  findAll(): Promise<Psychologist[]> {
+    return firstValueFrom(this.http.get<Psychologist[]>('http://localhost:3000/psychologist'));
+  }
+
+  findByEmail(email: String): Promise<Psychologist> {
+    return firstValueFrom(this.http.get<Psychologist>(`http://localhost:3000/psychologist?email=${email}`))
   }
 }

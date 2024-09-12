@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<sim-project version="14.30" multi-file="no" uid="simpa563432d64d44c40a2e315114fb2450a" creation-date="08/29/2024 20:50:44">
+<sim-project version="14.30" multi-file="no" uid="simpa563432d64d44c40a2e315114fb2450a" creation-date="09/11/2024 21:47:20">
   <meta>
     <name>Diagrama de Componente PsychoMeet</name>
     <authors>Matheus Sousa</authors>
@@ -9,13 +9,33 @@
     <entity-names>
       <counter>
         <item-type stereotype="component" type-id="component" type="Component" />
-        <value>5</value>
+        <value>28</value>
+      </counter>
+      <counter>
+        <item-type stereotype="interface" type-id="uml-interface-classifier" type="Interface" />
+        <value>1</value>
       </counter>
     </entity-names>
     <entity-ids>
       <counter>
         <item-type type-id="component" type="Component" />
-        <value>6</value>
+        <value>31</value>
+      </counter>
+      <counter>
+        <item-type type-id="uml-interface-classifier" type="Interface" />
+        <value>2</value>
+      </counter>
+      <counter>
+        <item-type type-id="universal-connector" type="Universal Connector" />
+        <value>8</value>
+      </counter>
+      <counter>
+        <item-type type-id="relationship" type="Association" />
+        <value>3</value>
+      </counter>
+      <counter>
+        <item-type type-id="property" type="Property" />
+        <value>5</value>
       </counter>
     </entity-ids>
     <diagrams>
@@ -28,7 +48,28 @@
   </counters>
   <alias-groups />
   <management uid="md-7af3e2727eeb43d780b926c7acf71009" name="" task-id-sequence="0">
+    <working-schedule uid="ws-72b51e567014425b9cd3f69cc91dc9b5" hours="8" monday="8" tuesday="8" wednesday="8" thursday="8" friday="8" saturday="0" sunday="0" />
     <persons>
+      <person id="">
+        <first-name>Matheus</first-name>
+        <last-name>Sousa</last-name>
+        <role />
+        <e-mail />
+        <phone-number />
+        <description />
+        <color>#00000000</color>
+        <working-schedule uid="ws-cfe9c2ab4b00424b834a64d9965d0734" hours="8" monday="8" tuesday="8" wednesday="8" thursday="8" friday="8" saturday="0" sunday="0" />
+      </person>
+      <person id="">
+        <first-name />
+        <last-name />
+        <role />
+        <e-mail />
+        <phone-number />
+        <description />
+        <color>#00000000</color>
+        <working-schedule uid="ws-b691014c683e4b0daa27f42557f1bb8a" hours="8" monday="8" tuesday="8" wednesday="8" thursday="8" friday="8" saturday="0" sunday="0" />
+      </person>
       <person id="">
         <first-name>Matheus</first-name>
         <last-name>Sousa</last-name>
@@ -46,17 +87,34 @@
     <tasks />
     <to-dos />
   </management>
-  <glossary id="glsr-e9273f9ea29f4534a9c329fca15b1837" name="" order-index="-1" />
+  <glossary id="glsr-e9273f9ea29f4534a9c329fca15b1837" name="" order-index="0" />
   <types default="UML">
     <type-sets>
       <type-set file="UmlTypes.xml" />
     </type-sets>
     <custom-types>
       <parameters />
-      <types />
+      <types>
+        <type id="Class:8273156af9f6400ebb08c2e5ceab0259" name="Psicólogo" class-ref="8273156af9f6400ebb08c2e5ceab0259" />
+        <type id="Class:f43e98d355bc42389c1c98793c79f111" name="Tela de Recuperar Senha" class-ref="f43e98d355bc42389c1c98793c79f111" />
+        <type id="Class:1ad7a8b420154f83a710a7a3bc51a0c8" name="Paciente" class-ref="1ad7a8b420154f83a710a7a3bc51a0c8" />
+      </types>
     </custom-types>
   </types>
-  <items />
+  <items>
+    <item id="55a9b58979ad46a9825c4c1680ec375c" cid="PROP003" type="property" owner="5b1d1cb0848e46b4921d23a12f1c20cd" creator="" creation-date="09/10/2024 20:17:39" visibility="private">
+      <structural-feature type="Tela de Recuperar Senha" type-id="Class:f43e98d355bc42389c1c98793c79f111" />
+    </item>
+    <item id="386d3ea3d13b4f7cbcc55c7e8a506886" cid="PROP001" type="property" owner="65c3e427fc224b2fa1c50b862c26b709" creator="" creation-date="09/10/2024 20:17:35" visibility="private">
+      <structural-feature type="Paciente" type-id="Class:1ad7a8b420154f83a710a7a3bc51a0c8" />
+    </item>
+    <item id="45a415a0bf9a4a4983fd8086f030e84d" cid="PROP002" type="property" owner="65c3e427fc224b2fa1c50b862c26b709" creator="" creation-date="09/10/2024 20:17:35" visibility="private">
+      <structural-feature type="Tela de Recuperar Senha" type-id="Class:f43e98d355bc42389c1c98793c79f111" />
+    </item>
+    <item id="752e92c6553841308d2740d1292c8558" cid="PROP004" type="property" owner="5b1d1cb0848e46b4921d23a12f1c20cd" creator="" creation-date="09/10/2024 20:17:39" visibility="private">
+      <structural-feature type="Psicólogo" type-id="Class:8273156af9f6400ebb08c2e5ceab0259" />
+    </item>
+  </items>
   <models>
     <model id="pb91d0411e8864799bdfdc60c556098d0_796424835" name="Model1" namespace="" order-index="1">
       <meta>
@@ -71,7 +129,7 @@
       </meta>
       <abstract-items />
       <sub-models />
-      <diagram type="uml-component" id="pbdbcfacb0a4047d29c1c6ebe93e76647_549882102" name="ComponentDiagram1" order-index="1" uid="" name-style="" auto-routed-paths="false" default-line-style="default">
+      <diagram type="uml-component" id="pbdbcfacb0a4047d29c1c6ebe93e76647_549882102" name="ComponentDiagram1" order-index="1" uid="" name-style="" auto-routed-paths="false" default-line-style="default" view-location="-288,-256">
         <style>
           <background-color index="1" color="#FFFFFFFF" />
           <background-color index="2" color="#FFFFFFFF" />
@@ -83,73 +141,400 @@
           </authors>
           <description />
           <creation-date>08/29/2024 20:50:50</creation-date>
-          <change-date>08/29/2024 20:54:47</change-date>
+          <change-date>09/10/2024 20:18:57</change-date>
           <revision-count>0</revision-count>
           <version />
         </meta>
         <abstract-items>
-          <item id="aad89c0abf36433cba968f92ebd767aa" cid="CPT002" type="component" name="Banco de Dados" creator="" creation-date="08/29/2024 20:54:03">
+          <item id="39ca97fc4a14470e9d69c66ad3fe48d0" cid="CPT015" type="component" name="Sign-in" owner="1ad7a8b420154f83a710a7a3bc51a0c8" creator="" creation-date="09/10/2024 19:57:56" visibility="undefined">
             <stereotypes>
               <stereotype name="component" />
             </stereotypes>
             <stereotype-instances>
-              <stereotype id="aad89c0abf36433cba968f92ebd767aa_component_c" type="component" creation-date="08/29/2024 20:54:03" ref="" />
+              <stereotype id="39ca97fc4a14470e9d69c66ad3fe48d0_component_c" type="component" creation-date="09/11/2024 21:47:20" ref="" />
             </stereotype-instances>
             <component />
           </item>
-          <item id="e1f70729559b4efb81d601f986f5e8a0" cid="CPT001" type="component" name="Angular" creator="" creation-date="08/29/2024 20:52:25">
+          <item id="b8576d7f339349f98d88fc11a8bee36d" cid="CPT011" type="component" name="Postgres" owner="aad89c0abf36433cba968f92ebd767aa" creator="" creation-date="09/10/2024 19:53:21" visibility="undefined">
             <stereotypes>
               <stereotype name="component" />
             </stereotypes>
             <stereotype-instances>
-              <stereotype id="e1f70729559b4efb81d601f986f5e8a0_component_c" type="component" creation-date="08/29/2024 20:52:25" ref="" />
+              <stereotype id="b8576d7f339349f98d88fc11a8bee36d_component_c" type="component" creation-date="09/11/2024 21:47:20" ref="" />
+            </stereotype-instances>
+            <component />
+          </item>
+          <item id="3c4b75609f6146ed9f08ebb93395114d" cid="CPT027" type="component" name="Fornecer Feedback" owner="1ad7a8b420154f83a710a7a3bc51a0c8" creator="" creation-date="09/10/2024 20:15:32" visibility="undefined">
+            <stereotypes>
+              <stereotype name="component" />
+            </stereotypes>
+            <stereotype-instances>
+              <stereotype id="3c4b75609f6146ed9f08ebb93395114d_component_c" type="component" creation-date="09/11/2024 21:47:20" ref="" />
+            </stereotype-instances>
+            <component />
+          </item>
+          <item id="0990fc87186440eb841dbcb8ad090cc7" cid="CPT007" type="component" name="Login" owner="0fe6da5b9a084597a4d277ec8cd3df30" creator="" creation-date="09/10/2024 19:49:06" visibility="undefined">
+            <stereotypes>
+              <stereotype name="component" />
+            </stereotypes>
+            <stereotype-instances>
+              <stereotype id="0990fc87186440eb841dbcb8ad090cc7_component_c" type="component" creation-date="09/11/2024 21:47:20" ref="" />
+            </stereotype-instances>
+            <component />
+          </item>
+          <item id="c4b228e3c34b462690f6f9e5119a210f" cid="CPT003" type="component" name="APIs" owner="b6a708c570914d8581d260a55bd20076" creator="" creation-date="08/29/2024 20:54:13" visibility="undefined">
+            <stereotypes>
+              <stereotype name="component" />
+            </stereotypes>
+            <stereotype-instances>
+              <stereotype id="c4b228e3c34b462690f6f9e5119a210f_component_c" type="component" creation-date="09/11/2024 21:47:20" ref="" />
+            </stereotype-instances>
+            <component />
+          </item>
+          <item id="8b7e3738d1834f839fcfb291169a3c01" cid="CPT023" type="component" name="Visualizar Histórico de Consultas do Psicólogo" owner="0fe6da5b9a084597a4d277ec8cd3df30" creator="" creation-date="09/10/2024 20:12:18" visibility="undefined">
+            <stereotypes>
+              <stereotype name="component" />
+            </stereotypes>
+            <stereotype-instances>
+              <stereotype id="8b7e3738d1834f839fcfb291169a3c01_component_c" type="component" creation-date="09/11/2024 21:47:20" ref="" />
+            </stereotype-instances>
+            <component />
+          </item>
+          <item id="619185774e204fc2a9277b48ea97b7ef" cid="CPT024" type="component" name="Agenda Psicólogo" owner="0fe6da5b9a084597a4d277ec8cd3df30" creator="" creation-date="09/10/2024 20:13:03" visibility="undefined">
+            <stereotypes>
+              <stereotype name="component" />
+            </stereotypes>
+            <stereotype-instances>
+              <stereotype id="619185774e204fc2a9277b48ea97b7ef_component_c" type="component" creation-date="09/11/2024 21:47:20" ref="" />
+            </stereotype-instances>
+            <component />
+          </item>
+          <item id="2016ae2249d1455eba6b7b96039c19d5" cid="CPT026" type="component" name="Visualizar Histórico de Consultas do Paciente" owner="0fe6da5b9a084597a4d277ec8cd3df30" creator="" creation-date="09/10/2024 20:15:06" visibility="undefined">
+            <stereotypes>
+              <stereotype name="component" />
+            </stereotypes>
+            <stereotype-instances>
+              <stereotype id="2016ae2249d1455eba6b7b96039c19d5_component_c" type="component" creation-date="09/11/2024 21:47:20" ref="" />
+            </stereotype-instances>
+            <component />
+          </item>
+          <item id="1a0c4ff7e1724dba911b2cfad8814431" cid="CPT028" type="component" name="Consultas Marcadas" owner="0fe6da5b9a084597a4d277ec8cd3df30" creator="" creation-date="09/10/2024 20:16:05" visibility="undefined">
+            <stereotypes>
+              <stereotype name="component" />
+            </stereotypes>
+            <stereotype-instances>
+              <stereotype id="1a0c4ff7e1724dba911b2cfad8814431_component_c" type="component" creation-date="09/11/2024 21:47:20" ref="" />
+            </stereotype-instances>
+            <component />
+          </item>
+          <item id="4dcf3e4db20f4f1aac487e8b907a7bff" cid="CPT012" type="component" name="Gerenciamento de Psicólogo" owner="b6a708c570914d8581d260a55bd20076" creator="" creation-date="09/10/2024 19:55:29" visibility="undefined">
+            <stereotypes>
+              <stereotype name="component" />
+            </stereotypes>
+            <stereotype-instances>
+              <stereotype id="4dcf3e4db20f4f1aac487e8b907a7bff_component_c" type="component" creation-date="09/11/2024 21:47:20" ref="" />
+            </stereotype-instances>
+            <component />
+          </item>
+          <item id="c1e4f03500924b05aa792938ab637cb0" cid="CPT019" type="component" name="Procurar Psicólogo" owner="0fe6da5b9a084597a4d277ec8cd3df30" creator="" creation-date="09/10/2024 20:01:25" visibility="undefined">
+            <stereotypes>
+              <stereotype name="component" />
+            </stereotypes>
+            <stereotype-instances>
+              <stereotype id="c1e4f03500924b05aa792938ab637cb0_component_c" type="component" creation-date="09/11/2024 21:47:20" ref="" />
+            </stereotype-instances>
+            <component />
+          </item>
+          <item id="0883bd9d41024349b4ee9a0c909c77bb" cid="CPT013" type="component" name="Gerenciamento de Paciente" owner="b6a708c570914d8581d260a55bd20076" creator="" creation-date="09/10/2024 19:56:11" visibility="undefined">
+            <stereotypes>
+              <stereotype name="component" />
+            </stereotypes>
+            <stereotype-instances>
+              <stereotype id="0883bd9d41024349b4ee9a0c909c77bb_component_c" type="component" creation-date="09/11/2024 21:47:20" ref="" />
+            </stereotype-instances>
+            <component />
+          </item>
+          <item id="d4a92f036e464f78b9205de4fcaae4f8" cid="CPT020" type="component" name="Marcar Consulta" owner="0fe6da5b9a084597a4d277ec8cd3df30" creator="" creation-date="09/10/2024 20:01:46" visibility="undefined">
+            <stereotypes>
+              <stereotype name="component" />
+            </stereotypes>
+            <stereotype-instances>
+              <stereotype id="d4a92f036e464f78b9205de4fcaae4f8_component_c" type="component" creation-date="09/11/2024 21:47:20" ref="" />
+            </stereotype-instances>
+            <component />
+          </item>
+          <item id="di1da710d7a6bd44bd84a59e2c1f3680b62281" cid="CPT022" type="component" name="Sign-out" owner="8273156af9f6400ebb08c2e5ceab0259" creator="" creation-date="09/10/2024 19:58:23" visibility="undefined">
+            <stereotypes>
+              <stereotype name="component" />
+            </stereotypes>
+            <stereotype-instances>
+              <stereotype id="d49eddc81b6249bbb7c6c6573528fbfb_component_c" type="component" creation-date="09/11/2024 21:47:20" ref="" />
+            </stereotype-instances>
+            <component />
+          </item>
+          <item id="44d6b62522744d1cb7e07de623e51095" cid="CPT014" type="component" name="Gerenciamento de Consulta" owner="b6a708c570914d8581d260a55bd20076" creator="" creation-date="09/10/2024 19:56:45" visibility="undefined">
+            <stereotypes>
+              <stereotype name="component" />
+            </stereotypes>
+            <stereotype-instances>
+              <stereotype id="44d6b62522744d1cb7e07de623e51095_component_c" type="component" creation-date="09/11/2024 21:47:20" ref="" />
+            </stereotype-instances>
+            <component />
+          </item>
+          <item id="1ad7a8b420154f83a710a7a3bc51a0c8" cid="CPT009" type="component" name="Paciente" owner="8d19c765c9ef410090c51ac4ffc031e4" creator="" creation-date="09/10/2024 19:51:25" visibility="undefined">
+            <stereotypes>
+              <stereotype name="component" />
+            </stereotypes>
+            <stereotype-instances>
+              <stereotype id="1ad7a8b420154f83a710a7a3bc51a0c8_component_c" type="component" creation-date="09/11/2024 21:47:20" ref="" />
             </stereotype-instances>
             <owned-items />
             <component />
           </item>
-          <item id="8b1c0692a55f43b096f8c616bc34182c" cid="CPT005" type="component" name="User Interface" owner="e1f70729559b4efb81d601f986f5e8a0" creator="" creation-date="08/29/2024 20:54:47">
+          <item id="d49eddc81b6249bbb7c6c6573528fbfb" cid="CPT016" type="component" name="Sign-out" owner="1ad7a8b420154f83a710a7a3bc51a0c8" creator="" creation-date="09/10/2024 19:58:23" visibility="undefined">
             <stereotypes>
               <stereotype name="component" />
             </stereotypes>
             <stereotype-instances>
-              <stereotype id="8b1c0692a55f43b096f8c616bc34182c_component_c" type="component" creation-date="08/29/2024 20:54:47" ref="" />
+              <stereotype id="d49eddc81b6249bbb7c6c6573528fbfb_component_c" type="component" creation-date="09/11/2024 21:47:20" ref="" />
             </stereotype-instances>
             <component />
           </item>
-          <item id="c4b228e3c34b462690f6f9e5119a210f" cid="CPT003" type="component" name="APIs" creator="" creation-date="08/29/2024 20:54:13">
+          <item id="5b1d1cb0848e46b4921d23a12f1c20cd" cid="REL002" type="relationship" owner="8d19c765c9ef410090c51ac4ffc031e4" creator="" creation-date="09/10/2024 20:17:39" from="f43e98d355bc42389c1c98793c79f111" to="8273156af9f6400ebb08c2e5ceab0259" visibility="package">
+            <owned-items />
+            <relation from="f43e98d355bc42389c1c98793c79f111" to="8273156af9f6400ebb08c2e5ceab0259" derived="false">
+              <start-role id="umlar-d7dbb870-c6df-4638-8005-1dfd5b997ed4" name="" navigability="" association-type="association" visibility="private" property-ref="55a9b58979ad46a9825c4c1680ec375c" />
+              <end-role id="umlar-b87147b7-7e15-4a1c-8c7d-be4ad334b0eb" name="" navigability="" association-type="association" visibility="private" property-ref="752e92c6553841308d2740d1292c8558" />
+            </relation>
+          </item>
+          <item id="8273156af9f6400ebb08c2e5ceab0259" cid="CPT010" type="component" name="Psicólogo" owner="8d19c765c9ef410090c51ac4ffc031e4" creator="" creation-date="09/10/2024 19:51:47" visibility="undefined">
             <stereotypes>
               <stereotype name="component" />
             </stereotypes>
             <stereotype-instances>
-              <stereotype id="c4b228e3c34b462690f6f9e5119a210f_component_c" type="component" creation-date="08/29/2024 20:54:13" ref="" />
+              <stereotype id="8273156af9f6400ebb08c2e5ceab0259_component_c" type="component" creation-date="09/11/2024 21:47:20" ref="" />
+            </stereotype-instances>
+            <owned-items />
+            <component />
+          </item>
+          <item id="c027b9b4a20a4f7590804b2a6f189eb0" cid="I001" type="uml-interface-classifier" name="Gerenciamento de Paciente" owner="b6a708c570914d8581d260a55bd20076" creator="" creation-date="09/10/2024 19:55:56" visibility="undefined">
+            <stereotypes>
+              <stereotype name="interface" />
+            </stereotypes>
+            <stereotype-instances>
+              <stereotype id="c027b9b4a20a4f7590804b2a6f189eb0_interface_c" type="interface" creation-date="09/11/2024 21:47:20" ref="" />
+            </stereotype-instances>
+          </item>
+          <item id="8b1c0692a55f43b096f8c616bc34182c" cid="CPT005" type="component" name="User Interface" creator="" creation-date="08/29/2024 20:54:47" visibility="undefined">
+            <stereotypes>
+              <stereotype name="component" />
+            </stereotypes>
+            <stereotype-instances>
+              <stereotype id="8b1c0692a55f43b096f8c616bc34182c_component_c" type="component" creation-date="09/11/2024 21:47:20" ref="" />
             </stereotype-instances>
             <component />
           </item>
-          <item id="b6a708c570914d8581d260a55bd20076" cid="CPT004" type="component" name="Backend" creator="" creation-date="08/29/2024 20:54:24">
+          <item id="788715d3d5f241b29f2e8a87b009a1ed" cid="CPT029" type="component" name="Editar Perfil" owner="1ad7a8b420154f83a710a7a3bc51a0c8" creator="" creation-date="09/10/2024 20:17:13" visibility="undefined">
             <stereotypes>
               <stereotype name="component" />
             </stereotypes>
             <stereotype-instances>
-              <stereotype id="b6a708c570914d8581d260a55bd20076_component_c" type="component" creation-date="08/29/2024 20:54:24" ref="" />
+              <stereotype id="788715d3d5f241b29f2e8a87b009a1ed_component_c" type="component" creation-date="09/11/2024 21:47:20" ref="" />
+            </stereotype-instances>
+            <component />
+          </item>
+          <item id="4ee6ead7c74144da9b5d29f0f104f13c" cid="CPT018" type="component" name="Visualizar Perfil" owner="0fe6da5b9a084597a4d277ec8cd3df30" creator="" creation-date="09/10/2024 20:01:12" visibility="undefined">
+            <stereotypes>
+              <stereotype name="component" />
+            </stereotypes>
+            <stereotype-instances>
+              <stereotype id="4ee6ead7c74144da9b5d29f0f104f13c_component_c" type="component" creation-date="09/11/2024 21:47:20" ref="" />
+            </stereotype-instances>
+            <component />
+          </item>
+          <item id="aad89c0abf36433cba968f92ebd767aa" cid="CPT002" type="component" name="Banco de Dados" creator="" creation-date="08/29/2024 20:54:03" visibility="undefined">
+            <stereotypes>
+              <stereotype name="component" />
+            </stereotypes>
+            <stereotype-instances>
+              <stereotype id="aad89c0abf36433cba968f92ebd767aa_component_c" type="component" creation-date="09/11/2024 21:47:20" ref="" />
+            </stereotype-instances>
+            <owned-items />
+            <component />
+          </item>
+          <item id="70272537b84e4e96abf9c9adf47770f5" cid="CPT030" type="component" name="Editar Perfil" owner="8273156af9f6400ebb08c2e5ceab0259" creator="" creation-date="09/10/2024 20:18:13" visibility="undefined">
+            <stereotypes>
+              <stereotype name="component" />
+            </stereotypes>
+            <stereotype-instances>
+              <stereotype id="70272537b84e4e96abf9c9adf47770f5_component_c" type="component" creation-date="09/11/2024 21:47:20" ref="" />
+            </stereotype-instances>
+            <component />
+          </item>
+          <item id="8d19c765c9ef410090c51ac4ffc031e4" cid="CPT008" type="component" name="Forms" owner="0fe6da5b9a084597a4d277ec8cd3df30" creator="" creation-date="09/10/2024 19:51:05" visibility="undefined">
+            <stereotypes>
+              <stereotype name="component" />
+            </stereotypes>
+            <stereotype-instances>
+              <stereotype id="8d19c765c9ef410090c51ac4ffc031e4_component_c" type="component" creation-date="09/11/2024 21:47:20" ref="" />
+            </stereotype-instances>
+            <owned-items />
+            <component />
+          </item>
+          <item id="24777e09c23a4b22bd1ea437fafa8b8e" cid="CPT025" type="component" name="Consultas Pendentes" owner="0fe6da5b9a084597a4d277ec8cd3df30" creator="" creation-date="09/10/2024 20:13:17" visibility="undefined">
+            <stereotypes>
+              <stereotype name="component" />
+            </stereotypes>
+            <stereotype-instances>
+              <stereotype id="24777e09c23a4b22bd1ea437fafa8b8e_component_c" type="component" creation-date="09/11/2024 21:47:20" ref="" />
+            </stereotype-instances>
+            <component />
+          </item>
+          <item id="65c3e427fc224b2fa1c50b862c26b709" cid="REL001" type="relationship" owner="8d19c765c9ef410090c51ac4ffc031e4" creator="" creation-date="09/10/2024 20:17:35" from="1ad7a8b420154f83a710a7a3bc51a0c8" to="f43e98d355bc42389c1c98793c79f111" visibility="package">
+            <owned-items />
+            <relation from="1ad7a8b420154f83a710a7a3bc51a0c8" to="f43e98d355bc42389c1c98793c79f111" derived="false">
+              <start-role id="umlar-f06d6a6f-4980-4dd0-821d-adff1c773c36" name="" navigability="" association-type="association" visibility="private" property-ref="386d3ea3d13b4f7cbcc55c7e8a506886" />
+              <end-role id="umlar-62bc8220-a40a-454b-b163-d288eb9246e5" name="" navigability="" association-type="association" visibility="private" property-ref="45a415a0bf9a4a4983fd8086f030e84d" />
+            </relation>
+          </item>
+          <item id="b6a708c570914d8581d260a55bd20076" cid="CPT004" type="component" name="Backend" creator="" creation-date="08/29/2024 20:54:24" visibility="undefined">
+            <stereotypes>
+              <stereotype name="component" />
+            </stereotypes>
+            <stereotype-instances>
+              <stereotype id="b6a708c570914d8581d260a55bd20076_component_c" type="component" creation-date="09/11/2024 21:47:20" ref="" />
+            </stereotype-instances>
+            <owned-items />
+            <component />
+          </item>
+          <item id="di387dce34ca5f490fa3dcbc5c93e919fd9236" cid="CPT021" type="component" name="Sign-in" owner="8273156af9f6400ebb08c2e5ceab0259" creator="" creation-date="09/10/2024 19:57:56" visibility="undefined">
+            <stereotypes>
+              <stereotype name="component" />
+            </stereotypes>
+            <stereotype-instances>
+              <stereotype id="39ca97fc4a14470e9d69c66ad3fe48d0_component_c" type="component" creation-date="09/11/2024 21:47:20" ref="" />
+            </stereotype-instances>
+            <component />
+          </item>
+          <item id="0fe6da5b9a084597a4d277ec8cd3df30" cid="CPT006" type="component" name="Frontend" creator="" creation-date="09/10/2024 19:48:43" visibility="undefined">
+            <stereotypes>
+              <stereotype name="component" />
+            </stereotypes>
+            <stereotype-instances>
+              <stereotype id="0fe6da5b9a084597a4d277ec8cd3df30_component_c" type="component" creation-date="09/11/2024 21:47:20" ref="" />
+            </stereotype-instances>
+            <owned-items />
+            <component />
+          </item>
+          <item id="f43e98d355bc42389c1c98793c79f111" cid="CPT017" type="component" name="Tela de Recuperar Senha" owner="8d19c765c9ef410090c51ac4ffc031e4" creator="" creation-date="09/10/2024 20:00:17" visibility="undefined">
+            <stereotypes>
+              <stereotype name="component" />
+            </stereotypes>
+            <stereotype-instances>
+              <stereotype id="f43e98d355bc42389c1c98793c79f111_component_c" type="component" creation-date="09/11/2024 21:47:20" ref="" />
             </stereotype-instances>
             <component />
           </item>
         </abstract-items>
         <layer id="998dbb69c46a4bf58b2b162bd6442295" name="Default" visible="true" enabled="true" locked="false">
-          <item id="e1f70729559b4efb81d601f986f5e8a0" iid="e477cbbd8c5b4ee58dde201fde8556c8" show-fields="false" creation-date="08/29/2024 20:52:25" order-index="0" type="entity">
-            <layout ax="121" ay="32" awidth="249" aheight="216" x="121" y="32" width="249" height="216" expanded="121,32,249,216" collapsed="0,0,0,0" />
-          </item>
           <item id="aad89c0abf36433cba968f92ebd767aa" iid="f825a0f5ccb541538c6538e2772322b8" show-fields="false" creation-date="08/29/2024 20:54:03" order-index="1" type="entity">
-            <layout ax="513" ay="32" awidth="140" aheight="160" x="513" y="32" width="140" height="160" expanded="513,32,140,160" collapsed="0,0,0,0" />
+            <layout ax="343" ay="-63" awidth="286" aheight="300" x="343" y="-63" width="286" height="300" expanded="343,-63,286,300" collapsed="0,0,0,0" rotation-center="-0.25524476,0.13666667" />
           </item>
-          <item id="8b1c0692a55f43b096f8c616bc34182c" iid="ada7baddec4d4d30bff9309846b82ab9" container="e1f70729559b4efb81d601f986f5e8a0" container-iid="e477cbbd8c5b4ee58dde201fde8556c8" show-fields="false" creation-date="08/29/2024 20:54:47" order-index="4" type="entity">
-            <layout ax="134" ay="105.5" awidth="105" aheight="69" x="134" y="105.5" width="105" height="69" expanded="134,105.5,105,69" collapsed="0,0,0,0" />
-          </item>
-          <item id="c4b228e3c34b462690f6f9e5119a210f" iid="a19f2ccb6ec346e1b32f2a0ff7bd7cb6" show-fields="false" creation-date="08/29/2024 20:54:13" order-index="2" type="entity">
-            <layout ax="513" ay="274" awidth="140" aheight="160" x="513" y="274" width="140" height="160" expanded="513,274,140,160" collapsed="0,0,0,0" />
+          <item id="b8576d7f339349f98d88fc11a8bee36d" iid="9ba0082b509d4b65b31186013e4b1a1d" container="aad89c0abf36433cba968f92ebd767aa" container-iid="f825a0f5ccb541538c6538e2772322b8" show-fields="false" creation-date="09/10/2024 19:53:21" order-index="10" type="entity">
+            <layout ax="362" ay="7" awidth="140" aheight="160" x="438" y="-7" width="140" height="160" expanded="362,7,140,160" collapsed="0,0,0,0" />
           </item>
           <item id="b6a708c570914d8581d260a55bd20076" iid="2678c4971a4741e0ab72404167ae86f6" show-fields="false" creation-date="08/29/2024 20:54:24" order-index="3" type="entity">
-            <layout ax="147" ay="274" awidth="140" aheight="160" x="143" y="282" width="140" height="160" expanded="147,274,140,160" collapsed="0,0,0,0" />
+            <layout ax="-90" ay="-63" awidth="372" aheight="445" x="-90" y="-63" width="372" height="445" expanded="-90,-63,372,445" collapsed="0,0,0,0" rotation-center="0.31182796,-0.32022473" />
+          </item>
+          <item id="4dcf3e4db20f4f1aac487e8b907a7bff" iid="0ce00fc6ecbe4b9994d7c7f04d8e2064" container="b6a708c570914d8581d260a55bd20076" container-iid="2678c4971a4741e0ab72404167ae86f6" show-fields="false" creation-date="09/10/2024 19:55:29" order-index="11" type="entity">
+            <layout ax="118" ay="10.75" awidth="140" aheight="152.5" x="118" y="10.75" width="140" height="160" expanded="118,10.75,140,152.5" collapsed="0,0,0,0" />
+          </item>
+          <item id="0883bd9d41024349b4ee9a0c909c77bb" iid="01ffdf35fc584b54ab03bb919bf38930" container="b6a708c570914d8581d260a55bd20076" container-iid="2678c4971a4741e0ab72404167ae86f6" show-fields="false" creation-date="09/10/2024 19:56:11" order-index="12" type="entity">
+            <layout ax="118" ay="199" awidth="140" aheight="160" x="118" y="199" width="140" height="160" expanded="118,199,140,160" collapsed="0,0,0,0" />
+          </item>
+          <item id="44d6b62522744d1cb7e07de623e51095" iid="122f191aa5c149dda34eab752fc0f27d" container="b6a708c570914d8581d260a55bd20076" container-iid="2678c4971a4741e0ab72404167ae86f6" show-fields="false" creation-date="09/10/2024 19:56:45" order-index="13" type="entity">
+            <layout ax="-55.5" ay="199" awidth="136.5" aheight="160" x="-55.5" y="199" width="140" height="160" expanded="-55.5,199,136.5,160" collapsed="0,0,0,0" />
+          </item>
+          <item id="c4b228e3c34b462690f6f9e5119a210f" iid="a19f2ccb6ec346e1b32f2a0ff7bd7cb6" container="b6a708c570914d8581d260a55bd20076" container-iid="2678c4971a4741e0ab72404167ae86f6" show-fields="false" creation-date="08/29/2024 20:54:13" order-index="2" type="entity">
+            <layout ax="-38.75" ay="32" awidth="103" aheight="95" x="-38.75" y="32" width="103" height="95" expanded="-38.75,32,103,95" collapsed="0,0,0,0" rotation-center="-0.0631068,0.057894737" />
+          </item>
+          <item id="0fe6da5b9a084597a4d277ec8cd3df30" iid="c7b156bbdbc04a208975c254c28e8b64" show-fields="false" creation-date="09/10/2024 19:48:43" order-index="5" type="entity">
+            <layout ax="662" ay="-63" awidth="722" aheight="1340" x="662" y="-63" width="722" height="1340" expanded="662,-63,722,1340" collapsed="0,0,0,0" rotation-center="-0.33240998,-0.42761195" />
+          </item>
+          <item id="4ee6ead7c74144da9b5d29f0f104f13c" iid="6213af44bd384693b08d30cfa8dad6e0" container="0fe6da5b9a084597a4d277ec8cd3df30" container-iid="c7b156bbdbc04a208975c254c28e8b64" show-fields="false" creation-date="09/10/2024 20:01:12" order-index="17" type="entity">
+            <layout ax="869.5" ay="7" awidth="137" aheight="160" x="869.5" y="7" width="140" height="160" expanded="869.5,7,137,160" collapsed="0,0,0,0" />
+          </item>
+          <item id="c1e4f03500924b05aa792938ab637cb0" iid="d7ae306b898744479cb7a45eaea1d1d9" container="0fe6da5b9a084597a4d277ec8cd3df30" container-iid="c7b156bbdbc04a208975c254c28e8b64" show-fields="false" creation-date="09/10/2024 20:01:25" order-index="18" type="entity">
+            <layout ax="1038" ay="7" awidth="140" aheight="160" x="1038" y="7" width="140" height="160" expanded="1038,7,140,160" collapsed="0,0,0,0" />
+          </item>
+          <item id="d4a92f036e464f78b9205de4fcaae4f8" iid="ffe2e83b82dc4a7794536076f5d8615d" container="0fe6da5b9a084597a4d277ec8cd3df30" container-iid="c7b156bbdbc04a208975c254c28e8b64" show-fields="false" creation-date="09/10/2024 20:01:46" order-index="19" type="entity">
+            <layout ax="1211" ay="7" awidth="140" aheight="160" x="1211" y="7" width="140" height="160" expanded="1211,7,140,160" collapsed="0,0,0,0" />
+          </item>
+          <item id="8b7e3738d1834f839fcfb291169a3c01" iid="9ef1688f1792481d8c23b63f52827627" container="0fe6da5b9a084597a4d277ec8cd3df30" container-iid="c7b156bbdbc04a208975c254c28e8b64" show-fields="false" creation-date="09/10/2024 20:12:18" order-index="20" type="entity">
+            <layout ax="695" ay="8.25" awidth="140" aheight="157.5" x="695" y="8.25" width="140" height="160" expanded="695,8.25,140,157.5" collapsed="0,0,0,0" />
+          </item>
+          <item id="619185774e204fc2a9277b48ea97b7ef" iid="f795904fcd424bde9b00738e192b162e" container="0fe6da5b9a084597a4d277ec8cd3df30" container-iid="c7b156bbdbc04a208975c254c28e8b64" show-fields="false" creation-date="09/10/2024 20:13:03" order-index="21" type="entity">
+            <layout ax="1038" ay="207.625" awidth="140" aheight="158.75" x="1038" y="207.625" width="140" height="160" expanded="1038,207.625,140,158.75" collapsed="0,0,0,0" />
+          </item>
+          <item id="24777e09c23a4b22bd1ea437fafa8b8e" iid="508deb0b2e2f4da9bfbc3f2641e6a2e4" container="0fe6da5b9a084597a4d277ec8cd3df30" container-iid="c7b156bbdbc04a208975c254c28e8b64" show-fields="false" creation-date="09/10/2024 20:13:17" order-index="22" type="entity">
+            <layout ax="1211" ay="207.3125" awidth="140" aheight="159.375" x="1211" y="207.3125" width="140" height="160" expanded="1211,207.3125,140,159.375" collapsed="0,0,0,0" />
+          </item>
+          <item id="2016ae2249d1455eba6b7b96039c19d5" iid="d6ca408e6a6e4ab595c3e87c1e868a6d" container="0fe6da5b9a084597a4d277ec8cd3df30" container-iid="c7b156bbdbc04a208975c254c28e8b64" show-fields="false" creation-date="09/10/2024 20:15:06" order-index="23" type="entity">
+            <layout ax="695" ay="207" awidth="140" aheight="160" x="695" y="207" width="140" height="160" expanded="695,207,140,160" collapsed="0,0,0,0" />
+          </item>
+          <item id="1a0c4ff7e1724dba911b2cfad8814431" iid="a626ec28c4654949bce4b3d1e2cd6e87" container="0fe6da5b9a084597a4d277ec8cd3df30" container-iid="c7b156bbdbc04a208975c254c28e8b64" show-fields="false" creation-date="09/10/2024 20:16:05" order-index="25" type="entity">
+            <layout ax="868" ay="207" awidth="140" aheight="160" x="868" y="207" width="140" height="160" expanded="868,207,140,160" collapsed="0,0,0,0" />
+          </item>
+          <item id="8d19c765c9ef410090c51ac4ffc031e4" iid="31e0d65b63314f8995769260abf36b9c" container="0fe6da5b9a084597a4d277ec8cd3df30" container-iid="c7b156bbdbc04a208975c254c28e8b64" show-fields="false" creation-date="09/10/2024 19:51:05" order-index="7" type="entity">
+            <layout ax="693" ay="407" awidth="660" aheight="829" x="693" y="407" width="660" height="829" expanded="693,407,660,829" collapsed="0,0,0,0" rotation-center="-0.3939394,-0.4034982" />
+          </item>
+          <item id="1ad7a8b420154f83a710a7a3bc51a0c8" iid="bd218216b26742f2bd38f1c8bd2fc16c" container="8d19c765c9ef410090c51ac4ffc031e4" container-iid="31e0d65b63314f8995769260abf36b9c" show-fields="false" creation-date="09/10/2024 19:51:25" order-index="8" type="entity">
+            <layout ax="719.5" ay="492" awidth="286" aheight="445" x="740.5" y="641" width="286" height="445" expanded="719.5,492,286,445" collapsed="0,0,0,0" rotation-center="-0.48776224,-0.32022473" />
+          </item>
+          <item id="8273156af9f6400ebb08c2e5ceab0259" iid="7a99f3bddc494ee9ab5ca488f8673c25" container="8d19c765c9ef410090c51ac4ffc031e4" container-iid="31e0d65b63314f8995769260abf36b9c" show-fields="false" creation-date="09/10/2024 19:51:47" order-index="9" type="entity">
+            <layout ax="1058" ay="492" awidth="272" aheight="445" x="1079" y="641" width="272" height="445" expanded="1058,492,272,445" collapsed="0,0,0,0" rotation-center="-0.0992647,-0.39325842" />
+          </item>
+          <item id="f43e98d355bc42389c1c98793c79f111" iid="539071c22b314eacaa194e877f4a7d6e" container="8d19c765c9ef410090c51ac4ffc031e4" container-iid="31e0d65b63314f8995769260abf36b9c" show-fields="false" creation-date="09/10/2024 20:00:17" order-index="16" type="entity">
+            <layout ax="953" ay="1022" awidth="140" aheight="160" x="953" y="1022" width="140" height="160" expanded="953,1022,140,160" collapsed="0,0,0,0" />
+          </item>
+          <item id="d49eddc81b6249bbb7c6c6573528fbfb" iid="93e86ca5467247d88b18e4fb9c7794dc" container="1ad7a8b420154f83a710a7a3bc51a0c8" container-iid="bd218216b26742f2bd38f1c8bd2fc16c" show-fields="false" creation-date="09/10/2024 19:58:23" order-index="15" type="entity">
+            <layout ax="736" ay="760" awidth="103" aheight="135" x="819" y="909" width="103" height="135" expanded="736,760,103,135" collapsed="0,0,0,0" rotation-center="0.17961165,0.17407407" />
+          </item>
+          <item id="di1da710d7a6bd44bd84a59e2c1f3680b62281" iid="5e9905f4331747ae9e62b415965c0c04" container="8273156af9f6400ebb08c2e5ceab0259" container-iid="7a99f3bddc494ee9ab5ca488f8673c25" show-fields="false" creation-date="09/10/2024 19:58:23" order-index="15" type="entity">
+            <layout ax="1159.5" ay="736" awidth="86" aheight="112" x="1377.5" y="885" width="86" height="112" expanded="1159.5,736,86,112" collapsed="0,0,0,0" rotation-center="0.3139535,0.21428572" />
+          </item>
+          <item id="70272537b84e4e96abf9c9adf47770f5" iid="68107e4245b345ff840d967fc5df79ad" container="8273156af9f6400ebb08c2e5ceab0259" container-iid="7a99f3bddc494ee9ab5ca488f8673c25" show-fields="false" creation-date="09/10/2024 20:18:13" order-index="29" type="entity">
+            <layout ax="1217.5" ay="576" awidth="92" aheight="124" x="1435.5" y="725" width="92" height="124" expanded="1217.5,576,92,124" collapsed="0,0,0,0" rotation-center="0.26086956,0.14516129" />
+          </item>
+          <item id="di387dce34ca5f490fa3dcbc5c93e919fd9236" iid="47eb664e96834e82a905889b681d1e42" container="8273156af9f6400ebb08c2e5ceab0259" container-iid="7a99f3bddc494ee9ab5ca488f8673c25" show-fields="false" creation-date="09/10/2024 19:57:56" order-index="14" type="entity">
+            <layout ax="1077.5" ay="576" awidth="103" aheight="124" x="1059.5" y="727" width="103" height="124" expanded="1077.5,576,103,124" collapsed="0,0,0,0" rotation-center="0.17961165,0.14516129" />
+          </item>
+          <item id="3c4b75609f6146ed9f08ebb93395114d" iid="3821e5db48564177ad43eab54241c30e" container="1ad7a8b420154f83a710a7a3bc51a0c8" container-iid="bd218216b26742f2bd38f1c8bd2fc16c" show-fields="false" creation-date="09/10/2024 20:15:32" order-index="24" type="entity">
+            <layout ax="900.25" ay="576" awidth="86" aheight="124" x="983.25" y="725" width="86" height="124" expanded="900.25,576,86,124" collapsed="0,0,0,0" rotation-center="0.3139535,0.14516129" />
+          </item>
+          <item id="788715d3d5f241b29f2e8a87b009a1ed" iid="c9cdf0ff212e4123bb290919afca56e7" container="1ad7a8b420154f83a710a7a3bc51a0c8" container-iid="bd218216b26742f2bd38f1c8bd2fc16c" show-fields="false" creation-date="09/10/2024 20:17:13" order-index="26" type="entity">
+            <layout ax="900.25" ay="760" awidth="86" aheight="135" x="983.25" y="909" width="86" height="135" expanded="900.25,760,86,135" collapsed="0,0,0,0" rotation-center="0.3139535,0.08888889" />
+          </item>
+          <item id="39ca97fc4a14470e9d69c66ad3fe48d0" iid="3d73b06222ac45838f6f736ee1283627" container="1ad7a8b420154f83a710a7a3bc51a0c8" container-iid="bd218216b26742f2bd38f1c8bd2fc16c" show-fields="false" creation-date="09/10/2024 19:57:56" order-index="14" type="entity">
+            <layout ax="736" ay="576" awidth="103" aheight="124" x="819" y="725" width="103" height="124" expanded="736,576,103,124" collapsed="0,0,0,0" rotation-center="0.17961165,0.14516129" />
+          </item>
+          <item id="65c3e427fc224b2fa1c50b862c26b709" iid="6270d43d34f9426c9c93dc620ac6afa7" container="8d19c765c9ef410090c51ac4ffc031e4" container-iid="31e0d65b63314f8995769260abf36b9c" creation-date="09/10/2024 20:17:35" order-index="27" type="relation">
+            <layout start-role-position="25,15" end-role-position="25,-15" start-multiplicity-position="25,-15" end-multiplicity-position="25,15" line-style="oblique" lock-start-point="true" lock-end-point="true" lock-to-fields="false" auto-path="" x1="853" y1="937" x2="953" y2="1131" start-border-pos="0.633709519136408" end-border-pos="0.8296875" start-local-pos="237" end-local-pos="109" name-position="0,20">
+              <points>
+                <point x="853" y="937" />
+                <point x="953" y="1131" />
+              </points>
+            </layout>
+            <relation from="1ad7a8b420154f83a710a7a3bc51a0c8" from-iid="bd218216b26742f2bd38f1c8bd2fc16c" to="f43e98d355bc42389c1c98793c79f111" to-iid="539071c22b314eacaa194e877f4a7d6e" />
+          </item>
+          <item id="5b1d1cb0848e46b4921d23a12f1c20cd" iid="3a765406c3654cd694aa537dd9060678" container="8d19c765c9ef410090c51ac4ffc031e4" container-iid="31e0d65b63314f8995769260abf36b9c" creation-date="09/10/2024 20:17:39" order-index="28" type="relation">
+            <layout start-role-position="25,15" end-role-position="25,-15" start-multiplicity-position="25,-15" end-multiplicity-position="25,15" line-style="oblique" lock-start-point="true" lock-end-point="true" lock-to-fields="false" auto-path="" x1="1093" y1="1139" x2="1194" y2="937" start-border-pos="0.4328125" end-border-pos="0.625" start-local-pos="117" end-local-pos="232" name-position="0,20">
+              <points>
+                <point x="1093" y="1139" />
+                <point x="1194" y="937" />
+              </points>
+            </layout>
+            <relation from="f43e98d355bc42389c1c98793c79f111" from-iid="539071c22b314eacaa194e877f4a7d6e" to="8273156af9f6400ebb08c2e5ceab0259" to-iid="7a99f3bddc494ee9ab5ca488f8673c25" />
           </item>
         </layer>
       </diagram>

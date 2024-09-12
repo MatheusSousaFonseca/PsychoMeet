@@ -40,7 +40,18 @@
   </counters>
   <alias-groups />
   <management uid="md-7d941de6bc7a4f1d89f28534e966331a" name="" task-id-sequence="0">
+    <working-schedule uid="ws-212f2b56ea794d1ebcdaa0c170aebf9b" hours="8" monday="8" tuesday="8" wednesday="8" thursday="8" friday="8" saturday="0" sunday="0" />
     <persons>
+      <person id="">
+        <first-name>Matheus</first-name>
+        <last-name>Sousa</last-name>
+        <role />
+        <e-mail />
+        <phone-number />
+        <description />
+        <color>#00000000</color>
+        <working-schedule uid="ws-7d4164f1539e45f788fd5db0e6dc8848" hours="8" monday="8" tuesday="8" wednesday="8" thursday="8" friday="8" saturday="0" sunday="0" />
+      </person>
       <person id="">
         <first-name>Matheus</first-name>
         <last-name>Sousa</last-name>
@@ -100,7 +111,7 @@
           <version />
         </meta>
         <abstract-items>
-          <item id="306be9aa1c4c4b14bf53a2a8d4eeb26f" cid="C001" type="class" name="Paciente" owner="4bc529742dfb4f85a9f35c716ee3e0d2" creator="" creation-date="09/03/2024 20:14:14" />
+          <item id="306be9aa1c4c4b14bf53a2a8d4eeb26f" cid="C001" type="class" name="Paciente" owner="4bc529742dfb4f85a9f35c716ee3e0d2" creator="" creation-date="09/03/2024 20:14:14" visibility="undefined" />
           <item id="a9221495fdc44769b5f987513988fe31" cid="DEP001" type="dependency" creator="" creation-date="09/03/2024 20:14:59" from="2a06c9706e764d97b439d01ab45d3620" to="4bc529742dfb4f85a9f35c716ee3e0d2" visibility="package">
             <stereotypes>
               <stereotype name="import" />
@@ -109,19 +120,19 @@
               <stereotype id="a9221495fdc44769b5f987513988fe31_import_c" type="import" creation-date="09/03/2024 20:14:59" ref="" />
             </stereotype-instances>
           </item>
-          <item id="cf4ccd4a35e74ff28ebed9c33c5f8b87" cid="C003" type="class" name="Paciente" owner="fe654d818c8d4c15a70b76baffc8433a" creator="" creation-date="09/03/2024 20:21:55" />
-          <item id="6cd875cb19f340d1acbc3f73cf3151b0" cid="C005" type="class" name="Disponibilidade Psicólogo" owner="fe654d818c8d4c15a70b76baffc8433a" creator="" creation-date="09/03/2024 20:24:47" />
-          <item id="b8aa0cfd67f1444a84c45c3306513455" cid="C004" type="class" name="Psicólogo" owner="fe654d818c8d4c15a70b76baffc8433a" creator="" creation-date="09/03/2024 20:22:07" />
-          <item id="fe654d818c8d4c15a70b76baffc8433a" cid="PKG004" type="package" name="Model" owner="881f4afac96646c09d5c6c7772428d0a" creator="" creation-date="09/03/2024 20:24:12">
+          <item id="cf4ccd4a35e74ff28ebed9c33c5f8b87" cid="C003" type="class" name="Paciente" owner="fe654d818c8d4c15a70b76baffc8433a" creator="" creation-date="09/03/2024 20:21:55" visibility="undefined" />
+          <item id="b8aa0cfd67f1444a84c45c3306513455" cid="C004" type="class" name="Psicólogo" owner="fe654d818c8d4c15a70b76baffc8433a" creator="" creation-date="09/03/2024 20:22:07" visibility="undefined" />
+          <item id="6cd875cb19f340d1acbc3f73cf3151b0" cid="C005" type="class" name="Disponibilidade Psicólogo" owner="fe654d818c8d4c15a70b76baffc8433a" creator="" creation-date="09/03/2024 20:24:47" visibility="undefined" />
+          <item id="fe654d818c8d4c15a70b76baffc8433a" cid="PKG004" type="package" name="Model" owner="881f4afac96646c09d5c6c7772428d0a" creator="" creation-date="09/03/2024 20:24:12" visibility="undefined">
             <owned-items />
           </item>
-          <item id="881f4afac96646c09d5c6c7772428d0a" cid="PKG002" type="package" name="Gerenciamento de Consulta" creator="" creation-date="09/03/2024 20:13:24">
+          <item id="881f4afac96646c09d5c6c7772428d0a" cid="PKG002" type="package" name="Gerenciamento de Consulta" creator="" creation-date="09/03/2024 20:13:24" visibility="undefined">
             <owned-items />
           </item>
-          <item id="6e1527fd7ff34ee6949f59ddb77d33a8" cid="C002" type="class" name="Psicólogo" owner="4bc529742dfb4f85a9f35c716ee3e0d2" creator="" creation-date="09/03/2024 20:14:32" />
-          <item id="4bc529742dfb4f85a9f35c716ee3e0d2" cid="PKG001" type="package" name="Gerenciamento de Usuário" creator="" creation-date="09/03/2024 20:13:08">
+          <item id="4bc529742dfb4f85a9f35c716ee3e0d2" cid="PKG001" type="package" name="Gerenciamento de Usuário" creator="" creation-date="09/03/2024 20:13:08" visibility="undefined">
             <owned-items />
           </item>
+          <item id="6e1527fd7ff34ee6949f59ddb77d33a8" cid="C002" type="class" name="Psicólogo" owner="4bc529742dfb4f85a9f35c716ee3e0d2" creator="" creation-date="09/03/2024 20:14:32" visibility="undefined" />
           <item id="e0d73d35ddf34689abe8636c64a78292" cid="DEP002" type="dependency" creator="" creation-date="09/03/2024 20:20:39" from="881f4afac96646c09d5c6c7772428d0a" to="4bc529742dfb4f85a9f35c716ee3e0d2" visibility="package">
             <stereotypes>
               <stereotype name="import" />
@@ -130,9 +141,9 @@
               <stereotype id="e0d73d35ddf34689abe8636c64a78292_import_c" type="import" creation-date="09/03/2024 20:20:39" ref="" />
             </stereotype-instances>
           </item>
-          <item id="2a06c9706e764d97b439d01ab45d3620" cid="PKG003" type="package" name="Autentificação de Usuário" creator="" creation-date="09/03/2024 20:13:41" />
-          <item id="8be2852965f4492187cd093a437c0d07" cid="C006" type="class" name="Horário" owner="fe654d818c8d4c15a70b76baffc8433a" creator="" creation-date="09/03/2024 20:25:30" />
-          <item id="dc04dd0409df41f48f358fadbd3f09be" cid="C007" type="class" name="Consulta" owner="fe654d818c8d4c15a70b76baffc8433a" creator="" creation-date="09/03/2024 20:25:45" />
+          <item id="2a06c9706e764d97b439d01ab45d3620" cid="PKG003" type="package" name="Autentificação de Usuário" creator="" creation-date="09/03/2024 20:13:41" visibility="undefined" />
+          <item id="8be2852965f4492187cd093a437c0d07" cid="C006" type="class" name="Horário" owner="fe654d818c8d4c15a70b76baffc8433a" creator="" creation-date="09/03/2024 20:25:30" visibility="undefined" />
+          <item id="dc04dd0409df41f48f358fadbd3f09be" cid="C007" type="class" name="Consulta" owner="fe654d818c8d4c15a70b76baffc8433a" creator="" creation-date="09/03/2024 20:25:45" visibility="undefined" />
         </abstract-items>
         <layer id="48025b28177d407eb0faf6d22cdb39d3" name="Default" visible="true" enabled="true" locked="false">
           <item id="4bc529742dfb4f85a9f35c716ee3e0d2" iid="3ccf2ad332254606b5c6650ca9b91a37" creation-date="09/03/2024 20:13:08" order-index="0" type="entity">

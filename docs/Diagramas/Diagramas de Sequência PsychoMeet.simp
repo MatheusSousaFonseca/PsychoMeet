@@ -16,10 +16,6 @@
         <value>3</value>
       </counter>
       <counter>
-        <item-type type="Unknown" />
-        <value>1</value>
-      </counter>
-      <counter>
         <item-type type-id="sequence-action" type="Message" />
         <value>4</value>
       </counter>
@@ -60,7 +56,18 @@
   </counters>
   <alias-groups />
   <management uid="md-ec603f4e1f6d418ab087c42475e6e690" name="" task-id-sequence="0">
+    <working-schedule uid="ws-99be8e2d5f1e493081f7293be1f91809" hours="8" monday="8" tuesday="8" wednesday="8" thursday="8" friday="8" saturday="0" sunday="0" />
     <persons>
+      <person id="">
+        <first-name>Matheus</first-name>
+        <last-name>Sousa</last-name>
+        <role />
+        <e-mail />
+        <phone-number />
+        <description />
+        <color>#00000000</color>
+        <working-schedule uid="ws-9c7d4f95e7d141d286eecc8aba9cccb5" hours="8" monday="8" tuesday="8" wednesday="8" thursday="8" friday="8" saturday="0" sunday="0" />
+      </person>
       <person id="">
         <first-name>Matheus</first-name>
         <last-name>Sousa</last-name>
@@ -113,13 +120,13 @@
     <item id="4ff3b86b71e749448f766d7db24ab3c0" cid="ES002" type="activation-bar" name="ExecutionSpecification2" owner="0833f7806b464a4b8d66f3ba5b248f8a" creation-date="09/03/2024 19:48:48" visibility="undefined">
       <activation-bar lifeline-ref="0833f7806b464a4b8d66f3ba5b248f8a" />
     </item>
-    <item id="b6136ffbe07640e1a22f0b439dc3a217" cid="SM004" type="sequence-action" name="Message4" creation-date="09/03/2024 19:52:10" from="ca69719e08e84344b40044c609b49921" visibility="package">
-      <sequence-action type="reply" message="Retorna a validaçãos dos dados" is-asynchronous="false" return-value="" assign-to-variable="">
+    <item id="8425503651f24fbbbd99b7285359a38c" cid="SM003" type="sequence-action" name="Message3" creation-date="09/03/2024 19:50:00" from="4ff3b86b71e749448f766d7db24ab3c0" to="ca69719e08e84344b40044c609b49921" visibility="package">
+      <sequence-action type="call" message="Valida usuário e senha no banco" is-asynchronous="false" return-value="" assign-to-variable="">
         <parameters />
       </sequence-action>
     </item>
-    <item id="8425503651f24fbbbd99b7285359a38c" cid="SM003" type="sequence-action" name="Message3" creation-date="09/03/2024 19:50:00" from="4ff3b86b71e749448f766d7db24ab3c0" to="ca69719e08e84344b40044c609b49921" visibility="package">
-      <sequence-action type="call" message="Valida usuário e senha no banco" is-asynchronous="false" return-value="" assign-to-variable="">
+    <item id="b6136ffbe07640e1a22f0b439dc3a217" cid="SM004" type="sequence-action" name="Message4" creation-date="09/03/2024 19:52:10" from="ca69719e08e84344b40044c609b49921" visibility="package">
+      <sequence-action type="reply" message="Retorna a validaçãos dos dados" is-asynchronous="false" return-value="" assign-to-variable="">
         <parameters />
       </sequence-action>
     </item>
@@ -176,7 +183,7 @@
           <version />
         </meta>
         <abstract-items>
-          <item id="59c6afe003564086ba2917c343ddf17a" cid="LL001" type="lifeline" name="Autentificação" creator="" creation-date="09/03/2024 19:46:47">
+          <item id="59c6afe003564086ba2917c343ddf17a" cid="LL001" type="lifeline" name="Autentificação" creator="" creation-date="09/03/2024 19:46:47" visibility="undefined">
             <stereotypes>
               <stereotype name="entity" />
             </stereotypes>
@@ -191,7 +198,7 @@
               <parameters />
             </sequence-action>
           </item>
-          <item id="d0f425e59375496b8ceea9cc96dc81eb" cid="ES003" type="activation-bar" name="ExecutionSpecification3" owner="92a2a2dc545d416087859d2fa24bef99" creator="" creation-date="09/03/2024 19:49:35">
+          <item id="d0f425e59375496b8ceea9cc96dc81eb" cid="ES003" type="activation-bar" name="ExecutionSpecification3" owner="92a2a2dc545d416087859d2fa24bef99" creator="" creation-date="09/03/2024 19:49:35" visibility="undefined">
             <activation-bar lifeline-ref="92a2a2dc545d416087859d2fa24bef99" />
           </item>
           <item id="692f16f705f044e093ab9de2257cd4b0" cid="SM001" type="sequence-action" name="Message1" creator="" creation-date="09/03/2024 19:48:45" from="0a46124265064b95a23051cd923ceac4" to="44bc8af3092648caaeca8dcee64788b1" visibility="package">
@@ -199,7 +206,7 @@
               <parameters />
             </sequence-action>
           </item>
-          <item id="92a2a2dc545d416087859d2fa24bef99" cid="LL002" type="lifeline" name="Banco de Dados" creator="" creation-date="09/03/2024 19:47:16">
+          <item id="92a2a2dc545d416087859d2fa24bef99" cid="LL002" type="lifeline" name="Banco de Dados" creator="" creation-date="09/03/2024 19:47:16" visibility="undefined">
             <stereotypes>
               <stereotype name="entity" />
             </stereotypes>
@@ -209,16 +216,16 @@
             <owned-items />
             <lifeline classifier-name="" selector="" is-multi-object="false" />
           </item>
-          <item id="44bc8af3092648caaeca8dcee64788b1" cid="ES002" type="activation-bar" name="ExecutionSpecification2" owner="59c6afe003564086ba2917c343ddf17a" creator="" creation-date="09/03/2024 19:48:48">
+          <item id="44bc8af3092648caaeca8dcee64788b1" cid="ES002" type="activation-bar" name="ExecutionSpecification2" owner="59c6afe003564086ba2917c343ddf17a" creator="" creation-date="09/03/2024 19:48:48" visibility="undefined">
             <activation-bar lifeline-ref="59c6afe003564086ba2917c343ddf17a" />
           </item>
-          <item id="0a46124265064b95a23051cd923ceac4" cid="ES001" type="activation-bar" name="ExecutionSpecification1" owner="2ecfc3225c5d4a499994a28b99050310" creator="" creation-date="09/03/2024 19:48:39" />
+          <item id="0a46124265064b95a23051cd923ceac4" cid="ES001" type="activation-bar" name="ExecutionSpecification1" owner="2ecfc3225c5d4a499994a28b99050310" creator="" creation-date="09/03/2024 19:48:39" visibility="undefined" />
           <item id="26fc3c8981944a8cbf363e054e608b39" cid="SM003" type="sequence-action" name="Message3" creator="" creation-date="09/03/2024 19:50:00" from="44bc8af3092648caaeca8dcee64788b1" to="d0f425e59375496b8ceea9cc96dc81eb" visibility="package">
             <sequence-action type="call" message="Valida usuário e senha no banco" is-asynchronous="false" return-value="" assign-to-variable="">
               <parameters />
             </sequence-action>
           </item>
-          <item id="2ecfc3225c5d4a499994a28b99050310" cid="AC001" type="actor" name="Usuário" creator="" creation-date="09/03/2024 19:46:31">
+          <item id="2ecfc3225c5d4a499994a28b99050310" cid="AC001" type="actor" name="Usuário" creator="" creation-date="09/03/2024 19:46:31" visibility="undefined">
             <owned-items />
           </item>
         </abstract-items>
@@ -295,7 +302,7 @@
           </item>
         </layer>
       </diagram>
-      <diagram type="uml-class" id="pa1503e07a0c6480f891fb30b70954d67_217991345" name="Diagrama de Sequência Cenário Alternativo" order-index="2" overview-order-index="0" uid="" name-style="" auto-routed-paths="false" default-line-style="default" view-location="0,66">
+      <diagram type="uml-class" id="pa1503e07a0c6480f891fb30b70954d67_217991345" name="Diagrama de Sequência Cenário Alternativo" order-index="2" overview-order-index="0" uid="" name-style="" auto-routed-paths="false" default-line-style="default" view-location="0,9">
         <style>
           <background-color index="1" color="#FFFFFFFF" />
           <background-color index="2" color="#FFFFFFFF" />

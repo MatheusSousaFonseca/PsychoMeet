@@ -21,4 +21,8 @@ export class UserReadService {
   findAll(): Promise<User[]> {
     return firstValueFrom(this.http.get<User[]>('http://localhost:3000/user'));
   }
+
+  findByEmail(email: String): Promise<User[]> {
+    return firstValueFrom(this.http.get<User[]>(`http://localhost:3000/user?email=${email}`))
+  }
 }

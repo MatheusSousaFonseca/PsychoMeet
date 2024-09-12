@@ -17,18 +17,17 @@
     },
     {
       "id": "2",
-      "nome": "João Pereira",
+      "nome": "João Pereira da Silva",
       "email": "joao.pereira@example.com",
       "publico": "crianças e adolescentes",
       "descricao": "Experiência em psicologia infantil e adolescente.",
       "crp": 789012,
       "abordagem": "Psicologia Infantil",
-      "foto": "joao_pereira.jpg",
-      "especialidade": "Psicologia Clínica",
+      "data_nascimento": "1989-12-02",
       "preco": " R$30,00",
+      "especialidade": "Psicologia Clínica",
       "senha": "123",
-      "telefone": "(35) 9 9900 - 1204",
-      "data_nascimento": "12/02/1989"
+      "telefone": "(35) 9 9900 - 1204"
     },
     {
       "id": "3",
@@ -64,12 +63,11 @@
   "user": [
     {
       "id": "1",
-      "nome": "Carlos Souza",
+      "nome": "Carlos Souza da Silva",
       "email": "carlos.souza@example.com",
       "senha": "senha123",
       "telefone": "(11) 98765-4321",
-      "foto": "carlos_souza.jpg",
-      "data_nascimento": "1985-04-15",
+      "data_nascimento": "1985-04-26",
       "cpf": 12345678901
     },
     {

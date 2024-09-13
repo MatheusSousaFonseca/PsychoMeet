@@ -4,6 +4,7 @@ import { User } from '../../../../domain/model/user-model';
 import { UserReadService } from '../../../../services/user/user-read-service';
 import { Consultation } from '../../../../domain/model/consultation-model';
 import { ConsultationReadService } from '../../../../services/consultation/consultation-read-service';
+import { PsychologistReadService } from '../../../../services/psychologist/psychologist-read.service';
 
 @Component({
   selector: 'app-view-consultation-psychologist',
@@ -18,7 +19,7 @@ export class ViewConsultationPsychologistComponent {
 
   consultations: Consultation[] = [];
 
-  constructor(private router: Router, private userReadService: UserReadService, private consultationReadService: ConsultationReadService) { }
+  constructor(private router: Router, private userReadService: UserReadService, private consultationReadService: ConsultationReadService, private psychologistReadService: PsychologistReadService) { }
 
   ngOnInit(): void {
     this.loadUsers();
@@ -38,7 +39,17 @@ export class ViewConsultationPsychologistComponent {
   }
 
   async loadConsultations() {
-    this.consultations = await this.consultationReadService.findAll();
+    let email = localStorage.getItem("email")
+    let psychologist = await this.psychologistReadService.findByEmail(email!)
+    console.log(psychologist)
+    this.consultations = await this.consultationReadService.findByIdPsicologoAccept(psychologist[0].id!);
+  }
+
+  getUserName(id: string){
+    return this.users.find((user)=>{
+      return user.id===id
+    })?.nome
+    
   }
 
   acessarPerfilPsicologo() {

@@ -5,6 +5,7 @@ import { Psychologist } from '../../../../domain/model/psychologist-model';
 import { PsychologistReadService } from '../../../../services/psychologist/psychologist-read.service';
 import { Consultation } from '../../../../domain/model/consultation-model';
 import { ConsultationReadService } from '../../../../services/consultation/consultation-read-service';
+import { UserReadService } from '../../../../services/user/user-read-service';
 
 @Component({
   selector: 'app-view-consultation-patient',
@@ -21,7 +22,7 @@ export class ViewConsultationPatientComponent implements OnInit {
 
   modalRef: NgbModalRef | null = null;
 
-  constructor(private router: Router, private modalService: NgbModal, private psychologistReadService: PsychologistReadService, private consultationReadService: ConsultationReadService) { }
+  constructor(private router: Router, private modalService: NgbModal, private psychologistReadService: PsychologistReadService, private consultationReadService: ConsultationReadService, private userReadService: UserReadService) { }
 
   ngOnInit(): void {
     this.loadConsultations();
@@ -33,6 +34,7 @@ export class ViewConsultationPatientComponent implements OnInit {
   }
 
   consultasMarcadas() {
+    
     this.router.navigate(['consultation/view-scheduled-consultation']);
 
   }
@@ -55,7 +57,9 @@ export class ViewConsultationPatientComponent implements OnInit {
   }
 
   async loadConsultations() {
-    this.consultations = await this.consultationReadService.findAll();
+    let email = localStorage.getItem("email")
+    let paciente = await this.userReadService.findByEmail(email!)
+    this.consultations = await this.consultationReadService.findByIdPacienteAccept(paciente[0].id!);
   }
 
 }

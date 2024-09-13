@@ -5,7 +5,6 @@
   </div>
 
   <ul class="list-group mb-3">
-    @for (user of users; track $index) {
       @for (consultation of consultations; track $index){
         <li class="list-group-item">
 
@@ -13,15 +12,15 @@
             <div class="card-body">
               <div class="d-flex justify-content-between align-items-center">
                 <div>
-                  <h5 class="card-title">{{user.nome}}</h5>
+                  <h5 class="card-title">{{getUserName(consultation.idPaciente)}}</h5>
                   <p class="card-text">Data: {{consultation.diaDaSemana}} às {{consultation.hora}}</p>
                   <!-- <p class="card-text">Descrição: {{consultation.descricao}}</p> -->
                 </div>
                 <div>
-                  <button class="btn btn-success me-2" (click)="openMyModal(content)">
+                  <button class="btn btn-success me-2" (click)="openMyModal(content, consultation)">
                     <i class="fas fa-check"></i> Aceitar
                            </button>
-                  <button class="btn btn-danger me-2" (click)="openMyModal(content2)">
+                  <button class="btn btn-danger me-2" (click)="openMyModal(content2, consultation)">
                     <i class="fas fa-check"></i> Recusar
                            </button>
                 </div>
@@ -34,7 +33,7 @@
         </li>
 
       }
-    }
+    
   </ul>
 
 

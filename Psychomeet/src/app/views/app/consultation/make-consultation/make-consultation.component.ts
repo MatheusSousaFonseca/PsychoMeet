@@ -8,6 +8,7 @@ import { Psychologist } from '../../../../domain/model/psychologist-model';
 import { Consultation } from '../../../../domain/model/consultation-model';
 import { ConsultationCreateService } from '../../../../services/consultation/consultation-create-service';
 import { ToastrService } from 'ngx-toastr';
+import { UserReadService } from '../../../../services/user/user-read-service';
 
 
 
@@ -31,7 +32,7 @@ export class MakeConsultationComponent implements OnInit {
 
   diaSelecionada!: string
 
-  constructor(private router: Router, private modalService: NgbModal, private activatedRoute: ActivatedRoute, private psychologistReadService: PsychologistReadService, private formBuilder: FormBuilder, private consultationCreateService:ConsultationCreateService, private toastrService: ToastrService) {
+  constructor(private router: Router, private modalService: NgbModal, private activatedRoute: ActivatedRoute, private psychologistReadService: PsychologistReadService, private formBuilder: FormBuilder, private consultationCreateService:ConsultationCreateService, private toastrService: ToastrService, private userReadService: UserReadService) {
   }
 
   ngOnInit(): void {
@@ -141,12 +142,18 @@ export class MakeConsultationComponent implements OnInit {
     }
   }
 
+  
   async create() {
+    let email = localStorage.getItem("email")
+    let paciente = await this.userReadService.findByEmail(email!)
     let consultation : Consultation = {
       hora: this.horaSelecionada,
       diaDaSemana: this.diaSelecionada,
       nomePsicologo: this.psychologist.nome,
-      idPsicologo: this.psychologist.id!
+      idPsicologo: this.psychologist.id!,
+      idPaciente: paciente[0].id!,
+      status: "PENDENTE"
+
     }
 
     let consultationResponse = await this.consultationCreateService.create(consultation)

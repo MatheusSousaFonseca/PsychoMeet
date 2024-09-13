@@ -7,6 +7,7 @@ import { Psychologist } from '../../../../domain/model/psychologist-model';
 import { Consultation } from '../../../../domain/model/consultation-model';
 import { ConsultationDeleteService } from '../../../../services/consultation/consultation-delete-service';
 import { ToastrService } from 'ngx-toastr';
+import { UserReadService } from '../../../../services/user/user-read-service';
 
 
 @Component({
@@ -28,7 +29,7 @@ export class ViewScheduledConsultationComponent {
 
 
 
-  constructor(private router: Router, private modalService: NgbModal, private consultationReadService: ConsultationReadService, private consultationDeleteService: ConsultationDeleteService,private toastrService: ToastrService) { }
+  constructor(private router: Router, private modalService: NgbModal, private consultationReadService: ConsultationReadService, private consultationDeleteService: ConsultationDeleteService,private toastrService: ToastrService, private userReadService: UserReadService) { }
 
   ngOnInit(): void {
     this.loadConsultations();
@@ -82,6 +83,8 @@ async desmarcarConsulta(consultationId: string) {
   }
 
   async loadConsultations() {
-    this.consultations = await this.consultationReadService.findAll();
+    let email = localStorage.getItem("email")
+    let paciente = await this.userReadService.findByEmail(email!)
+    this.consultations = await this.consultationReadService.findByIdPacientePendente(paciente[0].id!);
   }
 }

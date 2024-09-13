@@ -3,5 +3,8 @@ export interface Consultation {
     hora: string,
     diaDaSemana: string,
     nomePsicologo: string,
-    idPsicologo: string
+    idPsicologo: string,
+    idPaciente: string,
+    status: string
+
 }

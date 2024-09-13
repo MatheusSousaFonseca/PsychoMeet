@@ -21,4 +21,20 @@ export class ConsultationReadService {
   findAll(): Promise<Consultation[]> {
     return firstValueFrom(this.http.get<Consultation[]>('http://localhost:3000/consultation'));
  }
+
+ findByIdPsicologoAccept(id: string): Promise<Consultation[]> {
+  return firstValueFrom(this.http.get<Consultation[]>(`http://localhost:3000/consultation?idPsicologo=${id}&status=ACCEPT`));
+}
+
+findByIdPsicologoPendente(id: string): Promise<Consultation[]> {
+  return firstValueFrom(this.http.get<Consultation[]>(`http://localhost:3000/consultation?idPsicologo=${id}&status=PENDENTE`));
+}
+
+findByIdPacientePendente(id: string): Promise<Consultation[]> {
+  return firstValueFrom(this.http.get<Consultation[]>(`http://localhost:3000/consultation?idPaciente=${id}&status=PENDENTE`));
+}
+
+findByIdPacienteAccept(id: string): Promise<Consultation[]> {
+  return firstValueFrom(this.http.get<Consultation[]>(`http://localhost:3000/consultation?idPaciente=${id}&status=ACCEPT`));
+}
 }

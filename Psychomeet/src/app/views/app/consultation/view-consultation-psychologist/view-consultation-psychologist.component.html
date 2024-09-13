@@ -23,7 +23,6 @@
 </div>
 
     <ul class="list-group mb-3">
-        @for (user of users; track $index) {
             @for (consultation of consultations; track $index) {
                 <li class="list-group-item">
 
@@ -31,7 +30,7 @@
                         <div class="card-body">
                             <div class="d-flex justify-content-between align-items-center">
                                 <div>
-                                    <h5 class="card-title">{{user.nome}}</h5>
+                                    <h5 class="card-title">{{getUserName(consultation.idPaciente)}}</h5>
                                     <p class="card-text">Data: {{consultation.diaDaSemana}} às {{consultation.hora}}</p>
                                 </div>
                             </div>
@@ -42,7 +41,7 @@
             }
 
 
-        }
+        
 
 
     </ul>

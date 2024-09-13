@@ -17,7 +17,7 @@
     },
     {
       "id": "2",
-      "nome": "João Pereira da Silva",
+      "nome": "João Pereira",
       "email": "joao.pereira@example.com",
       "publico": "crianças e adolescentes",
       "descricao": "Experiência em psicologia infantil e adolescente.",
@@ -97,28 +97,45 @@
       "hora": "08:00",
       "diaDaSemana": "Segunda-feira",
       "nomePsicologo": "Maria Silva",
-      "idPsicologo": "1"
+      "idPsicologo": "1",
+      "idPaciente": "2",
+      "status": "PENDENTE"
     },
     {
       "id": "f897",
       "hora": "8:00 - 9:00",
       "diaDaSemana": "Segunda-feira",
       "nomePsicologo": "João Pereira",
-      "idPsicologo": "2"
+      "idPsicologo": "3",
+      "idPaciente": "1",
+      "status": "ACCEPT"
     },
     {
       "id": "6103",
       "hora": "10:00 - 11:00",
       "diaDaSemana": "Quarta-feira",
       "nomePsicologo": "João Pereira",
-      "idPsicologo": "2"
+      "idPsicologo": "2",
+      "idPaciente": "3",
+      "status": "PENDENTE"
     },
     {
       "id": "bdf6",
       "hora": "11:00 - 12:00",
       "diaDaSemana": "Sexta-feira",
       "nomePsicologo": "bruno",
-      "idPsicologo": "7516"
+      "idPsicologo": "3",
+      "idPaciente": "1",
+      "status": "PENDENTE"
+    },
+    {
+      "id": "568d",
+      "hora": "8:00 - 9:00",
+      "diaDaSemana": "Segunda-feira",
+      "nomePsicologo": "João Pereira",
+      "idPsicologo": "3",
+      "idPaciente": "3",
+      "status": "ACCEPT"
     }
   ],
   "availability": [

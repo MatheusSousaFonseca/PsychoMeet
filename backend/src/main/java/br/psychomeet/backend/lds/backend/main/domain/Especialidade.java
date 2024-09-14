@@ -8,8 +8,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 
-public class Consultation {
-
+public class Especialidade {
     private int id;
-
+    private String descricao;
 }

@@ -7,8 +7,10 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-
-public class Psychologist {
+public class Abordagem {
 
     private int id;
+    private int psicologoId;
+    private String abordagem;
+
 }

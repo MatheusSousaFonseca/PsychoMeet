@@ -1,15 +1,14 @@
--- Dropping tables if they exist
-DROP TABLE  consulta IF EXISTS
-DROP TABLE  dia IF EXISTS
-DROP TABLE  agendamento IF EXISTS
-DROP TABLE  disponibilidade IF EXISTS
-DROP TABLE  psicologo_especialidade IF EXISTS
-DROP TABLE  especialidade IF EXISTS
-DROP TABLE  abordagem IF EXISTS
-DROP TABLE  publico IF EXISTS
-DROP TABLE  psicologo IF EXISTS
-DROP TABLE  paciente IF EXISTS
-DROP TABLE  pessoa IF EXISTS
+DROP TABLE IF EXISTS consulta;
+DROP TABLE IF EXISTS dia;
+DROP TABLE IF EXISTS agendamento;
+DROP TABLE IF EXISTS disponibilidade;
+DROP TABLE IF EXISTS psicologo_especialidade;
+DROP TABLE IF EXISTS especialidade;
+DROP TABLE IF EXISTS abordagem;
+DROP TABLE IF EXISTS publico;
+DROP TABLE IF EXISTS psicologo;
+DROP TABLE IF EXISTS paciente;
+DROP TABLE IF EXISTS pessoa;
 
 -- Creating tables
 CREATE TABLE pessoa (

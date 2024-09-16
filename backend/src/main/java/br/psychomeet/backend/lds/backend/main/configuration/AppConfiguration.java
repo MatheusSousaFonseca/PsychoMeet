@@ -1,9 +1,11 @@
 package br.psychomeet.backend.lds.backend.main.configuration;
 
 import br.psychomeet.backend.lds.backend.main.dao.fake.PessoaFakeDaoImpl;
+import br.psychomeet.backend.lds.backend.main.dao.fake.PsicologoFakeDaoImpl;
 import br.psychomeet.backend.lds.backend.main.dao.fake.UserFakeDaoImpl;
 import br.psychomeet.backend.lds.backend.main.dao.h2.UserH2DaoImpl;
 import br.psychomeet.backend.lds.backend.main.dao.postgres.UserPostgresDaoImpl;
+import br.psychomeet.backend.lds.backend.main.port.dao.psicologo.PsicologoDao;
 import br.psychomeet.backend.lds.backend.main.port.dao.user.PessoaDao;
 import br.psychomeet.backend.lds.backend.main.port.dao.user.UserDao;
 import org.springframework.context.annotation.Bean;
@@ -26,6 +28,12 @@ public class AppConfiguration {
     @Profile("fake")
     public PessoaDao getPessoaFakeDao(){
         return new PessoaFakeDaoImpl();
+    }
+
+    @Bean
+    @Profile("fake")
+    public PsicologoDao getPsicologoFakeDao(){
+        return new PsicologoFakeDaoImpl();
     }
 
     @Bean

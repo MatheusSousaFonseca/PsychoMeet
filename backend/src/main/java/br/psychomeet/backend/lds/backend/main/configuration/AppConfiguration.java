@@ -23,11 +23,7 @@ import java.sql.Connection;
 @Configuration
 public class AppConfiguration {
 
-    @Bean
-    @Profile("fake")
-    public UserDao getUserFakeDao(){
-        return new UserFakeDaoImpl();
-    }
+
 
     @Bean
     @Profile("fake")
@@ -82,6 +78,24 @@ public class AppConfiguration {
     @Profile("prod")
     public EspecialidadeDao getEspecialidadePostgresDao(final Connection connection) {
         return new EspecialidadePostgresDaoImpl(connection);
+    }
+
+    @Bean
+    @Profile("prod")
+    public PessoaDao getPessoaPostgresDao(final Connection connection) {
+        return new PessoaPostgresDaoImpl(connection);
+    }
+
+    @Bean
+    @Profile("prod")
+    public PsicologoDao getPsicologoPostgresDao(final Connection connection) {
+        return new PsicologoPostgresDaoImpl(connection);
+    }
+
+    @Bean
+    @Profile("prod")
+    public PacienteDao getPacientePostgresDao(final Connection connection) {
+        return new PacientePostgresDaoImpl(connection);
     }
 }
 

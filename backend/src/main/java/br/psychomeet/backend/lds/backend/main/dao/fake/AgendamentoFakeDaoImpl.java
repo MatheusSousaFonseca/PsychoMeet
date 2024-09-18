@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-@Repository
+//@Repository
 public class AgendamentoFakeDaoImpl implements AgendamentoDao {
 
     private static List<Agendamento> agendamentos = new ArrayList<>();

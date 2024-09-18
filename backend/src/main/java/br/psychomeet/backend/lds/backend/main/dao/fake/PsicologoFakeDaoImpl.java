@@ -46,6 +46,7 @@ public class PsicologoFakeDaoImpl implements PsicologoDao {
 
     @Override
     public List<Psicologo> readAll() {
+
         return psicologos;
     }
 

@@ -1,10 +1,12 @@
 package br.psychomeet.backend.lds.backend.main.configuration;
 
+import br.psychomeet.backend.lds.backend.main.dao.fake.PacienteFakeDaoImpl;
 import br.psychomeet.backend.lds.backend.main.dao.fake.PessoaFakeDaoImpl;
 import br.psychomeet.backend.lds.backend.main.dao.fake.PsicologoFakeDaoImpl;
 import br.psychomeet.backend.lds.backend.main.dao.fake.UserFakeDaoImpl;
 import br.psychomeet.backend.lds.backend.main.dao.h2.UserH2DaoImpl;
 import br.psychomeet.backend.lds.backend.main.dao.postgres.UserPostgresDaoImpl;
+import br.psychomeet.backend.lds.backend.main.port.dao.paciente.PacienteDao;
 import br.psychomeet.backend.lds.backend.main.port.dao.psicologo.PsicologoDao;
 import br.psychomeet.backend.lds.backend.main.port.dao.user.PessoaDao;
 import br.psychomeet.backend.lds.backend.main.port.dao.user.UserDao;
@@ -36,6 +38,11 @@ public class AppConfiguration {
         return new PsicologoFakeDaoImpl();
     }
 
+    @Bean
+    @Profile("fake")
+    public PacienteDao getPacienteFakeDao(){
+        return new PacienteFakeDaoImpl();
+    }
     @Bean
     @Profile("dev")
     public UserDao getH2Dao(final JdbcTemplate jdbcTemplate){

@@ -1,24 +1,22 @@
 <div class="container mt-5">
   <div class="d-flex justify-content-between align-items-center mb-4">
-
     <button class="btn btn-danger" (click)="voltar()">X</button>
   </div>
   <div class="row">
     <!-- Perfil do Usuário -->
     <div class="col-md-6">
-
       <div class="media">
         <img src="assets/user.png" class="mr-3 rounded-circle" alt="User Image" width="100" height="100">
         <div class="media-body">
-
           <h5 class="mt-0">Nome: {{psychologist.nome}}</h5>
           <p>CRP: {{psychologist.crp}}</p>
           <p>Especialidade: {{psychologist.especialidade}}</p>
           <p>Descrição: {{psychologist.descricao}}</p>
-
         </div>
       </div>
     </div>
+
+    <!-- Calendário de Disponibilidade -->
     <div class="container mt-5">
       <div class="row">
         <div class="col-md-12">
@@ -31,87 +29,37 @@
                   @for(day of days; track $index){
                   <th>{{ day }}</th>
                   }
-
                 </tr>
               </thead>
               <tbody>
-                <!-- @for(time of times; track $index){
-              <tr >
-                <td>{{ time }}</td>
-                @for(day of days; track $index){
-                  <td  >
-                   <button (click)="openModal(time, day)">
-                    <i class="fas fa-calendar-alt text-warning"></i>
-                   </button>
-                   
-                  </td>
-                }
-                
-              </tr>
-            } -->
                 @for(time of horarioLista; track $index){
                 <tr>
                   <td>{{ time.hora }}</td>
-                  <td>
-                    <button class="btn calendar-button" (click)="openMyModal(content, time.hora, time.segunda)">
-                      <i class="fas fa-calendar-alt text-warning"></i>
-                    </button>
-                  </td>
-                  <td>
-                    <button class="btn calendar-button" (click)="openMyModal(content, time.hora, time.terca)">
-                      <i class="fas fa-calendar-alt text-warning"></i>
-                    </button>
-                  </td>
-                  <td>
-                    <button class="btn calendar-button" (click)="openMyModal(content, time.hora, time.quarta)">
-                      <i class="fas fa-calendar-alt text-warning"></i>
-                    </button>
-                  </td>
-                  <td>
-                    <button class="btn calendar-button" (click)="openMyModal(content, time.hora, time.quinta)">
-                      <i class="fas fa-calendar-alt text-warning"></i>
-                    </button>
-                  </td>
-                  <td>
-                    <button class="btn calendar-button" (click)="openMyModal(content, time.hora, time.sexta)">
-                      <i class="fas fa-calendar-alt text-warning"></i>
-                    </button>
-                  </td>
-                  <td>
-                    <button class="btn calendar-button" (click)="openMyModal(content, time.hora, time.sabado)">
-                      <i class="fas fa-calendar-alt text-warning"></i>
-                    </button>
-                  </td>
-                  <td>
-                    <button class="btn calendar-button" (click)="openMyModal(content, time.hora, time.domingo)">
-                      <i class="fas fa-calendar-alt text-warning"></i>
-                    </button>
-                  </td>
+                  <td><button class="btn calendar-button" (click)="openMyModal(content, time.hora, time.segunda)">
+                      <i class="fas fa-calendar-alt text-warning"></i></button></td>
+                  <td><button class="btn calendar-button" (click)="openMyModal(content, time.hora, time.terca)">
+                      <i class="fas fa-calendar-alt text-warning"></i></button></td>
+                  <td><button class="btn calendar-button" (click)="openMyModal(content, time.hora, time.quarta)">
+                      <i class="fas fa-calendar-alt text-warning"></i></button></td>
+                  <td><button class="btn calendar-button" (click)="openMyModal(content, time.hora, time.quinta)">
+                      <i class="fas fa-calendar-alt text-warning"></i></button></td>
+                  <td><button class="btn calendar-button" (click)="openMyModal(content, time.hora, time.sexta)">
+                      <i class="fas fa-calendar-alt text-warning"></i></button></td>
+                  <td><button class="btn calendar-button" (click)="openMyModal(content, time.hora, time.sabado)">
+                      <i class="fas fa-calendar-alt text-warning"></i></button></td>
+                  <td><button class="btn calendar-button" (click)="openMyModal(content, time.hora, time.domingo)">
+                      <i class="fas fa-calendar-alt text-warning"></i></button></td>
                 </tr>
                 }
-
-
-
-
-                <!-- <tr *ngFor="let time of times">
-              <td>{{ time }}</td>
-              <td *ngFor="let day of days" (click)="openModal(time, day)">
-                <i class="fas fa-calendar-alt text-warning"></i>
-              </td>
-            </tr> -->
               </tbody>
             </table>
           </div>
         </div>
       </div>
 
-      <!-- <div class="modal" tabindex="-1" role="dialog" [ngClass]="{'show': isModalOpen}" style="display: block;" *ngIf="isModalOpen"> -->
-
-
-      <!-- <div class="modal"> -->
-      <div class="modal" tabindex="-1" role="dialog" [class.show]="isModalOpen" style="display: block;"
-        *ngIf="isModalOpen">
-
+      
+      <!-- Modal para marcar consulta -->
+      <div class="modal" tabindex="-1" role="dialog" [class.show]="isModalOpen" style="display: block;" *ngIf="isModalOpen">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
             <div class="modal-header">
@@ -130,28 +78,24 @@
           </div>
         </div>
       </div>
+
+      <ng-template #content let-modal="modal">
+        <div class="modal-header">
+          <h4 class="modal-title" id="modal-basic-title">Marcar consulta</h4>
+          <button type="button" class="close" aria-label="Close" (click)="closeMyModal()">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>Marcar consulta com Dr. {{psychologist.nome}} dia 24/06/2024 às 08:00.</p>
+          <button class="btn btn-success" (click)="marcarConsulta()">MARCAR CONSULTA</button>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline-dark" (click)="closeMyModal()">Fechar</button>
+        </div>
+      </ng-template>
+
     </div>
-
-    <ng-template #content let-modal="modal">
-      <div class="modal-header">
-        <h4 class="modal-title" id="modal-basic-title">Marcar consulta</h4>
-        <button type="button" class="close" aria-label="Close" (click)="closeMyModal()">
-          <span aria-hidden="true">&times;</span>  
-
-        </button>
-      </div>
-      <div class="modal-body">  
-
-        <p>Marcar consulta com Dr. {{psychologist.nome}} dia 24/06/2024 às 08:00.</p>
-        <button class="btn btn-success" (click)="marcarConsulta()">MARCAR CONSULTA</button>
-      </div>
-
-      <div class="modal-footer">
-        <button type="button" class="btn btn-outline-dark" (click)="closeMyModal()">Fechar</button>
-      </div>  
-
-        
-    </ng-template>
 
   </div>
 </div>

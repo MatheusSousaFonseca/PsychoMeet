@@ -63,11 +63,11 @@
   "user": [
     {
       "id": "1",
-      "nome": "Carlos Souza ",
+      "nome": "Carlos Souza Pereira",
       "email": "carlos.souza@example.com",
       "senha": "senha123",
       "telefone": "(11) 98765-4321",
-      "data_nascimento": "1985-04-26",
+      "data_nascimento": "1985-04-30",
       "cpf": 12345678901
     },
     {

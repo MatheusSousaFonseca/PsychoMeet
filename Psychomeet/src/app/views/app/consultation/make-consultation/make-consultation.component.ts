@@ -22,6 +22,8 @@ import { UserReadService } from '../../../../services/user/user-read-service';
 })
 export class MakeConsultationComponent implements OnInit {
 
+
+
   form!: FormGroup;
 
   modalRef: NgbModalRef | null = null;

@@ -1,4 +1,3 @@
--- Dropping tables if they exist
 DROP TABLE IF EXISTS consulta;
 DROP TABLE IF EXISTS dia;
 DROP TABLE IF EXISTS agendamento;
@@ -11,7 +10,7 @@ DROP TABLE IF EXISTS psicologo;
 DROP TABLE IF EXISTS paciente;
 DROP TABLE IF EXISTS pessoa;
 
--- Creating tables
+
 CREATE TABLE pessoa (
                         id serial PRIMARY KEY,
                         telefone varchar(15) NOT NULL UNIQUE,

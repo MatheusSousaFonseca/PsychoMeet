@@ -2,6 +2,7 @@ package br.psychomeet.backend.lds.backend.main.controler;
 
 import br.psychomeet.backend.lds.backend.main.domain.Paciente;
 import br.psychomeet.backend.lds.backend.main.port.service.paciente.PacienteService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
@@ -13,6 +14,7 @@ import java.util.List;
 @RequestMapping("/api/paciente")
 public class PacienteRestController {
 
+    @Autowired
     private final PacienteService pacienteService;
 
     public PacienteRestController(PacienteService pacienteService) {

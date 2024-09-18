@@ -49,11 +49,18 @@ public class AppConfiguration {
         return new UserH2DaoImpl(jdbcTemplate);
     }
 
-    @Bean
-    @Profile("prod")
-    public UserDao getUserDao(final Connection connection){
-
-        return new UserPostgresDaoImpl(connection);
-    }
+//    @Bean
+//    @Profile("prod")
+//    public PsicologoDao getPsicologoDao(final Connection connection){
+//
+//        return new PsicologoPostgresDaoImpl(connection);
+//    }
+//
+//    @Bean
+//    @Profile("prod")
+//    public PacienteDao getPacienteDao(final Connection connection){
+//
+//        return new PacientePostgresDaoImpl(connection);
+//    }
 }
 

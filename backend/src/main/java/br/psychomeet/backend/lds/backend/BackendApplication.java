@@ -13,34 +13,34 @@ import java.io.IOException;
 public class BackendApplication {
 
 //	@Autowired
-	private ResourceFileService resourceFileService;
+//	private ResourceFileService resourceFileService;
 
 //	@Autowired
-	private JdbcTemplate jdbcTemplate;
+//	private JdbcTemplate jdbcTemplate;
 
 	public static void main(String[] args) {
 		SpringApplication.run(BackendApplication.class, args);
 	}
 
 //	@PostConstruct
-	private void initializeDatabase() {
-		System.out.println("Iniciando o banco de dados");
-
-		final String basePath = "lds-db-scripts";
-
-		try {
-			final String createScript = resourceFileService.read(basePath + "/create-database.sql");
-
-			final String createTable = resourceFileService.read(basePath + "/create-tables.sql");
-
-			final String insertScript = resourceFileService.read(basePath + "/insert-data.sql");
-
-			jdbcTemplate.execute(createScript);
-			jdbcTemplate.execute(createTable);
-			jdbcTemplate.execute(insertScript);
-
-		} catch (IOException e) {
-			throw new RuntimeException(e);
-		}
-	}
+//	private void initializeDatabase() {
+//		System.out.println("Iniciando o banco de dados");
+//
+//		final String basePath = "lds-db-scripts";
+//
+//		try {
+//			final String createScript = resourceFileService.read(basePath + "/create-database.sql");
+//
+//			final String createTable = resourceFileService.read(basePath + "/create-tables.sql");
+//
+//			final String insertScript = resourceFileService.read(basePath + "/insert-data.sql");
+//
+//			jdbcTemplate.execute(createScript);
+//			jdbcTemplate.execute(createTable);
+//			jdbcTemplate.execute(insertScript);
+//
+//		} catch (IOException e) {
+//			throw new RuntimeException(e);
+//		}
+//	}
 }

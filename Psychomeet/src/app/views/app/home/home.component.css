@@ -8,7 +8,7 @@ body {
 }
 
 .navbar-brand img {
-    height: 50px; /* Altura da logo ajustável */
+    height: 50px; 
     margin-right: 10px;
 }
 
@@ -27,3 +27,166 @@ body {
     border-color: #e0a800;
     color: #333;
 }
+
+.mb-7 {
+    margin-bottom: 8rem;
+}
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #f8f9fa;
+    }
+
+    .container {
+      margin-top: 50px;
+    }
+
+    h2 {
+      font-weight: 600;
+      color: #343a40;
+      margin-bottom: 10px;
+    }
+
+    h3 {
+      font-weight: 400;
+      color: #6c757d;
+      margin-bottom: 40px;
+    }
+
+    .step {
+      background-color: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+    }
+
+    .step:hover {
+      transform: translateY(-10px);
+      box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .step-number {
+      background-color: #ffc107;
+      color: white;
+      font-weight: 600;
+      padding: 5px 10px;
+      border-radius: 50%;
+      display: inline-block;
+      margin-bottom: 15px;
+    }
+
+    .step i {
+      color: #007bff;
+      margin-bottom: 15px;
+    }
+
+    .step p {
+      font-weight: 300;
+      color: #495057;
+      font-size: 1rem;
+    }
+
+    @media (max-width: 768px) {
+      .step {
+        margin-bottom: 30px;
+      }
+    }
+
+    /* Tipografia e cores gerais */
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f8f9fa;
+  }
+  
+  /* Estilo para os títulos */
+  h2 {
+    font-weight: 600;
+    color: #343a40;
+    margin-bottom: 10px;
+  }
+  
+  h3 {
+    font-weight: 400;
+    color: #6c757d;
+    margin-bottom: 40px;
+  }
+  
+  /* Estilo para os steps */
+  .step {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+  }
+  
+  /* Efeito hover nos steps */
+  .step:hover {
+    transform: translateY(-10px);
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.15);
+  }
+  
+  /* Estilo para o número do passo */
+  .step-number {
+    background-color: #ffc107;
+    color: white;
+    font-weight: 600;
+    padding: 5px 10px;
+    border-radius: 50%;
+    display: inline-block;
+    margin-bottom: 15px;
+  }
+  
+  /* Estilo para os ícones */
+  .step i {
+    color: #007bff;
+    margin-bottom: 15px;
+  }
+  
+  /* Texto dos steps */
+  .step p {
+    font-weight: 300;
+    color: #495057;
+    font-size: 1rem;
+  }
+  
+  /* Responsividade */
+  @media (max-width: 768px) {
+    .step {
+      margin-bottom: 30px;
+    }
+  }
+
+  .therapy-info {
+  margin: 50px 0;
+}
+
+.therapy-info h2 {
+  font-size: 2.5rem;
+  color: #333;
+  background-color: #ffe6b2; /* Amarelo vibrante */
+  padding: 10px;
+  display: inline-block;
+}
+
+.therapy-info p {
+  font-size: 1.2rem;
+  color: #333;
+  line-height: 1.6;
+}
+
+.therapy-info .highlight {
+  background-color: #E0D4F1; /* Roxo claro suave */
+  padding: 2px 5px;
+  border-radius: 3px;
+}
+
+.container-border {
+  border: 2px solid #F7C531; /* Bordas amarelas */
+  padding: 20px;
+  margin-top: 20px;
+  background-color: white;
+}
+
+  

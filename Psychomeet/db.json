@@ -117,7 +117,7 @@
       "nomePsicologo": "João Pereira",
       "idPsicologo": "2",
       "idPaciente": "3",
-      "status": "PENDENTE"
+      "status": "ACCEPT"
     },
     {
       "id": "bdf6",
@@ -135,6 +135,24 @@
       "nomePsicologo": "João Pereira",
       "idPsicologo": "3",
       "idPaciente": "3",
+      "status": "ACCEPT"
+    },
+    {
+      "id": "bfbc",
+      "hora": "11:00 - 12:00",
+      "diaDaSemana": "Quarta-feira",
+      "nomePsicologo": "Maria Silva",
+      "idPsicologo": "1",
+      "idPaciente": "3",
+      "status": "PENDENTE"
+    },
+    {
+      "id": "0cfb",
+      "hora": "8:00 - 9:00",
+      "diaDaSemana": "Terça-feira",
+      "nomePsicologo": "João Pereira",
+      "idPsicologo": "2",
+      "idPaciente": "1",
       "status": "ACCEPT"
     }
   ],

@@ -16,6 +16,7 @@ import { EditProfilePsichologistComponent } from './views/account/edit-profile-p
 import { EditProfilePatientComponent } from './views/account/edit-profile-patient/edit-profile-patient.component';
 import { EditPasswordComponent } from './views/account/edit-password/edit-password.component';
 import { SignUpPsychologistComponent } from './views/account/sign-up-psychologist/sign-up-psychologist.component';
+import { AboutUsComponent } from './views/app/about/about-us.component';
 //import { authenticationGuard } from './services/security/guard/authentication.guard';
 
 
@@ -96,6 +97,10 @@ export const AppRoutes: Routes = [
     {
         path: 'account/edit-password',
         component: EditPasswordComponent,
+    },
+    {
+        path: 'app/about-us',
+        component: AboutUsComponent,
     }
 ];
 

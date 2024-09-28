@@ -19,6 +19,15 @@ export class AppComponent {
 
   constructor(private router: Router) { }
 
+  aboutUs() {
+    this.router.navigate(['app/about-us'])
+  }
+
+  home() {
+    this.router.navigate(['app/home'])
+  }
+
+
 
 
 

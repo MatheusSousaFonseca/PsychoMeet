@@ -1,19 +1,28 @@
-<div class="header" style="background-color: #ffc107; padding: 10px;">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-6">
-        <div class="media">
-          <img src="assets/logo.png" class="mr-3" alt="Psychomeet Logo" width="50" height="50">
-          <div class="media-body">
-            <h5 class="mt-0" style="color: #ffffff;">Psychomeet</h5>
+<body>
+    <div class="header" style="background-color: #ffecb3; padding: 10px;">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6 d-flex align-items-center">
+            <img src="assets/logo.png" class="mr-3" alt="Psychomeet Logo" style="width: 70px; max-height: 50px; object-fit: contain;">
+            <h5 class="mt-0" style="color: #000000; font-family: 'Century', serif; font-size: 32px;">PsychoMeet</h5>
+          </div>
+          <div class="col-md-6 d-flex justify-content-end align-items-center">
+            <button class="btn btn-access" (click)="aboutUs()">Sobre nós</button>
+            <button class="btn btn-access" (click)="home()">Início</button>
           </div>
         </div>
       </div>
-
     </div>
-  </div>
-</div>
 
-<div class="container mt-5">
-  <router-outlet></router-outlet>
-</div>
+    <div class="container mt-5">
+      <router-outlet></router-outlet>
+    </div>
+
+    <footer class="footer mt-auto py-3 text-center">
+      <div class="container">
+          <hr>
+          <span class="text-muted">Copyright © 2024 PsychoMeet</span>
+      </div>
+  </footer>
+</body>
+

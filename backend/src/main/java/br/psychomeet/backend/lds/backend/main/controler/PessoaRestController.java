@@ -62,4 +62,16 @@ public class PessoaRestController {
         final boolean response = pessoaService.updatePassword(data.getId(), data.getOldPassword(), data.getNewPassword());
         return response ? ResponseEntity.ok().build() : ResponseEntity.badRequest().build();
     }
+
+    @GetMapping("/auth")
+    public ResponseEntity<Pessoa> authenticate(@RequestParam("email") String email,
+                                               @RequestParam("senha") String senha) {
+        Pessoa pessoa = pessoaService.findByEmail(email);
+
+        if (pessoa != null && pessoa.getSenha().equals(senha)) {
+            return ResponseEntity.ok(pessoa);
+        } else {
+            return ResponseEntity.status(401).build();
+        }
+    }
 }

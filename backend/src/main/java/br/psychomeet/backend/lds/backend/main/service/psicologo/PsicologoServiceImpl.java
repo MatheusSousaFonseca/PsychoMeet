@@ -45,7 +45,7 @@ public class PsicologoServiceImpl implements PsicologoService {
 
     @Override
     public void update(int id, Psicologo entity) {
-        Psicologo psicologo = findById(id).getPsicologo(); // Aqui estamos usando apenas o psicólogo
+        Psicologo psicologo = findById(id).getPsicologo();
         if (psicologo != null) {
             psicologoDao.updateInformation(id, entity);
         }

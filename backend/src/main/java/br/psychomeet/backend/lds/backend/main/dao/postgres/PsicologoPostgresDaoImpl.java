@@ -89,11 +89,13 @@ public class PsicologoPostgresDaoImpl implements PsicologoDao {
 
     @Override
     public PsicologoFullDTO readById(int id) {
-        String sql = "SELECT p.id as pessoa_id, p.nome, p.email, p.cpf, p.data_nascimento, p.telefone, ps.id as psicologo_id, ps.crp, ps.descricao, e.descricao as especialidade, a.descricao as abordagem " +
+        String sql = "SELECT ps.id AS psicologo_id, ps.crp, ps.descricao, p.id AS pessoa_id, p.nome, p.email, p.telefone, p.data_nascimento, p.cpf, " +
+                "e.descricao AS especialidade, a.abordagem AS abordagem " +
                 "FROM psicologo ps " +
                 "JOIN pessoa p ON ps.pessoa_id = p.id " +
-                "LEFT JOIN especialidade e ON ps.id = e.psicologo_id " +
-                "LEFT JOIN abordagem a ON ps.id = a.psicologo_id " +
+                "LEFT JOIN psicologo_especialidade pe ON pe.psicologo_id = ps.id " +
+                "LEFT JOIN especialidade e ON e.id = pe.especialidade_id " +
+                "LEFT JOIN abordagem a ON a.psicologo_id = ps.id " +  // Adicionei o espaço necessário aqui
                 "WHERE ps.id = ?";
 
         PsicologoFullDTO psicologoFullDTO = null;

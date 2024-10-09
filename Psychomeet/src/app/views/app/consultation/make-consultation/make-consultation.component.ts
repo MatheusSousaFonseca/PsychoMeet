@@ -138,13 +138,13 @@ export class MakeConsultationComponent implements OnInit {
   }
 
   async marcarConsulta() {
-    await this.create() 
+    await this.create()
     if (this.modalRef) {
       this.modalRef.close();
     }
   }
 
-  
+
   async create() {
     let email = localStorage.getItem("email")
     let paciente = await this.userReadService.findByEmail(email!)
@@ -153,7 +153,7 @@ export class MakeConsultationComponent implements OnInit {
       diaDaSemana: this.diaSelecionada,
       nomePsicologo: this.psychologist.nome,
       idPsicologo: this.psychologist.id!,
-      idPaciente: paciente[0].id!,
+      idPaciente: paciente.id!,
       status: "PENDENTE"
 
     }
@@ -163,12 +163,12 @@ export class MakeConsultationComponent implements OnInit {
 
     if(consultationResponse.id==''){
       console.log('Entrando...');
-      
+
       this.toastrService.error('Não foi possivel marcar consulta.')
       return;
     }
     console.log('Saindo');
-    
+
     this.toastrService.success('Consulta marcada com sucesso.')
 
 

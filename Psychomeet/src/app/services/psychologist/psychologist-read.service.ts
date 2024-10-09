@@ -19,7 +19,7 @@ export class PsychologistReadService {
   }
 
   findAll(): Promise<Psychologist[]> {
-    return firstValueFrom(this.http.get<Psychologist[]>('http://localhost:3000/psychologist'));
+    return firstValueFrom(this.http.get<Psychologist[]>('http://localhost:8081/api/psicologo'));
   }
 
   findByEmail(email: String): Promise<Psychologist[]> {

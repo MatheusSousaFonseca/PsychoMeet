@@ -34,7 +34,7 @@ export class ViewConsultationPatientComponent implements OnInit {
   }
 
   consultasMarcadas() {
-    
+
     this.router.navigate(['consultation/view-scheduled-consultation']);
 
   }
@@ -59,7 +59,7 @@ export class ViewConsultationPatientComponent implements OnInit {
   async loadConsultations() {
     let email = localStorage.getItem("email")
     let paciente = await this.userReadService.findByEmail(email!)
-    this.consultations = await this.consultationReadService.findByIdPacienteAccept(paciente[0].id!);
+    this.consultations = await this.consultationReadService.findByIdPacienteAccept(paciente.id!);
   }
 
 }

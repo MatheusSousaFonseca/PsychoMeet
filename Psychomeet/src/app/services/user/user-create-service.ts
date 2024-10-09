@@ -12,6 +12,6 @@ export class UserCreateService {
 
   create(user: User) {
     console.log(user);
-    return firstValueFrom(this.http.post<User>('http://localhost:3000/user', user));
+    return firstValueFrom(this.http.post<User>('http://localhost:8081/api/pessoa', user));
   }
 }

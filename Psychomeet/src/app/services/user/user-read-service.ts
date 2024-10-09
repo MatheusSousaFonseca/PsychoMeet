@@ -22,7 +22,7 @@ export class UserReadService {
     return firstValueFrom(this.http.get<User[]>('http://localhost:3000/user'));
   }
 
-  findByEmail(email: String): Promise<User[]> {
-    return firstValueFrom(this.http.get<User[]>(`http://localhost:3000/user?email=${email}`))
+  findByEmail(email: String): Promise<User> {
+    return firstValueFrom(this.http.get<User>(`http://localhost:8081/api/pessoa/email/${email}`))
   }
 }

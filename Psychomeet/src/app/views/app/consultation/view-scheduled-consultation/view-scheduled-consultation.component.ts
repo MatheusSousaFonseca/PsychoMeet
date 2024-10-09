@@ -21,10 +21,10 @@ export class ViewScheduledConsultationComponent {
 
   modalRef: NgbModalRef | null = null;
 
-  
+
 
   consultations: Consultation[] = [];
-  
+
   consultation: any;
 
 
@@ -85,6 +85,6 @@ async desmarcarConsulta(consultationId: string) {
   async loadConsultations() {
     let email = localStorage.getItem("email")
     let paciente = await this.userReadService.findByEmail(email!)
-    this.consultations = await this.consultationReadService.findByIdPacientePendente(paciente[0].id!);
+    this.consultations = await this.consultationReadService.findByIdPacientePendente(paciente.id!);
   }
 }

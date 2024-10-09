@@ -1,6 +1,7 @@
 package br.psychomeet.backend.lds.backend.main.dao.postgres;
 
 import br.psychomeet.backend.lds.backend.main.domain.Psicologo;
+import br.psychomeet.backend.lds.backend.main.dto.PsicologoFullDTO;
 import br.psychomeet.backend.lds.backend.main.port.dao.psicologo.PsicologoDao;
 
 import java.sql.Connection;
@@ -87,53 +88,94 @@ public class PsicologoPostgresDaoImpl implements PsicologoDao {
     }
 
     @Override
-    public Psicologo readById(int id) {
-        String sql = "SELECT * FROM psicologo WHERE id = ?;";
-        Psicologo psicologo = null;
+    public PsicologoFullDTO readById(int id) {
+        String sql = "SELECT p.id as pessoa_id, p.nome, p.email, p.cpf, p.data_nascimento, p.telefone, ps.id as psicologo_id, ps.crp, ps.descricao, e.descricao as especialidade, a.descricao as abordagem " +
+                "FROM psicologo ps " +
+                "JOIN pessoa p ON ps.pessoa_id = p.id " +
+                "LEFT JOIN especialidade e ON ps.id = e.psicologo_id " +
+                "LEFT JOIN abordagem a ON ps.id = a.psicologo_id " +
+                "WHERE ps.id = ?";
+
+        PsicologoFullDTO psicologoFullDTO = null;
 
         try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
             preparedStatement.setInt(1, id);
 
             try (ResultSet resultSet = preparedStatement.executeQuery()) {
                 if (resultSet.next()) {
-                    psicologo = new Psicologo();
-                    psicologo.setId(resultSet.getInt("id"));
-                    psicologo.setPessoaId(resultSet.getInt("pessoa_id"));
-                    psicologo.setCrp(resultSet.getString("crp"));
-                    psicologo.setDescricao(resultSet.getString("descricao"));
+                    psicologoFullDTO = new PsicologoFullDTO(
+                            String.valueOf(resultSet.getInt("psicologo_id")),  // ID
+                            resultSet.getString("nome"),                      // Nome
+                            resultSet.getString("email"),                     // Email
+                            "Público-alvo genérico",                          // Público (não especificado na query, ajuste conforme necessário)
+                            resultSet.getString("descricao"),                 // Descrição
+                            resultSet.getString("crp"),                       // CRP
+                            resultSet.getString("cpf"),                       // CPF
+                            resultSet.getString("abordagem"),                 // Abordagem
+                            resultSet.getDate("data_nascimento"),             // Data de Nascimento
+                            150.0,                                            // Preço (ajuste conforme necessário)
+                            resultSet.getString("especialidade"),             // Especialidade
+                            "senhaFake",                                      // Senha (substituir por senha real, se necessário)
+                            resultSet.getString("telefone")                   // Telefone
+                    );
                 }
             }
         } catch (SQLException e) {
-            logger.severe("Error executing readById: " + e.getMessage());
+            logger.severe("Erro ao executar readById: " + e.getMessage());
             throw new RuntimeException(e);
         }
-        return psicologo;
+        return psicologoFullDTO;
     }
 
+
+
     @Override
-    public List<Psicologo> readAll() {
-        String sql = "SELECT * FROM psicologo;";
-        List<Psicologo> psicologos = new ArrayList<>();
+    public List<PsicologoFullDTO> readAll() {
+        String sql = "SELECT ps.id AS psicologo_id, ps.crp, ps.descricao, p.id AS pessoa_id, p.nome, p.email, p.telefone, p.data_nascimento, p.cpf, " +
+                "e.descricao AS especialidade, a.abordagem AS abordagem " +
+                "FROM psicologo ps " +
+                "JOIN pessoa p ON ps.pessoa_id = p.id " +
+                "LEFT JOIN psicologo_especialidade pe ON pe.psicologo_id = ps.id " +
+                "LEFT JOIN especialidade e ON e.id = pe.especialidade_id " +
+                "LEFT JOIN abordagem a ON a.psicologo_id = ps.id;";
+
+
+        List<PsicologoFullDTO> psicologoFullDTOList = new ArrayList<>();
 
         try (PreparedStatement preparedStatement = connection.prepareStatement(sql);
              ResultSet resultSet = preparedStatement.executeQuery()) {
 
             while (resultSet.next()) {
-                Psicologo psicologo = new Psicologo();
-                psicologo.setId(resultSet.getInt("id"));
-                psicologo.setPessoaId(resultSet.getInt("pessoa_id"));
-                psicologo.setCrp(resultSet.getString("crp"));
-                psicologo.setDescricao(resultSet.getString("descricao"));
+                // Criando o objeto PsicologoFullDTO
+                PsicologoFullDTO psicologoFullDTO = new PsicologoFullDTO(
+                        String.valueOf(resultSet.getInt("psicologo_id")),  // ID
+                        resultSet.getString("nome"),                      // Nome
+                        resultSet.getString("email"),                     // Email
+                        "Público-alvo genérico",                          // Público (substituir com a lógica correta se necessário)
+                        resultSet.getString("descricao"),                 // Descrição
+                        resultSet.getString("crp"),                       // CRP
+                        resultSet.getString("cpf"),                       // CPF
+                        resultSet.getString("abordagem"),                 // Abordagem (se houver)
+                        resultSet.getDate("data_nascimento"),             // Data de Nascimento
+                        150.0,                                            // Preço (valor estático ou ajuste conforme necessário)
+                        resultSet.getString("especialidade"),             // Especialidade (se houver)
+                        "senhaFake",                                      // Senha (valor estático ou ajuste conforme necessário)
+                        resultSet.getString("telefone")                   // Telefone
+                );
 
-                psicologos.add(psicologo);
+                // Adicionando à lista de PsicologoFullDTO
+                psicologoFullDTOList.add(psicologoFullDTO);
             }
         } catch (SQLException e) {
             logger.severe("Error executing readAll: " + e.getMessage());
             throw new RuntimeException(e);
         }
 
-        return psicologos;
+        return psicologoFullDTOList;
     }
+
+
+
 
     @Override
     public void updateInformation(int id, Psicologo entity) {
@@ -160,5 +202,4 @@ public class PsicologoPostgresDaoImpl implements PsicologoDao {
             throw new RuntimeException(e);
         }
     }
-
 }

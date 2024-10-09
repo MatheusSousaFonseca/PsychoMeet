@@ -1,6 +1,7 @@
 package br.psychomeet.backend.lds.backend.main.controler;
 
 
+import br.psychomeet.backend.lds.backend.main.dto.PsicologoFullDTO;
 import br.psychomeet.backend.lds.backend.main.port.service.psicologo.PsicologoService;
 
 import br.psychomeet.backend.lds.backend.main.domain.Psicologo;
@@ -22,14 +23,16 @@ public class PsicologoRestController {
     }
 
     @GetMapping
-    public ResponseEntity<List<Psicologo>> getAll() {
+    public ResponseEntity<List<PsicologoFullDTO>> getAll() {
         return ResponseEntity.ok(psicologoService.findAll());
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Psicologo> getById(@PathVariable int id) {
-        return ResponseEntity.ok(psicologoService.findById(id));
+    public ResponseEntity<PsicologoFullDTO> getById(@PathVariable int id) {
+        PsicologoFullDTO psicologoFullDTO = psicologoService.findById(id);
+        return ResponseEntity.ok(psicologoFullDTO);
     }
+
 
     @PostMapping
     public ResponseEntity<Void> create(@RequestBody Psicologo psicologo) {

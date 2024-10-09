@@ -1,15 +1,20 @@
 package br.psychomeet.backend.lds.backend.main.dao.fake;
 
+import br.psychomeet.backend.lds.backend.main.domain.Pessoa;
 import br.psychomeet.backend.lds.backend.main.domain.Psicologo;
+import br.psychomeet.backend.lds.backend.main.dto.PsicologoFullDTO;
 import br.psychomeet.backend.lds.backend.main.port.dao.psicologo.PsicologoDao;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 //@Repository
 public class PsicologoFakeDaoImpl implements PsicologoDao {
 
-    private static List<Psicologo> psicologos = new ArrayList<>();
+    private static List<PsicologoFullDTO> psicologos = new ArrayList<>();
     private static int ID = 0;
 
     private int getNextId() {
@@ -19,43 +24,62 @@ public class PsicologoFakeDaoImpl implements PsicologoDao {
 
     public PsicologoFakeDaoImpl() {
         System.out.println("Instância de psicologo fake dao obtida");
-        Psicologo psicologo1 = new Psicologo(getNextId(), 1, "CRP12345", "Descrição 1");
-        Psicologo psicologo2 = new Psicologo(getNextId(), 2, "CRP67890", "Descrição 2");
 
-        psicologos.add(psicologo1);
-        psicologos.add(psicologo2);
+        // Criando instâncias de Pessoa
+        Pessoa pessoa1 = new Pessoa(getNextId(), "João Silva", "joao@exemplo.com", "123456789", stringToDate("1990-01-01"), "99999-9999", "123.456.789-00");
+        Pessoa pessoa2 = new Pessoa(getNextId(), "Maria Oliveira", "maria@exemplo.com", "987654321", stringToDate("1992-02-02"), "88888-8888", "987.654.321-00");
+
+        // Criando instâncias de Psicologo associadas às pessoas
+        Psicologo psicologo1 = new Psicologo(getNextId(), pessoa1.getId(), "CRP12345", "Descrição 1");
+        Psicologo psicologo2 = new Psicologo(getNextId(), pessoa2.getId(), "CRP67890", "Descrição 2");
+
+        // Adicionando PsicologoFullDTO à lista
+        psicologos.add(PsicologoFullDTO.fromPsicologo(psicologo1, pessoa1));
+        psicologos.add(PsicologoFullDTO.fromPsicologo(psicologo2, pessoa2));
     }
 
     @Override
     public int add(Psicologo entity) {
         final int id = getNextId();
         entity.setId(id);
-        psicologos.add(entity);
+
+        // Criando uma pessoa genérica para o psicólogo (como não estamos armazenando pessoas separadamente)
+        Pessoa pessoa = new Pessoa(id, "Pessoa Fake", "email@fake.com", "123456789", stringToDate("1990-01-01"), "99999-9999", "000.000.000-00");
+
+        psicologos.add(PsicologoFullDTO.fromPsicologo(entity, pessoa));
         return id;
     }
 
     @Override
     public void remove(int id) {
-        psicologos.removeIf(psicologo -> psicologo.getId() == id);
+        psicologos.removeIf(psicologoDTO -> Integer.parseInt(psicologoDTO.getId()) == id);
     }
 
     @Override
-    public Psicologo readById(int id) {
-        return psicologos.stream().filter(p -> p.getId() == id).findFirst().orElse(null);
+    public PsicologoFullDTO readById(int id) {
+        return psicologos.stream().filter(p -> Integer.parseInt(p.getId()) == id).findFirst().orElse(null);
     }
 
     @Override
-    public List<Psicologo> readAll() {
-
+    public List<PsicologoFullDTO> readAll() {
         return psicologos;
     }
 
     @Override
     public void updateInformation(int id, Psicologo entity) {
-        Psicologo psicologo = readById(id);
-        if (psicologo != null) {
-            psicologo.setCrp(entity.getCrp());
-            psicologo.setDescricao(entity.getDescricao());
+        PsicologoFullDTO psicologoDTO = readById(id);
+        if (psicologoDTO != null) {
+            psicologoDTO.setCrp(entity.getCrp());
+            psicologoDTO.setDescricao(entity.getDescricao());
+        }
+    }
+
+    private Date stringToDate(String dateStr) {
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+        try {
+            return formatter.parse(dateStr);
+        } catch (ParseException e) {
+            throw new RuntimeException("Erro ao converter data", e);
         }
     }
 }

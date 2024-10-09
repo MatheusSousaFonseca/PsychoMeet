@@ -1,6 +1,7 @@
 package br.psychomeet.backend.lds.backend.main.service.psicologo;
 
 import br.psychomeet.backend.lds.backend.main.domain.Psicologo;
+import br.psychomeet.backend.lds.backend.main.dto.PsicologoFullDTO;
 import br.psychomeet.backend.lds.backend.main.port.dao.psicologo.PsicologoDao;
 import br.psychomeet.backend.lds.backend.main.port.service.psicologo.PsicologoService;
 import org.springframework.stereotype.Service;
@@ -33,18 +34,18 @@ public class PsicologoServiceImpl implements PsicologoService {
     }
 
     @Override
-    public Psicologo findById(int id) {
-        return (id < 0) ? null : psicologoDao.readById(id);
+    public PsicologoFullDTO findById(int id) {
+        return psicologoDao.readById(id);
     }
 
     @Override
-    public List<Psicologo> findAll() {
+    public List<PsicologoFullDTO> findAll() {
         return psicologoDao.readAll();
     }
 
     @Override
     public void update(int id, Psicologo entity) {
-        Psicologo psicologo = findById(id);
+        Psicologo psicologo = findById(id).getPsicologo(); // Aqui estamos usando apenas o psicólogo
         if (psicologo != null) {
             psicologoDao.updateInformation(id, entity);
         }

@@ -59,7 +59,8 @@ public class PessoaRestController {
 
     @PutMapping("/update-password")
     public ResponseEntity<Void> updatePassword(@RequestBody final UpdatePasswordDto data) {
-        final boolean response = pessoaService.updatePassword(data.getId(), data.getOldPassword(), data.getNewPassword());
+        Pessoa pessoa = pessoaService.findByEmail(data.getId());
+        final boolean response = pessoaService.updatePassword(pessoa.getId(), data.getOldPassword(), data.getNewPassword());
         return response ? ResponseEntity.ok().build() : ResponseEntity.badRequest().build();
     }
 

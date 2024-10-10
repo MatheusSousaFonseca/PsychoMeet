@@ -28,7 +28,7 @@ export class MyProfilePatientComponent implements OnInit {
 
   ngOnInit(): void {
     this.form = this.formBuilder.group({
-      id: [''],  // Added this field to store user.id
+      id: [''], 
       nome: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       cpf: ['', Validators.required],
@@ -47,13 +47,13 @@ export class MyProfilePatientComponent implements OnInit {
       if (user) {
         this.user = user;
 
-        // Set form values, including id
-        this.form.controls['id'].setValue(user.id);  // Set user.id here
+        
+        this.form.controls['id'].setValue(user.id);  
         this.form.controls['nome'].setValue(user.nome);
         this.form.controls['email'].setValue(user.email);
         this.form.controls['senha'].setValue(user.senha);
         this.form.controls['telefone'].setValue(user.telefone);
-        this.form.get('data')?.patchValue(formatDate(user.data_nascimento, 'yyyy-MM-dd', 'en'));
+        this.form.get('data')?.patchValue(formatDate(user.dataNascimento, 'yyyy-MM-dd', 'en'));
         this.form.controls['cpf'].setValue(user.cpf);
       }
     } else {
@@ -63,7 +63,7 @@ export class MyProfilePatientComponent implements OnInit {
 
   openMyModal() {
     const modalRef = this.modalService.open(EditProfilePatientComponent);
-    modalRef.componentInstance.form = this.form; // Passing the form with user.id to modal
+    modalRef.componentInstance.form = this.form; 
   }
 
   voltar() {

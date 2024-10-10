@@ -52,7 +52,7 @@ export class SignUpPatientComponent implements OnInit {
       email: this.form.controls['email'].value,
       senha: this.form.controls['senha'].value,
       cpf: this.form.controls['cpf'].value,
-      data_nascimento: this.form.controls['data'].value,
+      dataNascimento: this.form.controls['data'].value,
       telefone: this.form.controls['telefone'].value
     };
 

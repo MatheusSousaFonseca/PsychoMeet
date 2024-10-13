@@ -1,6 +1,7 @@
 package br.psychomeet.backend.lds.backend.main.service.psicologo;
 
 import br.psychomeet.backend.lds.backend.main.domain.Psicologo;
+import br.psychomeet.backend.lds.backend.main.dto.AddPsicologoDTO;
 import br.psychomeet.backend.lds.backend.main.dto.PsicologoFullDTO;
 import br.psychomeet.backend.lds.backend.main.port.dao.psicologo.PsicologoDao;
 import br.psychomeet.backend.lds.backend.main.port.service.psicologo.PsicologoService;
@@ -18,7 +19,7 @@ public class PsicologoServiceImpl implements PsicologoService {
     }
 
     @Override
-    public int create(Psicologo entity) {
+    public int create(AddPsicologoDTO entity) {
         if (entity == null || entity.getCrp().isEmpty() || entity.getDescricao().isEmpty()) {
             return 0;
         }

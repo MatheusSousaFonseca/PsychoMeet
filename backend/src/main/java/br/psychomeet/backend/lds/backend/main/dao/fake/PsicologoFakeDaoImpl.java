@@ -2,6 +2,7 @@ package br.psychomeet.backend.lds.backend.main.dao.fake;
 
 import br.psychomeet.backend.lds.backend.main.domain.Pessoa;
 import br.psychomeet.backend.lds.backend.main.domain.Psicologo;
+import br.psychomeet.backend.lds.backend.main.dto.AddPsicologoDTO;
 import br.psychomeet.backend.lds.backend.main.dto.PsicologoFullDTO;
 import br.psychomeet.backend.lds.backend.main.port.dao.psicologo.PsicologoDao;
 
@@ -38,15 +39,29 @@ public class PsicologoFakeDaoImpl implements PsicologoDao {
         psicologos.add(PsicologoFullDTO.fromPsicologo(psicologo2, pessoa2));
     }
 
+
     @Override
-    public int add(Psicologo entity) {
+    public int add(AddPsicologoDTO entity) {
         final int id = getNextId();
         entity.setId(id);
 
-        // Criando uma pessoa genérica para o psicólogo (como não estamos armazenando pessoas separadamente)
-        Pessoa pessoa = new Pessoa(id, "Pessoa Fake", "email@fake.com", "123456789", stringToDate("1990-01-01"), "99999-9999", "000.000.000-00");
+        // Criando uma pessoa genérica para o psicólogo
+        Pessoa pessoa = new Pessoa(id, entity.getTelefone(), entity.getNome(), entity.getSenha(), entity.getDataNascimento(), entity.getCpf(), entity.getEmail());
 
-        psicologos.add(PsicologoFullDTO.fromPsicologo(entity, pessoa));
+        // Criando Psicologo instance
+        Psicologo psicologo = new Psicologo(id, pessoa.getId(), entity.getCrp(), entity.getDescricao());
+
+        // Adicionando PsicologoFullDTO à lista
+        PsicologoFullDTO psicologoDTO = PsicologoFullDTO.fromPsicologo(psicologo, pessoa);
+
+        // Associando especialidades
+        for (String especialidade : entity.getEspecialidade()) {
+            // You may need to handle the logic of storing especialidade correctly
+            // For the fake DAO, you might just log or manage these associations in a simpler way
+            //psicologoDTO.addEspecialidade(especialidade); // Make sure PsicologoFullDTO has this method
+        }
+
+        psicologos.add(psicologoDTO);
         return id;
     }
 

@@ -23,3 +23,15 @@ body {
   background-color: #e0a800;
   border-color: #e0a800;
 }
+
+.mat-form-field {
+  width: 100%; 
+}
+
+.mat-select {
+  width: 100%; 
+}
+
+.dropdown {
+  align-self: stretch;
+}

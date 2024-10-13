@@ -1,6 +1,7 @@
 package br.psychomeet.backend.lds.backend.main.port.service.psicologo;
 
 import br.psychomeet.backend.lds.backend.main.domain.Psicologo;
+import br.psychomeet.backend.lds.backend.main.dto.AddPsicologoDTO;
 import br.psychomeet.backend.lds.backend.main.dto.PsicologoFullDTO;
 import br.psychomeet.backend.lds.backend.main.port.service.crud.CrudService;
 
@@ -8,7 +9,7 @@ import java.util.List;
 
 public interface PsicologoService {
 
-    int create(Psicologo entity);
+    int create(AddPsicologoDTO entity);
 
     void delete(int id);
 

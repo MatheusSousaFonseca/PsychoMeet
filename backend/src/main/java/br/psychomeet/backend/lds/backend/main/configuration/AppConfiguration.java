@@ -12,6 +12,8 @@ import br.psychomeet.backend.lds.backend.main.port.dao.paciente.PacienteDao;
 import br.psychomeet.backend.lds.backend.main.port.dao.psicologo.PsicologoDao;
 import br.psychomeet.backend.lds.backend.main.port.dao.user.PessoaDao;
 import br.psychomeet.backend.lds.backend.main.port.dao.user.UserDao;
+import br.psychomeet.backend.lds.backend.main.port.service.especialidade.EspecialidadeService;
+import org.springframework.beans.factory.annotation.Autowired;
 import br.psychomeet.backend.lds.backend.main.port.dao.disponibilidade.DisponibilidadeDao;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -97,6 +99,8 @@ public class AppConfiguration {
     public PacienteDao getPacientePostgresDao(final Connection connection) {
         return new PacientePostgresDaoImpl(connection);
     }
+
+
 }
 
 

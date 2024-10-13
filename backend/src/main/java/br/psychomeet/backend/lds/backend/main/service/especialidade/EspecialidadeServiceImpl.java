@@ -49,4 +49,9 @@ public class EspecialidadeServiceImpl implements EspecialidadeService {
             especialidadeDao.updateInformation(id, entity);
         }
     }
+
+    @Override
+    public int getIdByName(String name) {
+        return especialidadeDao.getIdByName(name);
+    }
 }

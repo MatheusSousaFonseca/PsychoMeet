@@ -14,6 +14,6 @@ export class ConsultationUpdateService {
   async update(consultation: Consultation) {
     console.log(`atualizando o produto...`);
     console.log(consultation);
-    return await firstValueFrom(this.http.put(`http://localhost:3000/consultation/${consultation.id}`, consultation));
+    return await firstValueFrom(this.http.put(`http://localhost:8081/consultation/${consultation.id}`, consultation));
   }
 }

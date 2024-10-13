@@ -153,4 +153,26 @@ public class EspecialidadePostgresDaoImpl implements EspecialidadeDao {
             throw new RuntimeException(e);
         }
     }
+
+    @Override
+    public int getIdByName(String name) {
+        String sql = "SELECT * FROM especialidade WHERE descricao = ?;";
+        Especialidade especialidade = null;
+
+        try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+            preparedStatement.setString(1, name);
+
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                if (resultSet.next()) {
+                    especialidade = new Especialidade();
+                    especialidade.setId(resultSet.getInt("id"));
+                    especialidade.setDescricao(resultSet.getString("descricao"));
+                }
+            }
+        } catch (SQLException e) {
+            logger.severe("Error executing readById: " + e.getMessage());
+            throw new RuntimeException(e);
+        }
+        return especialidade.getId();
+    }
 }

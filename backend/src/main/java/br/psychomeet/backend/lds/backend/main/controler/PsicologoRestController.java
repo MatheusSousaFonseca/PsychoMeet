@@ -1,6 +1,7 @@
 package br.psychomeet.backend.lds.backend.main.controler;
 
 
+import br.psychomeet.backend.lds.backend.main.dto.AddPsicologoDTO;
 import br.psychomeet.backend.lds.backend.main.dto.PsicologoFullDTO;
 import br.psychomeet.backend.lds.backend.main.port.service.psicologo.PsicologoService;
 
@@ -35,7 +36,7 @@ public class PsicologoRestController {
 
 
     @PostMapping
-    public ResponseEntity<Void> create(@RequestBody Psicologo psicologo) {
+    public ResponseEntity<Void> create(@RequestBody AddPsicologoDTO psicologo) {
         int id = psicologoService.create(psicologo);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(id).toUri();
         return ResponseEntity.created(uri).build();

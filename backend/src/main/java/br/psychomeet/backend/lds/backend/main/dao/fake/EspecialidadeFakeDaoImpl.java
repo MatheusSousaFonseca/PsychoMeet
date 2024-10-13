@@ -56,4 +56,8 @@ public class EspecialidadeFakeDaoImpl implements EspecialidadeDao {
             especialidade.setDescricao(entity.getDescricao());
         }
     }
+    @Override
+    public int getIdByName(String name) {
+        return 0;
+    }
 }

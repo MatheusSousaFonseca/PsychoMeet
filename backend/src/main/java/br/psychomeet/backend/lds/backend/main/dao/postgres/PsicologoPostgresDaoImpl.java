@@ -1,8 +1,11 @@
 package br.psychomeet.backend.lds.backend.main.dao.postgres;
 
 import br.psychomeet.backend.lds.backend.main.domain.Psicologo;
+import br.psychomeet.backend.lds.backend.main.dto.AddPsicologoDTO;
 import br.psychomeet.backend.lds.backend.main.dto.PsicologoFullDTO;
 import br.psychomeet.backend.lds.backend.main.port.dao.psicologo.PsicologoDao;
+import br.psychomeet.backend.lds.backend.main.port.service.especialidade.EspecialidadeService;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -14,40 +17,80 @@ import java.util.logging.Logger;
 
 public class PsicologoPostgresDaoImpl implements PsicologoDao {
 
+
     private static final Logger logger = Logger.getLogger(PsicologoPostgresDaoImpl.class.getName());
     private final Connection connection;
 
-    public PsicologoPostgresDaoImpl(Connection connection) {
+    @Autowired
+    private EspecialidadeService especialidadeService;
+
+    public PsicologoPostgresDaoImpl( Connection connection) {
         this.connection = connection;
     }
 
+
     @Override
-    public int add(Psicologo entity) {
-        String sql = "INSERT INTO psicologo (pessoa_id, crp, descricao) VALUES (?, ?, ?);";
-        PreparedStatement preparedStatement = null;
+    public int add(AddPsicologoDTO entity) {
+        String sqlPessoa = "INSERT INTO pessoa (telefone, nome, senha, data_nascimento, cpf, email) VALUES (?, ?, ?, ?, ?, ?) RETURNING id;";
+        String sqlPsicologo = "INSERT INTO psicologo (pessoa_id, crp, descricao) VALUES (?, ?, ?) RETURNING id;";
+        String sqlEspecialidade = "INSERT INTO psicologo_especialidade (psicologo_id, especialidade_id) VALUES (?, ?);";
+
+        PreparedStatement preparedStatementPessoa = null;
+        PreparedStatement preparedStatementPsicologo = null;
+        PreparedStatement preparedStatementEspecialidade = null;
         ResultSet resultSet = null;
 
         try {
             connection.setAutoCommit(false);
-            preparedStatement = connection.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
 
-            preparedStatement.setInt(1, entity.getPessoaId());
-            preparedStatement.setString(2, entity.getCrp());
-            preparedStatement.setString(3, entity.getDescricao());
+            // 1. Insert into pessoa
+            preparedStatementPessoa = connection.prepareStatement(sqlPessoa);
+            preparedStatementPessoa.setString(1, entity.getTelefone());
+            preparedStatementPessoa.setString(2, entity.getNome());
+            preparedStatementPessoa.setString(3, entity.getSenha());
+            preparedStatementPessoa.setDate(4, new java.sql.Date(entity.getDataNascimento().getTime()));
+            preparedStatementPessoa.setString(5, entity.getCpf());
+            preparedStatementPessoa.setString(6, entity.getEmail());
 
-            preparedStatement.execute();
-
-            resultSet = preparedStatement.getGeneratedKeys();
+            resultSet = preparedStatementPessoa.executeQuery();
+            int pessoaId = 0;
             if (resultSet.next()) {
-                final int id = resultSet.getInt(1);
-                entity.setId(id);
+                pessoaId = resultSet.getInt(1); // Get the generated ID for pessoa
             }
 
-            connection.commit();
+            // 2. Insert into psicologo
+            preparedStatementPsicologo = connection.prepareStatement(sqlPsicologo);
+            preparedStatementPsicologo.setInt(1, pessoaId);
+            preparedStatementPsicologo.setString(2, entity.getCrp());
+            preparedStatementPsicologo.setString(3, entity.getDescricao());
+
+            resultSet = preparedStatementPsicologo.executeQuery();
+            int psicologoId = 0;
+            if (resultSet.next()) {
+                psicologoId = resultSet.getInt(1); // Get the generated ID for psicologo
+            }
+
+            // 3. Insert into psicologo_especialidade for each specialty
+            System.out.println("DEBUG");
+            System.out.println(entity.getEspecialidade());
+            for (String especialidade : entity.getEspecialidade()) {
+                System.out.println(especialidade);
+                // Assume you have a method to get the id of the specialty
+                int especialidadeId = especialidadeService.getIdByName(especialidade);
+                if (especialidadeId != -1) { // Only insert if specialty ID is valid
+                    preparedStatementEspecialidade = connection.prepareStatement(sqlEspecialidade);
+                    preparedStatementEspecialidade.setInt(1, psicologoId);
+                    preparedStatementEspecialidade.setInt(2, especialidadeId);
+                    preparedStatementEspecialidade.executeUpdate();
+                }
+            }
+
+            connection.commit(); // Commit all the inserts
+            return psicologoId; // Return the ID of the newly created psychologist
 
         } catch (SQLException e) {
             try {
-                connection.rollback();
+                connection.rollback(); // Roll back if any exception occurs
             } catch (SQLException ex) {
                 logger.severe("Error rolling back transaction: " + ex.getMessage());
                 throw new RuntimeException(ex);
@@ -57,13 +100,15 @@ public class PsicologoPostgresDaoImpl implements PsicologoDao {
         } finally {
             try {
                 if (resultSet != null) resultSet.close();
-                if (preparedStatement != null) preparedStatement.close();
+                if (preparedStatementPessoa != null) preparedStatementPessoa.close();
+                if (preparedStatementPsicologo != null) preparedStatementPsicologo.close();
+                if (preparedStatementEspecialidade != null) preparedStatementEspecialidade.close();
             } catch (SQLException e) {
                 logger.severe("Error closing resources: " + e.getMessage());
             }
         }
-        return entity.getId();
     }
+
 
     @Override
     public void remove(int id) {
@@ -205,3 +250,4 @@ public class PsicologoPostgresDaoImpl implements PsicologoDao {
         }
     }
 }
+

@@ -10,18 +10,15 @@
             <form [formGroup]="form" (ngSubmit)="createAccount()">
               <div class="form-group">
                 <label for="nome"><i class="fas fa-user"></i> Nome completo</label>
-                <input type="text" class="form-control" id="nome" formControlName="nome" placeholder="Nome completo"
-                  required>
+                <input type="text" class="form-control" id="nome" formControlName="nome" placeholder="Nome completo" required>
               </div>
               <div class="form-group">
                 <label for="telefone"><i class="fas fa-phone"></i> Telefone</label>
-                <input type="tel" class="form-control" id="telefone" formControlName="telefone" placeholder="Telefone"
-                  required>
+                <input type="tel" class="form-control" id="telefone" formControlName="telefone" placeholder="Telefone" required>
               </div>
               <div class="form-group">
                 <label for="email"><i class="fas fa-envelope"></i> Email</label>
-                <input type="email" class="form-control" id="email" formControlName="email" placeholder="Email"
-                  required>
+                <input type="email" class="form-control" id="email" formControlName="email" placeholder="Email" required>
               </div>
               <div class="form-group">
                 <label for="cpf"><i class="fas fa-id-card"></i> CPF</label>
@@ -29,8 +26,7 @@
               </div>
               <div class="form-group">
                 <label for="data"><i class="fas fa-calendar-alt"></i> Data de Nascimento</label>
-                <input type="date" class="form-control" id="data" formControlName="data"
-                  placeholder="Data de nascimento" required>
+                <input type="date" class="form-control" id="data" formControlName="data" placeholder="Data de nascimento" required>
               </div>
               <div class="form-group">
                 <label for="crp"><i class="fas fa-id-badge"></i> CRP</label>
@@ -38,23 +34,26 @@
               </div>
               <div class="form-group">
                 <label for="publico"><i class="fas fa-users"></i> Público</label>
-                <input type="text" class="form-control" id="publico" formControlName="publico" placeholder="Público"
-                  required>
+                <input type="text" class="form-control" id="publico" formControlName="publico" placeholder="Público" required>
               </div>
               <div class="form-group">
                 <label for="descricao"><i class="fas fa-info-circle"></i> Descrição</label>
-                <input type="text" class="form-control" id="descricao" formControlName="descricao"
-                  placeholder="Descrição" required>
+                <input type="text" class="form-control" id="descricao" formControlName="descricao" placeholder="Descrição" required>
               </div>
               <div class="form-group">
                 <label for="abordagem"><i class="fas fa-theater-masks"></i> Abordagem</label>
-                <input type="text" class="form-control" id="abordagem" formControlName="abordagem"
-                  placeholder="Abordagem" required>
+                <input type="text" class="form-control" id="abordagem" formControlName="abordagem" placeholder="Abordagem" required>
               </div>
               <div class="form-group">
-                <label for="especialidade"><i class="fas fa-star"></i> Especialidade</label>
-                <input type="text" class="form-control" id="especialidade" formControlName="especialidade"
-                  placeholder="Especialidade" required>
+                <mat-form-field class="dropdown">
+                  <mat-label>Especialidades</mat-label>
+                  <mat-select formControlName="especialidade" multiple>
+                    @for (especialidade of especialidades; track especialidade) {
+                      <mat-option [value]="especialidade">{{especialidade}}</mat-option>
+                    }
+                  </mat-select>
+                </mat-form-field>
+
               </div>
               <div class="form-group">
                 <label for="preco"><i class="fas fa-money-bill-wave"></i> Preço</label>
@@ -62,13 +61,11 @@
               </div>
               <div class="form-group">
                 <label for="senha"><i class="fas fa-lock"></i> Senha</label>
-                <input type="password" class="form-control" id="senha" formControlName="senha" placeholder="Senha"
-                  required>
+                <input type="password" class="form-control" id="senha" formControlName="senha" placeholder="Senha" required>
               </div>
               <div class="form-group">
                 <label for="repeatPassword"><i class="fas fa-lock"></i> Confirmar Senha</label>
-                <input type="password" class="form-control" id="repeatPassword" formControlName="repeatPassword"
-                  placeholder="Confirmar Senha" required>
+                <input type="password" class="form-control" id="repeatPassword" formControlName="repeatPassword" placeholder="Confirmar Senha" required>
               </div>
               <button type="submit" class="btn btn-primary btn-block">Cadastrar</button>
             </form>

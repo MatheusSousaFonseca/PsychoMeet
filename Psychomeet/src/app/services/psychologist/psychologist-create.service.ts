@@ -11,6 +11,6 @@ export class PsychologistCreateService {
   constructor(private http: HttpClient) { }
 
   create(psychologist:Psychologist){
-    return firstValueFrom(this.http.post<Psychologist>('http://localhost:3000/psychologist', psychologist));
+    return firstValueFrom(this.http.post<Psychologist>('http://localhost:8081/api/psicologo', psychologist));
   }
 }

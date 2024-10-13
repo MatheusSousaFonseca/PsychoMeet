@@ -53,6 +53,10 @@ public class ConsultaServiceImpl implements ConsultaService {
             consultaDao.updateInformation(id, entity);
         }
     }
+    @Override
+    public List<Consulta> findByPaciente(int id) {
+        return consultaDao.consultaPorPaciente(id);
+    }
 
 
 }

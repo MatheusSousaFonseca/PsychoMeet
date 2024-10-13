@@ -35,6 +35,6 @@ findByIdPacientePendente(id: string): Promise<Consultation[]> {
 }
 
 findByIdPacienteAccept(id: string): Promise<Consultation[]> {
-  return firstValueFrom(this.http.get<Consultation[]>(`http://localhost:3000/consultation?idPaciente=${id}&status=ACCEPT`));
+  return firstValueFrom(this.http.get<Consultation[]>(`http://localhost:8080/api/consulta/paciente/${id}`));
 }
 }

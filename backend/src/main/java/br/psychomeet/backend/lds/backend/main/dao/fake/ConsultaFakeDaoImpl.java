@@ -6,6 +6,7 @@ import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 //@Repository
 public class ConsultaFakeDaoImpl implements ConsultaDao {
@@ -21,9 +22,11 @@ public class ConsultaFakeDaoImpl implements ConsultaDao {
     public ConsultaFakeDaoImpl() {
         Consulta consulta1 = new Consulta(getNextId(), 1, 8, "Ótimo atendimento");
         Consulta consulta2 = new Consulta(getNextId(), 2, 9, "Muito satisfeito");
+        Consulta consulta3 = new Consulta(getNextId(), 1, 7, "Boa experiência");
 
         consultas.add(consulta1);
         consultas.add(consulta2);
+        consultas.add(consulta3);
     }
 
     @Override
@@ -56,6 +59,13 @@ public class ConsultaFakeDaoImpl implements ConsultaDao {
             consulta.setNotaPaciente(entity.getNotaPaciente());
             consulta.setComentarioPaciente(entity.getComentarioPaciente());
         }
+
+    }
+    @Override
+    public List<Consulta> consultaPorPaciente(int id) {
+        return consultas.stream()
+                .filter(consulta -> consulta.getAgendaId() == id)
+                .collect(Collectors.toList());
     }
 
 

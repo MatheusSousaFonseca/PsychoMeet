@@ -206,4 +206,44 @@ public class ConsultaPostgresDaoImpl implements ConsultaDao {
             }
         }
     }
+
+    @Override
+    public List<Consulta> consultaPorPaciente(int id) {
+        String sql = "SELECT c.* FROM consulta c " +
+                "JOIN agendamento a ON c.agenda_id = a.id " +
+                "WHERE a.paciente_id = ?;";
+
+        List<Consulta> consultas = new ArrayList<>();
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+
+        try {
+            preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setInt(1, id);
+            resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()) {
+                Consulta consulta = new Consulta();
+                consulta.setId(resultSet.getInt("id"));
+                consulta.setAgendaId(resultSet.getInt("agenda_id"));
+                consulta.setNotaPaciente(resultSet.getInt("nota_paciente"));
+                consulta.setComentarioPaciente(resultSet.getString("comentario_paciente"));
+
+                consultas.add(consulta);
+            }
+
+        } catch (SQLException e) {
+            logger.severe("Erro ao buscar consultas por pacienteId: " + e.getMessage());
+            throw new RuntimeException(e);
+        } finally {
+            try {
+                if (resultSet != null) resultSet.close();
+                if (preparedStatement != null) preparedStatement.close();
+            } catch (SQLException e) {
+                logger.severe("Erro ao fechar recursos: " + e.getMessage());
+            }
+        }
+
+        return consultas;
+    }
 }

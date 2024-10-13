@@ -29,6 +29,12 @@ public class ConsultaRestController {
         return ResponseEntity.ok(consultaService.findById(id));
     }
 
+    @GetMapping("/paciente/{pacienteId}")
+    public ResponseEntity<List<Consulta>> getByPacienteId(@PathVariable int pacienteId) {
+        List<Consulta> consultas = consultaService.findByPaciente(pacienteId);
+        return ResponseEntity.ok(consultas);
+    }
+
     @PostMapping
     public ResponseEntity<Void> create(@RequestBody Consulta consulta) {
         int id = consultaService.create(consulta);

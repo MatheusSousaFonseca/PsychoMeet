@@ -1,6 +1,8 @@
 package br.psychomeet.backend.lds.backend.main.dao.fake;
 
 import br.psychomeet.backend.lds.backend.main.domain.Consulta;
+import br.psychomeet.backend.lds.backend.main.dto.ConsultaAgendamentoDTO;
+import br.psychomeet.backend.lds.backend.main.dto.FeedbackDTO;
 import br.psychomeet.backend.lds.backend.main.port.dao.consulta.ConsultaDao;
 import org.springframework.stereotype.Repository;
 
@@ -61,11 +63,22 @@ public class ConsultaFakeDaoImpl implements ConsultaDao {
         }
 
     }
+
     @Override
-    public List<Consulta> consultaPorPaciente(int id) {
-        return consultas.stream()
-                .filter(consulta -> consulta.getAgendaId() == id)
-                .collect(Collectors.toList());
+    public List<ConsultaAgendamentoDTO> findByPacienteId(int pacienteId, String status) {
+        return new ArrayList<>();
+    }
+
+    @Override
+    public List<ConsultaAgendamentoDTO> findByPsicologoId(int psicologoId, String status) {
+        // Aqui você deve implementar a lógica para retornar as consultas de acordo com o psicólogo
+        // Para o exemplo, vamos retornar uma lista vazia, pois não temos a relação estabelecida
+        return new ArrayList<>();
+    }
+
+    @Override
+    public void giveFeedback(FeedbackDTO feedback) {
+
     }
 
 

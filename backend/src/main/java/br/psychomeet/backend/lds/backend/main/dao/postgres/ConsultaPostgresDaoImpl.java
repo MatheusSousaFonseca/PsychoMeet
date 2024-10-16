@@ -1,6 +1,8 @@
 package br.psychomeet.backend.lds.backend.main.dao.postgres;
 
 import br.psychomeet.backend.lds.backend.main.domain.Consulta;
+import br.psychomeet.backend.lds.backend.main.dto.ConsultaAgendamentoDTO;
+import br.psychomeet.backend.lds.backend.main.dto.FeedbackDTO;
 import br.psychomeet.backend.lds.backend.main.port.dao.consulta.ConsultaDao;
 
 import java.sql.Connection;
@@ -208,42 +210,121 @@ public class ConsultaPostgresDaoImpl implements ConsultaDao {
     }
 
     @Override
-    public List<Consulta> consultaPorPaciente(int id) {
-        String sql = "SELECT c.* FROM consulta c " +
+    public List<ConsultaAgendamentoDTO> findByPacienteId(int pacienteId, String status) {
+        String sql = "SELECT c.id AS consulta_id, a.id AS agenda_id, a.paciente_id, c.nota_paciente, c.comentario_paciente, " +
+                "a.status, a.data, a.hora_inicio, a.hora_fim, d.psicologo_id, p.id AS pessoa_id, pe.nome AS nome_psicologo " +
+                "FROM consulta c " +
                 "JOIN agendamento a ON c.agenda_id = a.id " +
-                "WHERE a.paciente_id = ?;";
+                "JOIN disponibilidade d ON a.disponibilidade_id = d.id " +
+                "JOIN psicologo p ON d.psicologo_id = p.id " +
+                "JOIN pessoa pe ON p.pessoa_id = pe.id " +
+                "WHERE a.paciente_id = ?";
 
-        List<Consulta> consultas = new ArrayList<>();
+        if (status != null) {
+            sql += " AND a.status = ?"; // Adiciona o filtro de status
+        }
+
+        List<ConsultaAgendamentoDTO> consultasAgendamentos = new ArrayList<>();
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
 
         try {
             preparedStatement = connection.prepareStatement(sql);
-            preparedStatement.setInt(1, id);
+            preparedStatement.setInt(1, pacienteId);
+            if (status != null) {
+                preparedStatement.setString(2, status);
+            }
+
             resultSet = preparedStatement.executeQuery();
 
             while (resultSet.next()) {
-                Consulta consulta = new Consulta();
-                consulta.setId(resultSet.getInt("id"));
-                consulta.setAgendaId(resultSet.getInt("agenda_id"));
-                consulta.setNotaPaciente(resultSet.getInt("nota_paciente"));
-                consulta.setComentarioPaciente(resultSet.getString("comentario_paciente"));
+                ConsultaAgendamentoDTO dto = new ConsultaAgendamentoDTO();
+                dto.setConsultaId(resultSet.getInt("consulta_id"));
+                dto.setAgendaId(resultSet.getInt("agenda_id"));
+                dto.setPacienteId(resultSet.getInt("paciente_id"));
+                dto.setNotaPaciente(resultSet.getInt("nota_paciente"));
+                dto.setComentarioPaciente(resultSet.getString("comentario_paciente"));
+                dto.setStatus(resultSet.getString("status"));
+                dto.setData(resultSet.getString("data"));
+                dto.setHoraInicio(resultSet.getString("hora_inicio"));
+                dto.setHoraFim(resultSet.getString("hora_fim"));
+                dto.setPsicologoId(resultSet.getInt("psicologo_id")); // Adicionando psicologo_id
+                dto.setPessoaId(resultSet.getInt("pessoa_id")); // Adicionando pessoa_id
+                dto.setNomePsicologo(resultSet.getString("nome_psicologo")); // Adicionando nome do psicólogo
 
-                consultas.add(consulta);
+                consultasAgendamentos.add(dto);
             }
 
         } catch (SQLException e) {
-            logger.severe("Erro ao buscar consultas por pacienteId: " + e.getMessage());
+            logger.severe("Error executing findByPacienteId: " + e.getMessage());
             throw new RuntimeException(e);
         } finally {
             try {
                 if (resultSet != null) resultSet.close();
                 if (preparedStatement != null) preparedStatement.close();
             } catch (SQLException e) {
-                logger.severe("Erro ao fechar recursos: " + e.getMessage());
+                logger.severe("Error closing resources: " + e.getMessage());
             }
         }
 
-        return consultas;
+        return consultasAgendamentos;
     }
+
+
+    @Override
+    public List<ConsultaAgendamentoDTO> findByPsicologoId(int psicologoId, String status) {
+        String sql = "SELECT c.id AS consulta_id, a.id AS agenda_id, a.paciente_id, c.nota_paciente, c.comentario_paciente, " +
+                "a.status, a.data, a.hora_inicio, a.hora_fim, d.psicologo_id " +
+                "FROM consulta c " +
+                "JOIN agendamento a ON c.agenda_id = a.id " +
+                "JOIN disponibilidade d ON a.disponibilidade_id = d.id " +
+                "WHERE a.psicologo_id = ?;";
+
+        List<ConsultaAgendamentoDTO> consultasAgendamentos = new ArrayList<>();
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+
+        try {
+            preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setInt(1, psicologoId);
+            resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()) {
+                ConsultaAgendamentoDTO dto = new ConsultaAgendamentoDTO();
+                dto.setConsultaId(resultSet.getInt("consulta_id"));
+                dto.setAgendaId(resultSet.getInt("agenda_id"));
+                dto.setPacienteId(resultSet.getInt("paciente_id"));
+                dto.setNotaPaciente(resultSet.getInt("nota_paciente"));
+                dto.setComentarioPaciente(resultSet.getString("comentario_paciente"));
+                dto.setStatus(resultSet.getString("status"));
+                dto.setData(resultSet.getString("data"));
+                dto.setHoraInicio(resultSet.getString("hora_inicio"));
+                dto.setHoraFim(resultSet.getString("hora_fim"));
+                dto.setPsicologoId(psicologoId); // Adicionando psicologo_id
+
+                consultasAgendamentos.add(dto);
+            }
+
+        } catch (SQLException e) {
+            logger.severe("Error executing findByPsicologoId: " + e.getMessage());
+            throw new RuntimeException(e);
+        } finally {
+            try {
+                if (resultSet != null) resultSet.close();
+                if (preparedStatement != null) preparedStatement.close();
+            } catch (SQLException e) {
+                logger.severe("Error closing resources: " + e.getMessage());
+            }
+        }
+
+        return consultasAgendamentos;
+    }
+
+    @Override
+    public void giveFeedback(FeedbackDTO feedback) {
+
+    }
+
+
 }
+

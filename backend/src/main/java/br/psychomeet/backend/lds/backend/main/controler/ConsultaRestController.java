@@ -1,6 +1,7 @@
 package br.psychomeet.backend.lds.backend.main.controler;
 
 import br.psychomeet.backend.lds.backend.main.domain.Consulta;
+import br.psychomeet.backend.lds.backend.main.dto.ConsultaAgendamentoDTO;
 import br.psychomeet.backend.lds.backend.main.port.service.consulta.ConsultaService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -29,11 +30,6 @@ public class ConsultaRestController {
         return ResponseEntity.ok(consultaService.findById(id));
     }
 
-    @GetMapping("/paciente/{pacienteId}")
-    public ResponseEntity<List<Consulta>> getByPacienteId(@PathVariable int pacienteId) {
-        List<Consulta> consultas = consultaService.findByPaciente(pacienteId);
-        return ResponseEntity.ok(consultas);
-    }
 
     @PostMapping
     public ResponseEntity<Void> create(@RequestBody Consulta consulta) {
@@ -52,6 +48,22 @@ public class ConsultaRestController {
     public ResponseEntity<Void> delete(@PathVariable int id) {
         consultaService.delete(id);
         return ResponseEntity.noContent().build();
+    }
+
+    @GetMapping("/paciente/{pacienteId}")
+    public ResponseEntity<List<ConsultaAgendamentoDTO>> getByPacienteId(
+            @PathVariable int pacienteId,
+            @RequestParam(required = false) String status) { // Filtro de status opcional
+        List<ConsultaAgendamentoDTO> consultas = consultaService.findByPaciente(pacienteId, status);
+        return ResponseEntity.ok(consultas);
+    }
+
+    @GetMapping("/psicologo/{psicologoId}")
+    public ResponseEntity<List<ConsultaAgendamentoDTO>> getByPsicologoId(
+            @PathVariable int psicologoId,
+            @RequestParam(required = false) String status) { // Filtro de status opcional
+        List<ConsultaAgendamentoDTO> consultas = consultaService.findByPsicologo(psicologoId, status);
+        return ResponseEntity.ok(consultas);
     }
 
 

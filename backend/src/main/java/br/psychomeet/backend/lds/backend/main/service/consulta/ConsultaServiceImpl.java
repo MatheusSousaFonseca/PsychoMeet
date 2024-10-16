@@ -1,6 +1,7 @@
 package br.psychomeet.backend.lds.backend.main.service.consulta;
 
 import br.psychomeet.backend.lds.backend.main.domain.Consulta;
+import br.psychomeet.backend.lds.backend.main.dto.ConsultaAgendamentoDTO;
 import br.psychomeet.backend.lds.backend.main.port.dao.consulta.ConsultaDao;
 import br.psychomeet.backend.lds.backend.main.port.service.consulta.ConsultaService;
 import org.springframework.stereotype.Service;
@@ -53,10 +54,14 @@ public class ConsultaServiceImpl implements ConsultaService {
             consultaDao.updateInformation(id, entity);
         }
     }
+
     @Override
-    public List<Consulta> findByPaciente(int id) {
-        return consultaDao.consultaPorPaciente(id);
+    public List<ConsultaAgendamentoDTO> findByPaciente(int pacienteId, String status) {
+        return consultaDao.findByPacienteId(pacienteId, status);
     }
 
-
+    @Override
+    public List<ConsultaAgendamentoDTO> findByPsicologo(int psicologoId, String status) {
+        return consultaDao.findByPsicologoId(psicologoId, status);
+    }
 }

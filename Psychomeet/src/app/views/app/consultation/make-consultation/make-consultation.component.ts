@@ -149,24 +149,30 @@ export class MakeConsultationComponent implements OnInit {
     let email = localStorage.getItem("email")
     let paciente = await this.userReadService.findByEmail(email!)
     let consultation : Consultation = {
-      hora: this.horaSelecionada,
-      diaDaSemana: this.diaSelecionada,
+      horaInicio: this.horaSelecionada,
+      data: this.diaSelecionada,
       nomePsicologo: this.psychologist.nome,
-      idPsicologo: this.psychologist.id!,
-      idPaciente: paciente.id!,
-      status: "PENDENTE"
+      status: "PENDENTE",
+      consultaId: 0,
+      agendaId: 0,
+      pacienteId: 0,
+      notaPaciente: 0,
+      comentarioPaciente: '',
+      horaFim: '',
+      psicologoId: 0,
+      pessoaId: 0
 
     }
 
     let consultationResponse = await this.consultationCreateService.create(consultation)
     console.log(consultationResponse);
 
-    if(consultationResponse.id==''){
-      console.log('Entrando...');
+    // if(consultationResponse.id==''){
+    //   console.log('Entrando...');
 
-      this.toastrService.error('Não foi possivel marcar consulta.')
-      return;
-    }
+    //   this.toastrService.error('Não foi possivel marcar consulta.')
+    //   return;
+    // }
     console.log('Saindo');
 
     this.toastrService.success('Consulta marcada com sucesso.')

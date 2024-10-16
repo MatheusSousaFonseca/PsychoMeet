@@ -6,15 +6,17 @@ import { PsychologistReadService } from '../../../../services/psychologist/psych
 import { Consultation } from '../../../../domain/model/consultation-model';
 import { ConsultationReadService } from '../../../../services/consultation/consultation-read-service';
 import { UserReadService } from '../../../../services/user/user-read-service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-view-consultation-patient',
   standalone: true,
   imports: [
-    RouterModule
+    RouterModule,
+    CommonModule
   ],
   templateUrl: './view-consultation-patient.component.html',
-  styleUrl: './view-consultation-patient.component.css'
+  styleUrls: ['./view-consultation-patient.component.css']
 })
 export class ViewConsultationPatientComponent implements OnInit {
 
@@ -22,8 +24,16 @@ export class ViewConsultationPatientComponent implements OnInit {
 
   modalRef: NgbModalRef | null = null;
 
-  constructor(private router: Router, private modalService: NgbModal, private psychologistReadService: PsychologistReadService, private consultationReadService: ConsultationReadService, private userReadService: UserReadService) { }
+  feedback: string = '';
+  rating: number = 0;
 
+  constructor(
+    private router: Router,
+    private modalService: NgbModal,
+    private psychologistReadService: PsychologistReadService,
+    private consultationReadService: ConsultationReadService,
+    private userReadService: UserReadService
+  ) { }
   ngOnInit(): void {
     this.loadConsultations();
   }
@@ -57,9 +67,15 @@ export class ViewConsultationPatientComponent implements OnInit {
   }
 
   async loadConsultations() {
-    let email = localStorage.getItem("email")
-    let paciente = await this.userReadService.findByEmail(email!)
+    let email = localStorage.getItem("email");
+    let paciente = await this.userReadService.findByEmail(email!);
     this.consultations = await this.consultationReadService.findByIdPacienteAccept(paciente.id!);
+  }
+
+  submitFeedback() {
+    console.log("Feedback:", this.feedback);
+    console.log("Rating:", this.rating);
+    this.closeMyModal();
   }
 
 }

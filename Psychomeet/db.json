@@ -154,6 +154,21 @@
       "idPsicologo": "2",
       "idPaciente": "1",
       "status": "ACCEPT"
+    },
+    {
+      "id": "3f4a",
+      "horaInicio": "8:00 - 9:00",
+      "data": "Segunda-feira",
+      "nomePsicologo": "João Pereira",
+      "status": "PENDENTE",
+      "consultaId": 0,
+      "agendaId": 0,
+      "pacienteId": 0,
+      "notaPaciente": 0,
+      "comentarioPaciente": "",
+      "horaFim": "",
+      "psicologoId": 0,
+      "pessoaId": 0
     }
   ],
   "availability": [
@@ -184,6 +199,11 @@
     },
     {
       "id": "d06d",
+      "hora": "8:00 - 9:00",
+      "diaDaSemana": "Segunda-feira"
+    },
+    {
+      "id": "386e",
       "hora": "8:00 - 9:00",
       "diaDaSemana": "Segunda-feira"
     }

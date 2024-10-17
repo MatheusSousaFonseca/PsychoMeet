@@ -249,5 +249,67 @@ public class PsicologoPostgresDaoImpl implements PsicologoDao {
             throw new RuntimeException(e);
         }
     }
+
+    @Override
+    public List<PsicologoFullDTO> search(String name, String especialidade) {
+        StringBuilder sql = new StringBuilder("SELECT ps.id AS psicologo_id, ps.crp, ps.descricao, p.id AS pessoa_id, " +
+                "p.nome, p.email, p.telefone, p.data_nascimento, p.cpf, e.descricao AS especialidade, a.abordagem AS abordagem " +
+                "FROM psicologo ps " +
+                "JOIN pessoa p ON ps.pessoa_id = p.id " +
+                "LEFT JOIN psicologo_especialidade pe ON pe.psicologo_id = ps.id " +
+                "LEFT JOIN especialidade e ON e.id = pe.especialidade_id " +
+                "LEFT JOIN abordagem a ON a.psicologo_id = ps.id WHERE 1=1 "); // Always true condition
+
+        // List to store parameters
+        List<String> parameters = new ArrayList<>();
+
+        if (name != null && !name.isEmpty()) {
+            sql.append("AND p.nome ILIKE ? ");
+            parameters.add("%" + name + "%");
+        }
+
+        if (especialidade != null && !especialidade.isEmpty()) {
+            sql.append("AND e.descricao ILIKE ? ");
+            parameters.add("%" + especialidade + "%");
+        }
+
+        List<PsicologoFullDTO> psicologoFullDTOList = new ArrayList<>();
+
+        try (PreparedStatement preparedStatement = connection.prepareStatement(sql.toString())) {
+            // Set the parameters dynamically based on what was added to the SQL query
+            for (int i = 0; i < parameters.size(); i++) {
+                preparedStatement.setString(i + 1, parameters.get(i));
+            }
+
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                while (resultSet.next()) {
+                    PsicologoFullDTO psicologoFullDTO = new PsicologoFullDTO(
+                            String.valueOf(resultSet.getInt("psicologo_id")),
+                            resultSet.getString("nome"),
+                            resultSet.getString("email"),
+                            "Público-alvo genérico",
+                            resultSet.getString("descricao"),
+                            resultSet.getString("crp"),
+                            resultSet.getString("cpf"),
+                            resultSet.getString("abordagem"),
+                            resultSet.getDate("data_nascimento"),
+                            150.0,
+                            resultSet.getString("especialidade"),
+                            "senhaFake",
+                            resultSet.getString("telefone")
+                    );
+
+                    psicologoFullDTOList.add(psicologoFullDTO);
+                }
+            }
+        } catch (SQLException e) {
+            logger.severe("Error executing search: " + e.getMessage());
+            throw new RuntimeException(e);
+        }
+
+        return psicologoFullDTOList;
+    }
+
 }
+
 

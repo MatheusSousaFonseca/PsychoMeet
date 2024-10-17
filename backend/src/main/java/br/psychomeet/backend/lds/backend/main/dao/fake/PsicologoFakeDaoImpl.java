@@ -39,7 +39,6 @@ public class PsicologoFakeDaoImpl implements PsicologoDao {
         psicologos.add(PsicologoFullDTO.fromPsicologo(psicologo2, pessoa2));
     }
 
-
     @Override
     public int add(AddPsicologoDTO entity) {
         final int id = getNextId();
@@ -87,6 +86,11 @@ public class PsicologoFakeDaoImpl implements PsicologoDao {
             psicologoDTO.setCrp(entity.getCrp());
             psicologoDTO.setDescricao(entity.getDescricao());
         }
+    }
+
+    @Override
+    public List<PsicologoFullDTO> search(String name, String especialidade) {
+        return List.of();
     }
 
     private Date stringToDate(String dateStr) {

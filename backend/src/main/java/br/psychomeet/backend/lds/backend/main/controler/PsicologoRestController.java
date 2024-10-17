@@ -24,8 +24,13 @@ public class PsicologoRestController {
     }
 
     @GetMapping
-    public ResponseEntity<List<PsicologoFullDTO>> getAll() {
-        return ResponseEntity.ok(psicologoService.findAll());
+    public ResponseEntity<List<PsicologoFullDTO>> getAll(@RequestParam String name,@RequestParam String especialidade) {
+        if(name.isEmpty() && especialidade.isEmpty()){
+            return ResponseEntity.ok(psicologoService.findAll());
+        }else{
+            return ResponseEntity.ok(psicologoService.search(name,especialidade));
+        }
+
     }
 
     @GetMapping("/{id}")

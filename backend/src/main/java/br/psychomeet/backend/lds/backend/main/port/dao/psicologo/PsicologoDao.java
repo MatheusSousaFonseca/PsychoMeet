@@ -18,4 +18,6 @@ public interface PsicologoDao {
     List<PsicologoFullDTO> readAll();
 
     void updateInformation(int id, Psicologo entity);
+
+    List<PsicologoFullDTO> search(String name, String especialidade);
 }

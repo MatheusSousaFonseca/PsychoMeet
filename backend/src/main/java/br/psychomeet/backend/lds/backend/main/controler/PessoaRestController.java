@@ -71,6 +71,7 @@ public class PessoaRestController {
     public ResponseEntity<Pessoa> authenticate(@RequestParam("email") String email,
                                                @RequestParam("senha") String senha) {
 //        Pessoa pessoa = pessoaService.findByEmail(email);
+        System.out.println(email);
         Pessoa pessoa = authenticationService.authenticate(email, senha);
         if (pessoa != null) {
             return ResponseEntity.ok(pessoa);

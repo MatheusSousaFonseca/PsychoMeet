@@ -24,7 +24,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
     @Override
     public Pessoa authenticate(String email, String password) {
         Pessoa user = pessoaService.findByEmail(email);
-
+        System.out.println(user);
         if (!user.getSenha().equals(password)) {
 
             return null;

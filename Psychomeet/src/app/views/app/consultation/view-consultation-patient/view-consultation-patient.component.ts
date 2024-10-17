@@ -7,13 +7,17 @@ import { Consultation } from '../../../../domain/model/consultation-model';
 import { ConsultationReadService } from '../../../../services/consultation/consultation-read-service';
 import { UserReadService } from '../../../../services/user/user-read-service';
 import { CommonModule } from '@angular/common';
+import { ConsultationFeedbackService } from '../../../../services/consultation/consultation-feedback-service';
+import { consultationFeedback } from '../../../../domain/dto/consultation-feedback';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-view-consultation-patient',
   standalone: true,
   imports: [
     RouterModule,
-    CommonModule
+    CommonModule,
+    FormsModule
   ],
   templateUrl: './view-consultation-patient.component.html',
   styleUrls: ['./view-consultation-patient.component.css']
@@ -26,13 +30,14 @@ export class ViewConsultationPatientComponent implements OnInit {
 
   feedback: string = '';
   rating: number = 0;
+  selectedConsultationId: number | null = null;
 
   constructor(
     private router: Router,
     private modalService: NgbModal,
-    private psychologistReadService: PsychologistReadService,
     private consultationReadService: ConsultationReadService,
-    private userReadService: UserReadService
+    private userReadService: UserReadService,
+    private consultationFeedbackService: ConsultationFeedbackService,
   ) { }
   ngOnInit(): void {
     this.loadConsultations();
@@ -49,7 +54,10 @@ export class ViewConsultationPatientComponent implements OnInit {
 
   }
 
-  openMyModal(content: any) {
+  openMyModal(content: any, consultation: Consultation) {
+    this.selectedConsultationId = consultation.consultaId; // Set the selected consultation ID
+    this.feedback = ''; // Reset feedback
+    this.rating = 0;    // Reset rating
     this.modalRef = this.modalService.open(content);
   }
 
@@ -73,9 +81,24 @@ export class ViewConsultationPatientComponent implements OnInit {
   }
 
   submitFeedback() {
-    console.log("Feedback:", this.feedback);
-    console.log("Rating:", this.rating);
-    this.closeMyModal();
+    console.log('Feedback:', this.feedback); // Check the feedback value
+    console.log('Rating:', this.rating); // Check the rating value
+
+    const feedbackData: consultationFeedback = {
+      avaliacao: this.feedback,
+      nota: this.rating, // Convert rating to string if needed
+      consultaId: this.selectedConsultationId!
+    };
+
+    // Call the update method to send feedback
+    this.consultationFeedbackService.update(feedbackData).then(() => {
+      console.log('Feedback submitted successfully');
+      this.feedback = ''; // Reset feedback
+      this.rating = 0;    // Reset rating
+      this.closeMyModal();
+    }).catch((error: any) => {
+      console.error('Error submitting feedback:', error);
+    });
   }
 
 }

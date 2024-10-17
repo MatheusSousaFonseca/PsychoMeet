@@ -2,6 +2,7 @@ package br.psychomeet.backend.lds.backend.main.controler;
 
 import br.psychomeet.backend.lds.backend.main.domain.Consulta;
 import br.psychomeet.backend.lds.backend.main.dto.ConsultaAgendamentoDTO;
+import br.psychomeet.backend.lds.backend.main.dto.FeedbackDTO;
 import br.psychomeet.backend.lds.backend.main.port.service.consulta.ConsultaService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -64,6 +65,12 @@ public class ConsultaRestController {
             @RequestParam(required = false) String status) { // Filtro de status opcional
         List<ConsultaAgendamentoDTO> consultas = consultaService.findByPsicologo(psicologoId, status);
         return ResponseEntity.ok(consultas);
+    }
+
+    @PutMapping("/feedback")
+    public ResponseEntity<String> postFeedback(@RequestBody FeedbackDTO feedback) {
+        consultaService.giveFeedback(feedback);
+        return ResponseEntity.ok().build();
     }
 
 

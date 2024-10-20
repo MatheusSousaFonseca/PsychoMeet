@@ -65,4 +65,9 @@ public class ConsultaServiceImpl implements ConsultaService {
     public List<ConsultaAgendamentoDTO> findByPsicologo(int psicologoId, String status) {
         return consultaDao.findByPsicologoId(psicologoId, status);
     }
+
+    @Override
+    public void giveFeedback(FeedbackDTO feedback) {
+        consultaDao.giveFeedback(feedback);
+    }
 }

@@ -10,4 +10,5 @@ import java.util.List;
 public interface ConsultaService extends CrudService<Consulta> {
     List<ConsultaAgendamentoDTO> findByPaciente(int id, String status);
     List<ConsultaAgendamentoDTO> findByPsicologo(int id, String status);
+    void giveFeedback(FeedbackDTO feedback);
 }

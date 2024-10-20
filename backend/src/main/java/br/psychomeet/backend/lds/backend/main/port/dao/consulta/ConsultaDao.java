@@ -10,4 +10,5 @@ import java.util.List;
 public interface ConsultaDao extends CrudDao<Consulta> {
     List<ConsultaAgendamentoDTO> findByPacienteId(int pacienteId,String status );
     List<ConsultaAgendamentoDTO> findByPsicologoId(int psicologoId, String status);
+    void giveFeedback(FeedbackDTO feedback);
 }

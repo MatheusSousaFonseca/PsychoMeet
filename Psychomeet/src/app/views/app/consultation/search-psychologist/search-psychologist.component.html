@@ -20,30 +20,21 @@
     <h2 class="mb-3">Buscar Profissionais</h2>
 
     <!-- Formulário de busca -->
-    <form>
-        <div class="form-row align-items-center mb-3">
-            <div class="col-md-6">
-                <label for="inputName" class="sr-only">Nome</label>
-                <input type="text" class="form-control" id="inputName" placeholder="Nome do Profissional">
-            </div>
-            <div class="col-md-4">
-                <label for="inputSpecialty" class="sr-only">Especialidade</label>
-                <select id="inputSpecialty" class="form-control">
-                    <option selected>Escolher Especialidade...</option>
-                    <option>Psicologia Clínica</option>
-                    <option>Psicoterapia Cognitiva</option>
-                    <option>Psicologia Infantil</option>
-                    <option>Psicologia Organizacional</option>
-                    <option>Psicologia Esportiva</option>
-                </select>
-            </div>
-            <div class="col-md-2">
-                <button type="submit" class="btn btn-primary">
-                    <i class="fas fa-search"></i> Buscar
-                </button>
-            </div>
-        </div>
-    </form>
+    <form (ngSubmit)="search()">
+      <div class="form-row align-items-center mb-3">
+          <div class="col-md-6">
+              <label for="inputName" class="sr-only">Nome</label>
+              <input [(ngModel)]="name" type="text" class="form-control" name="name" id="inputName" placeholder="Nome do Profissional" required>
+          </div>
+          <div class="col-md-2">
+              <button type="submit" class="btn btn-primary">
+                  <i class="fas fa-search"></i> Buscar
+              </button>
+          </div>
+      </div>
+  </form>
+
+
 
     <!-- Lista de profissionais sugeridos -->
     <div>

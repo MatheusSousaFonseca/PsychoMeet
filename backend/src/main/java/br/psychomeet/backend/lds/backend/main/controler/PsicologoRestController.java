@@ -30,7 +30,6 @@ public class PsicologoRestController {
         }else{
             return ResponseEntity.ok(psicologoService.search(name,especialidade));
         }
-
     }
 
     @GetMapping("/{id}")

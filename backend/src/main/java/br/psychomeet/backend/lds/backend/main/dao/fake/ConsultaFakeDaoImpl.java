@@ -64,8 +64,6 @@ public class ConsultaFakeDaoImpl implements ConsultaDao {
         }
     }
 
-
-
     @Override
     public List<ConsultaAgendamentoDTO> findByPacienteId(int pacienteId, String status) {
         return new ArrayList<>();
@@ -78,4 +76,8 @@ public class ConsultaFakeDaoImpl implements ConsultaDao {
         return new ArrayList<>();
     }
 
+    @Override
+    public void giveFeedback(FeedbackDTO feedback) {
+
+    }
 }

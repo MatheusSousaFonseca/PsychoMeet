@@ -24,7 +24,7 @@ public class PsicologoPostgresDaoImpl implements PsicologoDao {
     @Autowired
     private EspecialidadeService especialidadeService;
 
-    public PsicologoPostgresDaoImpl( Connection connection) {
+    public PsicologoPostgresDaoImpl(Connection connection) {
         this.connection = connection;
     }
 
@@ -135,13 +135,15 @@ public class PsicologoPostgresDaoImpl implements PsicologoDao {
     @Override
     public PsicologoFullDTO readById(int id) {
         String sql = "SELECT ps.id AS psicologo_id, ps.crp, ps.descricao, p.id AS pessoa_id, p.nome, p.email, p.telefone, p.data_nascimento, p.cpf, " +
-                "e.descricao AS especialidade, a.abordagem AS abordagem " +
+                "STRING_AGG(DISTINCT e.descricao, ', ') AS especialidades, " +
+                "STRING_AGG(DISTINCT a.abordagem, ', ') AS abordagens " +
                 "FROM psicologo ps " +
                 "JOIN pessoa p ON ps.pessoa_id = p.id " +
                 "LEFT JOIN psicologo_especialidade pe ON pe.psicologo_id = ps.id " +
                 "LEFT JOIN especialidade e ON e.id = pe.especialidade_id " +
-                "LEFT JOIN abordagem a ON a.psicologo_id = ps.id " +  // Adicionei o espaço necessário aqui
-                "WHERE ps.id = ?";
+                "LEFT JOIN abordagem a ON a.psicologo_id = ps.id " +
+                "WHERE ps.id = ? " +
+                "GROUP BY ps.id, p.id;";
 
         PsicologoFullDTO psicologoFullDTO = null;
 
@@ -152,18 +154,18 @@ public class PsicologoPostgresDaoImpl implements PsicologoDao {
                 if (resultSet.next()) {
                     psicologoFullDTO = new PsicologoFullDTO(
                             String.valueOf(resultSet.getInt("psicologo_id")),  // ID
-                            resultSet.getString("nome"),                      // Nome
-                            resultSet.getString("email"),                     // Email
-                            "Público-alvo genérico",                          // Público (não especificado na query, ajuste conforme necessário)
-                            resultSet.getString("descricao"),                 // Descrição
-                            resultSet.getString("crp"),                       // CRP
-                            resultSet.getString("cpf"),                       // CPF
-                            resultSet.getString("abordagem"),                 // Abordagem
-                            resultSet.getDate("data_nascimento"),             // Data de Nascimento
-                            150.0,                                            // Preço (ajuste conforme necessário)
-                            resultSet.getString("especialidade"),             // Especialidade
-                            "senhaFake",                                      // Senha (substituir por senha real, se necessário)
-                            resultSet.getString("telefone")                   // Telefone
+                            resultSet.getString("nome"),                        // Nome
+                            resultSet.getString("email"),                       // Email
+                            "Público-alvo genérico",                            // Público
+                            resultSet.getString("descricao"),                   // Descrição
+                            resultSet.getString("crp"),                         // CRP
+                            resultSet.getString("cpf"),                         // CPF
+                            resultSet.getString("abordagens"),                 // Get the concatenated string of approaches
+                            resultSet.getDate("data_nascimento"),               // Data de Nascimento
+                            150.0,                                              // Preço
+                            resultSet.getString("especialidades"),             // Get the concatenated string of specialties
+                            "senhaFake",                                        // Senha
+                            resultSet.getString("telefone")                     // Telefone
                     );
                 }
             }
@@ -175,16 +177,18 @@ public class PsicologoPostgresDaoImpl implements PsicologoDao {
     }
 
 
-
     @Override
     public List<PsicologoFullDTO> readAll() {
-        String sql = "SELECT ps.id AS psicologo_id, ps.crp, ps.descricao, p.id AS pessoa_id, p.nome, p.email, p.telefone, p.data_nascimento, p.cpf, " +
-                "e.descricao AS especialidade, a.abordagem AS abordagem " +
+        String sql = "SELECT ps.id AS psicologo_id, ps.crp, ps.descricao, p.id AS pessoa_id, " +
+                "p.nome, p.email, p.telefone, p.data_nascimento, p.cpf, " +
+                "STRING_AGG(DISTINCT e.descricao, ', ') AS especialidades, " +
+                "STRING_AGG(DISTINCT a.abordagem, ', ') AS abordagens " +
                 "FROM psicologo ps " +
                 "JOIN pessoa p ON ps.pessoa_id = p.id " +
                 "LEFT JOIN psicologo_especialidade pe ON pe.psicologo_id = ps.id " +
                 "LEFT JOIN especialidade e ON e.id = pe.especialidade_id " +
-                "LEFT JOIN abordagem a ON a.psicologo_id = ps.id;";
+                "LEFT JOIN abordagem a ON a.psicologo_id = ps.id " +
+                "GROUP BY ps.id, p.id;";
 
 
         List<PsicologoFullDTO> psicologoFullDTOList = new ArrayList<>();
@@ -193,20 +197,21 @@ public class PsicologoPostgresDaoImpl implements PsicologoDao {
              ResultSet resultSet = preparedStatement.executeQuery()) {
 
             while (resultSet.next()) {
+                System.out.println(resultSet.getString("abordagens"));
                 // Criando o objeto PsicologoFullDTO
                 PsicologoFullDTO psicologoFullDTO = new PsicologoFullDTO(
-                        String.valueOf(resultSet.getInt("psicologo_id")),  // ID
-                        resultSet.getString("nome"),                      // Nome
-                        resultSet.getString("email"),                     // Email
-                        "Público-alvo genérico",                          // Público (substituir com a lógica correta se necessário)
-                        resultSet.getString("descricao"),                 // Descrição
-                        resultSet.getString("crp"),                       // CRP
-                        resultSet.getString("cpf"),                       // CPF
-                        resultSet.getString("abordagem"),                 // Abordagem (se houver)
-                        resultSet.getDate("data_nascimento"),             // Data de Nascimento
-                        150.0,                                            // Preço (valor estático ou ajuste conforme necessário)
-                        resultSet.getString("especialidade"),             // Especialidade (se houver)
-                        "senhaFake",                                      // Senha (valor estático ou ajuste conforme necessário)
+                        String.valueOf(resultSet.getInt("psicologo_id")),
+                        resultSet.getString("nome"),
+                        resultSet.getString("email"),
+                        "Público-alvo genérico",
+                        resultSet.getString("descricao"),
+                        resultSet.getString("crp"),
+                        resultSet.getString("cpf"),
+                        resultSet.getString("abordagens"), // Get the concatenated string of approaches
+                        resultSet.getDate("data_nascimento"),
+                        150.0,
+                        resultSet.getString("especialidades"), // Get the concatenated string of specialties
+                        "senhaFake",
                         resultSet.getString("telefone")                   // Telefone
                 );
 
@@ -214,14 +219,12 @@ public class PsicologoPostgresDaoImpl implements PsicologoDao {
                 psicologoFullDTOList.add(psicologoFullDTO);
             }
         } catch (SQLException e) {
-            logger.severe("Error executing readAll: " + e.getMessage());
+            logger.severe("Error executing findAll: " + e.getMessage());
             throw new RuntimeException(e);
         }
 
         return psicologoFullDTOList;
     }
-
-
 
 
     @Override
@@ -253,7 +256,9 @@ public class PsicologoPostgresDaoImpl implements PsicologoDao {
     @Override
     public List<PsicologoFullDTO> search(String name, String especialidade) {
         StringBuilder sql = new StringBuilder("SELECT ps.id AS psicologo_id, ps.crp, ps.descricao, p.id AS pessoa_id, " +
-                "p.nome, p.email, p.telefone, p.data_nascimento, p.cpf, e.descricao AS especialidade, a.abordagem AS abordagem " +
+                "p.nome, p.email, p.telefone, p.data_nascimento, p.cpf, " +
+                "STRING_AGG(DISTINCT e.descricao, ', ') AS especialidades, " +
+                "STRING_AGG(DISTINCT a.abordagem, ', ') AS abordagens " +
                 "FROM psicologo ps " +
                 "JOIN pessoa p ON ps.pessoa_id = p.id " +
                 "LEFT JOIN psicologo_especialidade pe ON pe.psicologo_id = ps.id " +
@@ -273,6 +278,9 @@ public class PsicologoPostgresDaoImpl implements PsicologoDao {
             parameters.add("%" + especialidade + "%");
         }
 
+        sql.append("GROUP BY ps.id, p.id"); // Add grouping at the end
+
+
         List<PsicologoFullDTO> psicologoFullDTOList = new ArrayList<>();
 
         try (PreparedStatement preparedStatement = connection.prepareStatement(sql.toString())) {
@@ -291,10 +299,10 @@ public class PsicologoPostgresDaoImpl implements PsicologoDao {
                             resultSet.getString("descricao"),
                             resultSet.getString("crp"),
                             resultSet.getString("cpf"),
-                            resultSet.getString("abordagem"),
+                            resultSet.getString("abordagens"),
                             resultSet.getDate("data_nascimento"),
                             150.0,
-                            resultSet.getString("especialidade"),
+                            resultSet.getString("especialidades"),
                             "senhaFake",
                             resultSet.getString("telefone")
                     );

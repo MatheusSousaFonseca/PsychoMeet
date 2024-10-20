@@ -22,6 +22,7 @@ public class ConsultaFakeDaoImpl implements ConsultaDao {
     }
 
     public ConsultaFakeDaoImpl() {
+        // Criando algumas consultas fictícias associadas a diferentes pacientes
         Consulta consulta1 = new Consulta(getNextId(), 1, 8, "Ótimo atendimento");
         Consulta consulta2 = new Consulta(getNextId(), 2, 9, "Muito satisfeito");
         Consulta consulta3 = new Consulta(getNextId(), 1, 7, "Boa experiência");
@@ -61,8 +62,9 @@ public class ConsultaFakeDaoImpl implements ConsultaDao {
             consulta.setNotaPaciente(entity.getNotaPaciente());
             consulta.setComentarioPaciente(entity.getComentarioPaciente());
         }
-
     }
+
+
 
     @Override
     public List<ConsultaAgendamentoDTO> findByPacienteId(int pacienteId, String status) {
@@ -75,11 +77,5 @@ public class ConsultaFakeDaoImpl implements ConsultaDao {
         // Para o exemplo, vamos retornar uma lista vazia, pois não temos a relação estabelecida
         return new ArrayList<>();
     }
-
-    @Override
-    public void giveFeedback(FeedbackDTO feedback) {
-
-    }
-
 
 }

@@ -6,7 +6,7 @@
 
 
   @for (consultation of consultations; track $index) {
-      <div class="card mb-3"> 
+      <div class="card mb-3">
           <div class="card-body">
               <div class="d-flex justify-content-between align-items-center">
                   <div>
@@ -57,19 +57,19 @@
           <h4 class="modal-title" id="modal-basic-title">Desmarcar consulta</h4>
           <button type="button" class="close" aria-label="Close" (click)="closeMyModal()">
             <span aria-hidden="true">&times;</span>  
-    
+
           </button>
         </div>
         <div class="modal-body">  
-    
+
           <p>Deseja desmarcar a consulta?</p>
           <button class="btn btn-danger" (click)="desmarcarConsulta(consultation.id)">DESMARCAR</button>
         </div>
-    
+
         <div class="modal-footer">
           <button type="button" class="btn btn-outline-dark" (click)="closeMyModal()">Fechar</button>
         </div>  
-    
+
       </ng-template>
-    
-   
+
+

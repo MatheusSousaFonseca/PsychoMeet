@@ -271,6 +271,7 @@ public class ConsultaPostgresDaoImpl implements ConsultaDao {
     }
 
 
+
     @Override
     public List<ConsultaAgendamentoDTO> findByPsicologoId(int psicologoId, String status) {
         String sql = "SELECT c.id AS consulta_id, a.id AS agenda_id, a.paciente_id, c.nota_paciente, c.comentario_paciente, " +
@@ -318,41 +319,6 @@ public class ConsultaPostgresDaoImpl implements ConsultaDao {
         }
 
         return consultasAgendamentos;
-    }
-
-    @Override
-    public void giveFeedback(FeedbackDTO feedback) {
-        String sql = "UPDATE consulta SET nota_paciente = ?, comentario_paciente = ? WHERE id = ?;";
-
-        PreparedStatement preparedStatement = null;
-
-        try {
-            connection.setAutoCommit(false);
-            preparedStatement = connection.prepareStatement(sql);
-
-            preparedStatement.setInt(1, feedback.getNota());
-            preparedStatement.setString(2, feedback.getAvaliacao());
-            preparedStatement.setInt(3, feedback.getConsultaId());
-
-            preparedStatement.executeUpdate();
-            connection.commit();
-
-        } catch (SQLException e) {
-            try {
-                connection.rollback();
-            } catch (SQLException ex) {
-                logger.severe("Error rolling back transaction: " + ex.getMessage());
-                throw new RuntimeException(ex);
-            }
-            logger.severe("Error executing updateInformation: " + e.getMessage());
-            throw new RuntimeException(e);
-        } finally {
-            try {
-                if (preparedStatement != null) preparedStatement.close();
-            } catch (SQLException e) {
-                logger.severe("Error closing resources: " + e.getMessage());
-            }
-        }
     }
 
 

@@ -32,6 +32,7 @@ public class ConsultaRestController {
     }
 
 
+
     @PostMapping
     public ResponseEntity<Void> create(@RequestBody Consulta consulta) {
         int id = consultaService.create(consulta);
@@ -65,12 +66,6 @@ public class ConsultaRestController {
             @RequestParam(required = false) String status) { // Filtro de status opcional
         List<ConsultaAgendamentoDTO> consultas = consultaService.findByPsicologo(psicologoId, status);
         return ResponseEntity.ok(consultas);
-    }
-
-    @PutMapping("/feedback")
-    public ResponseEntity<String> postFeedback(@RequestBody FeedbackDTO feedback) {
-        consultaService.giveFeedback(feedback);
-        return ResponseEntity.ok().build();
     }
 
 

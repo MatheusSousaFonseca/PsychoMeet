@@ -1,23 +1,19 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
+import { CommonModule } from '@angular/common'; 
 import { Psychologist } from '../../../../domain/model/psychologist-model';
 import { PsychologistReadService } from '../../../../services/psychologist/psychologist-read.service';
 import { Consultation } from '../../../../domain/model/consultation-model';
 import { ConsultationReadService } from '../../../../services/consultation/consultation-read-service';
 import { UserReadService } from '../../../../services/user/user-read-service';
-import { CommonModule } from '@angular/common';
-import { ConsultationFeedbackService } from '../../../../services/consultation/consultation-feedback-service';
-import { consultationFeedback } from '../../../../domain/dto/consultation-feedback';
-import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-view-consultation-patient',
   standalone: true,
   imports: [
     RouterModule,
-    CommonModule,
-    FormsModule
+    CommonModule 
   ],
   templateUrl: './view-consultation-patient.component.html',
   styleUrls: ['./view-consultation-patient.component.css']
@@ -25,39 +21,31 @@ import { FormsModule } from '@angular/forms';
 export class ViewConsultationPatientComponent implements OnInit {
 
   consultations: Consultation[] = [];
-
   modalRef: NgbModalRef | null = null;
-
   feedback: string = '';
   rating: number = 0;
-  selectedConsultationId: number | null = null;
 
   constructor(
     private router: Router,
     private modalService: NgbModal,
+    private psychologistReadService: PsychologistReadService,
     private consultationReadService: ConsultationReadService,
-    private userReadService: UserReadService,
-    private consultationFeedbackService: ConsultationFeedbackService,
+    private userReadService: UserReadService
   ) { }
+
   ngOnInit(): void {
     this.loadConsultations();
   }
 
   marcarConsulta() {
     this.router.navigate(['consultation/search-psychologist']);
-
   }
 
   consultasMarcadas() {
-
     this.router.navigate(['consultation/view-scheduled-consultation']);
-
   }
 
-  openMyModal(content: any, consultation: Consultation) {
-    this.selectedConsultationId = consultation.consultaId; // Set the selected consultation ID
-    this.feedback = ''; // Reset feedback
-    this.rating = 0;    // Reset rating
+  openMyModal(content: any) {
     this.modalRef = this.modalService.open(content);
   }
 
@@ -81,24 +69,8 @@ export class ViewConsultationPatientComponent implements OnInit {
   }
 
   submitFeedback() {
-    console.log('Feedback:', this.feedback); // Check the feedback value
-    console.log('Rating:', this.rating); // Check the rating value
-
-    const feedbackData: consultationFeedback = {
-      avaliacao: this.feedback,
-      nota: this.rating, // Convert rating to string if needed
-      consultaId: this.selectedConsultationId!
-    };
-
-    // Call the update method to send feedback
-    this.consultationFeedbackService.update(feedbackData).then(() => {
-      console.log('Feedback submitted successfully');
-      this.feedback = ''; // Reset feedback
-      this.rating = 0;    // Reset rating
-      this.closeMyModal();
-    }).catch((error: any) => {
-      console.error('Error submitting feedback:', error);
-    });
+    console.log("Feedback:", this.feedback);
+    console.log("Rating:", this.rating);
+    this.closeMyModal();
   }
-
 }

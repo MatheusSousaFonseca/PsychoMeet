@@ -161,31 +161,22 @@ export class MakeConsultationComponent implements OnInit {
       horaFim: '',
       psicologoId: 0,
       pessoaId: 0
-
     }
 
     let consultationResponse = await this.consultationCreateService.create(consultation)
     console.log(consultationResponse);
 
-    // if(consultationResponse.id==''){
-    //   console.log('Entrando...');
-
-    //   this.toastrService.error('Não foi possivel marcar consulta.')
-    //   return;
-    // }
+    //if(consultationResponse.consultaId==''){
+    //  console.log('Entrando...');
+//
+    //  this.toastrService.error('Não foi possivel marcar consulta.')
+    //  return;
+    //}
     console.log('Saindo');
 
     this.toastrService.success('Consulta marcada com sucesso.')
 
-
-
-
   }
-
-
-
-
-
 }
 
 

@@ -12,9 +12,10 @@
             <div class="card-body">
               <div class="d-flex justify-content-between align-items-center">
                 <div>
-                  <h5 class="card-title">{{consultation.pacienteId}}</h5>
-                  <p class="card-text">Data: {{consultation.horaInicio}} às {{consultation.horaFim}}</p>
-                  <!-- <p class="card-text">Descrição: {{consultation.descricao}}</p> -->
+                  <div class="col-md-9">
+                    <h5 class="card-title">{{ pacientesMap[consultation.pacienteId] }}</h5> <!-- Get preloaded name -->
+                    <p class="card-text"><strong>Data: </strong>{{ consultation.data }} , {{ consultation.horaInicio }} às {{ consultation.horaFim }}</p>
+                  </div>
                 </div>
                 <div>
                   <button class="btn btn-success me-2" (click)="openMyModal(content, consultation)">

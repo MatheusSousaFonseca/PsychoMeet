@@ -26,6 +26,9 @@ export class ViewRequestConsultationComponent {
 
   consultations: Consultation[] = [];
 
+  pacientesMap: { [id: number]: string } = {}; // Map to store patient names
+
+
   constructor(private router: Router, private modalService: NgbModal, private userReadService: UserReadService, private consultationReadService: ConsultationReadService, private psychologistReadService: PsychologistReadService, private consultationUpdateService: ConsultationUpdateService) { }
 
   ngOnInit(): void {
@@ -69,21 +72,46 @@ export class ViewRequestConsultationComponent {
   }
 
   async loadUsers() {
-    this.users = await this.userReadService.findAll();
+    const users = await this.userReadService.findAll();
+    this.users = users;
+
+    users.forEach(user => {
+      if (user?.id) {
+        this.pacientesMap[user.id] = user.nome;
+      }
+    });
   }
 
+  // Load consultations and preload patient names
   async loadConsultations() {
-    let email = localStorage.getItem("email")
-    let psychologist = await this.psychologistReadService.findByEmail(email!)
-    console.log(psychologist)
-    this.consultations = await this.consultationReadService.findByIdPsicologoPendente(psychologist.id!);
+    let email = localStorage.getItem("email");
+    if (email) {
+      const psychologist = await this.psychologistReadService.findByEmail(email);
+      if (psychologist?.id) {
+        this.consultations = await this.consultationReadService.findByIdPsicologoPendente(psychologist.id);
+        await this.preloadPacientesNames(); // Ensure patient names are preloaded
+      }
+    }
+  }
+
+  // Load patient names for consultations
+  async preloadPacientesNames() {
+    const pacienteIds = this.consultations.map(c => c.pessoaId);
+    for (const id of pacienteIds) {
+      if (!this.pacientesMap[id]) {
+        const paciente = await this.userReadService.findById(id);
+        if (paciente) {
+          this.pacientesMap[id] = paciente.nome;
+        }
+      }
+    }
   }
 
   getUserName(id: number){
     return this.users.find((user)=>{
       return user.id===id
     })?.nome
-    
+
   }
 
 }

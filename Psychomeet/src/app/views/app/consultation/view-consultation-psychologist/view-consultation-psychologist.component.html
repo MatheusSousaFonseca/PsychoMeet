@@ -7,12 +7,12 @@
                 <button class="btn btn-danger" (click)="consultasPendentes()">Consultas pendentes</button>
             </div>
         </div>
-
+  
         <!-- Coluna central para o título -->
         <div class="col text-center">
             <h2 class="card-title">Histórico de Consultas</h2>
         </div>
-
+  
         <div class="col-auto">
             <div class="d-flex flex-column">
                 <button class="btn btn-warning mb-2" (click)="acessarPerfilPsicologo()">Meu Perfil</button>
@@ -20,101 +20,25 @@
             </div>
         </div>
     </div>
-</div>
-
-    <ul class="list-group mb-3">
-            @for (consultation of consultations; track $index) {
-                <li class="list-group-item">
-
-                    <div class="card mb-3">
-                        <div class="card-body">
-                            <div class="d-flex justify-content-between align-items-center">
-                                <div>
-                                    <h5 class="card-title">consultation.pacienteId</h5>
-                                    <p class="card-text">Data: {{consultation.horaInicio}} às {{consultation.horaFim}}</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                </li>
-            }
-
-
-
-
-
-    </ul>
-
-    <ng-template #content let-modal="modal">
-        <body>
-            <div class="container mt-5">
-                <div class="row justify-content-center">
-                    <div class="col-md-8">
-                        <div class="card">
-                            <div class="card-header">
-                                <h3 class="text-center">Editar Perfil do Psicólogo</h3>
-                            </div>
-                            <div class="card-body text-center">
-                                <div class="profile-picture mb-4">
-                                    <img src="assets/user.png" alt="Foto de Perfil" class="img-thumbnail">
-                                    <input type="file" class="form-control-file mt-2">
-                                </div>
-                                <form>
-                                    <div class="form-group">
-                                        <label for="nome"><i class="fas fa-user"></i> Nome</label>
-                                        <input type="text" class="form-control" id="nome" value="João da Silva">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="telefone"><i class="fas fa-phone"></i> Telefone</label>
-                                        <input type="tel" class="form-control" id="telefone" value="123456789">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="email"><i class="fas fa-envelope"></i> Email</label>
-                                        <input type="email" class="form-control" id="email" value="joao.silva@example.com">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="cpf"><i class="fas fa-id-card"></i> CPF</label>
-                                        <input type="text" class="form-control" id="cpf" value="123.456.789-10">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="data_nascimento"><i class="fas fa-calendar-alt"></i> Data de
-                                            Nascimento</label>
-                                        <input type="date" class="form-control" id="data_nascimento" value="1990-01-01">
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label for="publico"><i class="fas fa-users"></i> Público</label>
-                                        <input type="text" class="form-control" id="publico" value="Público-alvo">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="descricao"><i class="fas fa-align-left"></i> Descrição</label>
-                                        <textarea class="form-control" id="descricao" rows="3">Descrição do perfil...</textarea>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="crp"><i class="fas fa-id-badge"></i> CRP</label>
-                                        <input type="text" class="form-control" id="crp" value="1234567/89">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="abordagem"><i class="fas fa-comments"></i> Abordagem</label>
-                                        <input type="text" class="form-control" id="abordagem" value="Abordagem terapêutica">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="especialidade"><i class="fas fa-comments"></i> Especialidade</label>
-                                        <input type="text" class="form-control" id="especialidade" value="psicanálise">
-                                    </div>
-                                    <button type="button" class="btn btn-primary btn-block" (click)="salvar()">Salvar</button>
-                                    <button type="button" class="btn btn-primary btn-block" (click)="voltar()">Voltar</button>
-                                </form>
-                            </div>
-                        </div>
+  </div>
+  
+  <ul class="list-group mb-3">
+    <li class="list-group-item" *ngFor="let consultation of consultations; trackBy: trackById">
+        <div class="card mb-3">
+            <div class="card-body">
+                <div class="d-flex justify-content-between align-items-center">
+                  <div class="col-md-2">
+                    <img src="assets/user.png" alt="Foto de João dos Santos" class="img-thumbnail">
+                </div>
+                    <div class="col-md-9">
+                        <h5 class="card-title">{{ pacientesMap[consultation.pacienteId] }}</h5> <!-- Get preloaded name -->
+                        <p class="card-text"><strong>Data: </strong>{{ consultation.data }} , {{ consultation.horaInicio }} às {{ consultation.horaFim }}</p>
+                        <p class="card-text"><strong>Nota: </strong>{{ consultation.notaPaciente }}</p>
+                        <p class="card-text"><strong>Feedback: </strong>{{ consultation.comentarioPaciente }}</p>
                     </div>
                 </div>
             </div>
-
-
-        </body>
-      </ng-template>
-<div>
-
-
+        </div>
+    </li>
+  </ul>
+  

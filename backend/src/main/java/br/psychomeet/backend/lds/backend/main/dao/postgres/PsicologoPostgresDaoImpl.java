@@ -24,7 +24,7 @@ public class PsicologoPostgresDaoImpl implements PsicologoDao {
     @Autowired
     private EspecialidadeService especialidadeService;
 
-    public PsicologoPostgresDaoImpl( Connection connection) {
+    public PsicologoPostgresDaoImpl(Connection connection) {
         this.connection = connection;
     }
 
@@ -85,8 +85,6 @@ public class PsicologoPostgresDaoImpl implements PsicologoDao {
             }
 
 
-
-
             for (String abordagem : entity.getAbordagens()) {
                 preparedStatementEspecialidade = connection.prepareStatement(sqlAbordagem);
                 preparedStatementEspecialidade.setInt(1, psicologoId);
@@ -94,9 +92,6 @@ public class PsicologoPostgresDaoImpl implements PsicologoDao {
                 preparedStatementEspecialidade.executeUpdate();
 
             }
-
-
-
 
 
             connection.commit(); // Commit all the inserts
@@ -190,7 +185,49 @@ public class PsicologoPostgresDaoImpl implements PsicologoDao {
         return psicologoFullDTO;
     }
 
+    @Override
+    public PsicologoFullDTO readByEmail(String email) {
+        String sql = "SELECT ps.id AS psicologo_id, ps.crp, ps.descricao, p.id AS pessoa_id, p.nome, p.email, p.telefone, p.data_nascimento, p.cpf, " +
+                "STRING_AGG(DISTINCT e.descricao, ', ') AS especialidades, " +
+                "STRING_AGG(DISTINCT a.abordagem, ', ') AS abordagens " +
+                "FROM psicologo ps " +
+                "JOIN pessoa p ON ps.pessoa_id = p.id " +
+                "LEFT JOIN psicologo_especialidade pe ON pe.psicologo_id = ps.id " +
+                "LEFT JOIN especialidade e ON e.id = pe.especialidade_id " +
+                "LEFT JOIN abordagem a ON a.psicologo_id = ps.id " +
+                "WHERE p.email = ? " +
+                "GROUP BY ps.id, p.id;"; // Grouping to avoid duplicates
 
+        PsicologoFullDTO psicologoFullDTO = null;
+
+        try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+            preparedStatement.setString(1, email);
+
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                if (resultSet.next()) {
+                    psicologoFullDTO = new PsicologoFullDTO(
+                            String.valueOf(resultSet.getInt("psicologo_id")),  // ID
+                            resultSet.getString("nome"),                        // Nome
+                            resultSet.getString("email"),                       // Email
+                            "Público-alvo genérico",                            // Público
+                            resultSet.getString("descricao"),                   // Descrição
+                            resultSet.getString("crp"),                         // CRP
+                            resultSet.getString("cpf"),                         // CPF
+                            resultSet.getString("abordagens"),                 // Get the concatenated string of approaches
+                            resultSet.getDate("data_nascimento"),               // Data de Nascimento
+                            150.0,                                              // Preço
+                            resultSet.getString("especialidades"),             // Get the concatenated string of specialties
+                            "senhaFake",                                        // Senha
+                            resultSet.getString("telefone")                     // Telefone
+                    );
+                }
+            }
+        } catch (SQLException e) {
+            logger.severe("Erro ao executar readByEmail: " + e.getMessage());
+            throw new RuntimeException(e);
+        }
+        return psicologoFullDTO;
+    }
 
 
     @Override
@@ -238,10 +275,6 @@ public class PsicologoPostgresDaoImpl implements PsicologoDao {
 
         return psicologoFullDTOList;
     }
-
-
-
-
 
 
     @Override

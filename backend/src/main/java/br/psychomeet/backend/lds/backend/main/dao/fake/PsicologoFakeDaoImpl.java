@@ -75,6 +75,11 @@ public class PsicologoFakeDaoImpl implements PsicologoDao {
     }
 
     @Override
+    public PsicologoFullDTO readByEmail(String email) {
+        return null;
+    }
+
+    @Override
     public List<PsicologoFullDTO> readAll() {
         return psicologos;
     }

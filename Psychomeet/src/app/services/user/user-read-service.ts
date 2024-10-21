@@ -10,8 +10,8 @@ export class UserReadService {
 
   constructor(private http: HttpClient) { }
 
-  findById(id: string): Promise<User> {
-    return firstValueFrom(this.http.get<User>(`http://localhost:3000/user/${id}`));
+  findById(id: number): Promise<User> {
+    return firstValueFrom(this.http.get<User>(`http://localhost:8081/api/pessoa/${id}`));
   }
 
   findByName(nome: string): Promise<User[]> {
@@ -19,7 +19,7 @@ export class UserReadService {
   }
 
   findAll(): Promise<User[]> {
-    return firstValueFrom(this.http.get<User[]>('http://localhost:3000/user'));
+    return firstValueFrom(this.http.get<User[]>('http://localhost:8080/api/pessoa'));
   }
 
   findByEmail(email: String): Promise<User> {

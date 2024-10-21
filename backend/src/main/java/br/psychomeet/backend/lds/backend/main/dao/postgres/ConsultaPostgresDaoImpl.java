@@ -271,15 +271,16 @@ public class ConsultaPostgresDaoImpl implements ConsultaDao {
     }
 
 
-
     @Override
     public List<ConsultaAgendamentoDTO> findByPsicologoId(int psicologoId, String status) {
         String sql = "SELECT c.id AS consulta_id, a.id AS agenda_id, a.paciente_id, c.nota_paciente, c.comentario_paciente, " +
-                "a.status, a.data, a.hora_inicio, a.hora_fim, d.psicologo_id " +
+                "a.status, a.data, a.hora_inicio, a.hora_fim, d.psicologo_id, p.id AS pessoa_id, pe.nome AS nome_psicologo " +
                 "FROM consulta c " +
                 "JOIN agendamento a ON c.agenda_id = a.id " +
                 "JOIN disponibilidade d ON a.disponibilidade_id = d.id " +
-                "WHERE a.psicologo_id = ?;";
+                "JOIN psicologo p ON d.psicologo_id = p.id " +
+                "JOIN pessoa pe ON p.pessoa_id = pe.id " +
+                "WHERE p.id = ? AND a.status = ?";
 
         List<ConsultaAgendamentoDTO> consultasAgendamentos = new ArrayList<>();
         PreparedStatement preparedStatement = null;
@@ -288,6 +289,7 @@ public class ConsultaPostgresDaoImpl implements ConsultaDao {
         try {
             preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setInt(1, psicologoId);
+            preparedStatement.setString(2, status);
             resultSet = preparedStatement.executeQuery();
 
             while (resultSet.next()) {

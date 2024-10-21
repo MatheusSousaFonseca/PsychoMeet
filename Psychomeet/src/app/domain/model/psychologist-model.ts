@@ -1,5 +1,5 @@
 export interface Psychologist {
-    id?: string,
+    id?: number,
     nome: string,
     email: string,
     publico: string,

@@ -57,4 +57,9 @@ public class PsicologoServiceImpl implements PsicologoService {
         return psicologoDao.search(name, especialidade);
     }
 
+    @Override
+    public PsicologoFullDTO findByEmail(String email) {
+        return psicologoDao.readByEmail(email);
+    }
+
 }

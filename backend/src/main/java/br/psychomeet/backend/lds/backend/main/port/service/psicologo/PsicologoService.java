@@ -20,4 +20,6 @@ public interface PsicologoService {
     void update(int id, Psicologo entity);
 
     List<PsicologoFullDTO> search(String name, String especialidade);
+
+    PsicologoFullDTO findByEmail(String email);
 }

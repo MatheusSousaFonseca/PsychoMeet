@@ -76,10 +76,10 @@ export class ViewRequestConsultationComponent {
     let email = localStorage.getItem("email")
     let psychologist = await this.psychologistReadService.findByEmail(email!)
     console.log(psychologist)
-    this.consultations = await this.consultationReadService.findByIdPsicologoPendente(psychologist[0].id!);
+    this.consultations = await this.consultationReadService.findByIdPsicologoPendente(psychologist.id!);
   }
 
-  getUserName(id: string){
+  getUserName(id: number){
     return this.users.find((user)=>{
       return user.id===id
     })?.nome

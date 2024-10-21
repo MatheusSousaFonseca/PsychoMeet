@@ -15,6 +15,9 @@ public interface PsicologoDao {
 
     PsicologoFullDTO readById(int id);
 
+    PsicologoFullDTO readByEmail(String email);
+
+
     List<PsicologoFullDTO> readAll();
 
     void updateInformation(int id, Psicologo entity);

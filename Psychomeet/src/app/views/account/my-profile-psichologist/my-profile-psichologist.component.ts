@@ -51,7 +51,7 @@ export class MyProfilePsichologistComponent implements OnInit {
   async loadPsychologist() {
     let email = localStorage.getItem("email");
     let psychologist = await this.psychologistReadService.findByEmail(email!)
-    this.psychologist = psychologist[0]
+    this.psychologist = psychologist
     this.form.controls['nome'].setValue(this.psychologist.nome)
     this.form.controls['email'].setValue(this.psychologist.email)
     this.form.controls['senha'].setValue(this.psychologist.senha)
@@ -60,7 +60,7 @@ export class MyProfilePsichologistComponent implements OnInit {
     this.form.controls['crp'].setValue(this.psychologist.crp)
     this.form.controls['cpf'].setValue(this.psychologist.cpf)
     this.form.controls['abordagem'].setValue(this.psychologist.abordagens)
-    this.form.get('data')?.patchValue(formatDate(psychologist[0].dataNascimento, 'yyyy-MM-dd', 'en'))
+    this.form.get('data')?.patchValue(formatDate(psychologist.dataNascimento, 'yyyy-MM-dd', 'en'))
     this.form.controls['preco'].setValue(this.psychologist.preco)
     this.form.controls['especialidade'].setValue(this.psychologist.especialidades)
     this.form.controls['telefone'].setValue(this.psychologist.telefone)

@@ -4,6 +4,7 @@ import { Psychologist } from '../../../../domain/model/psychologist-model';
 import { PsychologistReadService } from '../../../../services/psychologist/psychologist-read.service';
 import { CommonModule } from '@angular/common'; // Ensure this is imported
 import { FormsModule } from '@angular/forms'; // Ensure this is imported
+import {MatChipsModule} from '@angular/material/chips';
 
 @Component({
   selector: 'app-search-psychologist',
@@ -11,7 +12,8 @@ import { FormsModule } from '@angular/forms'; // Ensure this is imported
   imports: [
     RouterModule,
     CommonModule,
-    FormsModule // Import FormsModule
+    FormsModule,
+    MatChipsModule
   ],
   templateUrl: './search-psychologist.component.html',
   styleUrls: ['./search-psychologist.component.css']
@@ -54,3 +56,4 @@ export class SearchPsychologistComponent implements OnInit {
     this.router.navigate(['app/home']);
   }
 }
+

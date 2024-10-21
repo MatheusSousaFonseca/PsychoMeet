@@ -54,7 +54,7 @@ public class PsicologoFakeDaoImpl implements PsicologoDao {
         PsicologoFullDTO psicologoDTO = PsicologoFullDTO.fromPsicologo(psicologo, pessoa);
 
         // Associando especialidades
-        for (String especialidade : entity.getEspecialidade()) {
+        for (String especialidade : entity.getEspecialidades()) {
             // You may need to handle the logic of storing especialidade correctly
             // For the fake DAO, you might just log or manage these associations in a simpler way
             //psicologoDTO.addEspecialidade(especialidade); // Make sure PsicologoFullDTO has this method

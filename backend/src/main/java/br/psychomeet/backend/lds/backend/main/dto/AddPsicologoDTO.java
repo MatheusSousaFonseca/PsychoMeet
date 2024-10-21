@@ -14,10 +14,10 @@ public class AddPsicologoDTO {
         private String descricao;
         private String crp;
         private String cpf;
-        private String abordagem;
-        private Date dataNascimento; // Use camelCase to follow Java conventions
-        private double preco; // Use double for decimal values
-        private List<String> especialidade; // List for multiple specialties
+        private List<String> abordagens;
+        private Date dataNascimento;
+        private double preco;
+        private List<String> especialidades;
         private String senha;
         private String telefone;
 }

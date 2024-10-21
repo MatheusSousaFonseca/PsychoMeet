@@ -8,16 +8,18 @@ import { MatInputModule } from '@angular/material/input';
 import { HttpClient } from '@angular/common/http';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-sign-up-psychologist',
   standalone: true,
   imports: [
+    CommonModule,
     MatInputModule,
     MatButtonModule,
     MatFormFieldModule,
     MatSelectModule,
-    ReactiveFormsModule, // Make sure ReactiveFormsModule is imported here
+    ReactiveFormsModule,
   ],
   templateUrl: './sign-up-psychologist.component.html',
   styleUrls: ['./sign-up-psychologist.component.css']
@@ -25,7 +27,8 @@ import { MatSelectModule } from '@angular/material/select';
 export class SignUpPsychologistComponent implements OnInit {
   form!: FormGroup;
   successMessage: string | null = null;
-  especialidades: string[] = []; // Initialize the especialidades array
+  especialidades: string[] = [];
+  abordagens: string[] = [];
 
   constructor(
     private formBuilder: FormBuilder,
@@ -35,7 +38,10 @@ export class SignUpPsychologistComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.loadEspecialidades(); // Load especialidades from JSON file
+    this.loadEspecialidades();
+    this.loadAbordagens();
+
+    // Correct FormControl names
     this.form = this.formBuilder.group({
       nome: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
@@ -45,10 +51,10 @@ export class SignUpPsychologistComponent implements OnInit {
       descricao: ['', Validators.required],
       crp: ['', Validators.required],
       cpf: ['', Validators.required],
-      abordagem: ['', Validators.required],
+      abordagens: new FormControl([]), // Use 'abordagens' for multiple selection
       data: ['', Validators.required],
       preco: ['', Validators.required],
-      especialidade: new FormControl([]), // Initialize as FormControl for multiple selection
+      especialidades: new FormControl([]), // Corrected to 'especialidades'
       telefone: ['', Validators.required]
     });
   }
@@ -56,11 +62,18 @@ export class SignUpPsychologistComponent implements OnInit {
   loadEspecialidades() {
     this.http.get<{ especialidades: string[] }>('assets/especialidades.json')
       .subscribe(data => {
-        this.especialidades = data.especialidades; // Assign data to especialidades
-        console.log("teste");
-        console.log(this.especialidades);
+        this.especialidades = data.especialidades;
       }, error => {
         console.error('Error loading especialidades:', error);
+      });
+  }
+
+  loadAbordagens() {
+    this.http.get<{ abordagens: string[] }>('assets/abordagens.json')
+      .subscribe(data => {
+        this.abordagens = data.abordagens;
+      }, error => {
+        console.error('Error loading abordagens:', error);
       });
   }
 
@@ -78,14 +91,15 @@ export class SignUpPsychologistComponent implements OnInit {
       descricao: this.form.controls['descricao'].value,
       crp: this.form.controls['crp'].value,
       cpf: this.form.controls['cpf'].value,
-      abordagem: this.form.controls['abordagem'].value,
-      data_nascimento: this.form.controls['data'].value,
+      abordagens: this.form.controls['abordagens'].value, // Use 'abordagens'
+      dataNascimento: this.form.controls['data'].value,
       preco: this.form.controls['preco'].value,
-      especialidade: this.form.controls['especialidade'].value,
+      especialidades: this.form.controls['especialidades'].value, // Use 'especialidades'
       telefone: this.form.controls['telefone'].value
     };
 
     try {
+      console.log(psychologist);
       await this.createPsychologistService.create(psychologist);
       this.successMessage = 'Conta criada com sucesso! Redirecionando para login...';
       setTimeout(() => {

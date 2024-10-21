@@ -40,21 +40,35 @@
                 <label for="descricao"><i class="fas fa-info-circle"></i> Descrição</label>
                 <input type="text" class="form-control" id="descricao" formControlName="descricao" placeholder="Descrição" required>
               </div>
-              <div class="form-group">
-                <label for="abordagem"><i class="fas fa-theater-masks"></i> Abordagem</label>
-                <input type="text" class="form-control" id="abordagem" formControlName="abordagem" placeholder="Abordagem" required>
-              </div>
-              <div class="form-group">
-                <mat-form-field class="col-12 dropdown ">
-                  <mat-label>Especialidades</mat-label>
-                  <mat-select formControlName="especialidade" multiple>
-                    @for (especialidade of especialidades; track especialidade) {
-                      <mat-option [value]="especialidade">{{especialidade}}</mat-option>
-                    }
-                  </mat-select>
-                </mat-form-field>
 
+              <!-- Row for Abordagens and Especialidades side by side -->
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <mat-form-field class="dropdown">
+                      <mat-label>Abordagens</mat-label>
+                      <mat-select formControlName="abordagens" multiple>
+                        <mat-option *ngFor="let abordagem of abordagens" [value]="abordagem">
+                          {{ abordagem }}
+                        </mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <mat-form-field class="dropdown">
+                      <mat-label>Especialidades</mat-label>
+                      <mat-select formControlName="especialidades" multiple>
+                        <mat-option *ngFor="let especialidade of especialidades" [value]="especialidade">
+                          {{ especialidade }}
+                        </mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                  </div>
+                </div>
               </div>
+
               <div class="form-group">
                 <label for="preco"><i class="fas fa-money-bill-wave"></i> Preço</label>
                 <input type="text" class="form-control" id="preco" formControlName="preco" placeholder="Preço" required>
@@ -69,6 +83,7 @@
               </div>
               <button type="submit" class="btn btn-primary btn-block">Cadastrar</button>
             </form>
+
             <div *ngIf="successMessage" class="alert alert-success mt-3" role="alert">
               {{ successMessage }}
             </div>

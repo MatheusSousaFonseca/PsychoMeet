@@ -40,7 +40,7 @@ export class InformAvailabilityComponent {
       especialidade: [''],
       descricao: ['']
     });
-    
+
     let psychologistId = this.activatedRoute.snapshot.paramMap.get('id');
     this.loadPsychologistById(psychologistId!);
 
@@ -61,7 +61,7 @@ export class InformAvailabilityComponent {
       this.horarioLista.push(horarios);
     }
 
- 
+
 
   }
 
@@ -121,12 +121,12 @@ export class InformAvailabilityComponent {
 
     this.form.controls['nome'].setValue(this.psychologist.nome);
     this.form.controls['crp'].setValue(this.psychologist.crp);
-    this.form.controls['especialidade'].setValue(this.psychologist.especialidade);
+    this.form.controls['especialidade'].setValue(this.psychologist.especialidades);
 
   }
 
   async salvarDisponibilidade() {
-    await this.create() 
+    await this.create()
     if (this.modalRef) {
       this.modalRef.close();
     }
@@ -145,12 +145,12 @@ export class InformAvailabilityComponent {
 
     if(availabilityResponse.id==''){
       console.log('Entrando...');
-      
+
       this.toastrService.error('Não foi possivel salvar a disponibilidade.')
       return;
     }
     console.log('Saindo');
-    
+
     this.toastrService.success('Disponibilidade salva com sucesso.')
 
 
@@ -163,7 +163,6 @@ export class InformAvailabilityComponent {
 
 
 }
-
 
 
 

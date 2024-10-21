@@ -24,7 +24,7 @@ public class PsicologoPostgresDaoImpl implements PsicologoDao {
     @Autowired
     private EspecialidadeService especialidadeService;
 
-    public PsicologoPostgresDaoImpl(Connection connection) {
+    public PsicologoPostgresDaoImpl( Connection connection) {
         this.connection = connection;
     }
 
@@ -34,6 +34,7 @@ public class PsicologoPostgresDaoImpl implements PsicologoDao {
         String sqlPessoa = "INSERT INTO pessoa (telefone, nome, senha, data_nascimento, cpf, email) VALUES (?, ?, ?, ?, ?, ?) RETURNING id;";
         String sqlPsicologo = "INSERT INTO psicologo (pessoa_id, crp, descricao) VALUES (?, ?, ?) RETURNING id;";
         String sqlEspecialidade = "INSERT INTO psicologo_especialidade (psicologo_id, especialidade_id) VALUES (?, ?);";
+        String sqlAbordagem = "INSERT INTO abordagem (psicologo_id, abordagem) VALUES (?, ?);";
 
         PreparedStatement preparedStatementPessoa = null;
         PreparedStatement preparedStatementPsicologo = null;
@@ -70,11 +71,9 @@ public class PsicologoPostgresDaoImpl implements PsicologoDao {
                 psicologoId = resultSet.getInt(1); // Get the generated ID for psicologo
             }
 
-            // 3. Insert into psicologo_especialidade for each specialty
-            System.out.println("DEBUG");
-            System.out.println(entity.getEspecialidade());
-            for (String especialidade : entity.getEspecialidade()) {
-                System.out.println(especialidade);
+
+            for (String especialidade : entity.getEspecialidades()) {
+
                 // Assume you have a method to get the id of the specialty
                 int especialidadeId = especialidadeService.getIdByName(especialidade);
                 if (especialidadeId != -1) { // Only insert if specialty ID is valid
@@ -84,6 +83,21 @@ public class PsicologoPostgresDaoImpl implements PsicologoDao {
                     preparedStatementEspecialidade.executeUpdate();
                 }
             }
+
+
+
+
+            for (String abordagem : entity.getAbordagens()) {
+                preparedStatementEspecialidade = connection.prepareStatement(sqlAbordagem);
+                preparedStatementEspecialidade.setInt(1, psicologoId);
+                preparedStatementEspecialidade.setString(2, abordagem);
+                preparedStatementEspecialidade.executeUpdate();
+
+            }
+
+
+
+
 
             connection.commit(); // Commit all the inserts
             return psicologoId; // Return the ID of the newly created psychologist
@@ -143,7 +157,7 @@ public class PsicologoPostgresDaoImpl implements PsicologoDao {
                 "LEFT JOIN especialidade e ON e.id = pe.especialidade_id " +
                 "LEFT JOIN abordagem a ON a.psicologo_id = ps.id " +
                 "WHERE ps.id = ? " +
-                "GROUP BY ps.id, p.id;";
+                "GROUP BY ps.id, p.id;"; // Grouping to avoid duplicates
 
         PsicologoFullDTO psicologoFullDTO = null;
 
@@ -177,6 +191,8 @@ public class PsicologoPostgresDaoImpl implements PsicologoDao {
     }
 
 
+
+
     @Override
     public List<PsicologoFullDTO> readAll() {
         String sql = "SELECT ps.id AS psicologo_id, ps.crp, ps.descricao, p.id AS pessoa_id, " +
@@ -188,8 +204,7 @@ public class PsicologoPostgresDaoImpl implements PsicologoDao {
                 "LEFT JOIN psicologo_especialidade pe ON pe.psicologo_id = ps.id " +
                 "LEFT JOIN especialidade e ON e.id = pe.especialidade_id " +
                 "LEFT JOIN abordagem a ON a.psicologo_id = ps.id " +
-                "GROUP BY ps.id, p.id;";
-
+                "GROUP BY ps.id, p.id;"; // Grouping to avoid duplicates
 
         List<PsicologoFullDTO> psicologoFullDTOList = new ArrayList<>();
 
@@ -198,7 +213,6 @@ public class PsicologoPostgresDaoImpl implements PsicologoDao {
 
             while (resultSet.next()) {
                 System.out.println(resultSet.getString("abordagens"));
-                // Criando o objeto PsicologoFullDTO
                 PsicologoFullDTO psicologoFullDTO = new PsicologoFullDTO(
                         String.valueOf(resultSet.getInt("psicologo_id")),
                         resultSet.getString("nome"),
@@ -212,10 +226,9 @@ public class PsicologoPostgresDaoImpl implements PsicologoDao {
                         150.0,
                         resultSet.getString("especialidades"), // Get the concatenated string of specialties
                         "senhaFake",
-                        resultSet.getString("telefone")                   // Telefone
+                        resultSet.getString("telefone")
                 );
 
-                // Adicionando à lista de PsicologoFullDTO
                 psicologoFullDTOList.add(psicologoFullDTO);
             }
         } catch (SQLException e) {
@@ -225,6 +238,10 @@ public class PsicologoPostgresDaoImpl implements PsicologoDao {
 
         return psicologoFullDTOList;
     }
+
+
+
+
 
 
     @Override
@@ -265,7 +282,6 @@ public class PsicologoPostgresDaoImpl implements PsicologoDao {
                 "LEFT JOIN especialidade e ON e.id = pe.especialidade_id " +
                 "LEFT JOIN abordagem a ON a.psicologo_id = ps.id WHERE 1=1 "); // Always true condition
 
-        // List to store parameters
         List<String> parameters = new ArrayList<>();
 
         if (name != null && !name.isEmpty()) {
@@ -280,11 +296,9 @@ public class PsicologoPostgresDaoImpl implements PsicologoDao {
 
         sql.append("GROUP BY ps.id, p.id"); // Add grouping at the end
 
-
         List<PsicologoFullDTO> psicologoFullDTOList = new ArrayList<>();
 
         try (PreparedStatement preparedStatement = connection.prepareStatement(sql.toString())) {
-            // Set the parameters dynamically based on what was added to the SQL query
             for (int i = 0; i < parameters.size(); i++) {
                 preparedStatement.setString(i + 1, parameters.get(i));
             }
@@ -299,10 +313,10 @@ public class PsicologoPostgresDaoImpl implements PsicologoDao {
                             resultSet.getString("descricao"),
                             resultSet.getString("crp"),
                             resultSet.getString("cpf"),
-                            resultSet.getString("abordagens"),
+                            resultSet.getString("abordagens"), // Get the concatenated string of approaches
                             resultSet.getDate("data_nascimento"),
                             150.0,
-                            resultSet.getString("especialidades"),
+                            resultSet.getString("especialidades"), // Get the concatenated string of specialties
                             "senhaFake",
                             resultSet.getString("telefone")
                     );
@@ -318,6 +332,6 @@ public class PsicologoPostgresDaoImpl implements PsicologoDao {
         return psicologoFullDTOList;
     }
 
-}
 
+}
 

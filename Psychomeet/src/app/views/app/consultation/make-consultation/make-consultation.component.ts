@@ -79,7 +79,7 @@ export class MakeConsultationComponent implements OnInit {
 
     this.form.controls['nome'].setValue(this.psychologist.nome);
     this.form.controls['crp'].setValue(this.psychologist.crp);
-    this.form.controls['especialidade'].setValue(this.psychologist.especialidade);
+    this.form.controls['especialidade'].setValue(this.psychologist.especialidades);
 
   }
 

@@ -10,7 +10,7 @@
         <div class="media-body">
           <h5 class="mt-0">Nome: {{psychologist.nome}}</h5>
           <p>CRP: {{psychologist.crp}}</p>
-          <p>Especialidade: {{psychologist.especialidade}}</p>
+          <p>Especialidade: {{psychologist.especialidades}}</p>
           <p>Descrição: {{psychologist.descricao}}</p>
         </div>
       </div>
@@ -57,7 +57,7 @@
         </div>
       </div>
 
-      
+
       <!-- Modal para marcar consulta -->
       <div class="modal" tabindex="-1" role="dialog" [class.show]="isModalOpen" style="display: block;" *ngIf="isModalOpen">
         <div class="modal-dialog" role="document">

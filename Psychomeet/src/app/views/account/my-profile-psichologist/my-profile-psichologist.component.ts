@@ -59,10 +59,10 @@ export class MyProfilePsichologistComponent implements OnInit {
     this.form.controls['descricao'].setValue(this.psychologist.descricao)
     this.form.controls['crp'].setValue(this.psychologist.crp)
     this.form.controls['cpf'].setValue(this.psychologist.cpf)
-    this.form.controls['abordagem'].setValue(this.psychologist.abordagem)
-    this.form.get('data')?.patchValue(formatDate(psychologist[0].data_nascimento, 'yyyy-MM-dd', 'en'))
+    this.form.controls['abordagem'].setValue(this.psychologist.abordagens)
+    this.form.get('data')?.patchValue(formatDate(psychologist[0].dataNascimento, 'yyyy-MM-dd', 'en'))
     this.form.controls['preco'].setValue(this.psychologist.preco)
-    this.form.controls['especialidade'].setValue(this.psychologist.especialidade)
+    this.form.controls['especialidade'].setValue(this.psychologist.especialidades)
     this.form.controls['telefone'].setValue(this.psychologist.telefone)
     console.log(this.form.controls['data'].value)
 
@@ -83,10 +83,10 @@ export class MyProfilePsichologistComponent implements OnInit {
       descricao: this.form.controls['descricao'].value,
       crp: this.form.controls['crp'].value,
       cpf: this.form.controls['cpf'].value,
-      abordagem: this.form.controls['abordagem'].value,
-      data_nascimento: this.form.controls['data'].value,
+      abordagens: this.form.controls['abordagem'].value,
+      dataNascimento: this.form.controls['data'].value,
       preco: this.form.controls['preco'].value,
-      especialidade: this.form.controls['especialidade'].value,
+      especialidades: this.form.controls['especialidade'].value,
       senha: this.form.controls['senha'].value,
       telefone: this.form.controls['telefone'].value,
     }

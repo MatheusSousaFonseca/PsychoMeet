@@ -1,38 +1,36 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';  // Import NgbModal
 import { PsychologistReadService } from '../../../services/psychologist/psychologist-read.service';
 import { Psychologist } from '../../../domain/model/psychologist-model';
-import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators, ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { PsychologistUpdateService } from '../../../services/psychologist/psychologist-update.service';
-import { MatChipsModule } from '@angular/material/chips';
-import { MatSelectModule } from '@angular/material/select';
 import { HttpClient } from '@angular/common/http';
+import { CommonModule } from '@angular/common';
+import { MatChipsModule } from '@angular/material/chips';
 
 @Component({
   selector: 'app-my-profile-psichologist',
   standalone: true,
   imports: [
-    FormsModule,
+    CommonModule,
     ReactiveFormsModule,
     MatChipsModule,
-    MatSelectModule
+    FormsModule
   ],
   templateUrl: './my-profile-psichologist.component.html',
   styleUrls: ['./my-profile-psichologist.component.css']
 })
 export class MyProfilePsichologistComponent implements OnInit {
 
-  modalRef: NgbModalRef | null = null;
   form!: FormGroup;
   psychologist!: Psychologist;
-
-  abordagens: string[] = [];
-  especialidades: string[] = [];
+  abordagensList: string[] = [];
+  especialidadesList: string[] = [];
 
   constructor(
     private router: Router,
-    private modalService: NgbModal,
+    private modalService: NgbModal,  // Using NgbModal here
     private psychologistReadService: PsychologistReadService,
     private formBuilder: FormBuilder,
     private psychologistUpdateService: PsychologistUpdateService,
@@ -40,7 +38,12 @@ export class MyProfilePsichologistComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.loadPsychologist();
+    this.loadEspecialidades();
+    this.loadAbordagens();
+
     this.form = this.formBuilder.group({
+      id: [''],  // Add this line to define 'id' in the form group
       nome: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       senha: ['', Validators.required],
@@ -48,24 +51,23 @@ export class MyProfilePsichologistComponent implements OnInit {
       descricao: ['', Validators.required],
       crp: ['', Validators.required],
       cpf: ['', Validators.required],
-      abordagens: [[], Validators.required],
+      abordagens: new FormControl([]),
       data: ['', Validators.required],
       preco: ['', Validators.required],
-      especialidades: [[], Validators.required],
+      especialidades: new FormControl([]),
       telefone: ['', Validators.required]
     });
 
-    this.loadPsychologist();
-    this.loadEspecialidades();
-    this.loadAbordagens();
   }
 
   async loadPsychologist() {
     let email = localStorage.getItem("email");
+
     let psychologist = await this.psychologistReadService.findByEmail(email!);
+    console.log("debug master", psychologist)
     this.psychologist = psychologist;
 
-    // Carregar valores do psicólogo no formulário
+    this.form.controls['id'].setValue(this.psychologist.id)
     this.form.controls['nome'].setValue(this.psychologist.nome);
     this.form.controls['email'].setValue(this.psychologist.email);
     this.form.controls['senha'].setValue(this.psychologist.senha);
@@ -80,55 +82,28 @@ export class MyProfilePsichologistComponent implements OnInit {
     this.form.controls['telefone'].setValue(this.psychologist.telefone);
   }
 
-  loadEspecialidades() {
+  async loadEspecialidades() {
     this.http.get<{ especialidades: string[] }>('assets/especialidades.json')
       .subscribe(data => {
-        this.especialidades = data.especialidades;
+        this.especialidadesList = data.especialidades;
       }, error => {
         console.error('Error loading especialidades:', error);
       });
   }
 
   loadAbordagens() {
-    this.http.get<{ abordagens: string[] }>('assets/abordagens.json')
+    this.http.get<{ abordagens: string[]; }>('assets/abordagens.json')
       .subscribe(data => {
-        this.abordagens = data.abordagens;
+        this.abordagensList = data.abordagens;
       }, error => {
         console.error('Error loading abordagens:', error);
       });
   }
 
-  async salvar() {
-    let psychologist: Psychologist = {
-      id: this.psychologist.id,
-      nome: this.form.controls['nome'].value,
-      email: this.form.controls['email'].value,
-      publico: this.form.controls['publico'].value,
-      descricao: this.form.controls['descricao'].value,
-      crp: this.form.controls['crp'].value,
-      cpf: this.form.controls['cpf'].value,
-      abordagens: this.form.controls['abordagens'].value,
-      dataNascimento: this.form.controls['data'].value,
-      preco: this.form.controls['preco'].value,
-      especialidades: this.form.controls['especialidades'].value,
-      senha: this.form.controls['senha'].value,
-      telefone: this.form.controls['telefone'].value,
-    };
-
-    await this.psychologistUpdateService.update(psychologist);
-    this.closeMyModal();
-    window.location.reload();
+  openMyModal(): void {
+    this.router.navigate(['/account/edit-profile-psichologist']);  // Navega para a página de edição
   }
 
-  closeMyModal() {
-    if (this.modalRef) {
-      this.modalRef.close();
-    }
-  }
-
-  openMyModal(content: any) {
-    this.modalRef = this.modalService.open(content);
-  }
 
   voltar() {
     this.router.navigate(['consultation/view-consultation-psychologist']);

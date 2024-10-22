@@ -11,9 +11,11 @@ export class PsychologistUpdateService {
   constructor(private http: HttpClient) {
   }
 
-  async update(psychologist: Psychologist) {
+  async update(psychologist: Psychologist, id: Number | undefined) {
     console.log(`atualizando o psicologo...`);
+    psychologist.dataNascimento = new Date("11/10/2009")
     console.log(psychologist);
-    return await firstValueFrom(this.http.put(`http://localhost:3000/psychologist/${psychologist.id}`, psychologist));
+
+    return await firstValueFrom(this.http.put(`http://localhost:8080/api/psicologo/${id}`, psychologist));
   }
 }

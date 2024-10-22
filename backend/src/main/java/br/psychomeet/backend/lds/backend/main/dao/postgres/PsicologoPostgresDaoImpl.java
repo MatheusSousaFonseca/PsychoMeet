@@ -24,7 +24,7 @@ public class PsicologoPostgresDaoImpl implements PsicologoDao {
     @Autowired
     private EspecialidadeService especialidadeService;
 
-    public PsicologoPostgresDaoImpl(Connection connection) {
+    public PsicologoPostgresDaoImpl( Connection connection) {
         this.connection = connection;
     }
 
@@ -85,6 +85,8 @@ public class PsicologoPostgresDaoImpl implements PsicologoDao {
             }
 
 
+
+
             for (String abordagem : entity.getAbordagens()) {
                 preparedStatementEspecialidade = connection.prepareStatement(sqlAbordagem);
                 preparedStatementEspecialidade.setInt(1, psicologoId);
@@ -92,6 +94,9 @@ public class PsicologoPostgresDaoImpl implements PsicologoDao {
                 preparedStatementEspecialidade.executeUpdate();
 
             }
+
+
+
 
 
             connection.commit(); // Commit all the inserts
@@ -230,6 +235,8 @@ public class PsicologoPostgresDaoImpl implements PsicologoDao {
     }
 
 
+
+
     @Override
     public List<PsicologoFullDTO> readAll() {
         String sql = "SELECT ps.id AS psicologo_id, ps.crp, ps.descricao, p.id AS pessoa_id, " +
@@ -277,31 +284,97 @@ public class PsicologoPostgresDaoImpl implements PsicologoDao {
     }
 
 
-    @Override
-    public void updateInformation(int id, Psicologo entity) {
-        String sql = "UPDATE psicologo SET crp = ?, descricao = ? WHERE id = ?;";
 
-        try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+
+
+
+    @Override
+    public void updateInformation(int id, AddPsicologoDTO entity) {
+        String sqlUpdatePessoa = "UPDATE pessoa SET telefone = ?, nome = ?, data_nascimento = ?, cpf = ?, email = ? WHERE id = ?;";
+        String sqlUpdatePsicologo = "UPDATE psicologo SET crp = ?, descricao = ? WHERE pessoa_id = ?;";
+        String sqlDeleteEspecialidades = "DELETE FROM psicologo_especialidade WHERE psicologo_id = ?;";
+        String sqlInsertEspecialidade = "INSERT INTO psicologo_especialidade (psicologo_id, especialidade_id) VALUES (?, ?);";
+        String sqlDeleteAbordagens = "DELETE FROM abordagem WHERE psicologo_id = ?;";
+        String sqlInsertAbordagem = "INSERT INTO abordagem (psicologo_id, abordagem) VALUES (?, ?);";
+
+        PreparedStatement preparedStatementPessoa = null;
+        PreparedStatement preparedStatementPsicologo = null;
+        PreparedStatement preparedStatementEspecialidade = null;
+        PreparedStatement preparedStatementAbordagem = null;
+        ResultSet resultSet = null;
+
+        try {
             connection.setAutoCommit(false);
 
-            preparedStatement.setString(1, entity.getCrp());
-            preparedStatement.setString(2, entity.getDescricao());
-            preparedStatement.setInt(3, id);
+            // Atualizando os dados na tabela "pessoa"
+            preparedStatementPessoa = connection.prepareStatement(sqlUpdatePessoa);
+            preparedStatementPessoa.setString(1, entity.getTelefone());
+            preparedStatementPessoa.setString(2, entity.getNome());
+            preparedStatementPessoa.setDate(3, new java.sql.Date(entity.getDataNascimento().getTime()));
+            preparedStatementPessoa.setString(4, entity.getCpf());
+            preparedStatementPessoa.setString(5, entity.getEmail());
+            preparedStatementPessoa.setInt(6, id);  // O ID do psicólogo é o mesmo da pessoa
+            preparedStatementPessoa.executeUpdate();
 
-            preparedStatement.executeUpdate();
-            connection.commit();
+            // Atualizando os dados na tabela "psicologo"
+            preparedStatementPsicologo = connection.prepareStatement(sqlUpdatePsicologo);
+            preparedStatementPsicologo.setString(1, entity.getCrp());
+            preparedStatementPsicologo.setString(2, entity.getDescricao());
+            preparedStatementPsicologo.setInt(3, id);
+            preparedStatementPsicologo.executeUpdate();
 
+            // Deletando as especialidades anteriores
+            preparedStatementEspecialidade = connection.prepareStatement(sqlDeleteEspecialidades);
+            preparedStatementEspecialidade.setInt(1, id);
+            preparedStatementEspecialidade.executeUpdate();
+
+            // Inserindo as novas especialidades
+            for (String especialidade : entity.getEspecialidades()) {
+                int especialidadeId = especialidadeService.getIdByName(especialidade);
+                if (especialidadeId != -1) {
+                    preparedStatementEspecialidade = connection.prepareStatement(sqlInsertEspecialidade);
+                    preparedStatementEspecialidade.setInt(1, id);
+                    preparedStatementEspecialidade.setInt(2, especialidadeId);
+                    preparedStatementEspecialidade.executeUpdate();
+                }
+            }
+
+            // Deletando as abordagens anteriores
+            preparedStatementAbordagem = connection.prepareStatement(sqlDeleteAbordagens);
+            preparedStatementAbordagem.setInt(1, id);
+            preparedStatementAbordagem.executeUpdate();
+
+            // Inserindo as novas abordagens
+            for (String abordagem : entity.getAbordagens()) {
+                preparedStatementAbordagem = connection.prepareStatement(sqlInsertAbordagem);
+                preparedStatementAbordagem.setInt(1, id);
+                preparedStatementAbordagem.setString(2, abordagem);
+                preparedStatementAbordagem.executeUpdate();
+            }
+
+            connection.commit();  // Commitando todas as atualizações
         } catch (SQLException e) {
             try {
-                connection.rollback();
+                connection.rollback();  // Revertendo alterações caso haja erro
             } catch (SQLException ex) {
                 logger.severe("Error rolling back transaction: " + ex.getMessage());
                 throw new RuntimeException(ex);
             }
             logger.severe("Error executing updateInformation: " + e.getMessage());
             throw new RuntimeException(e);
+        } finally {
+            try {
+                if (resultSet != null) resultSet.close();
+                if (preparedStatementPessoa != null) preparedStatementPessoa.close();
+                if (preparedStatementPsicologo != null) preparedStatementPsicologo.close();
+                if (preparedStatementEspecialidade != null) preparedStatementEspecialidade.close();
+                if (preparedStatementAbordagem != null) preparedStatementAbordagem.close();
+            } catch (SQLException e) {
+                logger.severe("Error closing resources: " + e.getMessage());
+            }
         }
     }
+
 
     @Override
     public List<PsicologoFullDTO> search(String name, String especialidade) {

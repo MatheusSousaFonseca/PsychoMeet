@@ -1,4 +1,5 @@
-
+-- DML para o schema
+--Feito com ChatGPT
 -- Insere dados na tabela pessoa
 INSERT INTO pessoa (telefone, nome, senha, data_nascimento, cpf, email)
 VALUES
@@ -9,8 +10,8 @@ VALUES
 -- Insere dados na tabela paciente
 INSERT INTO paciente (pessoa_id)
 VALUES
-    (1),
-    (2);
+    (1),  -- João Silva
+    (2); -- Maria Oliveira
 
 -- Insere dados na tabela psicologo
 INSERT INTO psicologo (pessoa_id, crp, descricao)
@@ -65,31 +66,28 @@ VALUES
     ('Psicologia da justiça restaurativa');
 
 -- Insere dados na tabela disponibilidade
-INSERT INTO disponibilidade (psicologo_id, data_inicio, data_fim)
+INSERT INTO disponibilidade (psicologo_id, data, hora_intervalo)
 VALUES
-    (1, '2024-09-01', '2024-09-30'),
-    (2, '2024-09-01', '2024-09-15');
+    (1, '2024-09-01', '09:00-10:00'),  -- Disponibilidade de João Silva
+    (2, '2024-09-01', '11:00-12:00');  -- Disponibilidade de Maria Oliveira
+
 
 -- Insere dados na tabela agendamento
-INSERT INTO agendamento (data, paciente_id, disponibilidade_id, hora_inicio, hora_fim, status)
+INSERT INTO agendamento (paciente_id, disponibilidade_id, data_agendamento, status)
 VALUES
-    ('2024-09-10', 1, 1, '09:00', '10:00', 'Confirmado'),
-    ('2024-09-12', 2, 2, '11:00', '12:00', 'Confirmado');
+    (1, 1, '2024-08-10', 'pendente'),  -- João Silva com disponibilidade 1, aguardando confirmação
+    (2, 2, '2024-08-12', 'pendente');  -- Maria Oliveira com disponibilidade 2, aguardando confirmação
 
--- Insere dados na tabela dia
-INSERT INTO dia (disponibilidade_id, turno, dia_semana, hora_inicio, hora_fim)
-VALUES
-    (1, 'matutino', 'segunda-feira', '08:00', '12:00'),
-    (2, 'vespertino', 'terça-feira', '13:00', '17:00');
 
 -- Insere dados na tabela consulta
 INSERT INTO consulta (agenda_id, nota_paciente, comentario_paciente)
 VALUES
-    (1, 5, 'Excelente atendimento'),
-    (2, 4, 'Boa consulta, mas pode melhorar');
+    (1, 5, 'Excelente atendimento'),  -- Consulta para o agendamento 1 (João Silva)
+    (2, 4, 'Boa consulta, mas pode melhorar');  -- Consulta para o agendamento 2 (Maria Oliveira)
+
 
 -- Insere dados na tabela psicologo_especialidade
 INSERT INTO psicologo_especialidade (psicologo_id, especialidade_id)
 VALUES
-    (1, 1),
-    (2, 2);
+    (1, 1),  -- João Silva com especialidade Psicologia Clínica
+    (2, 2);  -- Maria Oliveira com especialidade Psicologia Educacional

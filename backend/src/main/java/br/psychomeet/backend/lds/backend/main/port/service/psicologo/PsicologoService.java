@@ -17,9 +17,11 @@ public interface PsicologoService {
 
     List<PsicologoFullDTO> findAll();
 
-    void update(int id, Psicologo entity);
+    void update(int id, AddPsicologoDTO entity);  // Mudando o parâmetro para AddPsicologoDTO
+
 
     List<PsicologoFullDTO> search(String name, String especialidade);
 
     PsicologoFullDTO findByEmail(String email);
 }
+

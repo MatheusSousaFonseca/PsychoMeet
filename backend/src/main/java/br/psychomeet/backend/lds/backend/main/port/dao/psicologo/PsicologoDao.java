@@ -17,10 +17,9 @@ public interface PsicologoDao {
 
     PsicologoFullDTO readByEmail(String email);
 
-
     List<PsicologoFullDTO> readAll();
 
-    void updateInformation(int id, Psicologo entity);
+    void updateInformation(int id, AddPsicologoDTO entity);
 
     List<PsicologoFullDTO> search(String name, String especialidade);
 }

@@ -39,18 +39,18 @@ public class PsicologoServiceImpl implements PsicologoService {
         return psicologoDao.readById(id);
     }
 
+
+
     @Override
     public List<PsicologoFullDTO> findAll() {
         return psicologoDao.readAll();
     }
 
     @Override
-    public void update(int id, Psicologo entity) {
-        Psicologo psicologo = findById(id).getPsicologo(); // Aqui estamos usando apenas o psicólogo
-        if (psicologo != null) {
-            psicologoDao.updateInformation(id, entity);
-        }
+    public void update(int id, AddPsicologoDTO entity) {
+        psicologoDao.updateInformation(id, entity);  // Passando o DTO ao DAO
     }
+
 
     @Override
     public List<PsicologoFullDTO> search(String name, String especialidade) {

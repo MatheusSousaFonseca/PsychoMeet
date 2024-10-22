@@ -80,7 +80,7 @@ export class EditProfilePsichologistComponent {
   async salvar() {
     if (this.form.valid) {
       try {
-        await this.psychologistUpdateService.update(this.form.value);
+        //await this.psychologistUpdateService.update(this.form.value);
         this.router.navigate(['/account/my-profile-psichologist']);
       } catch (error) {
         console.error('Error updating psychologist:', error);

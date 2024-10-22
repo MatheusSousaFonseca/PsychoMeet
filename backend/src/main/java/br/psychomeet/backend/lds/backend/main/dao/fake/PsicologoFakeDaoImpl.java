@@ -85,13 +85,11 @@ public class PsicologoFakeDaoImpl implements PsicologoDao {
     }
 
     @Override
-    public void updateInformation(int id, Psicologo entity) {
-        PsicologoFullDTO psicologoDTO = readById(id);
-        if (psicologoDTO != null) {
-            psicologoDTO.setCrp(entity.getCrp());
-            psicologoDTO.setDescricao(entity.getDescricao());
-        }
+    public void updateInformation(int id, AddPsicologoDTO entity) {
+
     }
+
+
 
     @Override
     public List<PsicologoFullDTO> search(String name, String especialidade) {

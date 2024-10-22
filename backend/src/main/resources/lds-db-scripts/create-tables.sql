@@ -1,3 +1,4 @@
+-- Dropping tables if they exist
 DROP TABLE IF EXISTS consulta;
 DROP TABLE IF EXISTS dia;
 DROP TABLE IF EXISTS agendamento;
@@ -10,7 +11,7 @@ DROP TABLE IF EXISTS psicologo;
 DROP TABLE IF EXISTS paciente;
 DROP TABLE IF EXISTS pessoa;
 
-
+-- Creating tables
 CREATE TABLE pessoa (
                         id serial PRIMARY KEY,
                         telefone varchar(15) NOT NULL UNIQUE,
@@ -60,25 +61,23 @@ CREATE TABLE especialidade (
 );
 
 CREATE TABLE disponibilidade (
-                                 id serial PRIMARY KEY,
-                                 psicologo_id int NOT NULL,
-                                 data_fim date NOT NULL,
-                                 data_inicio date NOT NULL,
-                                 CONSTRAINT fk_psicologo_disponibilidade FOREIGN KEY (psicologo_id) REFERENCES psicologo(id) ON UPDATE CASCADE ON DELETE NO ACTION,
-                                 CONSTRAINT uk_disponibilidade UNIQUE (psicologo_id, data_inicio, data_fim)
+    id serial PRIMARY KEY,
+    psicologo_id int NOT NULL,
+    data date NOT NULL,  -- Data de disponibilidade
+    hora_intervalo varchar(11) NOT NULL,  -- Armazena o intervalo de tempo no formato "09:00-10:00"
+    CONSTRAINT fk_psicologo_disponibilidade FOREIGN KEY (psicologo_id) REFERENCES psicologo(id) ON UPDATE CASCADE ON DELETE NO ACTION,
+    CONSTRAINT uk_disponibilidade UNIQUE (psicologo_id, data, hora_intervalo)
 );
 
+
 CREATE TABLE agendamento (
-                             id serial PRIMARY KEY,
-                             data date NOT NULL,
-                             paciente_id int NOT NULL,
-                             disponibilidade_id int NOT NULL,
-                             hora_inicio time NOT NULL,
-                             hora_fim time NOT NULL,
-                             status varchar(50) NOT NULL,
-                             CONSTRAINT uk_agenda_data_hora UNIQUE (data, hora_inicio, hora_fim),
-                             CONSTRAINT fk_agendamento_paciente FOREIGN KEY (paciente_id) REFERENCES paciente(id) ON UPDATE CASCADE ON DELETE NO ACTION,
-                             CONSTRAINT fk_agendamento_disponibilidade FOREIGN KEY (disponibilidade_id) REFERENCES disponibilidade(id) ON UPDATE CASCADE ON DELETE NO ACTION
+    id serial PRIMARY KEY,
+    paciente_id int NOT NULL,
+    disponibilidade_id int NOT NULL,  -- Referência para a disponibilidade do psicólogo
+    data_agendamento date NOT NULL,  -- Data em que a consulta foi agendada
+    status varchar(20) NOT NULL DEFAULT 'pendente',  -- Status da consulta (pendente, confirmado, etc.)
+    CONSTRAINT fk_agendamento_paciente FOREIGN KEY (paciente_id) REFERENCES paciente(id) ON UPDATE CASCADE ON DELETE NO ACTION,
+    CONSTRAINT fk_agendamento_disponibilidade FOREIGN KEY (disponibilidade_id) REFERENCES disponibilidade(id) ON UPDATE CASCADE ON DELETE NO ACTION
 );
 
 CREATE TABLE dia (

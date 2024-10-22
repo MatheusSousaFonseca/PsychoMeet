@@ -1,11 +1,7 @@
-package br.psychomeet.backend.lds.backend.main.controler;
-
 
 import br.psychomeet.backend.lds.backend.main.dto.AddPsicologoDTO;
 import br.psychomeet.backend.lds.backend.main.dto.PsicologoFullDTO;
 import br.psychomeet.backend.lds.backend.main.port.service.psicologo.PsicologoService;
-
-import br.psychomeet.backend.lds.backend.main.domain.Psicologo;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
@@ -25,11 +21,12 @@ public class PsicologoRestController {
 
     @GetMapping
     public ResponseEntity<List<PsicologoFullDTO>> getAll(@RequestParam String name, @RequestParam String especialidade) {
-        if (name.isEmpty() && especialidade.isEmpty()) {
+        if(name.isEmpty() && especialidade.isEmpty()){
             return ResponseEntity.ok(psicologoService.findAll());
-        } else {
-            return ResponseEntity.ok(psicologoService.search(name, especialidade));
+        }else{
+            return ResponseEntity.ok(psicologoService.search(name,especialidade));
         }
+
     }
 
     @GetMapping("/{id}")
@@ -53,8 +50,8 @@ public class PsicologoRestController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Void> update(@PathVariable int id, @RequestBody Psicologo psicologo) {
-        psicologoService.update(id, psicologo);
+    public ResponseEntity<Void> update(@PathVariable int id, @RequestBody AddPsicologoDTO psicologo) {
+        psicologoService.update(id, psicologo);  // Passando o DTO com os dados completos
         return ResponseEntity.ok().build();
     }
 

@@ -1,53 +1,59 @@
 <div class="container mt-5">
-  <div class="row mb-4 align-items-center">
-      <div class="col-auto">
-          <button class="btn btn-secondary" (click)="previousWeek()">Semana Anterior</button>
-      </div>
-
-      <div class="col text-center">
-          <h2 class="card-title">Informar Disponibilidade ({{ startOfWeek | date: 'dd/MM/yyyy' }} - {{ endOfWeek | date: 'dd/MM/yyyy' }})</h2>
-      </div>
-
-      <div class="col-auto">
-          <button class="btn btn-secondary" (click)="nextWeek()">Próxima Semana</button>
-      </div>
+    <div >
+      <button type="button" class="btn btn-danger" (click)="voltar()"> Voltar</button>
   </div>
-
-  <div class="text-center">
-      <table class="table table-bordered table-white custom-table mx-auto">
-          <thead>
-              <tr>
-                  <th>Hora</th>
-                  <th *ngFor="let day of weekDays">{{ getDayWithDate(day) }}</th>
-              </tr>
-          </thead>
-          <tbody>
-              <tr *ngFor="let time of horarioLista">
-                  <td>{{ time.hora }}</td>
-                  <td *ngFor="let day of weekDays">
-                      <button class="btn calendar-button" (click)="openMyModal(content, time.hora, day)">
-                          <i class="fas fa-calendar-alt text-warning"></i>
-                      </button>
-                  </td>
-              </tr>
-          </tbody>
-      </table>
-  </div>
-
-  <!-- Modal para confirmar disponibilidade -->
-  <ng-template #content let-modal="modal">
-      <div class="modal-header">
-          <h4 class="modal-title">Confirmar Disponibilidade</h4>
-          <button type="button" class="close" aria-label="Close" (click)="closeMyModal()">
-              <span aria-hidden="true">&times;</span>
-          </button>
-      </div>
-      <div class="modal-body">
-          <p>Salvar disponibilidade para {{ diaSelecionada | date: 'EEEE dd/MM/yyyy' }} às {{ horaSelecionada }}?</p>
-          <button class="btn btn-success" (click)="salvarDisponibilidade()">Salvar</button>
-      </div>
-      <div class="modal-footer">
+    <div class="row mb-4 align-items-center">
+        <div class="col-auto">
+            <button class="btn btn-secondary" (click)="previousWeek()">Semana Anterior</button>
+        </div>
+  
+        <div class="col text-center">
+            <h2 class="card-title">Informar Disponibilidade ({{ startOfWeek | date: 'dd/MM/yyyy' }} - {{ endOfWeek | date: 'dd/MM/yyyy' }})</h2>
+        </div>
+  
+        <div class="col-auto">
+            <button class="btn btn-secondary" (click)="nextWeek()">Próxima Semana</button>
+        </div>
+    </div>
+  
+    <div class="text-center">
+        <table class="table table-bordered table-white custom-table mx-auto">
+            <thead>
+                <tr>
+                    <th>Hora</th>
+                    <th *ngFor="let day of weekDays">{{ getDayWithDate(day) }}</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let time of horarioLista">
+                    <td>{{ time.hora }}</td>
+                    <td *ngFor="let day of weekDays">
+                        <button class="btn calendar-button" (click)="openMyModal(content, time.hora, day)">
+                            <i class="fas fa-calendar-alt text-warning"></i>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+  
+    </div>
+  
+    <!-- Modal para confirmar disponibilidade -->
+    <ng-template #content let-modal="modal">
+        <div class="modal-header">
+            <h4 class="modal-title">Confirmar Disponibilidade</h4>
+            <button type="button" class="close" aria-label="Close" (click)="closeMyModal()">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <p>Salvar disponibilidade para {{ diaSelecionada | date: 'EEEE dd/MM/yyyy' }} às {{ horaSelecionada }}?</p>
+            <button class="btn btn-success" (click)="salvarDisponibilidade()">Salvar</button>
+        </div>
+  
+        <div class="modal-footer">
           <button type="button" class="btn btn-outline-dark" (click)="closeMyModal()">Fechar</button>
       </div>
-  </ng-template>
-</div>
+    </ng-template>
+  </div>
+  

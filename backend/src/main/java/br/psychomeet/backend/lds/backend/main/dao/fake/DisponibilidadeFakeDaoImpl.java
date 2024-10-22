@@ -19,11 +19,7 @@ public class DisponibilidadeFakeDaoImpl implements DisponibilidadeDao {
 
     public DisponibilidadeFakeDaoImpl() {
         System.out.println("Instância de disponibilidade fake dao obtida");
-        Disponibilidade disponibilidade1 = new Disponibilidade(getNextId(), 1, new Date(), new Date());
-        Disponibilidade disponibilidade2 = new Disponibilidade(getNextId(), 2, new Date(), new Date());
 
-        disponibilidades.add(disponibilidade1);
-        disponibilidades.add(disponibilidade2);
     }
 
     @Override
@@ -52,9 +48,17 @@ public class DisponibilidadeFakeDaoImpl implements DisponibilidadeDao {
     @Override
     public void updateInformation(int id, Disponibilidade entity) {
         Disponibilidade disponibilidade = readById(id);
-        if (disponibilidade != null) {
-            disponibilidade.setDataInicio(entity.getDataInicio());
-            disponibilidade.setDataFim(entity.getDataFim());
-        }
+
+    }
+
+    @Override
+    public void removeByDate(Disponibilidade disponibilidade) {
+
+    }
+
+    @Override
+    public List<Disponibilidade> getByPsicologo(int psicologo_id) {
+        return List.of();
     }
 }
+

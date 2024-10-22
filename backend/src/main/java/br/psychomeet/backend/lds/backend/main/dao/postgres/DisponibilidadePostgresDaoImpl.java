@@ -22,7 +22,7 @@ public class DisponibilidadePostgresDaoImpl implements DisponibilidadeDao {
 
     @Override
     public int add(Disponibilidade entity) {
-        String sql = "INSERT INTO disponibilidade (profissional_id, data_inicio, data_fim) VALUES (?, ?, ?);";
+        String sql = "INSERT INTO disponibilidade (psicologo_id, data, hora_intervalo) VALUES (?, ?, ?);";
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
 
@@ -31,8 +31,8 @@ public class DisponibilidadePostgresDaoImpl implements DisponibilidadeDao {
             preparedStatement = connection.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
 
             preparedStatement.setInt(1, entity.getPsicologoId());
-            preparedStatement.setDate(2, new java.sql.Date(entity.getDataInicio().getTime()));
-            preparedStatement.setDate(3, new java.sql.Date(entity.getDataFim().getTime()));
+            preparedStatement.setDate(2, new java.sql.Date(entity.getData().getTime()));
+            preparedStatement.setString(3, entity.getHoraIntervalo());
 
             preparedStatement.execute();
 
@@ -100,8 +100,8 @@ public class DisponibilidadePostgresDaoImpl implements DisponibilidadeDao {
                     disponibilidade = new Disponibilidade();
                     disponibilidade.setId(resultSet.getInt("id"));
                     disponibilidade.setPsicologoId(resultSet.getInt("profissional_id"));
-                    disponibilidade.setDataInicio(resultSet.getDate("data_inicio"));
-                    disponibilidade.setDataFim(resultSet.getDate("data_fim"));
+                    disponibilidade.setData(resultSet.getDate("data_inicio"));
+                    disponibilidade.setHoraIntervalo(resultSet.getString("hora_intervalo"));
                 }
             }
         } catch (SQLException e) {
@@ -122,9 +122,9 @@ public class DisponibilidadePostgresDaoImpl implements DisponibilidadeDao {
             while (resultSet.next()) {
                 Disponibilidade disponibilidade = new Disponibilidade();
                 disponibilidade.setId(resultSet.getInt("id"));
-                disponibilidade.setPsicologoId(resultSet.getInt("profissional_id"));
-                disponibilidade.setDataInicio(resultSet.getDate("data_inicio"));
-                disponibilidade.setDataFim(resultSet.getDate("data_fim"));
+                disponibilidade.setPsicologoId(resultSet.getInt("psicologo_id"));
+                disponibilidade.setData(resultSet.getDate("data"));
+                disponibilidade.setHoraIntervalo(resultSet.getString("hora_intervalo"));
 
                 disponibilidades.add(disponibilidade);
             }
@@ -143,8 +143,8 @@ public class DisponibilidadePostgresDaoImpl implements DisponibilidadeDao {
         try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
             connection.setAutoCommit(false);
             preparedStatement.setInt(1, entity.getPsicologoId());
-            preparedStatement.setDate(2, new java.sql.Date(entity.getDataInicio().getTime()));
-            preparedStatement.setDate(3, new java.sql.Date(entity.getDataFim().getTime()));
+            preparedStatement.setDate(2, new java.sql.Date(entity.getData().getTime()));
+            preparedStatement.setString(3, entity.getHoraIntervalo());
             preparedStatement.setInt(4, id);
 
             preparedStatement.executeUpdate();
@@ -160,5 +160,55 @@ public class DisponibilidadePostgresDaoImpl implements DisponibilidadeDao {
             logger.severe("Error executing updateInformation: " + e.getMessage());
             throw new RuntimeException(e);
         }
+    }
+
+    @Override
+    public void removeByDate(Disponibilidade disponibilidade) {
+        String sql = "DELETE FROM disponibilidade WHERE data = ? AND hora_intervalo = ?;";
+
+        try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+            connection.setAutoCommit(false);
+            preparedStatement.setDate(1, new java.sql.Date(disponibilidade.getData().getTime()));
+            preparedStatement.setString(2, disponibilidade.getHoraIntervalo());
+            preparedStatement.executeUpdate();
+            connection.commit();
+
+        } catch (SQLException e) {
+            try {
+                connection.rollback();
+            } catch (SQLException ex) {
+                logger.severe("Error rolling back transaction: " + ex.getMessage());
+                throw new RuntimeException(ex);
+            }
+            logger.severe("Error executing remove: " + e.getMessage());
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Override
+    public List<Disponibilidade> getByPsicologo(int psicologo_id) {
+        String sql = "SELECT * FROM disponibilidade WHERE psicologo_id = ?;";
+        List<Disponibilidade> disponibilidades = new ArrayList<>();
+
+
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setInt(1, psicologo_id);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                Disponibilidade disponibilidade = new Disponibilidade();
+                disponibilidade.setId(resultSet.getInt("id"));
+                disponibilidade.setPsicologoId(resultSet.getInt("psicologo_id"));
+                disponibilidade.setData(resultSet.getDate("data"));
+                disponibilidade.setHoraIntervalo(resultSet.getString("hora_intervalo"));
+
+                disponibilidades.add(disponibilidade);
+            }
+        } catch (SQLException e) {
+            logger.severe("Error executing readAll: " + e.getMessage());
+            throw new RuntimeException(e);
+        }
+
+        return disponibilidades;
     }
 }

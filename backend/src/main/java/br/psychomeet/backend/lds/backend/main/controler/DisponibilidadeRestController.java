@@ -47,4 +47,15 @@ public class DisponibilidadeRestController {
         disponibilidadeService.delete(id);
         return ResponseEntity.noContent().build();
     }
+
+    @DeleteMapping("/datahora")
+    public ResponseEntity<Void> deleteByDate(@RequestBody Disponibilidade disponibilidade) {
+        disponibilidadeService.removeByDate(disponibilidade);
+        return ResponseEntity.noContent().build();
+    }
+
+    @GetMapping("/psicologo/{id}")
+    public ResponseEntity<List<Disponibilidade>> getByPsicologo(@PathVariable int id) {
+        return ResponseEntity.ok(disponibilidadeService.getByPsicologo(id));
+    }
 }

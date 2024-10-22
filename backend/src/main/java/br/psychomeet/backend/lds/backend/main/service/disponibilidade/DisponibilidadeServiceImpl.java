@@ -16,22 +16,21 @@ public class DisponibilidadeServiceImpl implements DisponibilidadeService {
         this.disponibilidadeDao = disponibilidadeDao;
     }
 
-
     @Override
     public int create(Disponibilidade entity) {
         if (entity == null) {
             return 0;
         }
-        if (entity.getDataInicio() == null || entity.getDataFim() == null) {
+        if (entity.getData() == null || entity.getHoraIntervalo() == null) {
             return 0;
         }
 
         return disponibilidadeDao.add(entity);
-
     }
+
     @Override
     public void delete(int id) {
-        if (id < 0){
+        if (id < 0) {
             return;
         }
         disponibilidadeDao.remove(id);
@@ -50,9 +49,18 @@ public class DisponibilidadeServiceImpl implements DisponibilidadeService {
     @Override
     public void update(int id, Disponibilidade entity) {
         Disponibilidade disponibilidade = findById(id);
-        if (disponibilidade != null){
-            disponibilidadeDao.updateInformation(id,entity);
+        if (disponibilidade != null) {
+            disponibilidadeDao.updateInformation(id, entity);
         }
+    }
 
+    @Override
+    public void removeByDate(Disponibilidade disponibilidade) {
+        disponibilidadeDao.removeByDate(disponibilidade);
+    }
+
+    @Override
+    public List<Disponibilidade> getByPsicologo(int psicologo_id) {
+        return disponibilidadeDao.getByPsicologo(psicologo_id);
     }
 }

@@ -149,7 +149,7 @@ export class MakeConsultationComponent implements OnInit {
     let email = localStorage.getItem("email")
     let paciente = await this.userReadService.findByEmail(email!)
     let consultation : Consultation = {
-      horaInicio: this.horaSelecionada,
+      horaIntervalo: this.horaSelecionada,
       data: this.diaSelecionada,
       nomePsicologo: this.psychologist.nome,
       status: "PENDENTE",
@@ -158,7 +158,6 @@ export class MakeConsultationComponent implements OnInit {
       pacienteId: 0,
       notaPaciente: 0,
       comentarioPaciente: '',
-      horaFim: '',
       psicologoId: 0,
       pessoaId: 0
     }
@@ -176,7 +175,15 @@ export class MakeConsultationComponent implements OnInit {
 
     this.toastrService.success('Consulta marcada com sucesso.')
 
+
+
+
   }
+
+
+
+
+
 }
 
 

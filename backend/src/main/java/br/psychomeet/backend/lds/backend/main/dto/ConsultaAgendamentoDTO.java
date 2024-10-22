@@ -12,12 +12,11 @@ public class ConsultaAgendamentoDTO {
     private int agendaId;                 // ID do agendamento
     private int pacienteId;               // ID do paciente
     private int notaPaciente;             // Nota dada pelo paciente
-    private String comentarioPaciente;     // Comentário do paciente
-    private String status;                 // Status da consulta (por exemplo: "Confirmada", "Pendente")
-    private String data;                   // Data do agendamento
-    private String horaInicio;             // Hora de início do agendamento
-    private String horaFim;                // Hora de fim do agendamento
-    private int psicologoId;               // ID do psicólogo associado ao agendamento
-    private int pessoaId;                  // ID da pessoa associada ao psicólogo
-    private String nomePsicologo;          // Nome do psicólogo
+    private String comentarioPaciente;    // Comentário do paciente
+    private String status;                // Status da consulta (por exemplo: "Confirmada", "Pendente")
+    private String data;                  // Data do agendamento
+    private String horaIntervalo;         // Intervalo de hora (substitui horaInicio e horaFim)
+    private int psicologoId;              // ID do psicólogo associado ao agendamento
+    private int pessoaId;                 // ID da pessoa associada ao psicólogo
+    private String nomePsicologo;         // Nome do psicólogo
 }

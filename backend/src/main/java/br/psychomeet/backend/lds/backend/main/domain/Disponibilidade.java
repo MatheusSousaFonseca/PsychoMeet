@@ -11,8 +11,9 @@ import java.util.Date;
 @NoArgsConstructor
 
 public class Disponibilidade {
+
     private int id;
     private int psicologoId;
-    private Date dataInicio;
-    private Date dataFim;
+    private Date data;
+    private String horaIntervalo;
 }

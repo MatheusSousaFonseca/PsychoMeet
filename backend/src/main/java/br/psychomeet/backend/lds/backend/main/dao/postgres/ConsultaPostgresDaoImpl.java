@@ -69,6 +69,7 @@ public class ConsultaPostgresDaoImpl implements ConsultaDao {
         return entity.getId();
     }
 
+
     @Override
     public void remove(int id) {
         String sql = "DELETE FROM consulta WHERE id = ?;";
@@ -136,6 +137,7 @@ public class ConsultaPostgresDaoImpl implements ConsultaDao {
 
         return consulta;
     }
+
 
     @Override
     public List<Consulta> readAll() {
@@ -212,7 +214,7 @@ public class ConsultaPostgresDaoImpl implements ConsultaDao {
     @Override
     public List<ConsultaAgendamentoDTO> findByPacienteId(int pacienteId, String status) {
         String sql = "SELECT c.id AS consulta_id, a.id AS agenda_id, a.paciente_id, c.nota_paciente, c.comentario_paciente, " +
-                "a.status, a.data, a.hora_inicio, a.hora_fim, d.psicologo_id, p.id AS pessoa_id, pe.nome AS nome_psicologo " +
+                "a.status, a.data_agendamento, d.hora_intervalo, d.psicologo_id, p.id AS pessoa_id, pe.nome AS nome_psicologo " +
                 "FROM consulta c " +
                 "JOIN agendamento a ON c.agenda_id = a.id " +
                 "JOIN disponibilidade d ON a.disponibilidade_id = d.id " +
@@ -221,7 +223,7 @@ public class ConsultaPostgresDaoImpl implements ConsultaDao {
                 "WHERE a.paciente_id = ?";
 
         if (status != null) {
-            sql += " AND a.status = ?"; // Adiciona o filtro de status
+            sql += " AND a.status = ?"; // Filtro opcional de status
         }
 
         List<ConsultaAgendamentoDTO> consultasAgendamentos = new ArrayList<>();
@@ -245,12 +247,11 @@ public class ConsultaPostgresDaoImpl implements ConsultaDao {
                 dto.setNotaPaciente(resultSet.getInt("nota_paciente"));
                 dto.setComentarioPaciente(resultSet.getString("comentario_paciente"));
                 dto.setStatus(resultSet.getString("status"));
-                dto.setData(resultSet.getString("data"));
-                dto.setHoraInicio(resultSet.getString("hora_inicio"));
-                dto.setHoraFim(resultSet.getString("hora_fim"));
-                dto.setPsicologoId(resultSet.getInt("psicologo_id")); // Adicionando psicologo_id
-                dto.setPessoaId(resultSet.getInt("pessoa_id")); // Adicionando pessoa_id
-                dto.setNomePsicologo(resultSet.getString("nome_psicologo")); // Adicionando nome do psicólogo
+                dto.setData(resultSet.getString("data_agendamento"));
+                dto.setHoraIntervalo(resultSet.getString("hora_intervalo")); // Ajuste aqui
+                dto.setPsicologoId(resultSet.getInt("psicologo_id"));
+                dto.setPessoaId(resultSet.getInt("pessoa_id"));
+                dto.setNomePsicologo(resultSet.getString("nome_psicologo"));
 
                 consultasAgendamentos.add(dto);
             }
@@ -274,7 +275,7 @@ public class ConsultaPostgresDaoImpl implements ConsultaDao {
     @Override
     public List<ConsultaAgendamentoDTO> findByPsicologoId(int psicologoId, String status) {
         String sql = "SELECT c.id AS consulta_id, a.id AS agenda_id, a.paciente_id, c.nota_paciente, c.comentario_paciente, " +
-                "a.status, a.data, a.hora_inicio, a.hora_fim, d.psicologo_id, p.id AS pessoa_id, pe.nome AS nome_psicologo " +
+                "a.status, a.data_agendamento, d.hora_intervalo, d.psicologo_id, p.id AS pessoa_id, pe.nome AS nome_psicologo " +
                 "FROM consulta c " +
                 "JOIN agendamento a ON c.agenda_id = a.id " +
                 "JOIN disponibilidade d ON a.disponibilidade_id = d.id " +
@@ -300,10 +301,9 @@ public class ConsultaPostgresDaoImpl implements ConsultaDao {
                 dto.setNotaPaciente(resultSet.getInt("nota_paciente"));
                 dto.setComentarioPaciente(resultSet.getString("comentario_paciente"));
                 dto.setStatus(resultSet.getString("status"));
-                dto.setData(resultSet.getString("data"));
-                dto.setHoraInicio(resultSet.getString("hora_inicio"));
-                dto.setHoraFim(resultSet.getString("hora_fim"));
-                dto.setPsicologoId(psicologoId); // Adicionando psicologo_id
+                dto.setData(resultSet.getString("data_agendamento"));
+                dto.setHoraIntervalo(resultSet.getString("hora_intervalo")); // Ajuste aqui
+                dto.setPsicologoId(psicologoId);
 
                 consultasAgendamentos.add(dto);
             }
@@ -322,6 +322,7 @@ public class ConsultaPostgresDaoImpl implements ConsultaDao {
 
         return consultasAgendamentos;
     }
+
 
     @Override
     public void giveFeedback(FeedbackDTO feedback) {
@@ -360,4 +361,5 @@ public class ConsultaPostgresDaoImpl implements ConsultaDao {
 
 
 }
+
 

@@ -2,7 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { firstValueFrom } from 'rxjs';
 import { Consultation } from '../../domain/model/consultation-model';
-import { AgendamentoDisponibilidade } from '../../domain/model/agendamento-model';
+import { AgendamentoDisponibilidade } from '../../domain/model/agendamento-disponibilidade-model';
+
 
 @Injectable({
   providedIn: 'root'

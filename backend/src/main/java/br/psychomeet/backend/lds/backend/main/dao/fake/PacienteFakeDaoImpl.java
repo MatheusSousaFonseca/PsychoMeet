@@ -55,4 +55,9 @@ public class PacienteFakeDaoImpl implements PacienteDao {
             paciente.setPessoaId(entity.getPessoaId());
         }
     }
+
+    @Override
+    public Paciente findByPessoa(int id) {
+        return null;
+    }
 }

@@ -154,5 +154,27 @@ public class PacientePostgresDaoImpl implements PacienteDao {
         }
     }
 
+    @Override
+    public Paciente findByPessoa(int id) {
+        String sql = "SELECT * FROM paciente WHERE pessoa_id = ?;";
+        Paciente paciente = null;
+
+        try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+            preparedStatement.setInt(1, id);
+
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                if (resultSet.next()) {
+                    paciente = new Paciente();
+                    paciente.setId(resultSet.getInt("id"));
+                    paciente.setPessoaId(resultSet.getInt("pessoa_id"));
+                }
+            }
+        } catch (SQLException e) {
+            logger.severe("Error executing readById: " + e.getMessage());
+            throw new RuntimeException(e);
+        }
+        return paciente;
+    }
+
 
 }

@@ -49,4 +49,9 @@ public class PacienteServiceImpl implements PacienteService {
             pacienteDao.updateInformation(id, entity);
         }
     }
+
+    @Override
+    public Paciente getByPessoa(int id) {
+        return pacienteDao.findByPessoa(id);
+    }
 }

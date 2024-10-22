@@ -31,6 +31,11 @@ public class PacienteRestController {
         return ResponseEntity.ok(pacienteService.findById(id));
     }
 
+    @GetMapping("/pessoa/{id}")
+    public ResponseEntity<Paciente> getByPacienteId(@PathVariable int id) {
+        return ResponseEntity.ok(pacienteService.findById(id));
+    }
+
     @PostMapping
     public ResponseEntity<Void> create(@RequestBody Paciente paciente) {
         int id = pacienteService.create(paciente);

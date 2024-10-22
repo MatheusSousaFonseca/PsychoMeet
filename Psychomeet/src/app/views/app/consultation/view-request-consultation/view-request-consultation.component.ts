@@ -8,8 +8,8 @@ import { Consultation } from '../../../../domain/model/consultation-model';
 import { ConsultationReadService } from '../../../../services/consultation/consultation-read-service';
 import { PsychologistReadService } from '../../../../services/psychologist/psychologist-read.service';
 import { ConsultationUpdateService } from '../../../../services/consultation/consultation-update-service';
-import { AgendamentoDisponibilidade } from '../../../../domain/model/agendamento-model';
 import { ConsultationDeleteService } from '../../../../services/consultation/consultation-delete-service';
+import { AgendamentoDisponibilidade } from '../../../../domain/model/agendamento-disponibilidade-model';
 
 @Component({
   selector: 'app-view-request-consultation',
@@ -28,8 +28,7 @@ export class ViewRequestConsultationComponent {
 
   agendamentos: AgendamentoDisponibilidade[] = [];
 
-  pacientesMap: { [id: number]: string } = {}; // Map to store patient names
-
+  pacientesMap: { [id: number]: string } = {}; 
 
   constructor(private router: Router,
     private modalService: NgbModal,
@@ -66,10 +65,10 @@ export class ViewRequestConsultationComponent {
     console.log(this.selectedAgendamento)
     this.consultationUpdateService.confirmar(this.selectedAgendamento.id!)
 
-    // if (this.modalRef) {
-    //   this.modalRef.close();
-    // }
-    // window.location.reload();
+    if (this.modalRef) {
+      this.modalRef.close();
+    }
+    window.location.reload();
   }
 
   desmarcarConsulta() {
@@ -80,7 +79,7 @@ export class ViewRequestConsultationComponent {
           if (this.modalRef) {
             this.modalRef.close();
           }
-          window.location.reload();  // Recarrega a página para atualizar a lista de agendamentos
+          window.location.reload();  
         })
         .catch((error: any) => {
           console.error("Erro ao desmarcar a consulta:", error);
@@ -99,19 +98,17 @@ export class ViewRequestConsultationComponent {
     });
   }
 
-  // Load consultations and preload patient names
   async loadConsultations() {
     let email = localStorage.getItem("email");
     if (email) {
       const psychologist = await this.psychologistReadService.findByEmail(email);
       if (psychologist?.id) {
         this.agendamentos = await this.consultationReadService.findByIdPsicologoPendente(psychologist.id);
-        await this.preloadPacientesNames(); // Ensure patient names are preloaded
+        await this.preloadPacientesNames(); 
       }
     }
   }
 
-  // Load patient names for consultations
   async preloadPacientesNames() {
     const pacienteIds = this.agendamentos.map(c => c.pessoaIdPaciente);
     for (const id of pacienteIds) {

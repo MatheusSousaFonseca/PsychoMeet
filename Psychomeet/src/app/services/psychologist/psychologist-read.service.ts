@@ -11,7 +11,7 @@ export class PsychologistReadService {
   constructor(private http: HttpClient) { }
 
   findById(id: string): Promise<Psychologist> {
-    return firstValueFrom(this.http.get<Psychologist>(`http://localhost:3000/psychologist/${id}`));
+    return firstValueFrom(this.http.get<Psychologist>(`http://localhost:8081/api/psicologo/${id}`));
   }
 
   findByName(nome: string): Promise<Psychologist[]> {

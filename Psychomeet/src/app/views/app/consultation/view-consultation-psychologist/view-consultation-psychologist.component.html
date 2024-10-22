@@ -22,7 +22,10 @@
   </div>
   
   <ul class="list-group mb-3">
-    <li class="list-group-item" *ngFor="let consultation of consultations; trackBy: trackById">
+    <div *ngFor="let consultation of consultations; trackBy: trackById">
+  
+  
+    <li *ngIf="hasFeedback(consultation.comentarioPaciente , consultation.notaPaciente)" class="list-group-item" >
         <div class="card mb-3">
             <div class="card-body">
                 <div class="d-flex justify-content-between align-items-center">
@@ -31,7 +34,7 @@
                 </div>
                     <div class="col-md-9">
                         <h5 class="card-title">{{ pacientesMap[consultation.pacienteId] }}</h5> <!-- Get preloaded name -->
-                        <p class="card-text"><strong>Data: </strong>{{ consultation.data }} , {{ consultation.horaIntervalo }}</p>
+                        <p class="card-text"><strong>Data: </strong>{{formatDate(consultation.data)  }} , {{ consultation.horaIntervalo }}</p>
                         <p class="card-text"><strong>Nota: </strong>{{ consultation.notaPaciente }}</p>
                         <p class="card-text"><strong>Feedback: </strong>{{ consultation.comentarioPaciente }}</p>
                     </div>
@@ -39,5 +42,6 @@
             </div>
         </div>
     </li>
+  </div>
   </ul>
   

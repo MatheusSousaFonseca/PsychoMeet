@@ -10,6 +10,7 @@ import { ConsultationReadService } from '../../../../services/consultation/consu
 import { UserReadService } from '../../../../services/user/user-read-service';
 import { consultationFeedback } from '../../../../domain/dto/consultation-feedback';
 import { ConsultationFeedbackService } from '../../../../services/consultation/consultation-feedback-service';
+import { formatDate, formatPhone } from '../../../../services/utils';
 
 @Component({
   selector: 'app-view-consultation-patient',
@@ -96,5 +97,13 @@ export class ViewConsultationPatientComponent implements OnInit {
     }).catch((error: any) => {
       console.error('Error submitting feedback:', error);
     });
+  }
+
+  formatDate(date: string): string {
+    return formatDate(date);  // Usando a função de formatação de data
+  }
+
+  formatPhone(phone: string): string {
+    return formatPhone(phone);  // Usando a função de formatação de telefone
   }
 }

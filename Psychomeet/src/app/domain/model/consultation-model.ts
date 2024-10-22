@@ -10,4 +10,5 @@ export interface Consultation {
   psicologoId: number;             // ID do psicólogo
   pessoaId: number;                // ID da pessoa (se necessário)
   nomePsicologo: string;           // Nome do psicólogo
+  telefone: string;
 }

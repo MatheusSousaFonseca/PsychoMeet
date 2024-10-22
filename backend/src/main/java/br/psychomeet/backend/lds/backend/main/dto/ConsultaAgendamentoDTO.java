@@ -19,4 +19,5 @@ public class ConsultaAgendamentoDTO {
     private int psicologoId;              // ID do psicólogo associado ao agendamento
     private int pessoaId;                 // ID da pessoa associada ao psicólogo
     private String nomePsicologo;         // Nome do psicólogo
+    private String telefone;
 }

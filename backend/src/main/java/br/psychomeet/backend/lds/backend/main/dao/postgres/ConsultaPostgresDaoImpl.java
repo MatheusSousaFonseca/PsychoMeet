@@ -214,13 +214,16 @@ public class ConsultaPostgresDaoImpl implements ConsultaDao {
     @Override
     public List<ConsultaAgendamentoDTO> findByPacienteId(int pacienteId, String status) {
         String sql = "SELECT c.id AS consulta_id, a.id AS agenda_id, a.paciente_id, c.nota_paciente, c.comentario_paciente, " +
-                "a.status, a.data_agendamento, d.hora_intervalo, d.psicologo_id, p.id AS pessoa_id, pe.nome AS nome_psicologo " +
+                "a.status, a.data_agendamento, d.hora_intervalo, d.psicologo_id, p.id AS pessoa_id, pe.nome AS nome_psicologo, pe.telefone " +
                 "FROM consulta c " +
                 "JOIN agendamento a ON c.agenda_id = a.id " +
                 "JOIN disponibilidade d ON a.disponibilidade_id = d.id " +
                 "JOIN psicologo p ON d.psicologo_id = p.id " +
                 "JOIN pessoa pe ON p.pessoa_id = pe.id " +
-                "WHERE a.paciente_id = ?";
+                "WHERE a.paciente_id = ? " +
+                "ORDER BY (c.nota_paciente = 0 AND c.comentario_paciente = '') DESC, " +
+                "a.data_agendamento DESC;";
+
 
         if (status != null) {
             sql += " AND a.status = ?"; // Filtro opcional de status
@@ -252,6 +255,8 @@ public class ConsultaPostgresDaoImpl implements ConsultaDao {
                 dto.setPsicologoId(resultSet.getInt("psicologo_id"));
                 dto.setPessoaId(resultSet.getInt("pessoa_id"));
                 dto.setNomePsicologo(resultSet.getString("nome_psicologo"));
+                dto.setTelefone(resultSet.getString("telefone"));
+
 
                 consultasAgendamentos.add(dto);
             }
@@ -275,7 +280,7 @@ public class ConsultaPostgresDaoImpl implements ConsultaDao {
     @Override
     public List<ConsultaAgendamentoDTO> findByPsicologoId(int psicologoId, String status) {
         String sql = "SELECT c.id AS consulta_id, a.id AS agenda_id, a.paciente_id, c.nota_paciente, c.comentario_paciente, " +
-                "a.status, a.data_agendamento, d.hora_intervalo, d.psicologo_id, p.id AS pessoa_id, pe.nome AS nome_psicologo " +
+                "a.status, a.data_agendamento, d.hora_intervalo, d.psicologo_id, p.id AS pessoa_id, pe.nome AS nome_psicologo, pe.telefone " +
                 "FROM consulta c " +
                 "JOIN agendamento a ON c.agenda_id = a.id " +
                 "JOIN disponibilidade d ON a.disponibilidade_id = d.id " +

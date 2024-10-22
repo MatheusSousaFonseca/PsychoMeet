@@ -11,6 +11,8 @@ import { FormGroup } from '@angular/forms';
 import localePt from '@angular/common/locales/pt';
 import { AvailabilityReadService } from '../../../../services/availability/availability-read.service';
 import { AvailabilityDeleteService } from '../../../../services/availability/availability-delete.service';
+import { Consultation } from '../../../../domain/model/consultation-model';
+import { ConsultationReadService } from '../../../../services/consultation/consultation-read-service';
 
 @Component({
   selector: 'app-inform-availability',
@@ -31,6 +33,8 @@ export class InformAvailabilityComponent implements OnInit {
   startOfWeek!: Date;
   endOfWeek!: Date;
   disponibilidades: Availability[] = [];
+  consultas: Consultation[] = [];
+
 
 
   constructor(
@@ -40,7 +44,8 @@ export class InformAvailabilityComponent implements OnInit {
     private availabilityReadService: AvailabilityReadService,
     private availabilityCreateService: AvailabilityCreateService,
     private availabilityDeleteService: AvailabilityDeleteService,
-    private toastrService: ToastrService
+    private toastrService: ToastrService,
+    private consultationReadService: ConsultationReadService
   ) {
     registerLocaleData(localePt, 'pt-BR');
    }
@@ -59,6 +64,19 @@ export class InformAvailabilityComponent implements OnInit {
     this.psychologist = await this.psychologistReadService.findByEmail(email!);
     this.disponibilidades = await this.availabilityReadService.findByPsicologo(this.psychologist.id!);
     console.log(this.disponibilidades)
+    this.loadConsultasMarcadas(this.psychologist.id!);
+  }
+
+  async loadConsultasMarcadas(psychologistId: number) {
+    this.consultas = await this.consultationReadService.findByIdPsicologoAccept(psychologistId);
+  }
+
+  isConsultaMarcada(dia: Date, hora: string): boolean {
+    return this.consultas.some(
+      (consulta) =>
+        this.sameDay(this.addDays(new Date(consulta.data), 1), dia) &&
+        consulta.horaIntervalo === hora
+    );
   }
 
   // Inicializa os horários da tabela

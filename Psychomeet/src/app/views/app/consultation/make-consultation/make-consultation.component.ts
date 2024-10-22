@@ -48,6 +48,11 @@ export class MakeConsultationComponent implements OnInit {
   disponibilidades: Availability[] = [];
   consultasMarcadas: Consultation[] = [];
 
+  consultations: Consultation[] = [];
+
+  pacientesMap: { [id: number]: string } = {}; // Map to store patient names
+
+
   constructor(
     private router: Router,
     private modalService: NgbModal,
@@ -65,6 +70,7 @@ export class MakeConsultationComponent implements OnInit {
    }
 
   ngOnInit(): void {
+    this.loadUsers();
     this.initializeHorarios();
     this.loadPsychologist();
 
@@ -78,6 +84,7 @@ export class MakeConsultationComponent implements OnInit {
     if (psychologistId) {
       this.psychologist = await this.psychologistReadService.findById(psychologistId);
       this.loadDisponibilidade(this.psychologist.id!);
+      this.loadConsultations()
       this.loadConsultasMarcadas(this.psychologist.id!)
     }
   }
@@ -221,10 +228,15 @@ addDays(date: Date, days: number): Date {
 }
 
 isAvailable(dia: Date, hora: string): boolean {
+  const today = new Date();
+
+  // Se o dia for anterior à data de hoje, ele é tratado como indisponível
+  if (dia < today) {
+    return false;
+  }
   return this.disponibilidades.some(
     (disponibilidade) =>
-      this.sameDay(this.addDays(new Date(disponibilidade.data), 1), dia)
- &&
+      this.sameDay(this.addDays(new Date(disponibilidade.data), 1), dia) &&
       disponibilidade.horaIntervalo === hora
   );
 }
@@ -287,6 +299,52 @@ async marcarConsulta() {
     this.toastrService.error('Erro ao marcar consulta.');
     console.error(error);
   }
+
+}
+
+async preloadPacientesNames() {
+  const pacienteIds = this.consultations.map(c => c.pessoaId);
+  for (const id of pacienteIds) {
+    if (!this.pacientesMap[id]) {
+      const paciente = await this.userReadService.findById(id);
+      if (paciente) {
+        this.pacientesMap[id] = paciente.nome;
+      }
+    }
+  }
+}
+
+// trackBy function to optimize ngFor rendering
+trackById(index: number, item: Consultation) {
+  return item.consultaId; // Assuming consultation has a unique id
+}
+
+
+// Load consultations and preload patient names
+async loadConsultations() {
+
+    if (this.psychologist?.id) {
+      this.consultations = await this.consultationReadService.findByIdPsicologoAccept(this.psychologist.id);
+      await this.preloadPacientesNames(); // Ensure patient names are preloaded
+      console.log("LOAD CONSULTATIONS 2222", this.consultations);
+      }
+}
+
+async loadUsers() {
+  const users = await this.userReadService.findAll();
+
+  users.forEach(user => {
+    if (user?.id) {
+      this.pacientesMap[user.id] = user.nome;
+    }
+  });
+
+
+
+}
+
+hasFeedback(feedback: string, nota: number){
+  return feedback != "" && nota != 0
 }
 
   voltar() {

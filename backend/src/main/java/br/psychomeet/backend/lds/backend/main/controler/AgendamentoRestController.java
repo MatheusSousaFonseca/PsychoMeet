@@ -1,6 +1,7 @@
 package br.psychomeet.backend.lds.backend.main.controler;
 
 import br.psychomeet.backend.lds.backend.main.domain.Agendamento;
+import br.psychomeet.backend.lds.backend.main.dto.AgendamentoDisponibilidadeDTO;
 import br.psychomeet.backend.lds.backend.main.service.agendamento.AgendamentoServiceImpl;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -46,5 +47,25 @@ public class AgendamentoRestController {
     public ResponseEntity<Void> delete(@PathVariable int id) {
         agendamentoService.delete(id);
         return ResponseEntity.noContent().build();
+    }
+
+    @GetMapping("/psicologo/{psicologoId}")
+    public ResponseEntity<List<AgendamentoDisponibilidadeDTO>> getByPsicologo(
+            @PathVariable int psicologoId,
+            @RequestParam(required = false) String status) {
+        return ResponseEntity.ok(agendamentoService.findByPsicologo(psicologoId, status));
+    }
+
+    @GetMapping("/paciente/{pacienteId}")
+    public ResponseEntity<List<Agendamento>> getByPaciente(
+            @PathVariable int pacienteId,
+            @RequestParam(required = false) String status) {
+        return ResponseEntity.ok(agendamentoService.findByPaciente(pacienteId, status));
+    }
+
+    @PutMapping("/confirmar/{id}")
+    public ResponseEntity<Void> confirmarAgendamento(@PathVariable int id) {
+        agendamentoService.confirmarAgendamento(id);
+        return ResponseEntity.ok().build();
     }
 }

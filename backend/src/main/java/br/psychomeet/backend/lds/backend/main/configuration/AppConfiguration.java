@@ -26,36 +26,35 @@ import java.sql.Connection;
 public class AppConfiguration {
 
 
-
-    @Bean
-    @Profile("fake")
-    public PessoaDao getPessoaFakeDao(){
-        return new PessoaFakeDaoImpl();
-    }
-
-    @Bean
-    @Profile("fake")
-    public PsicologoDao getPsicologoFakeDao(){
-        return new PsicologoFakeDaoImpl();
-    }
-
-    @Bean
-    @Profile("fake")
-    public PacienteDao getPacienteFakeDao(){
-        return new PacienteFakeDaoImpl();
-    }
-
-    @Bean
-    @Profile("fake")
-    public DisponibilidadeDao getDisponibilidadeFakeDao(){
-        return new DisponibilidadeFakeDaoImpl();
-    }
-
-    @Bean
-    @Profile("dev")
-    public UserDao getH2Dao(final JdbcTemplate jdbcTemplate){
-        return new UserH2DaoImpl(jdbcTemplate);
-    }
+//    @Bean
+//    @Profile("fake")
+//    public PessoaDao getPessoaFakeDao(){
+//        return new PessoaFakeDaoImpl();
+//    }
+//
+//    @Bean
+//    @Profile("fake")
+//    public PsicologoDao getPsicologoFakeDao(){
+//        return new PsicologoFakeDaoImpl();
+//    }
+//
+//    @Bean
+//    @Profile("fake")
+//    public PacienteDao getPacienteFakeDao(){
+//        return new PacienteFakeDaoImpl();
+//    }
+//
+//    @Bean
+//    @Profile("fake")
+//    public DisponibilidadeDao getDisponibilidadeFakeDao(){
+//        return new DisponibilidadeFakeDaoImpl();
+//    }
+//
+//    @Bean
+//    @Profile("dev")
+//    public UserDao getH2Dao(final JdbcTemplate jdbcTemplate){
+//        return new UserH2DaoImpl(jdbcTemplate);
+//    }
 
 
     @Bean

@@ -64,7 +64,7 @@ CREATE TABLE disponibilidade (
     id serial PRIMARY KEY,
     psicologo_id int NOT NULL,
     data date NOT NULL,  -- Data de disponibilidade
-    hora_intervalo varchar(11) NOT NULL,  -- Armazena o intervalo de tempo no formato "09:00-10:00"
+    hora_intervalo varchar(15) NOT NULL,  -- Armazena o intervalo de tempo no formato "09:00-10:00"
     CONSTRAINT fk_psicologo_disponibilidade FOREIGN KEY (psicologo_id) REFERENCES psicologo(id) ON UPDATE CASCADE ON DELETE NO ACTION,
     CONSTRAINT uk_disponibilidade UNIQUE (psicologo_id, data, hora_intervalo)
 );

@@ -28,9 +28,10 @@
                 <tr *ngFor="let time of horarioLista">
                     <td>{{ time.hora }}</td>
                     <td *ngFor="let day of weekDays">
-                        <button class="btn calendar-button" (click)="openMyModal(content, time.hora, day)">
-                            <i class="fas fa-calendar-alt text-warning"></i>
-                        </button>
+                        <button class="btn calendar-button" (click)="onAvailabilityClick(content, time.hora, day)">
+                            <i *ngIf="isAvailable(day, time.hora)" class="fas fa-check-circle text-success"></i>
+                            <i *ngIf="!isAvailable(day, time.hora)" class="fas fa-times-circle text-danger"></i>
+                          </button>
                     </td>
                 </tr>
             </tbody>

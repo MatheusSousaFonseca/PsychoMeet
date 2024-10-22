@@ -1,7 +1,6 @@
 export interface Availability {
-    id?: string,
-    hora: string,
-    diaDaSemana: string,
-    // nomePsicologo: string,
-    // idPsicologo: string
+    id?: number,
+    data: Date,
+    horaIntervalo: string,
+    psicologoId?: number
 }

@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { firstValueFrom } from 'rxjs';
 import { Consultation } from '../../domain/model/consultation-model';
+import { AgendamentoDisponibilidade } from '../../domain/model/agendamento-model';
 
 @Injectable({
   providedIn: 'root'
@@ -28,8 +29,8 @@ export class ConsultationReadService {
   return firstValueFrom(this.http.get<Consultation[]>(url));
 }
 
-findByIdPsicologoPendente(id: number): Promise<Consultation[]> {
-  return firstValueFrom(this.http.get<Consultation[]>(`http://localhost:3000/consultation?idPsicologo=${id}&status=PENDENTE`));
+findByIdPsicologoPendente(id: number): Promise<AgendamentoDisponibilidade[]> {
+  return firstValueFrom(this.http.get<AgendamentoDisponibilidade[]>(`http://localhost:8081/api/agendamento/psicologo/${id}?status=Pendente`));
 }
 
 findByIdPacientePendente(id: number): Promise<Consultation[]> {

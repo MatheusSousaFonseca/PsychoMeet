@@ -16,4 +16,10 @@ export class ConsultationUpdateService {
     console.log(consultation);
     return await firstValueFrom(this.http.put(`http://localhost:8081/consultation/${consultation.consultaId}`, consultation));
   }
+
+  async confirmar(agendamentoId: number){
+    console.log(`Confirmando o agendamento...`);
+    console.log(agendamentoId);
+    return await firstValueFrom(this.http.put(`http://localhost:8081/api/agendamento/confirmar/${agendamentoId}`, {body: ""} ));
+  }
 }

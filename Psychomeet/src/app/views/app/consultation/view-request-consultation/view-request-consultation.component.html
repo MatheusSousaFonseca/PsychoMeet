@@ -5,7 +5,7 @@
   </div>
 
   <ul class="list-group mb-3">
-      @for (consultation of consultations; track $index){
+      @for (agendamento of agendamentos; track $index){
         <li class="list-group-item">
 
           <div class="card mb-3">
@@ -13,15 +13,15 @@
               <div class="d-flex justify-content-between align-items-center">
                 <div>
                   <div class="col-md-9">
-                    <h5 class="card-title">{{ pacientesMap[consultation.pacienteId] }}</h5> <!-- Get preloaded name -->
-                    <p class="card-text"><strong>Data: </strong>{{ consultation.data }} , {{ consultation.horaIntervalo}}</p>
+                    <h5 class="card-title">{{ pacientesMap[agendamento.pessoaIdPaciente] }}</h5> <!-- Get preloaded name -->
+                    <p class="card-text"><strong>Data: </strong>{{ agendamento.dataDisponibilidade }} , {{ agendamento.horaIntervalo}}</p>
                   </div>
                 </div>
                 <div>
-                  <button class="btn btn-success me-2" (click)="openMyModal(content, consultation)">
+                  <button class="btn btn-success me-2" (click)="openMyModal(content, agendamento)">
                     <i class="fas fa-check"></i> Aceitar
                            </button>
-                  <button class="btn btn-danger me-2" (click)="openMyModal(content2, consultation)">
+                  <button class="btn btn-danger me-2" (click)="openMyModal(content2, agendamento)">
                     <i class="fas fa-check"></i> Recusar
                            </button>
                 </div>
@@ -77,5 +77,6 @@
     <div class="modal-footer">
       <button type="button" class="btn btn-outline-dark" (click)="closeMyModal()">Fechar</button>
     </div>  
+  </ng-template>  
 
       

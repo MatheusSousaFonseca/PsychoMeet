@@ -9,6 +9,8 @@ import { Availability } from '../../../../domain/model/disponibilidade-psicologo
 import { CommonModule, formatDate , registerLocaleData } from '@angular/common';
 import { FormGroup } from '@angular/forms';
 import localePt from '@angular/common/locales/pt';
+import { AvailabilityReadService } from '../../../../services/availability/availability-read.service';
+import { AvailabilityDeleteService } from '../../../../services/availability/availability-delete.service';
 
 @Component({
   selector: 'app-inform-availability',
@@ -28,12 +30,16 @@ export class InformAvailabilityComponent implements OnInit {
   weekDays: Date[] = [];
   startOfWeek!: Date;
   endOfWeek!: Date;
+  disponibilidades: Availability[] = [];
+
 
   constructor(
     private router: Router,
     private modalService: NgbModal,
     private psychologistReadService: PsychologistReadService,
+    private availabilityReadService: AvailabilityReadService,
     private availabilityCreateService: AvailabilityCreateService,
+    private availabilityDeleteService: AvailabilityDeleteService,
     private toastrService: ToastrService
   ) {
     registerLocaleData(localePt, 'pt-BR');
@@ -41,9 +47,18 @@ export class InformAvailabilityComponent implements OnInit {
 
   ngOnInit(): void {
     this.initializeHorarios();
+    this.loadDisponibilidade();
+
 
     // Set initial week to the current date's week
     this.setWeek(new Date());
+  }
+
+  async loadDisponibilidade() {
+    let email = localStorage.getItem("email");
+    this.psychologist = await this.psychologistReadService.findByEmail(email!);
+    this.disponibilidades = await this.availabilityReadService.findByPsicologo(this.psychologist.id!);
+    console.log(this.disponibilidades)
   }
 
   // Inicializa os horários da tabela
@@ -117,23 +132,20 @@ export class InformAvailabilityComponent implements OnInit {
     }
   }
 
-  async salvarDisponibilidade() {
+  async deletarDisponibilidade(){
     if (!this.horaSelecionada || !this.diaSelecionada) return;
 
     const availability: Availability = {
-      hora: this.horaSelecionada,
-      diaDaSemana: this.diaSelecionada.toISOString(), // Save the date as ISO string
-      //psicologoId: this.psychologist.id
+      data: this.diaSelecionada,
+      horaIntervalo: this.horaSelecionada,
+      psicologoId: this.psychologist.id
     };
 
     try {
-      const availabilityResponse = await this.availabilityCreateService.create(availability);
+      await this.availabilityDeleteService.delete(availability);
+      this.toastrService.error('Disponibilidade deletada com sucesso.');
+      this.loadDisponibilidade();
 
-      if (availabilityResponse.id) {
-        this.toastrService.success('Disponibilidade salva com sucesso.');
-      } else {
-        this.toastrService.error('Erro ao salvar a disponibilidade.');
-      }
 
     } catch (error) {
       this.toastrService.error('Erro ao salvar a disponibilidade.');
@@ -142,6 +154,67 @@ export class InformAvailabilityComponent implements OnInit {
       this.closeMyModal();
     }
   }
+
+  async salvarDisponibilidade() {
+    if (!this.horaSelecionada || !this.diaSelecionada) return;
+
+    const availability: Availability = {
+      data: this.diaSelecionada,
+      horaIntervalo: this.horaSelecionada,
+      psicologoId: this.psychologist.id
+    };
+
+    try {
+      await this.availabilityCreateService.create(availability);
+      this.toastrService.success('Disponibilidade salva com sucesso.');
+      this.loadDisponibilidade();
+
+      
+
+    } catch (error) {
+      this.toastrService.error('Erro ao salvar a disponibilidade.');
+      console.error(error);
+    } finally {
+      this.closeMyModal();
+    }
+  }
+
+  // Função auxiliar para adicionar um dia à data
+addDays(date: Date, days: number): Date {
+  const result = new Date(date);
+  result.setDate(result.getDate() + days);
+  return result;
+}
+
+// Verifica se o psicólogo já informou disponibilidade para uma data e hora específica
+isAvailable(dia: Date, hora: string): boolean {
+  return this.disponibilidades.some(
+    (disponibilidade) =>
+      this.sameDay(this.addDays(new Date(disponibilidade.data), 1), dia) &&
+      disponibilidade.horaIntervalo === hora
+  );
+}
+
+// Função auxiliar para verificar se duas datas têm o mesmo dia, mês e ano
+sameDay(d1: Date, d2: Date): boolean {
+  return d1.getDate() === d2.getDate() &&
+         d1.getMonth() === d2.getMonth() &&
+         d1.getFullYear() === d2.getFullYear();
+}
+
+onAvailabilityClick(content: any, hora: string, dia: Date) {
+  this.horaSelecionada = hora;
+  this.diaSelecionada = dia;
+
+  // Verifica se já existe disponibilidade
+  if (this.isAvailable(dia, hora)) {
+    // Se já existe disponibilidade, deleta
+    this.deletarDisponibilidade();
+  } else {
+    // Se não existe, abre o modal para adicionar
+    this.openMyModal(content, hora, dia);
+  }
+}
 
   voltar() {
     this.router.navigate(['consultation/view-consultation-psychologist']);

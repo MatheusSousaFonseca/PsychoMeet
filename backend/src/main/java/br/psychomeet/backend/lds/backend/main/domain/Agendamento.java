@@ -12,10 +12,8 @@ import java.util.Date;
 public class Agendamento {
 
     private int id;
-    private Date data;
     private int pacienteId;
     private int disponibilidadeId;
-    private Date horaInicio;
-    private Date horaFim;
+    private Date dataAgendamento;
     private String status;
 }

@@ -8,6 +8,8 @@ import { Consultation } from '../../../../domain/model/consultation-model';
 import { ConsultationReadService } from '../../../../services/consultation/consultation-read-service';
 import { PsychologistReadService } from '../../../../services/psychologist/psychologist-read.service';
 import { ConsultationUpdateService } from '../../../../services/consultation/consultation-update-service';
+import { AgendamentoDisponibilidade } from '../../../../domain/model/agendamento-model';
+import { ConsultationDeleteService } from '../../../../services/consultation/consultation-delete-service';
 
 @Component({
   selector: 'app-view-request-consultation',
@@ -22,14 +24,21 @@ export class ViewRequestConsultationComponent {
 
   users: User[] = [];
 
-  selectedConsultation!: Consultation;
+  selectedAgendamento!: AgendamentoDisponibilidade;
 
-  consultations: Consultation[] = [];
+  agendamentos: AgendamentoDisponibilidade[] = [];
 
   pacientesMap: { [id: number]: string } = {}; // Map to store patient names
 
 
-  constructor(private router: Router, private modalService: NgbModal, private userReadService: UserReadService, private consultationReadService: ConsultationReadService, private psychologistReadService: PsychologistReadService, private consultationUpdateService: ConsultationUpdateService) { }
+  constructor(private router: Router,
+    private modalService: NgbModal,
+    private userReadService: UserReadService,
+    private consultationReadService: ConsultationReadService,
+    private psychologistReadService: PsychologistReadService,
+    private consultationUpdateService: ConsultationUpdateService,
+    private consultationDeleteService: ConsultationDeleteService
+  ) { }
 
   ngOnInit(): void {
     this.loadUsers();
@@ -42,8 +51,8 @@ export class ViewRequestConsultationComponent {
 
   }
 
-  openMyModal(content: any, consultation: Consultation) {
-    this.selectedConsultation = consultation
+  openMyModal(content: any, agendamento: AgendamentoDisponibilidade) {
+    this.selectedAgendamento = agendamento
     this.modalRef = this.modalService.open(content);
   }
 
@@ -54,21 +63,29 @@ export class ViewRequestConsultationComponent {
   }
 
   confirmarConsulta() {
-    this.selectedConsultation.status= "ACCEPT"
-    console.log(this.selectedConsultation)
-    this.consultationUpdateService.update(this.selectedConsultation)
+    console.log(this.selectedAgendamento)
+    this.consultationUpdateService.confirmar(this.selectedAgendamento.id!)
 
-    if (this.modalRef) {
-      this.modalRef.close();
-    }
-    window.location.reload();
+    // if (this.modalRef) {
+    //   this.modalRef.close();
+    // }
+    // window.location.reload();
   }
 
   desmarcarConsulta() {
-    if (this.modalRef) {
-      this.modalRef.close();
+    if (this.selectedAgendamento) {
+      console.log(this.selectedAgendamento)
+      this.consultationDeleteService.delete(this.selectedAgendamento.id!)
+        .then(() => {
+          if (this.modalRef) {
+            this.modalRef.close();
+          }
+          window.location.reload();  // Recarrega a página para atualizar a lista de agendamentos
+        })
+        .catch((error: any) => {
+          console.error("Erro ao desmarcar a consulta:", error);
+        });
     }
-    this.router.navigate(['consultation/view-request-consultation']);
   }
 
   async loadUsers() {
@@ -88,7 +105,7 @@ export class ViewRequestConsultationComponent {
     if (email) {
       const psychologist = await this.psychologistReadService.findByEmail(email);
       if (psychologist?.id) {
-        this.consultations = await this.consultationReadService.findByIdPsicologoPendente(psychologist.id);
+        this.agendamentos = await this.consultationReadService.findByIdPsicologoPendente(psychologist.id);
         await this.preloadPacientesNames(); // Ensure patient names are preloaded
       }
     }
@@ -96,7 +113,7 @@ export class ViewRequestConsultationComponent {
 
   // Load patient names for consultations
   async preloadPacientesNames() {
-    const pacienteIds = this.consultations.map(c => c.pessoaId);
+    const pacienteIds = this.agendamentos.map(c => c.pessoaIdPaciente);
     for (const id of pacienteIds) {
       if (!this.pacientesMap[id]) {
         const paciente = await this.userReadService.findById(id);

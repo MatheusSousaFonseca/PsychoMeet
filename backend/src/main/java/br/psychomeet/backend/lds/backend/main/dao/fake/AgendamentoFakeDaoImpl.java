@@ -1,6 +1,7 @@
 package br.psychomeet.backend.lds.backend.main.dao.fake;
 
 import br.psychomeet.backend.lds.backend.main.domain.Agendamento;
+import br.psychomeet.backend.lds.backend.main.dto.AgendamentoDisponibilidadeDTO;
 import br.psychomeet.backend.lds.backend.main.port.dao.agendamento.AgendamentoDao;
 import org.springframework.stereotype.Repository;
 
@@ -21,11 +22,7 @@ public class AgendamentoFakeDaoImpl implements AgendamentoDao {
     }
 
     public AgendamentoFakeDaoImpl() {
-        Agendamento agendamento1 = new Agendamento(getNextId(), new Date(), 1, 1, new Time(9, 0, 0), new Time(10, 0, 0), "Pendente");
-        Agendamento agendamento2 = new Agendamento(getNextId(), new Date(), 2, 1, new Time(10, 0, 0), new Time(11, 0, 0), "Confirmado");
 
-        agendamentos.add(agendamento1);
-        agendamentos.add(agendamento2);
     }
 
     @Override
@@ -54,11 +51,21 @@ public class AgendamentoFakeDaoImpl implements AgendamentoDao {
     @Override
     public void updateInformation(int id, Agendamento entity) {
         Agendamento agendamento = readById(id);
-        if (agendamento != null) {
-            agendamento.setData(entity.getData());
-            agendamento.setHoraInicio(entity.getHoraInicio());
-            agendamento.setHoraFim(entity.getHoraFim());
-            agendamento.setStatus(entity.getStatus());
-        }
+
+    }
+
+    @Override
+    public List<AgendamentoDisponibilidadeDTO> readByPsicologo(int psicologoId, String status) {
+        return List.of();
+    }
+
+    @Override
+    public List<Agendamento> readByPaciente(int pacienteId, String status) {
+        return List.of();
+    }
+
+    @Override
+    public void confirmarAgendamento(int agendamentoId) {
+
     }
 }

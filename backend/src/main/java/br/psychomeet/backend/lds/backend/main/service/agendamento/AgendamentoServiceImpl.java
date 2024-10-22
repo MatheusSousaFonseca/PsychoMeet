@@ -1,6 +1,7 @@
 package br.psychomeet.backend.lds.backend.main.service.agendamento;
 
 import br.psychomeet.backend.lds.backend.main.domain.Agendamento;
+import br.psychomeet.backend.lds.backend.main.dto.AgendamentoDisponibilidadeDTO;
 import br.psychomeet.backend.lds.backend.main.port.dao.agendamento.AgendamentoDao;
 import br.psychomeet.backend.lds.backend.main.port.service.agendamento.AgendamentoService;
 import org.springframework.stereotype.Service;
@@ -21,7 +22,7 @@ public class AgendamentoServiceImpl implements AgendamentoService {
         if (entity == null) {
             return 0;
         }
-        if (entity.getData() == null || entity.getHoraInicio() == null || entity.getHoraFim() == null || entity.getStatus().isEmpty()) {
+        if (entity.getDataAgendamento() == null || entity.getDisponibilidadeId() == 0 || entity.getStatus().isEmpty()) {
             return 0;
         }
 
@@ -52,5 +53,20 @@ public class AgendamentoServiceImpl implements AgendamentoService {
         if (agendamento != null) {
             agendamentoDao.updateInformation(id, entity);
         }
+    }
+
+    @Override
+    public List<AgendamentoDisponibilidadeDTO> findByPsicologo(int psicologoId, String status) {
+        return agendamentoDao.readByPsicologo(psicologoId, status);
+    }
+
+    @Override
+    public List<Agendamento> findByPaciente(int pacienteId, String status) {
+        return agendamentoDao.readByPaciente(pacienteId, status);
+    }
+
+    @Override
+    public void confirmarAgendamento(int agendamentoId) {
+        agendamentoDao.confirmarAgendamento(agendamentoId);
     }
 }

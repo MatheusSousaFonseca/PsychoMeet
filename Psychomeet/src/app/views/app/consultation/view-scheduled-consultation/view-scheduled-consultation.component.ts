@@ -54,7 +54,7 @@ async desmarcarConsulta(consultationId: string) {
     // throw new Error('erro comentado com o proposito de cair no catch');
 
     console.log('iniciando a remocao da consulta' + consultationId);
-    await this.consultationDeleteService.delete(consultationId);
+    // await this.consultationDeleteService.delete(consultationId);
 
     this.toastrService.success('Produto removido com sucesso!');
 

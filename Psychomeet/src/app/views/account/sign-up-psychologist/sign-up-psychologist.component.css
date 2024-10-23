@@ -24,18 +24,15 @@ body {
   border-color: #e0a800;
 }
 
+/* Ensure the dropdown takes full width like other inputs */
 .mat-form-field {
-  width: 100%; 
+  width: 100%; /* Make mat-form-field take full width */
 }
 
 .mat-select {
-  width: 100%; 
+  width: 100%; /* Ensure mat-select also takes full width */
 }
 
 .dropdown {
   align-self: stretch;
-}
-
-.vidaQueSegue {
-  background-color: white;
 }

@@ -191,9 +191,10 @@ public class DisponibilidadePostgresDaoImpl implements DisponibilidadeDao {
         List<Disponibilidade> disponibilidades = new ArrayList<>();
 
 
-        try {
+
+        try{
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
-            preparedStatement.setInt(1, psicologo_id);
+            preparedStatement.setInt(1,psicologo_id);
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
                 Disponibilidade disponibilidade = new Disponibilidade();

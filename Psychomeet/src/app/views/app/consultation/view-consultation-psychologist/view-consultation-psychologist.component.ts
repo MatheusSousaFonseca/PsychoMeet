@@ -6,7 +6,8 @@ import { Consultation } from '../../../../domain/model/consultation-model';
 import { ConsultationReadService } from '../../../../services/consultation/consultation-read-service';
 import { PsychologistReadService } from '../../../../services/psychologist/psychologist-read.service';
 import { CommonModule } from '@angular/common';
-import { formatDate } from '../../../../services/utils';
+import { formatarData } from '../../../../services/utils/utils';
+import { NgbRatingModule, NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-view-consultation-psychologist',
@@ -14,7 +15,9 @@ import { formatDate } from '../../../../services/utils';
   templateUrl: './view-consultation-psychologist.component.html',
   styleUrls: ['./view-consultation-psychologist.component.css'],
   imports: [
-    CommonModule
+    CommonModule,
+    NgbRatingModule,
+    NgbTooltipModule
   ]
 })
 export class ViewConsultationPsychologistComponent implements OnInit {
@@ -110,10 +113,11 @@ export class ViewConsultationPsychologistComponent implements OnInit {
   }
 
   formatDate(date: string): string {
-    return formatDate(date);  // Usando a função de formatação de data
+    return formatarData(date);  // Usando a função de formatação de data
   }
 
   hasFeedback(feedback: string, nota: number){
     return feedback != "" && nota != 0
   }
+
 }

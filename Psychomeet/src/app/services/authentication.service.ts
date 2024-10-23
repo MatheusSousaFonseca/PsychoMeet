@@ -23,7 +23,7 @@ export class AuthenticationService {
     console.log(credential);
 
     // Agora esperamos um único objeto do tipo UserCredential
-    let apiResponse = await firstValueFrom(this.http.get<UserCredential>(`http://localhost:8081/api/pessoa/auth?email=${credential.email}&senha=${credential.senha}`));
+    let apiResponse = await firstValueFrom(this.http.get<UserCredential>(`http://localhost:8080/api/pessoa/auth?email=${credential.email}&senha=${credential.senha}`));
     console.log("RESPOSTA DA API");
     console.log(apiResponse);
 
@@ -42,7 +42,7 @@ export class AuthenticationService {
     console.log(credential);
 
     try{
-      const apiResponse = await firstValueFrom(this.http.get<Psychologist>(`http://localhost:8081/api/pessoa/auth?email=${credential.email}&senha=${credential.senha}`));
+      const apiResponse = await firstValueFrom(this.http.get<Psychologist>(`http://localhost:8080/api/pessoa/auth?email=${credential.email}&senha=${credential.senha}`));
     console.log("RESPOSTA DA API");
     console.log(apiResponse);
 

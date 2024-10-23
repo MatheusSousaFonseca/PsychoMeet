@@ -56,6 +56,7 @@ public class AgendamentoRestController {
         return ResponseEntity.ok(agendamentoService.findByPsicologo(psicologoId, status));
     }
 
+
     @GetMapping("/paciente/{pacienteId}")
     public ResponseEntity<List<Agendamento>> getByPaciente(
             @PathVariable int pacienteId,
@@ -68,4 +69,5 @@ public class AgendamentoRestController {
         agendamentoService.confirmarAgendamento(id);
         return ResponseEntity.ok().build();
     }
+
 }

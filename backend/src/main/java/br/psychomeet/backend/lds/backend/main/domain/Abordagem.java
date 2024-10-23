@@ -12,5 +12,4 @@ public class Abordagem {
     private int id;
     private int psicologoId;
     private String abordagem;
-
 }

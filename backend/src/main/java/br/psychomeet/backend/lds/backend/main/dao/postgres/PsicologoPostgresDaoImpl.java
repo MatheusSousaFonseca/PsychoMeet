@@ -17,14 +17,14 @@ import java.util.logging.Logger;
 
 public class PsicologoPostgresDaoImpl implements PsicologoDao {
 
-
+    
     private static final Logger logger = Logger.getLogger(PsicologoPostgresDaoImpl.class.getName());
     private final Connection connection;
 
     @Autowired
     private EspecialidadeService especialidadeService;
 
-    public PsicologoPostgresDaoImpl(Connection connection) {
+    public PsicologoPostgresDaoImpl( Connection connection) {
         this.connection = connection;
     }
 
@@ -100,15 +100,30 @@ public class PsicologoPostgresDaoImpl implements PsicologoDao {
             connection.commit(); // Commit de todas as inserções
             return psicologoId; // Retorna o ID do psicólogo recém-criado
 
+
         } catch (SQLException e) {
             try {
-                connection.rollback(); // Rollback em caso de exceção
+                connection.rollback();
             } catch (SQLException ex) {
                 logger.severe("Erro ao desfazer a transação: " + ex.getMessage());
                 throw new RuntimeException(ex);
             }
+
+            // Verificar se o erro é de chave única duplicada
+            if ("23505".equals(e.getSQLState())) {
+                if (e.getMessage().contains("pessoa_telefone_key")) {
+                    throw new RuntimeException("Telefone já cadastrado!");
+                } else if (e.getMessage().contains("pessoa_email_key")) {
+                    throw new RuntimeException("E-mail já cadastrado!");
+                } else if (e.getMessage().contains("pessoa_cpf_key")) {
+                    throw new RuntimeException("CPF já cadastrado!");
+                } else if (e.getMessage().contains("psicologo_crp_key")) {
+                    throw new RuntimeException("CRP já cadastrado!");
+                }
+            }
+
             logger.severe("Erro ao executar o método add: " + e.getMessage());
-            throw new RuntimeException(e);
+            throw new RuntimeException("Erro ao inserir psicólogo: " + e.getMessage());
         } finally {
             try {
                 if (resultSet != null) resultSet.close();
@@ -121,6 +136,9 @@ public class PsicologoPostgresDaoImpl implements PsicologoDao {
             }
         }
     }
+
+
+
 
 
     @Override
@@ -234,6 +252,8 @@ public class PsicologoPostgresDaoImpl implements PsicologoDao {
     }
 
 
+
+
     @Override
     public List<PsicologoFullDTO> readAll() {
         String sql = "SELECT ps.id AS psicologo_id, ps.crp, ps.descricao, p.id AS pessoa_id, " +
@@ -279,6 +299,10 @@ public class PsicologoPostgresDaoImpl implements PsicologoDao {
 
         return psicologoFullDTOList;
     }
+
+
+
+
 
 
     @Override

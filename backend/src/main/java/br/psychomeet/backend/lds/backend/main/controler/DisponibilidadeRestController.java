@@ -47,9 +47,8 @@ public class DisponibilidadeRestController {
         disponibilidadeService.delete(id);
         return ResponseEntity.noContent().build();
     }
-
     @DeleteMapping("/datahora")
-    public ResponseEntity<Void> deleteByDate(@RequestBody Disponibilidade disponibilidade) {
+    public ResponseEntity<Void> deleteByDate(@RequestBody Disponibilidade disponibilidade){
         disponibilidadeService.removeByDate(disponibilidade);
         return ResponseEntity.noContent().build();
     }

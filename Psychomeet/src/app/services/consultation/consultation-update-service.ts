@@ -14,12 +14,13 @@ export class ConsultationUpdateService {
   async update(consultation: Consultation) {
     console.log(`atualizando o produto...`);
     console.log(consultation);
-    return await firstValueFrom(this.http.put(`http://localhost:8081/consultation/${consultation.consultaId}`, consultation));
+    return await firstValueFrom(this.http.put(`http://localhost:8080/consultation/${consultation.consultaId}`, consultation));
   }
 
   async confirmar(agendamentoId: number){
     console.log(`Confirmando o agendamento...`);
     console.log(agendamentoId);
-    return await firstValueFrom(this.http.put(`http://localhost:8081/api/agendamento/confirmar/${agendamentoId}`, {body: ""} ));
+    return await firstValueFrom(this.http.put(`http://localhost:8080/api/agendamento/confirmar/${agendamentoId}`, {body: ""} ));
   }
+
 }

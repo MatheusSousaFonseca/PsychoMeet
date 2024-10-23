@@ -9,7 +9,6 @@ import java.util.Date;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-
 public class Disponibilidade {
 
     private int id;

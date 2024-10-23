@@ -6,6 +6,7 @@ import { User } from '../../../domain/model/user-model';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { CommonModule } from '@angular/common';
+import { ToastrService } from 'ngx-toastr';  // Usar o toastr para exibir mensagens ao usuário
 
 @Component({
   selector: 'app-sign-up-patient',
@@ -18,16 +19,18 @@ import { CommonModule } from '@angular/common';
     ReactiveFormsModule,
   ],
   templateUrl: './sign-up-patient.component.html',
-  styleUrls: ['./sign-up-patient.component.css'] // Corrigido para 'styleUrls'
+  styleUrls: ['./sign-up-patient.component.css']
 })
 export class SignUpPatientComponent implements OnInit {
 
   form!: FormGroup;
   successMessage: string | null = null;
+  isSubmitting = false;  // Para desabilitar o botão durante o envio
 
   constructor(
     private formBuilder: FormBuilder,
-    private userCreateService: UserCreateService, // Corrigido para seguir a convenção camelCase
+    private userCreateService: UserCreateService,
+    private toastr: ToastrService,  // Injeção de ToastrService
     private router: Router
   ) { }
 
@@ -35,19 +38,16 @@ export class SignUpPatientComponent implements OnInit {
     this.form = this.formBuilder.group({
       nome: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
-      senha: ['', Validators.required],
+      senha: ['', [Validators.required, Validators.minLength(6)]], // Senha com validação mínima de 6 caracteres
       repeatPassword: ['', Validators.required],
-      cpf: ['', Validators.required],
+      cpf: ['', [Validators.required, Validators.pattern('^[0-9]{11}$')]], // Validação para CPF (11 dígitos)
       data: ['', Validators.required],
-      telefone: ['', Validators.required]
+      telefone: ['', [Validators.required, Validators.pattern('^[0-9]{11}$')]] // Validação para telefone (11 dígitos)
     });
   }
 
   async createAccount() {
-    if (!this.form.valid || !this.arePasswordsValid()) {
-      console.log('Formulário inválido ou senhas não coincidem');
-      return;
-    }
+
 
     let user: User = {
       nome: this.form.controls['nome'].value,
@@ -58,14 +58,18 @@ export class SignUpPatientComponent implements OnInit {
       telefone: this.form.controls['telefone'].value
     };
 
+    this.isSubmitting = true; // Iniciar o estado de envio
+
     try {
       await this.userCreateService.create(user);
-      this.successMessage = 'Conta criada com sucesso! Redirecionando para login...';
+      this.toastr.success('Conta criada com sucesso! Redirecionando para login...');
       setTimeout(() => {
         this.router.navigate(['account/sign-in-patient']);
       }, 2000); // Aguardar 2 segundos antes de redirecionar
-    } catch (error) {
-      console.error('Erro ao criar conta:', error);
+    } catch (error: any) {
+      this.toastr.error(JSON.stringify(error.message) || 'Erro ao criar conta');
+    } finally {
+      this.isSubmitting = false; // Encerrar o estado de envio
     }
   }
 

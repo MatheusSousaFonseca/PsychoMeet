@@ -11,6 +11,6 @@ export class AvailabilityCreateService {
   constructor(private http: HttpClient) { }
 
   create(availability : Availability){
-    return firstValueFrom(this.http.post<Availability>('http://localhost:8081/api/disponibilidade', availability));
+    return firstValueFrom(this.http.post<Availability>('http://localhost:8080/api/disponibilidade', availability));
   }
 }

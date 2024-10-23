@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
-import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal, NgbModalRef, NgbRatingModule, NgbScrollSpyModule, NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms'; // Import FormsModule
 import { Psychologist } from '../../../../domain/model/psychologist-model';
@@ -10,7 +10,8 @@ import { ConsultationReadService } from '../../../../services/consultation/consu
 import { UserReadService } from '../../../../services/user/user-read-service';
 import { consultationFeedback } from '../../../../domain/dto/consultation-feedback';
 import { ConsultationFeedbackService } from '../../../../services/consultation/consultation-feedback-service';
-import { formatDate, formatPhone } from '../../../../services/utils';
+import { formatarData, formatarTelefone } from '../../../../services/utils/utils';
+
 
 @Component({
   selector: 'app-view-consultation-patient',
@@ -18,7 +19,10 @@ import { formatDate, formatPhone } from '../../../../services/utils';
   imports: [
     RouterModule,
     CommonModule,
-    FormsModule // Add FormsModule here
+    FormsModule, // Add FormsModule here
+    NgbRatingModule,
+    NgbTooltipModule,
+    NgbScrollSpyModule
   ],
   templateUrl: './view-consultation-patient.component.html',
   styleUrls: ['./view-consultation-patient.component.css']
@@ -26,6 +30,7 @@ import { formatDate, formatPhone } from '../../../../services/utils';
 export class ViewConsultationPatientComponent implements OnInit {
 
   consultations: Consultation[] = [];
+  pendingConsultations: Consultation [] = [];
   modalRef: NgbModalRef | null = null;
   feedback: string = '';
   rating: number = 0;
@@ -41,6 +46,7 @@ export class ViewConsultationPatientComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadConsultations();
+    this.loadPendingConsultations();
   }
 
   marcarConsulta() {
@@ -77,6 +83,12 @@ export class ViewConsultationPatientComponent implements OnInit {
     this.consultations = await this.consultationReadService.findByIdPacienteAccept(paciente.id!);
   }
 
+  async loadPendingConsultations() {
+    let email = localStorage.getItem("email");
+    let paciente = await this.userReadService.findByEmail(email!);
+    this.pendingConsultations = await this.consultationReadService.findByIdPacientePendente(paciente.id!);
+  }
+
   // Submit feedback
   submitFeedback() {
     console.log('Feedback:', this.feedback); // Check the feedback value
@@ -93,6 +105,7 @@ export class ViewConsultationPatientComponent implements OnInit {
       console.log('Feedback submitted successfully');
       this.feedback = ''; // Reset feedback
       this.rating = 0;    // Reset rating
+      this.loadConsultations();
       this.closeMyModal();
     }).catch((error: any) => {
       console.error('Error submitting feedback:', error);
@@ -100,10 +113,11 @@ export class ViewConsultationPatientComponent implements OnInit {
   }
 
   formatDate(date: string): string {
-    return formatDate(date);  // Usando a função de formatação de data
+    return formatarData(date);  // Usando a função de formatação de data
   }
 
   formatPhone(phone: string): string {
-    return formatPhone(phone);  // Usando a função de formatação de telefone
+    return formatarTelefone(phone);  // Usando a função de formatação de telefone
   }
+
 }

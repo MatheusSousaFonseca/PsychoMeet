@@ -213,21 +213,35 @@ public class ConsultaPostgresDaoImpl implements ConsultaDao {
 
     @Override
     public List<ConsultaAgendamentoDTO> findByPacienteId(int pacienteId, String status) {
-        String sql = "SELECT c.id AS consulta_id, a.id AS agenda_id, a.paciente_id, c.nota_paciente, c.comentario_paciente, " +
-                "a.status, a.data_agendamento, d.hora_intervalo, d.psicologo_id, p.id AS pessoa_id, pe.nome AS nome_psicologo, pe.telefone " +
-                "FROM consulta c " +
-                "JOIN agendamento a ON c.agenda_id = a.id " +
-                "JOIN disponibilidade d ON a.disponibilidade_id = d.id " +
-                "JOIN psicologo p ON d.psicologo_id = p.id " +
-                "JOIN pessoa pe ON p.pessoa_id = pe.id " +
-                "WHERE a.paciente_id = ? " +
-                "ORDER BY (c.nota_paciente = 0 AND c.comentario_paciente = '') DESC, " +
-                "a.data_agendamento DESC;";
+        String sql = new String("");
 
 
-        if (status != null) {
-            sql += " AND a.status = ?"; // Filtro opcional de status
+        System.out.print(status);
+        if(status.equals("Pendente")){
+            sql = "SELECT a.id AS agenda_id, a.paciente_id, a.status, a.data_agendamento, " +
+                    "d.hora_intervalo, d.psicologo_id, p.id AS pessoa_id, pe.nome AS nome_psicologo, pe.telefone " +
+                    "FROM agendamento a " +
+                    "JOIN disponibilidade d ON a.disponibilidade_id = d.id " +
+                    "JOIN psicologo p ON d.psicologo_id = p.id " +
+                    "JOIN pessoa pe ON p.pessoa_id = pe.id " +
+                    "WHERE a.paciente_id = ? AND a.status = ? " +
+                    "ORDER BY a.data_agendamento DESC;";
+        }else{
+            sql = "SELECT c.id AS consulta_id, a.id AS agenda_id, a.paciente_id, c.nota_paciente, c.comentario_paciente, " +
+                    "a.status, a.data_agendamento, d.hora_intervalo, d.psicologo_id, p.id AS pessoa_id, pe.nome AS nome_psicologo, pe.telefone " +
+                    "FROM consulta c " +
+                    "JOIN agendamento a ON c.agenda_id = a.id " +
+                    "JOIN disponibilidade d ON a.disponibilidade_id = d.id " +
+                    "JOIN psicologo p ON d.psicologo_id = p.id " +
+                    "JOIN pessoa pe ON p.pessoa_id = pe.id " +
+                    "WHERE a.paciente_id = ? AND a.status = ? " +
+                    "ORDER BY (c.nota_paciente = 0 AND c.comentario_paciente = '') DESC, " +
+                    "a.data_agendamento DESC;";
         }
+
+
+
+
 
         List<ConsultaAgendamentoDTO> consultasAgendamentos = new ArrayList<>();
         PreparedStatement preparedStatement = null;
@@ -236,19 +250,21 @@ public class ConsultaPostgresDaoImpl implements ConsultaDao {
         try {
             preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setInt(1, pacienteId);
-            if (status != null) {
-                preparedStatement.setString(2, status);
-            }
+            preparedStatement.setString(2, status);
 
             resultSet = preparedStatement.executeQuery();
 
             while (resultSet.next()) {
                 ConsultaAgendamentoDTO dto = new ConsultaAgendamentoDTO();
-                dto.setConsultaId(resultSet.getInt("consulta_id"));
+
                 dto.setAgendaId(resultSet.getInt("agenda_id"));
                 dto.setPacienteId(resultSet.getInt("paciente_id"));
-                dto.setNotaPaciente(resultSet.getInt("nota_paciente"));
-                dto.setComentarioPaciente(resultSet.getString("comentario_paciente"));
+                if(!status.equals("Pendente")){
+                    dto.setNotaPaciente(resultSet.getInt("nota_paciente"));
+                    dto.setComentarioPaciente(resultSet.getString("comentario_paciente"));
+                    dto.setConsultaId(resultSet.getInt("consulta_id"));
+                }
+
                 dto.setStatus(resultSet.getString("status"));
                 dto.setData(resultSet.getString("data_agendamento"));
                 dto.setHoraIntervalo(resultSet.getString("hora_intervalo")); // Ajuste aqui
@@ -256,7 +272,6 @@ public class ConsultaPostgresDaoImpl implements ConsultaDao {
                 dto.setPessoaId(resultSet.getInt("pessoa_id"));
                 dto.setNomePsicologo(resultSet.getString("nome_psicologo"));
                 dto.setTelefone(resultSet.getString("telefone"));
-
 
                 consultasAgendamentos.add(dto);
             }
@@ -277,8 +292,11 @@ public class ConsultaPostgresDaoImpl implements ConsultaDao {
     }
 
 
+
     @Override
     public List<ConsultaAgendamentoDTO> findByPsicologoId(int psicologoId, String status) {
+
+
         String sql = "SELECT c.id AS consulta_id, a.id AS agenda_id, a.paciente_id, c.nota_paciente, c.comentario_paciente, " +
                 "a.status, a.data_agendamento, d.hora_intervalo, d.psicologo_id, p.id AS pessoa_id, pe.nome AS nome_psicologo, pe.telefone " +
                 "FROM consulta c " +
@@ -287,6 +305,7 @@ public class ConsultaPostgresDaoImpl implements ConsultaDao {
                 "JOIN psicologo p ON d.psicologo_id = p.id " +
                 "JOIN pessoa pe ON p.pessoa_id = pe.id " +
                 "WHERE p.id = ? AND a.status = ?";
+
 
         List<ConsultaAgendamentoDTO> consultasAgendamentos = new ArrayList<>();
         PreparedStatement preparedStatement = null;
@@ -366,5 +385,3 @@ public class ConsultaPostgresDaoImpl implements ConsultaDao {
 
 
 }
-
-

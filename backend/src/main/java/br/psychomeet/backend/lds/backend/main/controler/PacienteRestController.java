@@ -14,7 +14,6 @@ import java.util.List;
 @RequestMapping("/api/paciente")
 public class PacienteRestController {
 
-    @Autowired
     private final PacienteService pacienteService;
 
     public PacienteRestController(PacienteService pacienteService) {

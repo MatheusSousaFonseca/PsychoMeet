@@ -1,58 +1,23 @@
-import { Component, OnInit } from '@angular/core';
-import { Router, RouterModule } from '@angular/router';
-import { Psychologist } from '../../../../domain/model/psychologist-model';
-import { PsychologistReadService } from '../../../../services/psychologist/psychologist-read.service';
-import { CommonModule } from '@angular/common'; // Ensure this is imported
-import { FormsModule } from '@angular/forms'; // Ensure this is imported
-import {MatChipsModule} from '@angular/material/chips';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-@Component({
-  selector: 'app-search-psychologist',
-  standalone: true,
-  imports: [
-    RouterModule,
-    CommonModule,
-    FormsModule,
-    MatChipsModule
-  ],
-  templateUrl: './search-psychologist.component.html',
-  styleUrls: ['./search-psychologist.component.css']
-})
-export class SearchPsychologistComponent implements OnInit {
+import { SearchPsychologistComponent } from './search-psychologist.component';
 
-  psychologists: Psychologist[] = [];
-  name: string = ''; // Initialize the name property
-  especialidade: string = ''; // Initialize the especialidade property
+describe('SearchPsychologistComponent', () => {
+  let component: SearchPsychologistComponent;
+  let fixture: ComponentFixture<SearchPsychologistComponent>;
 
-  constructor(private router: Router, private psychologistReadService: PsychologistReadService) { }
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      imports: [SearchPsychologistComponent]
+    })
+    .compileComponents();
 
-  ngOnInit(): void {
-    this.loadPsychologists();
-  }
+    fixture = TestBed.createComponent(SearchPsychologistComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  });
 
-  marcarConsulta(id: string) {
-    this.router.navigate([`/consultation/make-consultation/${id}`]);
-  }
-
-  historico() {
-    this.router.navigate(['consultation/view-consultation-patient']);
-  }
-
-  async loadPsychologists() {
-    this.psychologists = await this.psychologistReadService.findAll(this.name, this.especialidade);
-  }
-
-  // Method to handle the search
-  async search() {
-    console.log("nome: ", this.name)
-    this.psychologists = await this.psychologistReadService.findAll(this.name, this.especialidade);
-  }
-
-  acessarPerfilPaciente() {
-    this.router.navigate(['account/my-profile-patient']);
-  }
-
-  logout() {
-    this.router.navigate(['app/home']);
-  }
-}
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+});

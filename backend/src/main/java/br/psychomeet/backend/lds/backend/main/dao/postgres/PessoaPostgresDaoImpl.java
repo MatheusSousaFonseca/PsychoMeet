@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
 
+
 public class PessoaPostgresDaoImpl implements PessoaDao {
 
     private static final Logger logger = Logger.getLogger(PessoaPostgresDaoImpl.class.getName());
@@ -63,8 +64,21 @@ public class PessoaPostgresDaoImpl implements PessoaDao {
                 logger.severe("Erro ao desfazer a transação: " + ex.getMessage());
                 throw new RuntimeException(ex);
             }
+
+            // Verificar se o erro é de chave única duplicada (ex: telefone ou e-mail)
+            if (e.getSQLState().equals("23505")) { // Código SQLState para UNIQUE VIOLATION no Postgres
+                if (e.getMessage().contains("pessoa_telefone_key")) {
+                    throw new RuntimeException("Telefone já cadastrado!"); // Mensagem clara para o frontend
+                } else if (e.getMessage().contains("pessoa_email_key")) {
+                    throw new RuntimeException("E-mail já cadastrado!"); // Mensagem clara para o frontend
+                } else if (e.getMessage().contains("pessoa_cpf_key")) {
+                    throw new RuntimeException("CPF já cadastrado!"); // Mensagem clara para o frontend
+                }
+            }
+
+            // Se o erro não for de chave duplicada, relançar exceção genérica
             logger.severe("Erro ao executar o método add: " + e.getMessage());
-            throw new RuntimeException(e);
+            throw new RuntimeException("Erro ao inserir pessoa: " + e.getMessage());
         } finally {
             try {
                 if (resultSet != null) resultSet.close();
@@ -211,30 +225,10 @@ public class PessoaPostgresDaoImpl implements PessoaDao {
         return pessoa;
     }
 
+
+
     @Override
     public boolean updatePassword(int id, String oldPassword, String newPassword) {
-        String sql = "UPDATE pessoa SET senha = ? WHERE id = ?;";
-
-        try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
-            connection.setAutoCommit(false);
-
-            preparedStatement.setString(1, newPassword);
-            preparedStatement.setInt(2, id);
-
-            int affectedRows = preparedStatement.executeUpdate();
-            connection.commit();
-
-            return affectedRows > 0;
-
-        } catch (SQLException e) {
-            try {
-                connection.rollback();
-            } catch (SQLException ex) {
-                logger.severe("Error rolling back transaction: " + ex.getMessage());
-                throw new RuntimeException(ex);
-            }
-            logger.severe("Error executing updatePassword: " + e.getMessage());
-            throw new RuntimeException(e);
-        }
+        return false;
     }
 }

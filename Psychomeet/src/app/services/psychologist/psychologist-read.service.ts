@@ -7,22 +7,22 @@ import { firstValueFrom } from 'rxjs';
   providedIn: 'root'
 })
 export class PsychologistReadService {
-
   constructor(private http: HttpClient) { }
 
   findById(id: string): Promise<Psychologist> {
-    return firstValueFrom(this.http.get<Psychologist>(`http://localhost:8081/api/psicologo/${id}`));
+    return firstValueFrom(this.http.get<Psychologist>(`http://localhost:8080/api/psicologo/${id}`));
   }
 
   findByName(nome: string): Promise<Psychologist[]> {
     return firstValueFrom(this.http.get<Psychologist[]>(`http://localhost:3000/psychologist?nome=${nome}`));
   }
 
+  // Update the findAll method to accept name and especialidade parameters
   findAll(name: string, especialidade: string): Promise<Psychologist[]> {
-    return firstValueFrom(this.http.get<Psychologist[]>(`http://localhost:8081/api/psicologo?name=${name}&especialidade=${especialidade}`));
+    return firstValueFrom(this.http.get<Psychologist[]>(`http://localhost:8080/api/psicologo?name=${name}&especialidade=${especialidade}`));
   }
 
   findByEmail(email: string): Promise<Psychologist> {
-    return firstValueFrom(this.http.get<Psychologist>(`http://localhost:8081/api/psicologo/email/${email}`));
+    return firstValueFrom(this.http.get<Psychologist>(`http://localhost:8080/api/psicologo/email/${email}`));
   }
 }

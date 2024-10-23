@@ -11,7 +11,9 @@ export class UserCreateService {
   constructor(private http: HttpClient) { }
 
   create(user: User) {
-    console.log(user);
-    return firstValueFrom(this.http.post<User>('http://localhost:8081/api/pessoa', user));
+    return firstValueFrom(this.http.post<User>('http://localhost:8080/api/pessoa', user))
+      .catch(error => {
+        throw new Error(error.error ? error.error : 'Erro desconhecido');
+      });
   }
 }

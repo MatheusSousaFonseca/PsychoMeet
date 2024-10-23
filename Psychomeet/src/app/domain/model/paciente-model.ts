@@ -1,5 +1,4 @@
 export interface Paciente {
-    id?: number,
-    pessoaId: number
-  }
-  
+  id?: number,
+  pessoaId: number
+}

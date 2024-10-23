@@ -9,10 +9,12 @@ import { Availability } from '../../../../domain/model/disponibilidade-psicologo
 import { CommonModule, formatDate , registerLocaleData } from '@angular/common';
 import { FormGroup } from '@angular/forms';
 import localePt from '@angular/common/locales/pt';
+import { UserReadService } from '../../../../services/user/user-read-service';
 import { AvailabilityReadService } from '../../../../services/availability/availability-read.service';
 import { AvailabilityDeleteService } from '../../../../services/availability/availability-delete.service';
 import { Consultation } from '../../../../domain/model/consultation-model';
 import { ConsultationReadService } from '../../../../services/consultation/consultation-read-service';
+import { ConsultationDeleteService } from '../../../../services/consultation/consultation-delete-service';
 
 @Component({
   selector: 'app-inform-availability',
@@ -32,10 +34,14 @@ export class InformAvailabilityComponent implements OnInit {
   weekDays: Date[] = [];
   startOfWeek!: Date;
   endOfWeek!: Date;
+
   disponibilidades: Availability[] = [];
   consultas: Consultation[] = [];
 
+  pacientesMap: { [id: number]: string } = {}; // Map to store patient names
 
+  // Nova propriedade para armazenar a consulta selecionada
+consultaSelecionada: Consultation | null | undefined;
 
   constructor(
     private router: Router,
@@ -45,7 +51,9 @@ export class InformAvailabilityComponent implements OnInit {
     private availabilityCreateService: AvailabilityCreateService,
     private availabilityDeleteService: AvailabilityDeleteService,
     private toastrService: ToastrService,
-    private consultationReadService: ConsultationReadService
+    private consultationReadService: ConsultationReadService,
+    private userReadService: UserReadService,
+    private consultationDeleteService: ConsultationDeleteService
   ) {
     registerLocaleData(localePt, 'pt-BR');
    }
@@ -54,11 +62,12 @@ export class InformAvailabilityComponent implements OnInit {
     this.initializeHorarios();
     this.loadDisponibilidade();
 
-
     // Set initial week to the current date's week
     this.setWeek(new Date());
   }
 
+
+  //Adicionando Disponibilidade
   async loadDisponibilidade() {
     let email = localStorage.getItem("email");
     this.psychologist = await this.psychologistReadService.findByEmail(email!);
@@ -69,6 +78,20 @@ export class InformAvailabilityComponent implements OnInit {
 
   async loadConsultasMarcadas(psychologistId: number) {
     this.consultas = await this.consultationReadService.findByIdPsicologoAccept(psychologistId);
+    await this.preloadPacientesNames(); // Ensure patient names are preloaded
+  }
+
+  // Load patient names for consultations
+  async preloadPacientesNames() {
+    const pacienteIds = this.consultas.map(c => c.pacienteId);
+    for (const id of pacienteIds) {
+      if (!this.pacientesMap[id]) {
+        const paciente = await this.userReadService.findById(id);
+        if (paciente) {
+          this.pacientesMap[id] = paciente.nome;
+        }
+      }
+    }
   }
 
   isConsultaMarcada(dia: Date, hora: string): boolean {
@@ -173,7 +196,7 @@ export class InformAvailabilityComponent implements OnInit {
     }
   }
 
-  async salvarDisponibilidade() {
+  async salvarDisponibilidade(hora: string, dia: Date) {
     if (!this.horaSelecionada || !this.diaSelecionada) return;
 
     const availability: Availability = {
@@ -187,7 +210,6 @@ export class InformAvailabilityComponent implements OnInit {
       this.toastrService.success('Disponibilidade salva com sucesso.');
       this.loadDisponibilidade();
 
-      
 
     } catch (error) {
       this.toastrService.error('Erro ao salvar a disponibilidade.');
@@ -197,7 +219,9 @@ export class InformAvailabilityComponent implements OnInit {
     }
   }
 
-  // Função auxiliar para adicionar um dia à data
+
+
+// Função auxiliar para adicionar um dia à data
 addDays(date: Date, days: number): Date {
   const result = new Date(date);
   result.setDate(result.getDate() + days);
@@ -220,19 +244,48 @@ sameDay(d1: Date, d2: Date): boolean {
          d1.getFullYear() === d2.getFullYear();
 }
 
+// Modifica o onAvailabilityClick para abrir o modal correto
 onAvailabilityClick(content: any, hora: string, dia: Date) {
   this.horaSelecionada = hora;
   this.diaSelecionada = dia;
 
-  // Verifica se já existe disponibilidade
-  if (this.isAvailable(dia, hora)) {
+  // Verifica se já existe uma consulta marcada
+  if (this.isConsultaMarcada(dia, hora)) {
+    this.consultaSelecionada = this.consultas.find(
+      (consulta) =>
+        this.sameDay(this.addDays(new Date(consulta.data), 1), dia) &&
+        consulta.horaIntervalo === hora
+    );
+    this.openConsultaModal(content); // Abre o modal com os detalhes da consulta
+  } else if (this.isAvailable(dia, hora)) {
     // Se já existe disponibilidade, deleta
     this.deletarDisponibilidade();
   } else {
     // Se não existe, abre o modal para adicionar
-    this.openMyModal(content, hora, dia);
+    this.salvarDisponibilidade( hora, dia);
   }
 }
+
+// Função para abrir o modal de consulta
+openConsultaModal(content: any) {
+  this.modalRef = this.modalService.open(content);
+}
+
+async cancelarConsulta(){
+  try{
+    await this.consultationDeleteService.cancelarConsulta(this.consultaSelecionada?.consultaId!);
+    this.toastrService.success('Consulta Cancelada Com Sucesso!');
+    this.loadDisponibilidade();
+  }
+  catch (error) {
+    this.toastrService.error('Erro ao cancelar consulta.');
+    console.error(error);
+  } finally {
+    this.closeMyModal();
+  }
+}
+
+
 
   voltar() {
     this.router.navigate(['consultation/view-consultation-psychologist']);

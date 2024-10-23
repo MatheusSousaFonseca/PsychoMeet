@@ -3,13 +3,17 @@ import { Injectable } from '@angular/core';
 import { firstValueFrom } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root' 
+  providedIn: 'root'
 })
 export class ConsultationDeleteService {
 
   constructor(private http: HttpClient) { }
 
   delete(id: number){
-    return firstValueFrom(this.http.delete(`http://localhost:8081/api/agendamento/${id}`));
+    return firstValueFrom(this.http.delete(`http://localhost:8080/api/agendamento/${id}`));
+  }
+
+  cancelarConsulta(id: number){
+    return firstValueFrom(this.http.delete(`http://localhost:8080/api/consulta/${id}`));
   }
 }

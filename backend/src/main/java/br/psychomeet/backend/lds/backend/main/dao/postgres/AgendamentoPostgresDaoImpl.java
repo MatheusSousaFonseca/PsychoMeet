@@ -34,6 +34,7 @@ public class AgendamentoPostgresDaoImpl implements AgendamentoDao {
             preparedStatement.setInt(2, entity.getPacienteId());
             preparedStatement.setInt(3, entity.getDisponibilidadeId());
             preparedStatement.setString(4, entity.getStatus());
+
             preparedStatement.execute();
 
             resultSet = preparedStatement.getGeneratedKeys();
@@ -64,6 +65,7 @@ public class AgendamentoPostgresDaoImpl implements AgendamentoDao {
         }
         return entity.getId();
     }
+
 
     @Override
     public void remove(int id) {
@@ -96,6 +98,7 @@ public class AgendamentoPostgresDaoImpl implements AgendamentoDao {
             }
         }
     }
+
 
     @Override
     public Agendamento readById(int id) {
@@ -134,6 +137,7 @@ public class AgendamentoPostgresDaoImpl implements AgendamentoDao {
         return agendamento;
     }
 
+
     @Override
     public List<Agendamento> readAll() {
         String sql = "SELECT * FROM agendamento;";
@@ -171,9 +175,11 @@ public class AgendamentoPostgresDaoImpl implements AgendamentoDao {
         return agendamentos;
     }
 
+
     @Override
     public void updateInformation(int id, Agendamento entity) {
         String sql = "UPDATE agendamento SET data_agendamento = ?, paciente_id = ?, disponibilidade_id = ?, status = ? WHERE id = ?;";
+
         PreparedStatement preparedStatement = null;
 
         try {
@@ -218,9 +224,8 @@ public class AgendamentoPostgresDaoImpl implements AgendamentoDao {
                 "JOIN paciente pac ON a.paciente_id = pac.id " +
                 "WHERE d.psicologo_id = ?";
 
-
         if (status != null && !status.isEmpty()) {
-            sql += " AND status = ?";
+            sql += " AND a.status = ?";
         }
 
         PreparedStatement preparedStatement = null;
@@ -252,7 +257,7 @@ public class AgendamentoPostgresDaoImpl implements AgendamentoDao {
             }
 
         } catch (SQLException e) {
-            logger.severe("Error executing readByPaciente: " + e.getMessage());
+            logger.severe("Error executing readByPsicologo: " + e.getMessage());
             throw new RuntimeException(e);
         } finally {
             try {
@@ -265,6 +270,7 @@ public class AgendamentoPostgresDaoImpl implements AgendamentoDao {
 
         return agendamentos;
     }
+
 
     @Override
     public List<Agendamento> readByPaciente(int pacienteId, String status) {
@@ -362,4 +368,6 @@ public class AgendamentoPostgresDaoImpl implements AgendamentoDao {
             }
         }
     }
+
+
 }

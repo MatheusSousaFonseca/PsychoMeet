@@ -176,3 +176,4 @@ public class EspecialidadePostgresDaoImpl implements EspecialidadeDao {
         return especialidade.getId();
     }
 }
+

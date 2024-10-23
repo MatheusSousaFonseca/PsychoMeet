@@ -31,6 +31,8 @@ public class ConsultaRestController {
         return ResponseEntity.ok(consultaService.findById(id));
     }
 
+
+
     @PostMapping
     public ResponseEntity<Void> create(@RequestBody Consulta consulta) {
         int id = consultaService.create(consulta);
@@ -66,6 +68,7 @@ public class ConsultaRestController {
         return ResponseEntity.ok(consultas);
     }
 
+
     @PutMapping("/feedback")
     public ResponseEntity<String> postFeedback(@RequestBody FeedbackDTO feedback){
         consultaService.giveFeedback(feedback);
@@ -74,6 +77,5 @@ public class ConsultaRestController {
 
 
 
-
-
 }
+

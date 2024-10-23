@@ -45,17 +45,17 @@ export class SignUpPsychologistComponent implements OnInit {
     this.loadAbordagens();
 
     this.form = this.formBuilder.group({
-      nome: ['', Validators.required],
-      email: ['', [Validators.required, Validators.email]],
-      senha: ['', Validators.required],
-      repeatPassword: ['', Validators.required],
-      crp: ['', Validators.required],
-      cpf: ['', [Validators.required, Validators.pattern('^[0-9]{11}$')]],
-      data: ['', Validators.required],
-      telefone: ['', [Validators.required, Validators.pattern('^[0-9]{11}$')]],
-      descricao: ['', Validators.required],
-      especialidades: new FormControl([]),
-      abordagens: new FormControl([])
+      nome: ['', Validators.required],  // Nome cannot be blank
+      email: ['', [Validators.required, Validators.email]],  // Email must be valid
+      senha: ['', Validators.required],  // Senha cannot be blank
+      repeatPassword: ['', Validators.required],  // Repeat password cannot be blank
+      crp: ['', [Validators.required, Validators.pattern('^[0-9]{7}$')]],  // CRP: exactly 7 digits
+      cpf: ['', [Validators.required, Validators.pattern('^[0-9]{11}$')]],  // CPF: exactly 11 digits
+      data: ['', Validators.required],  // Data de nascimento cannot be blank
+      telefone: ['', [Validators.required, Validators.pattern('^[0-9]{11}$')]],  // Telefone: exactly 11 digits
+      descricao: ['', Validators.required],  // Descrição cannot be blank
+      especialidades: new FormControl([], Validators.required),  // Especialidades cannot be blank
+      abordagens: new FormControl([], Validators.required)  // Abordagens cannot be blank
     });
   }
 
@@ -108,7 +108,7 @@ export class SignUpPsychologistComponent implements OnInit {
       }, 2000);
     } catch (error: any) {
       // Exiba a mensagem de erro clara retornada pelo backend
-      this.toastr.error(JSON.stringify(error.error.message) || 'Erro ao criar conta');
+      this.toastr.error(JSON.stringify(error.error) || 'Erro ao criar conta');
     } finally {
       this.isSubmitting = false;
     }

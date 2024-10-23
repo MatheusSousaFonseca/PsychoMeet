@@ -348,7 +348,7 @@ hasFeedback(feedback: string, nota: number){
 }
 
   voltar() {
-    this.router.navigate(['consultation/view-consultation-psychologist']);
+    this.router.navigate(['consultation/search-psychologist']);
   }
 }
 

@@ -1,3 +1,4 @@
+package br.psychomeet.backend.lds.backend.main.controler;
 
 import br.psychomeet.backend.lds.backend.main.dto.AddPsicologoDTO;
 import br.psychomeet.backend.lds.backend.main.dto.PsicologoFullDTO;
@@ -21,10 +22,10 @@ public class PsicologoRestController {
 
     @GetMapping
     public ResponseEntity<List<PsicologoFullDTO>> getAll(@RequestParam String name, @RequestParam String especialidade) {
-        if(name.isEmpty() && especialidade.isEmpty()){
+        if (name.isEmpty() && especialidade.isEmpty()) {
             return ResponseEntity.ok(psicologoService.findAll());
-        }else{
-            return ResponseEntity.ok(psicologoService.search(name,especialidade));
+        } else {
+            return ResponseEntity.ok(psicologoService.search(name, especialidade));
         }
 
     }

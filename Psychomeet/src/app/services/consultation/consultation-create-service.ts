@@ -12,6 +12,6 @@ export class ConsultationCreateService {
   constructor(private http: HttpClient) { }
 
   create(agendamento: Agendamento){
-    return firstValueFrom(this.http.post<number>('http://localhost:8080/api/agendamento', agendamento));
+    return firstValueFrom(this.http.post<number>('http://localhost:8081/api/agendamento', agendamento));
   }
 }

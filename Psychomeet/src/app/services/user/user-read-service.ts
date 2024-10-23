@@ -19,7 +19,7 @@ export class UserReadService {
   }
 
   findAll(): Promise<User[]> {
-    return firstValueFrom(this.http.get<User[]>('http://localhost:8080/api/pessoa'));
+    return firstValueFrom(this.http.get<User[]>('http://localhost:8081/api/pessoa'));
   }
 
   findByEmail(email: String): Promise<User> {

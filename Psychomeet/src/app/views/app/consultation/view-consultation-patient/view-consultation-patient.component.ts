@@ -116,15 +116,17 @@ export class ViewConsultationPatientComponent implements OnInit {
     });
   }
 
+
+
+  formatPhone(phone: string): string {
+    return formatarTelefone(phone);  // Usando a função de formatação de telefone
+  }
+
   formatDate(date: string): string {
     const dateFormatted =  this.addDays(new Date(date), 1)
 
 
     return dateFormatted.toLocaleDateString();  // Usando a função de formatação de data
-  }
-
-  formatPhone(phone: string): string {
-    return formatarTelefone(phone);  // Usando a função de formatação de telefone
   }
 
   addDays(date: Date, days: number): Date {

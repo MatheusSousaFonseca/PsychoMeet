@@ -16,8 +16,8 @@
           <div>
             <h5 class="card-title">Psicólogo: {{ consultation.nomePsicologo }} - Telefone: {{formatPhone(consultation.telefone)}} </h5>
             <p class="card-text">Data: {{formatDate(consultation.data)}}, {{ consultation.horaIntervalo }}</p>
-            <p>Nota: {{consultation.notaPaciente}}</p>
-            <p>
+            <p *ngIf="consultation.comentarioPaciente">Nota: {{consultation.notaPaciente}}</p>
+            <p *ngIf="consultation.comentarioPaciente">
               Feedback: {{consultation.comentarioPaciente}}
             </p>
 

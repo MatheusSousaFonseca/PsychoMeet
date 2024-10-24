@@ -32,7 +32,7 @@ public class PacienteRestController {
 
     @GetMapping("/pessoa/{id}")
     public ResponseEntity<Paciente> getByPacienteId(@PathVariable int id) {
-        return ResponseEntity.ok(pacienteService.findById(id));
+        return ResponseEntity.ok(pacienteService.getByPessoa(id));
     }
 
     @PostMapping

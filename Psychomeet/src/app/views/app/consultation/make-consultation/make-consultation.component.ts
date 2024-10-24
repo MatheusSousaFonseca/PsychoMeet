@@ -19,6 +19,7 @@ import localePt from '@angular/common/locales/pt';
 import { Agendamento } from '../../../../domain/model/agendamento-model';
 import { ConsultationReadService } from '../../../../services/consultation/consultation-read-service';
 import { formatarData, formatarTelefone } from '../../../../services/utils/utils';
+import { PacienteReadService } from '../../../../services/pacient/pacient-read-service';
 
 
 
@@ -74,7 +75,8 @@ export class MakeConsultationComponent implements OnInit {
     private consultationCreateService: ConsultationCreateService,
     private consultationReadService: ConsultationReadService,
     private activatedRoute: ActivatedRoute,
-    private userReadService: UserReadService
+    private userReadService: UserReadService,
+    private pacienteReadService: PacienteReadService
   ) {
     registerLocaleData(localePt, 'pt-BR');
    }
@@ -250,7 +252,7 @@ addDays(date: Date, days: number): Date {
 
 isAvailable(dia: Date, hora: string): boolean {
   const today = new Date();
-
+  today.setDate(today.getDate() - 1)
   // Se o dia for anterior à data de hoje, ele é tratado como indisponível
   if (dia < today) {
     return false;
@@ -298,8 +300,9 @@ async marcarConsulta() {
     // Obter o ID do paciente logado
     const email = localStorage.getItem("email");
     const pessoa = await this.userReadService.findByEmail(email!);
-    const pacienteId = pessoa.id;
-
+    console.log("PessoaId" , pessoa.id)
+    const paciente = await this.pacienteReadService.findByPessoaId(pessoa.id!);
+    console.log("Paciente" , paciente)
     // Encontre a disponibilidade selecionada com base no dia e hora
     const disponibilidade = this.disponibilidades.find(
       (disponibilidade) =>
@@ -314,7 +317,7 @@ async marcarConsulta() {
     // Crie o objeto de Agendamento
     const agendamento: Agendamento = {
       disponibilidadeId: disponibilidade.id!,
-      pacienteId: pacienteId!,
+      pacienteId: paciente.id!,
       dataAgendamento: this.diaSelecionada,
       status: 'Pendente'  // Status inicial da consulta
     };

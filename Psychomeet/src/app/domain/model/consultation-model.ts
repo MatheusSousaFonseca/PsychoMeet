@@ -1,4 +1,4 @@
-export interface Consultation {
+  export interface Consultation {
   consultaId: number;              // ID da consulta
   agendaId: number;                // ID do agendamento
   pacienteId: number;              // ID do paciente

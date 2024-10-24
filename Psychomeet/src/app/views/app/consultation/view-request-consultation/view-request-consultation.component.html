@@ -14,7 +14,7 @@
                 <div>
                   <div class="col-md-9">
                     <h5 class="card-title">{{ pacientesMap[agendamento.pessoaIdPaciente] }}</h5> <!-- Get preloaded name -->
-                    <p class="card-text"><strong>Data: </strong>{{ agendamento.dataDisponibilidade }} , {{ agendamento.horaIntervalo}}</p>
+                    <p class="card-text"><strong>Data: </strong>{{ formatDate(agendamento.dataDisponibilidade)  }} , {{ agendamento.horaIntervalo}}</p>
                   </div>
                 </div>
                 <div>

@@ -11,6 +11,7 @@ import { UserReadService } from '../../../../services/user/user-read-service';
 import { consultationFeedback } from '../../../../domain/dto/consultation-feedback';
 import { ConsultationFeedbackService } from '../../../../services/consultation/consultation-feedback-service';
 import { formatarData, formatarTelefone } from '../../../../services/utils/utils';
+import { PacienteReadService } from '../../../../services/pacient/pacient-read-service';
 
 
 @Component({
@@ -42,6 +43,7 @@ export class ViewConsultationPatientComponent implements OnInit {
     private consultationReadService: ConsultationReadService,
     private userReadService: UserReadService,
     private consultationFeedbackService: ConsultationFeedbackService,
+    private pacienteReadService: PacienteReadService
   ) { }
 
   ngOnInit(): void {
@@ -79,13 +81,15 @@ export class ViewConsultationPatientComponent implements OnInit {
 
   async loadConsultations() {
     let email = localStorage.getItem("email");
-    let paciente = await this.userReadService.findByEmail(email!);
+    let pessoa = await this.userReadService.findByEmail(email!);
+    let paciente = await this.pacienteReadService.findByPessoaId(pessoa.id!)
     this.consultations = await this.consultationReadService.findByIdPacienteAccept(paciente.id!);
   }
 
   async loadPendingConsultations() {
     let email = localStorage.getItem("email");
-    let paciente = await this.userReadService.findByEmail(email!);
+    let pessoa = await this.userReadService.findByEmail(email!);
+    let paciente = await this.pacienteReadService.findByPessoaId(pessoa.id!)
     this.pendingConsultations = await this.consultationReadService.findByIdPacientePendente(paciente.id!);
   }
 
@@ -113,11 +117,20 @@ export class ViewConsultationPatientComponent implements OnInit {
   }
 
   formatDate(date: string): string {
-    return formatarData(date);  // Usando a função de formatação de data
+    const dateFormatted =  this.addDays(new Date(date), 1)
+
+
+    return dateFormatted.toLocaleDateString();  // Usando a função de formatação de data
   }
 
   formatPhone(phone: string): string {
     return formatarTelefone(phone);  // Usando a função de formatação de telefone
+  }
+
+  addDays(date: Date, days: number): Date {
+    const result = new Date(date);
+    result.setDate(result.getDate() + days);
+    return result;
   }
 
 }

@@ -131,4 +131,16 @@ export class ViewRequestConsultationComponent {
 
   }
 
+  formatDate(date: string): string {
+    const dateFormatted =  this.addDays(new Date(date), 1)
+
+
+    return dateFormatted.toLocaleDateString();  // Usando a função de formatação de data
+  }
+
+  addDays(date: Date, days: number): Date {
+    const result = new Date(date);
+    result.setDate(result.getDate() + days);
+    return result;
+  }
 }

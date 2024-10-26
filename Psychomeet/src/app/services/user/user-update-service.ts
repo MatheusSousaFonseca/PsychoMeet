@@ -14,7 +14,7 @@ export class UserUpdateService {
   async update(user: User) {
     console.log(`atualizando usuário...`);
     console.log(user);
-    return await firstValueFrom(this.http.put(`http://localhost:8081/api/pessoa/${user.id}`, {
+    return await firstValueFrom(this.http.put(`http://localhost:8080/api/pessoa/${user.id}`, {
       "telefone": user.telefone,
       "nome": user.nome,
       "senha": user.senha,

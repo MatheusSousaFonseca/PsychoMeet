@@ -14,7 +14,6 @@ import java.util.List;
 @RequestMapping("/api/paciente")
 public class PacienteRestController {
 
-    @Autowired
     private final PacienteService pacienteService;
 
     public PacienteRestController(PacienteService pacienteService) {
@@ -33,7 +32,7 @@ public class PacienteRestController {
 
     @GetMapping("/pessoa/{id}")
     public ResponseEntity<Paciente> getByPacienteId(@PathVariable int id) {
-        return ResponseEntity.ok(pacienteService.findById(id));
+        return ResponseEntity.ok(pacienteService.getByPessoa(id));
     }
 
     @PostMapping

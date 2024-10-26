@@ -1,47 +1,51 @@
 <div class="container mt-5">
-    <div class="row mb-4 align-items-center">
+  <div class="row mb-4 align-items-center">
+      <!-- Coluna esquerda para os botões -->
+      <div class="col-auto">
+          <div class="d-flex flex-column">
+              <button class="btn btn-secondary mb-2" (click)="agenda()">Agenda</button>
+              <button class="btn btn-danger" (click)="consultasPendentes()">Consultas pendentes</button>
+          </div>
+      </div>
 
-        <div class="col-auto">
-            <div class="d-flex flex-column">
-                <button class="btn btn-secondary mb-2" (click)="agenda()">Agenda</button>
-                <button class="btn btn-danger" (click)="consultasPendentes()">Consultas pendentes</button>
-            </div>
-        </div>
-  
-        <div class="col text-center">
-            <h2 class="card-title">Histórico de Consultas</h2>
-        </div>
-  
-        <div class="col-auto">
-            <div class="d-flex flex-column">
-                <button class="btn btn-warning mb-2" (click)="acessarPerfilPsicologo()">Meu Perfil</button>
-                <button class="btn btn-danger" (click)="logout()">Sair</button>
-            </div>
-        </div>
-    </div>
+      <!-- Coluna central para o título -->
+      <div class="col text-center">
+          <h2 class="card-title">Histórico de Consultas</h2>
+      </div>
+
+      <div class="col-auto">
+          <div class="d-flex flex-column">
+              <button class="btn btn-warning mb-2" (click)="acessarPerfilPsicologo()">Meu Perfil</button>
+              <button class="btn btn-danger" (click)="logout()">Sair</button>
+          </div>
+      </div>
   </div>
-  
-  <ul class="list-group mb-3">
-    <div *ngFor="let consultation of consultations; trackBy: trackById">
-  
-  
-    <li *ngIf="hasFeedback(consultation.comentarioPaciente , consultation.notaPaciente)" class="list-group-item" >
-        <div class="card mb-3">
-            <div class="card-body">
-                <div class="d-flex justify-content-between align-items-center">
-                  <div class="col-md-2">
-                    <img src="assets/user.png" alt="Foto de João dos Santos" class="img-thumbnail">
-                </div>
-                    <div class="col-md-9">
-                        <h5 class="card-title">{{ pacientesMap[consultation.pacienteId] }}</h5> <!-- Get preloaded name -->
-                        <p class="card-text"><strong>Data: </strong>{{formatDate(consultation.data)  }} , {{ consultation.horaIntervalo }}</p>
-                        <p class="card-text"><strong>Nota: </strong>{{ consultation.notaPaciente }}</p>
-                        <p class="card-text"><strong>Feedback: </strong>{{ consultation.comentarioPaciente }}</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </li>
-  </div>
-  </ul>
-  
+</div>
+
+<ul class="list-group mb-3">
+  <div *ngFor="let consultation of consultations; trackBy: trackById">
+
+
+  <li *ngIf="hasFeedback(consultation.comentarioPaciente , consultation.notaPaciente)" class="list-group-item" >
+      <div class="card mb-3">
+          <div class="card-body">
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="col-md-2">
+                  <img src="assets/user.png" alt="Foto de João dos Santos" class="img-thumbnail">
+              </div>
+                  <div class="col-md-9">
+                      <h5 class="card-title font-weight-bold text-primary">{{ pacientesMap[consultation.pacienteId] }}</h5> <!-- Get preloaded name -->
+                      <p class="card-text"><strong>Data: </strong>{{formatDate(consultation.data)  }} , {{ consultation.horaIntervalo }}</p>
+                      <ngb-rating [disabled]="true" [tooltipContext]="{ rating: consultation.notaPaciente }" [ngbTooltip]="tipContent" [(rate)]="consultation.notaPaciente" />
+                      <p class="card-text"><strong>Feedback: </strong>{{ consultation.comentarioPaciente }}</p>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </li>
+</div>
+</ul>
+
+<ng-template #tipContent let-rating="rating"
+	>Nota: <b>{{ rating }}</b>!
+</ng-template>

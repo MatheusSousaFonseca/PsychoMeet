@@ -1,7 +1,12 @@
-<div class="container mt-5">
+<div class="container mt-5" ngbScrollSpy #spy="ngbScrollSpy" rootMargin="16px" class="bg-light p-3 rounded-2 mb-3" style="height: 100vh">
+  <div >
+
+
   <div class="d-flex justify-content-between align-items-center mb-4">
-    <button class="btn btn-danger" (click)="marcarConsulta()">X</button>
-    <h2 class="text-primary">Histórico de Consultas</h2>
+
+    <button class="btn btn-outline-danger" [ngbScrollSpyItem]="spy" fragment="two">Ver Pendentes</button>
+    <button class="btn btn-danger" (click)="marcarConsulta()">Voltar ao Menu</button>
+    <h2 class="text-primary" ngbScrollSpyFragment="one">Histórico de Consultas</h2>
   </div>
 
   <div *ngFor="let consultation of consultations; let i = index">
@@ -11,13 +16,14 @@
           <div>
             <h5 class="card-title">Psicólogo: {{ consultation.nomePsicologo }} - Telefone: {{formatPhone(consultation.telefone)}} </h5>
             <p class="card-text">Data: {{formatDate(consultation.data)}}, {{ consultation.horaIntervalo }}</p>
-            <p>Nota: {{consultation.notaPaciente}}</p>
-            <p>
+            <p *ngIf="consultation.comentarioPaciente">Nota: {{consultation.notaPaciente}}</p>
+            <p *ngIf="consultation.comentarioPaciente">
               Feedback: {{consultation.comentarioPaciente}}
             </p>
 
           </div>
           <div>
+            <p>Status: <strong class="font-weight-bold text-success">{{consultation.status}}</strong></p>
             <button
               class="btn"
               [ngClass]="consultation.comentarioPaciente ? 'btn-success' : 'btn-warning'"
@@ -30,6 +36,28 @@
       </div>
     </div>
   </div>
+
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <button class="btn btn-outline-success" [ngbScrollSpyItem]="spy" fragment="one">Ver Confirmadas</button>
+    <h2 class="text-primary" ngbScrollSpyFragment="two">Consultas Pendentes</h2>
+  </div>
+
+  <div *ngFor="let consultation of pendingConsultations let i = index">
+    <div class="card mb-3">
+      <div class="card-body">
+        <div class="d-flex justify-content-between align-items-center">
+          <div>
+            <h5 class="card-title">Psicólogo: {{ consultation.nomePsicologo }} - Telefone: {{formatPhone(consultation.telefone)}} </h5>
+            <p class="card-text">Data: {{formatDate(consultation.data)}}, {{ consultation.horaIntervalo }}</p>
+          </div>
+          <div>
+            <p>Status: <strong class="font-weight-bold text-danger">{{consultation.status}}</strong></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 </div>
 
 <ng-template #content let-modal="modal">
@@ -41,8 +69,11 @@
         <textarea [(ngModel)]="feedback" class="form-control" id="feedback" name="feedback" rows="4" required></textarea>
       </div>
       <div class="rating-container mb-3">
-        <label for="rating">Nota:</label>
-        <input [(ngModel)]="rating" type="number" id="rating" class="rating-input" name="rating" min="0" max="10" required>
+        <ngb-rating [(rate)]="rating" [(ngModel)]="rating" id="rating" name="rating" required/>
+
+        <div>
+          <label for="rating">Nota: {{rating}} </label>
+        </div>
       </div>
       <button type="submit" class="btn btn-primary mt-3">
         Enviar Feedback <i class="fas fa-paper-plane"></i>
@@ -50,3 +81,8 @@
     </form>
   </div>
 </ng-template>
+
+<ng-template #tipContent let-rating="rating"
+	>Nota: <b>{{ rating }}</b>
+</ng-template
+>

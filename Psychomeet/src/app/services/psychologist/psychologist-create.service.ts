@@ -10,7 +10,12 @@ export class PsychologistCreateService {
 
   constructor(private http: HttpClient) { }
 
-  create(psychologist:Psychologist){
-    return firstValueFrom(this.http.post<Psychologist>('http://localhost:8081/api/psicologo', psychologist));
+  create(psychologist: Psychologist) {
+    return firstValueFrom(
+      this.http.post<Psychologist>('http://localhost:8080/api/psicologo', psychologist)
+    ).catch(error => {
+      // Em vez de lançar uma nova instância de erro, apenas propague o erro original
+      throw error;
+    });
   }
 }

@@ -1,8 +1,8 @@
 import { Component, Input } from '@angular/core';
-import { FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormGroup, ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserUpdateService } from '../../../services/user/user-update-service';
-import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';  // Import NgbActiveModal
 
 @Component({
   selector: 'app-edit-profile-patient',
@@ -13,16 +13,16 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 })
 export class EditProfilePatientComponent {
 
-  @Input() form!: FormGroup; 
+  @Input() form!: FormGroup;
 
   constructor(
     private router: Router,
     private userUpdateService: UserUpdateService,
-    public activeModal: NgbActiveModal 
+    public activeModal: NgbActiveModal  // Inject NgbActiveModal
   ) {}
 
   voltar() {
-    this.activeModal.dismiss();
+    this.activeModal.dismiss();  // Dismiss the modal when going back
   }
 
   async salvar() {
@@ -44,4 +44,3 @@ export class EditProfilePatientComponent {
     }
   }
 }
-

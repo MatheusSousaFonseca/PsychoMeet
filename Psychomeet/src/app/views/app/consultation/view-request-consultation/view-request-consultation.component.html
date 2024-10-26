@@ -14,7 +14,7 @@
                 <div>
                   <div class="col-md-9">
                     <h5 class="card-title">{{ pacientesMap[agendamento.pessoaIdPaciente] }}</h5> <!-- Get preloaded name -->
-                    <p class="card-text"><strong>Data: </strong>{{ agendamento.dataDisponibilidade }} , {{ agendamento.horaIntervalo}}</p>
+                    <p class="card-text"><strong>Data: </strong>{{ formatDate(agendamento.dataDisponibilidade)  }} , {{ agendamento.horaIntervalo}}</p>
                   </div>
                 </div>
                 <div>
@@ -42,11 +42,11 @@
     <div class="modal-header">
       <h4 class="modal-title" id="modal-basic-title">Confirmação de consulta</h4>
       <button type="button" class="close" aria-label="Close" (click)="closeMyModal()">
-        <span aria-hidden="true">&times;</span>  
+        <span aria-hidden="true">&times;</span>
 
       </button>
     </div>
-    <div class="modal-body">  
+    <div class="modal-body">
 
       <p>Confirmar agendamento da consulta.</p>
       <button class="btn btn-success" (click)="confirmarConsulta()">CONFIRMAR CONSULTA</button>
@@ -54,9 +54,9 @@
 
     <div class="modal-footer">
       <button type="button" class="btn btn-outline-dark" (click)="closeMyModal()">Fechar</button>
-    </div>  
+    </div>
 
-      
+
   </ng-template>
 
 
@@ -64,19 +64,16 @@
     <div class="modal-header">
       <h4 class="modal-title" id="modal-basic-title">Confirmação de cancelamento</h4>
       <button type="button" class="close" aria-label="Close" (click)="closeMyModal()">
-        <span aria-hidden="true">&times;</span>  
-
+        <span aria-hidden="true">&times;</span>
       </button>
     </div>
-    <div class="modal-body">  
-
+    <div class="modal-body">
       <p>Recusar agendamento da consulta</p>
       <button class="btn btn-danger" (click)="desmarcarConsulta()">DESMARCAR CONSULTA</button>
     </div>
-
     <div class="modal-footer">
       <button type="button" class="btn btn-outline-dark" (click)="closeMyModal()">Fechar</button>
-    </div>  
-  </ng-template>  
+    </div>
+  </ng-template>
 
-      
+

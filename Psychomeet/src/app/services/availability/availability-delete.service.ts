@@ -13,7 +13,7 @@ export class AvailabilityDeleteService {
   delete(availability: Availability) {
     // Passa o objeto Availability no campo 'body' do segundo argumento (options)
     return firstValueFrom(
-      this.http.delete('http://localhost:8081/api/disponibilidade/datahora', { body: availability })
+      this.http.delete('http://localhost:8080/api/disponibilidade/datahora', { body: availability })
     );
   }
 }

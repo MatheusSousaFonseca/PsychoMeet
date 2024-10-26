@@ -6,7 +6,9 @@ import { Consultation } from '../../../../domain/model/consultation-model';
 import { ConsultationReadService } from '../../../../services/consultation/consultation-read-service';
 import { PsychologistReadService } from '../../../../services/psychologist/psychologist-read.service';
 import { CommonModule } from '@angular/common';
-import { formatDate } from '../../../../services/utils';
+import { NgbRatingModule, NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
+import { PacienteReadService } from '../../../../services/pacient/pacient-read-service';
+import { Paciente } from '../../../../domain/model/paciente-model';
 
 @Component({
   selector: 'app-view-consultation-psychologist',
@@ -14,7 +16,9 @@ import { formatDate } from '../../../../services/utils';
   templateUrl: './view-consultation-psychologist.component.html',
   styleUrls: ['./view-consultation-psychologist.component.css'],
   imports: [
-    CommonModule
+    CommonModule,
+    NgbRatingModule,
+    NgbTooltipModule
   ]
 })
 export class ViewConsultationPsychologistComponent implements OnInit {
@@ -28,7 +32,8 @@ export class ViewConsultationPsychologistComponent implements OnInit {
     private userReadService: UserReadService,
     private consultationReadService: ConsultationReadService,
     private psychologistReadService: PsychologistReadService,
-    private cdr: ChangeDetectorRef // Inject ChangeDetectorRef
+    private cdr: ChangeDetectorRef, // Inject ChangeDetectorRef
+    private pacienteReadService: PacienteReadService
   ) { }
 
   ngOnInit(): void {
@@ -47,24 +52,33 @@ export class ViewConsultationPsychologistComponent implements OnInit {
   async loadUsers() {
     const users = await this.userReadService.findAll();
     this.users = users;
+    let paciente: Paciente;
 
-    users.forEach(user => {
+    for (const user of users) {
       if (user?.id) {
-        this.pacientesMap[user.id] = user.nome;
+        // Await the result of findByPessoaId
+        paciente = await this.pacienteReadService.findByPessoaId(user.id);
+
+        // Check if paciente is defined before using it
+        if (paciente?.id) {
+          this.pacientesMap[paciente.id] = user.nome;
+        }
       }
-    });
+    }
+
     this.cdr.detectChanges(); // Trigger change detection after loading users
   }
+
 
   // Load consultations and preload patient names
   async loadConsultations() {
     let email = localStorage.getItem("email");
-    console.log("LOAD CONSULTATIONS");
     if (email) {
       const psychologist = await this.psychologistReadService.findByEmail(email);
       if (psychologist?.id) {
         this.consultations = await this.consultationReadService.findByIdPsicologoAccept(psychologist.id);
         await this.preloadPacientesNames(); // Ensure patient names are preloaded
+        console.log("LOAD Pacientes 2222", this.pacientesMap);
         console.log("LOAD CONSULTATIONS 2222", this.consultations);
         this.cdr.detectChanges(); // Trigger change detection after loading consultations and patient names
       }
@@ -73,9 +87,14 @@ export class ViewConsultationPsychologistComponent implements OnInit {
 
   // Load patient names for consultations
   async preloadPacientesNames() {
-    const pacienteIds = this.consultations.map(c => c.pessoaId);
-    for (const id of pacienteIds) {
+    console.log("CONSULTAS ULTIMATE: ", this.consultations);
+    const pessoaIds = this.consultations.map(c => c.pessoaId);
+    console.log("Paciente ULTIMATE: ", pessoaIds);
+
+
+    for (const id of pessoaIds) {
       if (!this.pacientesMap[id]) {
+        console.log(id)
         const paciente = await this.userReadService.findById(id);
         if (paciente) {
           this.pacientesMap[id] = paciente.nome;
@@ -84,6 +103,9 @@ export class ViewConsultationPsychologistComponent implements OnInit {
     }
   }
 
+  loadPacienteName(){
+
+  }
   getUserName(id: number) {
     return this.users.find(user => user.id == id)?.nome;
   }
@@ -109,11 +131,21 @@ export class ViewConsultationPsychologistComponent implements OnInit {
     this.router.navigate(['app/home']);
   }
 
-  formatDate(date: string): string {
-    return formatDate(date);  // Usando a função de formatação de data
-  }
-
   hasFeedback(feedback: string, nota: number){
     return feedback != "" && nota != 0
   }
+
+  formatDate(date: string): string {
+    const dateFormatted =  this.addDays(new Date(date), 1)
+
+
+    return dateFormatted.toLocaleDateString();  // Usando a função de formatação de data
+  }
+
+  addDays(date: Date, days: number): Date {
+    const result = new Date(date);
+    result.setDate(result.getDate() + days);
+    return result;
+  }
+
 }

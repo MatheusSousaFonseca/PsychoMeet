@@ -42,11 +42,18 @@ public class PessoaRestController {
     }
 
     @PostMapping()
-    public ResponseEntity<Pessoa> createEntity(@RequestBody final Pessoa data) {
-        int id = pessoaService.create(data);
-        final URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(id).toUri();
-        return ResponseEntity.created(uri).build();
+    public ResponseEntity<?> createEntity(@RequestBody final Pessoa data) {
+        try {
+
+            int id = pessoaService.create(data);
+            final URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(id).toUri();
+            return ResponseEntity.created(uri).build();
+
+        } catch (RuntimeException e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
     }
+
 
     @PutMapping("/{id}")
     public ResponseEntity<Void> updateEntity(@PathVariable final int id, @RequestBody final Pessoa data) {
@@ -71,7 +78,6 @@ public class PessoaRestController {
     public ResponseEntity<Pessoa> authenticate(@RequestParam("email") String email,
                                                @RequestParam("senha") String senha) {
 //        Pessoa pessoa = pessoaService.findByEmail(email);
-        System.out.println(email);
         Pessoa pessoa = authenticationService.authenticate(email, senha);
         if (pessoa != null) {
             return ResponseEntity.ok(pessoa);

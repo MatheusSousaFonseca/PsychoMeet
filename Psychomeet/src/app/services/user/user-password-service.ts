@@ -9,11 +9,11 @@ export class UserPasswordService {
 
   constructor(private http: HttpClient) { }
 
-  
+  // Função que chama a API para atualizar a senha
   async updatePassword(passwordData: { email: string; oldPassword: string; newPassword: string }) {
-    const url = 'http://localhost:8081/api/pessoa/update-password';
+    const url = 'http://localhost:8080/api/pessoa/update-password';
     return await firstValueFrom(this.http.put(url, {
-      id: passwordData.email, 
+      id: passwordData.email, // Considerando que o email é o identificador, mas ajuste se necessário
       oldPassword: passwordData.oldPassword,
       newPassword: passwordData.newPassword
     }));

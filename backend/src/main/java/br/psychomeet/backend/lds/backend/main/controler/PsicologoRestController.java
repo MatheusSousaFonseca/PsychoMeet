@@ -1,3 +1,4 @@
+package br.psychomeet.backend.lds.backend.main.controler;
 
 import br.psychomeet.backend.lds.backend.main.dto.AddPsicologoDTO;
 import br.psychomeet.backend.lds.backend.main.dto.PsicologoFullDTO;
@@ -20,7 +21,7 @@ public class PsicologoRestController {
     }
 
     @GetMapping
-    public ResponseEntity<List<PsicologoFullDTO>> getAll(@RequestParam String name, @RequestParam String especialidade) {
+    public ResponseEntity<List<PsicologoFullDTO>> getAll(@RequestParam String name,@RequestParam String especialidade) {
         if(name.isEmpty() && especialidade.isEmpty()){
             return ResponseEntity.ok(psicologoService.findAll());
         }else{
@@ -43,11 +44,17 @@ public class PsicologoRestController {
 
 
     @PostMapping
-    public ResponseEntity<Void> create(@RequestBody AddPsicologoDTO psicologo) {
-        int id = psicologoService.create(psicologo);
-        URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(id).toUri();
-        return ResponseEntity.created(uri).build();
+    public ResponseEntity<?> create(@RequestBody AddPsicologoDTO psicologo) {
+        try {
+            int id = psicologoService.create(psicologo);
+            URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(id).toUri();
+            return ResponseEntity.created(uri).build();
+        } catch (RuntimeException e) {
+            // Retornar erro 400 (bad request) com a mensagem apropriada
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
     }
+
 
     @PutMapping("/{id}")
     public ResponseEntity<Void> update(@PathVariable int id, @RequestBody AddPsicologoDTO psicologo) {

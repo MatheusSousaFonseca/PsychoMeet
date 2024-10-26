@@ -11,35 +11,58 @@
               <div class="form-group">
                 <label for="nome"><i class="fas fa-user"></i> Nome completo</label>
                 <input type="text" class="form-control" id="nome" formControlName="nome" placeholder="Nome completo" required>
+                <div *ngIf="form.controls['nome'].invalid && form.controls['nome'].touched" class="text-danger">
+                  Nome é obrigatório.
+                </div>
               </div>
               <div class="form-group">
                 <label for="telefone"><i class="fas fa-phone"></i> Telefone</label>
                 <input type="tel" class="form-control" id="telefone" formControlName="telefone" placeholder="Telefone" required>
+                <div *ngIf="form.controls['telefone'].invalid && form.controls['telefone'].touched" class="text-danger">
+                  Telefone inválido. Deve ter 11 dígitos.
+                </div>
               </div>
               <div class="form-group">
                 <label for="email"><i class="fas fa-envelope"></i> Email</label>
                 <input type="email" class="form-control" id="email" formControlName="email" placeholder="Email" required>
+                <div *ngIf="form.controls['email'].invalid && form.controls['email'].touched" class="text-danger">
+                  Email inválido.
+                </div>
               </div>
               <div class="form-group">
                 <label for="cpf"><i class="fas fa-id-card"></i> CPF</label>
                 <input type="text" class="form-control" id="cpf" formControlName="cpf" placeholder="CPF" required>
+                <div *ngIf="form.controls['cpf'].invalid && form.controls['cpf'].touched" class="text-danger">
+                  CPF inválido. Deve ter 11 dígitos.
+                </div>
               </div>
               <div class="form-group">
                 <label for="data"><i class="fas fa-calendar-alt"></i> Data de Nascimento</label>
                 <input type="date" class="form-control" id="data" formControlName="data" placeholder="Data de nascimento" required>
+                <div *ngIf="form.controls['data'].invalid && form.controls['data'].touched" class="text-danger">
+                  Data de nascimento é obrigatória.
+                </div>
               </div>
+
               <div class="form-group">
                 <label for="crp"><i class="fas fa-id-badge"></i> CRP</label>
                 <input type="text" class="form-control" id="crp" formControlName="crp" placeholder="CRP" required>
+                <div *ngIf="form.controls['crp'].invalid && form.controls['crp'].touched" class="text-danger">
+                  CRP inválido. Deve ter 7 dígitos.
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="descricao"><i class="fas fa-info-circle"></i> Descrição</label>
+                <input type="text" class="form-control" id="descricao" formControlName="descricao" placeholder="Descrição" required>
+                <div *ngIf="form.controls['descricao'].invalid && form.controls['descricao'].touched" class="text-danger">
+                  Descrição é obrigatória.
+                </div>
               </div>
               <div class="form-group">
                 <label for="publico"><i class="fas fa-users"></i> Público</label>
                 <input type="text" class="form-control" id="publico" formControlName="publico" placeholder="Público" required>
               </div>
-              <div class="form-group">
-                <label for="descricao"><i class="fas fa-info-circle"></i> Descrição</label>
-                <input type="text" class="form-control" id="descricao" formControlName="descricao" placeholder="Descrição" required>
-              </div>
+
 
               <!-- Row for Abordagens and Especialidades side by side -->
               <div class="row">
@@ -69,17 +92,21 @@
                 </div>
               </div>
 
-              <div class="form-group">
-                <label for="preco"><i class="fas fa-money-bill-wave"></i> Preço</label>
-                <input type="text" class="form-control" id="preco" formControlName="preco" placeholder="Preço" required>
-              </div>
+
               <div class="form-group">
                 <label for="senha"><i class="fas fa-lock"></i> Senha</label>
                 <input type="password" class="form-control" id="senha" formControlName="senha" placeholder="Senha" required>
+                <div *ngIf="form.controls['senha'].invalid && form.controls['senha'].touched" class="text-danger">
+                  Senha é obrigatória.
+                </div>
               </div>
+
               <div class="form-group">
                 <label for="repeatPassword"><i class="fas fa-lock"></i> Confirmar Senha</label>
                 <input type="password" class="form-control" id="repeatPassword" formControlName="repeatPassword" placeholder="Confirmar Senha" required>
+                <div *ngIf="form.controls['repeatPassword'].invalid && form.controls['repeatPassword'].touched" class="text-danger">
+                  As senhas não coincidem.
+                </div>
               </div>
               <button type="submit" class="btn btn-primary btn-block">Cadastrar</button>
             </form>

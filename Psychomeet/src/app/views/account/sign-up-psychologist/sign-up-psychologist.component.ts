@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Psychologist } from '../../../domain/model/psychologist-model';
-import { FormBuilder, FormGroup, Validators, FormControl, ReactiveFormsModule } from '@angular/forms'; // Import ReactiveFormsModule here
+import { FormBuilder, FormGroup, Validators, FormControl, ReactiveFormsModule } from '@angular/forms';
 import { PsychologistCreateService } from '../../../services/psychologist/psychologist-create.service';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
@@ -9,6 +9,7 @@ import { HttpClient } from '@angular/common/http';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { CommonModule } from '@angular/common';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-sign-up-psychologist',
@@ -27,12 +28,14 @@ import { CommonModule } from '@angular/common';
 export class SignUpPsychologistComponent implements OnInit {
   form!: FormGroup;
   successMessage: string | null = null;
+  isSubmitting = false;
   especialidades: string[] = [];
   abordagens: string[] = [];
 
   constructor(
     private formBuilder: FormBuilder,
     private createPsychologistService: PsychologistCreateService,
+    private toastr: ToastrService,
     private router: Router,
     private http: HttpClient
   ) { }
@@ -41,21 +44,18 @@ export class SignUpPsychologistComponent implements OnInit {
     this.loadEspecialidades();
     this.loadAbordagens();
 
-    // Correct FormControl names
     this.form = this.formBuilder.group({
-      nome: ['', Validators.required],
-      email: ['', [Validators.required, Validators.email]],
-      senha: ['', Validators.required],
-      repeatPassword: ['', Validators.required],
-      publico: ['', Validators.required],
-      descricao: ['', Validators.required],
-      crp: ['', Validators.required],
-      cpf: ['', Validators.required],
-      abordagens: new FormControl([]), // Use 'abordagens' for multiple selection
-      data: ['', Validators.required],
-      preco: ['', Validators.required],
-      especialidades: new FormControl([]), // Corrected to 'especialidades'
-      telefone: ['', Validators.required]
+      nome: ['', Validators.required],  // Nome cannot be blank
+      email: ['', [Validators.required, Validators.email]],  // Email must be valid
+      senha: ['', Validators.required],  // Senha cannot be blank
+      repeatPassword: ['', Validators.required],  // Repeat password cannot be blank
+      crp: ['', [Validators.required, Validators.pattern('^[0-9]{7}$')]],  // CRP: exactly 7 digits
+      cpf: ['', [Validators.required, Validators.pattern('^[0-9]{11}$')]],  // CPF: exactly 11 digits
+      data: ['', Validators.required],  // Data de nascimento cannot be blank
+      telefone: ['', [Validators.required, Validators.pattern('^[0-9]{11}$')]],  // Telefone: exactly 11 digits
+      descricao: ['', Validators.required],  // Descrição cannot be blank
+      especialidades: new FormControl([], Validators.required),  // Especialidades cannot be blank
+      abordagens: new FormControl([], Validators.required)  // Abordagens cannot be blank
     });
   }
 
@@ -64,7 +64,7 @@ export class SignUpPsychologistComponent implements OnInit {
       .subscribe(data => {
         this.especialidades = data.especialidades;
       }, error => {
-        console.error('Error loading especialidades:', error);
+        console.error('Erro ao carregar especialidades:', error);
       });
   }
 
@@ -73,13 +73,13 @@ export class SignUpPsychologistComponent implements OnInit {
       .subscribe(data => {
         this.abordagens = data.abordagens;
       }, error => {
-        console.error('Error loading abordagens:', error);
+        console.error('Erro ao carregar abordagens:', error);
       });
   }
 
   async createAccount() {
     if (!this.form.valid || !this.arePasswordsValid()) {
-      console.log('Formulário inválido ou senhas não coincidem');
+      this.toastr.error('Formulário inválido ou senhas não coincidem');
       return;
     }
 
@@ -87,26 +87,30 @@ export class SignUpPsychologistComponent implements OnInit {
       nome: this.form.controls['nome'].value,
       email: this.form.controls['email'].value,
       senha: this.form.controls['senha'].value,
-      publico: this.form.controls['publico'].value,
-      descricao: this.form.controls['descricao'].value,
       crp: this.form.controls['crp'].value,
       cpf: this.form.controls['cpf'].value,
-      abordagens: this.form.controls['abordagens'].value, // Use 'abordagens'
       dataNascimento: this.form.controls['data'].value,
-      preco: this.form.controls['preco'].value,
-      especialidades: this.form.controls['especialidades'].value, // Use 'especialidades'
-      telefone: this.form.controls['telefone'].value
+      telefone: this.form.controls['telefone'].value,
+      descricao: this.form.controls['descricao'].value,
+      especialidades: this.form.controls['especialidades'].value,
+      abordagens: this.form.controls['abordagens'].value,
+      publico: '',
+      preco: 0
     };
 
+    this.isSubmitting = true;
+
     try {
-      console.log(psychologist);
       await this.createPsychologistService.create(psychologist);
-      this.successMessage = 'Conta criada com sucesso! Redirecionando para login...';
+      this.toastr.success('Conta criada com sucesso! Redirecionando para login...');
       setTimeout(() => {
         this.router.navigate(['account/sign-in-psychologist']);
       }, 2000);
-    } catch (error) {
-      console.error('Erro ao criar conta:', error);
+    } catch (error: any) {
+      // Exiba a mensagem de erro clara retornada pelo backend
+      this.toastr.error(JSON.stringify(error.error) || 'Erro ao criar conta');
+    } finally {
+      this.isSubmitting = false;
     }
   }
 

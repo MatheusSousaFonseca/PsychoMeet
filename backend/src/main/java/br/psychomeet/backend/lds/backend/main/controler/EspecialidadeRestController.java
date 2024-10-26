@@ -47,5 +47,4 @@ public class EspecialidadeRestController {
         especialidadeService.delete(id);
         return ResponseEntity.noContent().build();
     }
-
 }

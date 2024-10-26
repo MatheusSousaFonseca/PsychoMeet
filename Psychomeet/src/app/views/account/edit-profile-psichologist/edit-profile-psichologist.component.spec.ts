@@ -1,94 +1,23 @@
-import { Component, Input } from '@angular/core';
-import { FormGroup, ReactiveFormsModule } from '@angular/forms';
-import { PsychologistUpdateService } from '../../../services/psychologist/psychologist-update.service';
-import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';  // Import NgbActiveModal
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { CommonModule } from '@angular/common';
-import { MatOptionModule } from '@angular/material/core';
-import { MatSelectModule } from '@angular/material/select';
-import { Router, ActivatedRoute } from '@angular/router';
-import { FormBuilder, Validators } from '@angular/forms';
-import { PsychologistReadService } from '../../../services/psychologist/psychologist-read.service';
-import { HttpClient } from '@angular/common/http';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-@Component({
-  selector: 'app-edit-profile-psichologist',
-  standalone: true,
-  imports: [ReactiveFormsModule, MatFormFieldModule,CommonModule, MatOptionModule, MatSelectModule],
-  templateUrl: './edit-profile-psichologist.component.html',
-  styleUrls: ['./edit-profile-psichologist.component.css']
-})
-export class EditProfilePsichologistComponent {
+import { EditProfilePsichologistComponent } from './edit-profile-psichologist.component';
 
-  form!: FormGroup;
-  abordagensList: string[] = [];
-  especialidadesList: string[] = [];
+describe('EditProfilePsichologistComponent', () => {
+  let component: EditProfilePsichologistComponent;
+  let fixture: ComponentFixture<EditProfilePsichologistComponent>;
 
-  constructor(
-    private router: Router,
-    private formBuilder: FormBuilder,
-    private psychologistReadService: PsychologistReadService,
-    private psychologistUpdateService: PsychologistUpdateService,
-    private http: HttpClient,
-    private route: ActivatedRoute
-  ) { }
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      imports: [EditProfilePsichologistComponent]
+    })
+    .compileComponents();
 
-  ngOnInit(): void {
-    this.form = this.formBuilder.group({
-      nome: ['', Validators.required],
-      email: ['', [Validators.required, Validators.email]],
-      senha: ['', Validators.required],
-      publico: ['', Validators.required],
-      descricao: ['', Validators.required],
-      crp: ['', Validators.required],
-      cpf: ['', Validators.required],
-      abordagens: [[]],
-      data: ['', Validators.required],
-      preco: ['', Validators.required],
-      especialidades: [[]],
-      telefone: ['', Validators.required]
-    });
+    fixture = TestBed.createComponent(EditProfilePsichologistComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  });
 
-    this.loadPsychologist();
-    this.loadAbordagens();
-    this.loadEspecialidades();
-  }
-
-  async loadPsychologist() {
-    let email = localStorage.getItem("email");
-    let psychologist = await this.psychologistReadService.findByEmail(email!);
-
-    if (psychologist) {
-      this.form.patchValue(psychologist);
-    }
-  }
-
-  loadAbordagens() {
-    this.http.get<{ abordagens: string[] }>('assets/abordagens.json')
-      .subscribe(data => {
-        this.abordagensList = data.abordagens;
-      });
-  }
-
-  loadEspecialidades() {
-    this.http.get<{ especialidades: string[] }>('assets/especialidades.json')
-      .subscribe(data => {
-        this.especialidadesList = data.especialidades;
-      });
-  }
-
-  async salvar() {
-    if (this.form.valid) {
-      try {
-        //await this.psychologistUpdateService.update(this.form.value);
-        this.router.navigate(['/account/my-profile-psichologist']);
-      } catch (error) {
-        console.error('Error updating psychologist:', error);
-      }
-    }
-  }
-
-  voltar() {
-    this.router.navigate(['/account/my-profile-psichologist']);
-  }
-}
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+});

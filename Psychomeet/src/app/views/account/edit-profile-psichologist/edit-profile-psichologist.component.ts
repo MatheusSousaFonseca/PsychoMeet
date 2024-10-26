@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { PsychologistUpdateService } from '../../../services/psychologist/psychologist-update.service';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';  // Import NgbActiveModal
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -10,6 +10,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, Validators } from '@angular/forms';
 import { PsychologistReadService } from '../../../services/psychologist/psychologist-read.service';
 import { HttpClient } from '@angular/common/http';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-edit-profile-psichologist',
@@ -31,23 +32,23 @@ export class EditProfilePsichologistComponent {
     private psychologistReadService: PsychologistReadService,
     private psychologistUpdateService: PsychologistUpdateService,
     private http: HttpClient,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private toastr: ToastrService,
   ) { }
 
   ngOnInit(): void {
     this.form = this.formBuilder.group({
-      nome: ['', Validators.required],
-      email: ['', [Validators.required, Validators.email]],
-      senha: ['', Validators.required],
-      publico: ['', Validators.required],
-      descricao: ['', Validators.required],
-      crp: ['', Validators.required],
-      cpf: ['', Validators.required],
-      abordagens: [[]],
-      data: ['', Validators.required],
-      preco: ['', Validators.required],
-      especialidades: [[]],
-      telefone: ['', Validators.required]
+      nome: ['', Validators.required],  // Nome cannot be blank
+      email: ['', [Validators.required, Validators.email]],  // Email must be valid
+      senha: ['', Validators.required],  // Senha cannot be blank
+      repeatPassword: ['', Validators.required],  // Repeat password cannot be blank
+      crp: ['', [Validators.required, Validators.pattern('^[0-9]{7}$')]],  // CRP: exactly 7 digits
+      cpf: ['', [Validators.required, Validators.pattern('^[0-9]{11}$')]],  // CPF: exactly 11 digits
+      data: ['', Validators.required],  // Data de nascimento cannot be blank
+      telefone: ['', [Validators.required, Validators.pattern('^[0-9]{11}$')]],  // Telefone: exactly 11 digits
+      descricao: ['', Validators.required],  // Descrição cannot be blank
+      especialidades: new FormControl([], Validators.required),  // Especialidades cannot be blank
+      abordagens: new FormControl([], Validators.required)  // Abordagens cannot be blank
     });
 
     this.loadPsychologist();
@@ -85,10 +86,13 @@ export class EditProfilePsichologistComponent {
         this.router.navigate(['/account/my-profile-psichologist']);
       } catch (error) {
         console.error('Error updating psychologist:', error);
+        this.toastr.error('Erro ao atualizar psicologo, tente novamente mais tarde!');
       }
   }
 
   voltar() {
     this.router.navigate(['/account/my-profile-psichologist']);
   }
+
+
 }

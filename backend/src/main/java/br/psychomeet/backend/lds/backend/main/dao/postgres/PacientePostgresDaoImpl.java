@@ -175,6 +175,5 @@ public class PacientePostgresDaoImpl implements PacienteDao {
         }
         return paciente;
     }
-
-
 }
+

@@ -7,12 +7,10 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-
 public class Consulta {
 
     private int id;
     private int agendaId;
     private int notaPaciente;
     private String comentarioPaciente;
-
 }

@@ -18,4 +18,12 @@ public class Pessoa {
     private Date dataNascimento;
     private String cpf;
     private String email;
+    private UserRole role;
+
+    public enum UserRole{
+        PSICOLOGO,
+        PACIENTE,
+
+    }
 }
+

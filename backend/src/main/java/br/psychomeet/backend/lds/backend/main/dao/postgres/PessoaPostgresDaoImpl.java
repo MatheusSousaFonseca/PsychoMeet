@@ -20,7 +20,7 @@ public class PessoaPostgresDaoImpl implements PessoaDao {
 
     @Override
     public int add(Pessoa entity) {
-        String sqlPessoa = "INSERT INTO pessoa (nome, telefone, senha, cpf, email, data_nascimento) VALUES (?, ?, ?, ?, ?, ?) RETURNING id;";
+        String sqlPessoa = "INSERT INTO pessoa (nome, telefone, senha, cpf, email, data_nascimento, role) VALUES (?, ?, ?, ?, ?, ?, ?) RETURNING id;";
         String sqlPaciente = "INSERT INTO paciente (pessoa_id) VALUES (?);"; // Novo SQL para inserir em paciente
 
         PreparedStatement preparedStatementPessoa = null;

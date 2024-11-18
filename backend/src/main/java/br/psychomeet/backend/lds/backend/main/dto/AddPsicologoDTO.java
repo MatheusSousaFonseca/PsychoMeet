@@ -1,5 +1,6 @@
 package br.psychomeet.backend.lds.backend.main.dto;
 
+import br.psychomeet.backend.lds.backend.main.domain.Pessoa;
 import lombok.Data;
 
 import java.util.Date;
@@ -20,4 +21,6 @@ public class AddPsicologoDTO {
         private List<String> especialidades;
         private String senha;
         private String telefone;
+        private Pessoa.UserRole role;
+
 }

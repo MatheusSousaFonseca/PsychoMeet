@@ -11,6 +11,8 @@ DROP TABLE IF EXISTS psicologo;
 DROP TABLE IF EXISTS paciente;
 DROP TABLE IF EXISTS pessoa;
 
+CREATE TYPE user_role AS ENUM ('PSICOLOGO', 'PACIENTE');
+
 -- Creating tables
 CREATE TABLE pessoa (
                         id serial PRIMARY KEY,
@@ -19,7 +21,9 @@ CREATE TABLE pessoa (
                         senha varchar(50) NOT NULL,
                         data_nascimento date NOT NULL,
                         cpf varchar(14) NOT NULL UNIQUE,
-                        email varchar(100) NOT NULL UNIQUE
+                        email varchar(100) NOT NULL UNIQUE,
+                        role user_role not null
+
 );
 
 CREATE TABLE paciente (

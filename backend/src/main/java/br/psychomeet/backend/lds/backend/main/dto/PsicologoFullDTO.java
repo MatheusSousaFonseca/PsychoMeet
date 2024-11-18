@@ -26,6 +26,8 @@ public class PsicologoFullDTO {
     private List<String> especialidades;
     private String senha;
     private String telefone;
+    private Pessoa.UserRole role;
+
 
     // Construtor vazio para uso padrão
     public PsicologoFullDTO() {
@@ -46,6 +48,7 @@ public class PsicologoFullDTO {
         this.especialidades = especialidade;
         this.senha = senha;
         this.telefone = telefone;
+
     }
 
     // Método para retornar os dados de Pessoa
@@ -57,7 +60,8 @@ public class PsicologoFullDTO {
                 this.senha,
                 this.dataNascimento,
                 this.cpf,
-                this.email
+                this.email,
+                this.getRole()
         );
     }
 

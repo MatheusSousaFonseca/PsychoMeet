@@ -34,7 +34,8 @@ export class MyProfilePatientComponent implements OnInit {
       cpf: ['', Validators.required],
       senha: ['', Validators.required],
       data: ['', Validators.required],
-      telefone: ['', Validators.required]
+      telefone: ['', Validators.required],
+      role: 'PACIENTE'
     });
 
     this.loadUser();

@@ -11,5 +11,6 @@ export interface Psychologist {
   preco: number,
   especialidades: string[],
   senha: string,
-  telefone: string
+  telefone: string,
+  role: string
 }

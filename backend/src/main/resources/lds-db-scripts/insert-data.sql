@@ -3,8 +3,8 @@
 -- Insere dados na tabela pessoa
 INSERT INTO pessoa (telefone, nome, senha, data_nascimento, cpf, email)
 VALUES
-    ('11111111111', 'João Silva', 'senha123', '1985-06-15', '12345678900', 'joao@gmail.com'),
-    ('22222222222', 'Maria Oliveira', 'senha456', '1990-10-05', '98765432100', 'maria@gmail.com');
+    ('11111111111', 'João Silva', 'senha123', '1985-06-15', '12345678900', 'joao@gmail.com', 'PSICOLOGO'),
+    ('22222222222', 'Maria Oliveira', 'senha456', '1990-10-05', '98765432100', 'maria@gmail.com', 'PSICOLOGO');
 
 
 -- Insere dados na tabela paciente

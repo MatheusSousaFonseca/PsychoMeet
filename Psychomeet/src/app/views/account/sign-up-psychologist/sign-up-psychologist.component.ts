@@ -94,6 +94,7 @@ export class SignUpPsychologistComponent implements OnInit {
       descricao: this.form.controls['descricao'].value,
       especialidades: this.form.controls['especialidades'].value,
       abordagens: this.form.controls['abordagens'].value,
+      role: 'PSICOLOGO',
       publico: '',
       preco: 0
     };

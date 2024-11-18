@@ -31,7 +31,7 @@ public class PsicologoPostgresDaoImpl implements PsicologoDao {
 
     @Override
     public int add(AddPsicologoDTO entity) {
-        String sqlPessoa = "INSERT INTO pessoa (telefone, nome, senha, data_nascimento, cpf, email) VALUES (?, ?, ?, ?, ?, ?) RETURNING id;";
+        String sqlPessoa = "INSERT INTO pessoa (telefone, nome, senha, data_nascimento, cpf, email, role) VALUES (?, ?, ?, ?, ?, ?, ?) RETURNING id;";
         String sqlPsicologo = "INSERT INTO psicologo (pessoa_id, crp, descricao) VALUES (?, ?, ?) RETURNING id;";
         String sqlPaciente = "INSERT INTO paciente (pessoa_id) VALUES (?);"; // Novo SQL para inserir em paciente
         String sqlEspecialidade = "INSERT INTO psicologo_especialidade (psicologo_id, especialidade_id) VALUES (?, ?);";

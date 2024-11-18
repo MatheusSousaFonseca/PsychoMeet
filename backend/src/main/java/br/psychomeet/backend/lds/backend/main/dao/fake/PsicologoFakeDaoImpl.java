@@ -27,8 +27,8 @@ public class PsicologoFakeDaoImpl implements PsicologoDao {
         System.out.println("Instância de psicologo fake dao obtida");
 
         // Criando instâncias de Pessoa
-        Pessoa pessoa1 = new Pessoa(getNextId(), "João Silva", "joao@exemplo.com", "123456789", stringToDate("1990-01-01"), "99999-9999", "123.456.789-00");
-        Pessoa pessoa2 = new Pessoa(getNextId(), "Maria Oliveira", "maria@exemplo.com", "987654321", stringToDate("1992-02-02"), "88888-8888", "987.654.321-00");
+        Pessoa pessoa1 = new Pessoa(getNextId(), "João Silva", "joao@exemplo.com", "123456789", stringToDate("1990-01-01"), "99999-9999", "123.456.789-00", Pessoa.UserRole.valueOf("PSICOLOGO"));
+        Pessoa pessoa2 = new Pessoa(getNextId(), "Maria Oliveira", "maria@exemplo.com", "987654321", stringToDate("1992-02-02"), "88888-8888", "987.654.321-00", Pessoa.UserRole.valueOf("PSICOLOGO"));
 
         // Criando instâncias de Psicologo associadas às pessoas
         Psicologo psicologo1 = new Psicologo(getNextId(), pessoa1.getId(), "CRP12345", "Descrição 1");
@@ -45,7 +45,7 @@ public class PsicologoFakeDaoImpl implements PsicologoDao {
         entity.setId(id);
 
         // Criando uma pessoa genérica para o psicólogo
-        Pessoa pessoa = new Pessoa(id, entity.getTelefone(), entity.getNome(), entity.getSenha(), entity.getDataNascimento(), entity.getCpf(), entity.getEmail());
+        Pessoa pessoa = new Pessoa(id, entity.getTelefone(), entity.getNome(), entity.getSenha(), entity.getDataNascimento(), entity.getCpf(), entity.getEmail(), entity.getRole());
 
         // Criando Psicologo instance
         Psicologo psicologo = new Psicologo(id, pessoa.getId(), entity.getCrp(), entity.getDescricao());

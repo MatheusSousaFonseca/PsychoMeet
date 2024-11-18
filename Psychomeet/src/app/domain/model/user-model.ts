@@ -5,5 +5,6 @@ export interface User {
     senha: string,
     telefone: string,
     dataNascimento: Date,
-    cpf: number
+    cpf: number,
+    role: string
 }

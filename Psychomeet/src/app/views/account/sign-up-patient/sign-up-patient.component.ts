@@ -68,7 +68,8 @@ export class SignUpPatientComponent implements OnInit {
       senha: this.form.controls['senha'].value,
       cpf: this.form.controls['cpf'].value,
       dataNascimento: this.form.controls['data'].value,
-      telefone: this.form.controls['telefone'].value
+      telefone: this.form.controls['telefone'].value,
+      role: 'PACIENTE'
     };
 
     this.isSubmitting = true; // Iniciar o estado de envio

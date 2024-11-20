@@ -20,6 +20,14 @@ class LoginPage extends Page {
         return $('#btnLogin');
     }
 
+    public async getMessageToastr() {
+        const toastrElement = $(`.toast-container`);
+        return toastrElement;
+    }
+
+
+
+
     /**
      * a method to encapsule automation code to interact with the page
      * e.g. to login using username and password

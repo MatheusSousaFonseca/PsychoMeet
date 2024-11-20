@@ -13,7 +13,7 @@ class SecurePage extends Page {
     }
 
     public get flashAlert2 () {
-        return $('#titulo2');
+        return $('#btnLogin');
     }
 }
 

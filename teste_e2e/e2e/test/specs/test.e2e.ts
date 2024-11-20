@@ -17,20 +17,32 @@ describe('My Login application', () => {
     it('should not login with invalid password', async () => {
         await LoginPage.open()
         await LoginPage.login('joao@gmail.com', 'senha12345')
-        await expect(SecurePage.flashAlert2).toBeExisting()
-        await expect(SecurePage.flashAlert2).toHaveText(
-            expect.stringContaining('Área do Psicólogo'))
-        await expect(SecurePage.flashAlert2).toMatchSnapshot('Área do Psicólogo')
-
+        await browser.pause(3000);
+        const messageToastr = await LoginPage.getMessageToastr();
+        const text = await messageToastr.getText();
+        expect(text).toContain('Dados inválidos');
+        await browser.pause(3000);
     })
     
     it('should not login with invalid email', async () => {
         await LoginPage.open()
-        await LoginPage.login('joaoo@gmail.com', 'senha123')
-        await expect(SecurePage.flashAlert).toBeExisting()
-        await expect(SecurePage.flashAlert).toHaveText(
-            expect.stringContaining('You did not log into a secure area!'))
-        await expect(SecurePage.flashAlert).toMatchSnapshot('flashAlert')
+        await LoginPage.login('joaooo@gmail.com', 'senha123')
+        await browser.pause(3000);
+        const messageToastr = await LoginPage.getMessageToastr();
+        const text = await messageToastr.getText();
+        expect(text).toContain('Dados inválidos');
+        await browser.pause(3000);
     })
 })
+
+
+describe('My Login application', () => {
+    it('should have the submit button disabled when the form is incomplete', async () => {
+        await LoginPage.open(); 
+        await LoginPage.inputEmail.setValue('joao@gmail.com');
+        await LoginPage.inputSenha.setValue('');
+        const isButtonDisabled = await LoginPage.btnSubmit.getAttribute('disabled');
+        await expect(isButtonDisabled).toBe('true');
+    });
+});
 

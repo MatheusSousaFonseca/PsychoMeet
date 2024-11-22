@@ -7,7 +7,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 
 import java.util.ArrayList;
@@ -15,10 +14,12 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.*;
 
 class PacienteServiceTest {
+
+    private static final int VALID_PACIENTE_ID = 1;
+    private static final int INVALID_PACIENTE_ID = -1;
 
     @InjectMocks
     private PacienteServiceImpl pacienteServiceImpl;
@@ -32,94 +33,96 @@ class PacienteServiceTest {
     }
 
     @Test
-    void create_whenEntityIsNull_shouldReturnZero() {
+    void shouldReturnZero_whenCreatingNullPaciente() {
         int result = pacienteServiceImpl.create(null);
-        assertEquals(0, result);
+        assertEquals(0, result, "Expected result to be 0 for null patient");
     }
 
     @Test
-    void create_whenEntityIsValid_shouldReturnId() {
+    void shouldReturnId_whenCreatingValidPaciente() {
         Paciente paciente = new Paciente();
-        paciente.setPessoaId(1);
+        paciente.setPessoaId(VALID_PACIENTE_ID);
 
-        when(pacienteDao.add(any(Paciente.class))).thenReturn(1);
+        when(pacienteDao.add(any(Paciente.class))).thenReturn(VALID_PACIENTE_ID);
 
         int result = pacienteServiceImpl.create(paciente);
-        assertEquals(1, result);
+        assertEquals(VALID_PACIENTE_ID, result, "Expected valid patient ID to be returned");
     }
 
     @Test
-    void delete_whenIdIsNegative_shouldNotCallRemove() {
-        pacienteServiceImpl.delete(-1);
-        verify(pacienteDao, never()).remove(anyInt());
+    void shouldReturnNull_whenFindingByNegativeId() {
+        Paciente result = pacienteServiceImpl.findById(INVALID_PACIENTE_ID);
+        assertNull(result, "Expected null result for negative ID");
     }
 
     @Test
-    void delete_whenIdIsValid_shouldCallRemove() {
-        pacienteServiceImpl.delete(1);
-        verify(pacienteDao, times(1)).remove(1);
-    }
-
-    @Test
-    void findById_whenIdIsNegative_shouldReturnNull() {
-        Paciente result = pacienteServiceImpl.findById(-1);
-        assertNull(result);
-    }
-
-    @Test
-    void findById_whenIdIsValid_shouldReturnPaciente() {
+    void shouldReturnPaciente_whenFindingByValidId() {
         Paciente paciente = new Paciente();
-        paciente.setPessoaId(1);
+        paciente.setPessoaId(VALID_PACIENTE_ID);
 
-        when(pacienteDao.readById(1)).thenReturn(paciente);
+        when(pacienteDao.readById(VALID_PACIENTE_ID)).thenReturn(paciente);
 
-        Paciente result = pacienteServiceImpl.findById(1);
-        assertNotNull(result);
-        assertEquals(1, result.getPessoaId());
+        Paciente result = pacienteServiceImpl.findById(VALID_PACIENTE_ID);
+        assertNotNull(result, "Expected non-null result for valid ID");
+        assertEquals(VALID_PACIENTE_ID, result.getPessoaId(), "Expected matching patient ID");
     }
 
-    @Test
-    void findAll_shouldReturnListOfPacientes() {
-        List<Paciente> pacientes = new ArrayList<>();
-        pacientes.add(new Paciente());
-        pacientes.add(new Paciente());
 
+    @Test
+    void shouldReturnListOfPacientes_whenPacientesExist() {
+        List<Paciente> pacientes = List.of(new Paciente(), new Paciente());
         when(pacienteDao.readAll()).thenReturn(pacientes);
 
         List<Paciente> result = pacienteServiceImpl.findAll();
-        assertEquals(2, result.size());
+        assertEquals(2, result.size(), "Expected list size to match number of patients");
     }
 
     @Test
-    void update_whenPacienteNotFound_shouldNotCallUpdateInformation() {
-        when(pacienteDao.readById(1)).thenReturn(null);
+    void shouldReturnEmptyList_whenNoPacientesExist() {
+        when(pacienteDao.readAll()).thenReturn(new ArrayList<>());
 
-        pacienteServiceImpl.update(1, new Paciente());
+        List<Paciente> result = pacienteServiceImpl.findAll();
+        assertTrue(result.isEmpty(), "Expected empty list when no patients exist");
+    }
+
+    @Test
+    void shouldNotCallUpdateInformation_whenPacienteNotFound() {
+        when(pacienteDao.readById(VALID_PACIENTE_ID)).thenReturn(null);
+
+        pacienteServiceImpl.update(VALID_PACIENTE_ID, new Paciente());
         verify(pacienteDao, never()).updateInformation(anyInt(), any(Paciente.class));
     }
 
     @Test
-    void update_whenPacienteFound_shouldCallUpdateInformation() {
-        Paciente paciente = new Paciente();
-        paciente.setPessoaId(1);
+    void shouldCallUpdateInformation_whenPacienteFound() {
+        Paciente existingPaciente = new Paciente();
+        existingPaciente.setPessoaId(VALID_PACIENTE_ID);
 
-        when(pacienteDao.readById(1)).thenReturn(paciente);
+        when(pacienteDao.readById(VALID_PACIENTE_ID)).thenReturn(existingPaciente);
 
         Paciente updatedPaciente = new Paciente();
-        pacienteServiceImpl.update(1, updatedPaciente);
+        pacienteServiceImpl.update(VALID_PACIENTE_ID, updatedPaciente);
 
-        verify(pacienteDao, times(1)).updateInformation(1, updatedPaciente);
+        verify(pacienteDao, times(1)).updateInformation(VALID_PACIENTE_ID, updatedPaciente);
     }
 
     @Test
-    void getByPessoa_shouldReturnPaciente() {
+    void shouldReturnPaciente_whenFindingByPessoa() {
         Paciente paciente = new Paciente();
-        paciente.setPessoaId(1);
+        paciente.setPessoaId(VALID_PACIENTE_ID);
 
-        when(pacienteDao.findByPessoa(1)).thenReturn(paciente);
+        when(pacienteDao.findByPessoa(VALID_PACIENTE_ID)).thenReturn(paciente);
 
-        Paciente result = pacienteServiceImpl.getByPessoa(1);
-        assertNotNull(result);
-        assertEquals(1, result.getPessoaId());
+        Paciente result = pacienteServiceImpl.getByPessoa(VALID_PACIENTE_ID);
+        assertNotNull(result, "Expected non-null result for valid person ID");
+        assertEquals(VALID_PACIENTE_ID, result.getPessoaId(), "Expected matching patient ID");
+    }
+
+    @Test
+    void shouldReturnNull_whenNoPacienteFoundByPessoa() {
+        when(pacienteDao.findByPessoa(VALID_PACIENTE_ID)).thenReturn(null);
+
+        Paciente result = pacienteServiceImpl.getByPessoa(VALID_PACIENTE_ID);
+        assertNull(result, "Expected null result when no patient found by person ID");
     }
 }

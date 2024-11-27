@@ -16,11 +16,9 @@ import java.util.List;
 public class PessoaRestController {
 
     private final PessoaService pessoaService;
-    private final AuthenticationService authenticationService;
 
-    public PessoaRestController(PessoaService pessoaService, AuthenticationService authenticationService) {
+    public PessoaRestController(PessoaService pessoaService) {
         this.pessoaService = pessoaService;
-        this.authenticationService = authenticationService;
     }
 
     @GetMapping()
@@ -74,15 +72,5 @@ public class PessoaRestController {
         return response ? ResponseEntity.ok().build() : ResponseEntity.badRequest().build();
     }
 
-    @GetMapping("/auth")
-    public ResponseEntity<Pessoa> authenticate(@RequestParam("email") String email,
-                                               @RequestParam("senha") String senha) {
-//        Pessoa pessoa = pessoaService.findByEmail(email);
-        Pessoa pessoa = authenticationService.authenticate(email, senha);
-        if (pessoa != null) {
-            return ResponseEntity.ok(pessoa);
-        } else {
-            return ResponseEntity.status(401).build();
-        }
-    }
+
 }

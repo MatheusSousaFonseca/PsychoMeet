@@ -19,22 +19,31 @@ export class AuthenticationService {
   }
 
   async authenticateUser(credential: UserCredential) {
-    console.log('trying to authenticate...');
+    console.log('Trying to authenticate...');
     console.log(credential);
 
-    // Agora esperamos um único objeto do tipo UserCredential
-    let apiResponse = await firstValueFrom(this.http.get<UserCredential>(`http://localhost:8080/api/pessoa/auth?email=${credential.email}&senha=${credential.senha}`));
-    console.log("RESPOSTA DA API");
-    console.log(apiResponse);
+    try {
+      // Realizando a requisição via POST com o objeto UserCredential no corpo
+      let apiResponse = await firstValueFrom(
+        this.http.post<UserCredential>('http://localhost:8080/auth', credential)
+      );
 
-    if (apiResponse == null) {
-      throw new Error('Dados inválidos');
+      console.log("API Response:");
+      console.log(apiResponse);
+
+      if (!apiResponse) {
+        throw new Error('Dados inválidos');
+      }
+
+      // Adicionando as credenciais ao localStorage
+      this.addCredentialsToLocalStorageUser(apiResponse.email);
+      return true;
+    } catch (error) {
+      console.error('Erro ao autenticar:', error);
+      throw new Error('Falha na autenticação');
     }
-
-    // Aqui estamos acessando diretamente apiResponse.email, já que não é mais um array
-    this.addCredentialsToLocalStorageUser(apiResponse.email);
-    return true;
   }
+
 
 
   async authenticatePsychologist(credential: PsychologistCredential) {
@@ -42,7 +51,7 @@ export class AuthenticationService {
     console.log(credential);
 
     try{
-      const apiResponse = await firstValueFrom(this.http.get<Psychologist>(`http://localhost:8080/api/pessoa/auth?email=${credential.email}&senha=${credential.senha}`));
+      const apiResponse = await firstValueFrom(this.http.post<UserCredential>('http://localhost:8080/auth', credential));
     console.log("RESPOSTA DA API");
     console.log(apiResponse);
 

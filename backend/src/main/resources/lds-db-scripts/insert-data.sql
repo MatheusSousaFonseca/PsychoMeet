@@ -1,10 +1,11 @@
 -- DML para o schema
 --Feito com ChatGPT
 -- Insere dados na tabela pessoa
+CREATE EXTENSION IF NOT EXISTS pgcrypto;
 INSERT INTO pessoa (telefone, nome, senha, data_nascimento, cpf, email, role)
 VALUES
-    ('11111111111', 'João Silva', 'senha123', '1985-06-15', '12345678900', 'joao@gmail.com', 'PSICOLOGO'),
-    ('22222222222', 'Maria Oliveira', 'senha456', '1990-10-05', '98765432100', 'maria@gmail.com', 'PSICOLOGO');
+    ('11111111111', 'João Silva', crypt('senha123', gen_salt('bf')), '1985-06-15', '12345678900', 'joao@gmail.com', 'PSICOLOGO'),
+    ('22222222222', 'Maria Oliveira', crypt('senha456', gen_salt('bf')), '1990-10-05', '98765432100', 'maria@gmail.com', 'PSICOLOGO');
 
 
 -- Insere dados na tabela paciente

@@ -12,13 +12,20 @@ import br.psychomeet.backend.lds.backend.main.port.dao.paciente.PacienteDao;
 import br.psychomeet.backend.lds.backend.main.port.dao.psicologo.PsicologoDao;
 import br.psychomeet.backend.lds.backend.main.port.dao.user.PessoaDao;
 import br.psychomeet.backend.lds.backend.main.port.dao.user.UserDao;
+import br.psychomeet.backend.lds.backend.main.port.service.authentication.AuthenticationService;
 import br.psychomeet.backend.lds.backend.main.port.service.especialidade.EspecialidadeService;
+import br.psychomeet.backend.lds.backend.main.port.service.user.PessoaService;
+import br.psychomeet.backend.lds.backend.main.security.JwtService;
+import br.psychomeet.backend.lds.backend.main.security.JwtServiceImpl;
+import br.psychomeet.backend.lds.backend.main.service.authentication.AuthenticationServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import br.psychomeet.backend.lds.backend.main.port.dao.disponibilidade.DisponibilidadeDao;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.sql.Connection;
 
@@ -103,6 +110,22 @@ public class AppConfiguration {
     @Profile("prod")
     public EspecialidadeDao getEspecialidadePostgresDao(final Connection connection) {
         return new EspecialidadePostgresDaoImpl(connection);
+    }
+    @Bean
+    @Profile("prod")
+    public AuthenticationService authenticationService(final PessoaService pessoaService, final PasswordEncoder passwordEncoder){
+        return new AuthenticationServiceImpl(pessoaService, passwordEncoder);
+    }
+
+    @Bean
+    public PasswordEncoder passwordEncoder(){
+        return new BCryptPasswordEncoder();
+    }
+
+    @Bean
+    @Profile("prod")
+    public JwtService jwtService(){
+        return new JwtServiceImpl();
     }
 }
 

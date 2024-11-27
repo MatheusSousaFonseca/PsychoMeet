@@ -18,7 +18,7 @@ CREATE TABLE pessoa (
                         id serial PRIMARY KEY,
                         telefone varchar(15) NOT NULL UNIQUE,
                         nome varchar(100) NOT NULL,
-                        senha varchar(50) NOT NULL,
+                        senha varchar(100) NOT NULL,
                         data_nascimento date NOT NULL,
                         cpf varchar(14) NOT NULL UNIQUE,
                         email varchar(100) NOT NULL UNIQUE,

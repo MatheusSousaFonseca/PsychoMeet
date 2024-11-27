@@ -5,32 +5,35 @@ import br.psychomeet.backend.lds.backend.main.port.service.authentication.Authen
 import br.psychomeet.backend.lds.backend.main.port.service.paciente.PacienteService;
 import br.psychomeet.backend.lds.backend.main.port.service.psicologo.PsicologoService;
 import br.psychomeet.backend.lds.backend.main.port.service.user.PessoaService;
+import org.springframework.security.authentication.BadCredentialsException;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
 public class AuthenticationServiceImpl implements AuthenticationService {
 
     private final PessoaService pessoaService;
-    private final PacienteService pacienteService;
-    private final PsicologoService psicologoService;
+    private final PasswordEncoder passwordEncoder;
 
-    public AuthenticationServiceImpl(PessoaService pessoaService, PacienteService pacienteService, PsicologoService psicologoService) {
+
+    public AuthenticationServiceImpl(PessoaService pessoaService, PasswordEncoder passwordEncoder) {
         this.pessoaService = pessoaService;
-        this.pacienteService = pacienteService;
-        this.psicologoService = psicologoService;
+        this.passwordEncoder = passwordEncoder;
+
     }
 
 
-    @Override
     public Pessoa authenticate(String email, String password) {
         Pessoa user = pessoaService.findByEmail(email);
-        System.out.println(user);
-        if (!user.getSenha().equals(password)) {
-
-            return null;
-
+        if (user == null) {
+            throw new UsernameNotFoundException("E-mail não encontrado");
         }
-
+        System.out.println(user.getSenha());
+        if (!passwordEncoder.matches(password, user.getSenha())) {
+            throw new BadCredentialsException("Credenciais inválidas");
+        }
         return user;
+
     }
 }

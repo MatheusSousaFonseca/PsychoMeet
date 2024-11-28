@@ -216,6 +216,7 @@ public class PessoaPostgresDaoImpl implements PessoaDao {
                     pessoa.setCpf(resultSet.getString("cpf"));
                     pessoa.setEmail(resultSet.getString("email"));
                     pessoa.setDataNascimento(resultSet.getDate("data_nascimento"));
+                    pessoa.setRole(Pessoa.UserRole.valueOf(resultSet.getString("role")));
                 }
             }
         } catch (SQLException e) {

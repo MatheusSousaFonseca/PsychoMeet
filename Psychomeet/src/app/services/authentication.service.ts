@@ -36,7 +36,7 @@ export class AuthenticationService {
       }
 
       // Adicionando as credenciais ao localStorage
-      this.addCredentialsToLocalStorageUser(credential.email,apiResponse.token );
+      this.addCredentialsToLocalStorageUser(credential.email, apiResponse.token );
       return true;
     } catch (error) {
       console.error('Erro ao autenticar:', error);

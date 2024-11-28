@@ -37,7 +37,7 @@ public class AuthController {
         if (authenticatedUser == null){
             throw new BadCredentialsException("Invalid email or password");
         }
-
+        System.out.println(authenticatedUser);
         UserDetails userDetails = userDetailsService.loadUserByUsername(email);
 
         if (userDetails == null){

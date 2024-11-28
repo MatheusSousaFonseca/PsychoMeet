@@ -36,7 +36,7 @@ export class AuthenticationService {
       }
 
       // Adicionando as credenciais ao localStorage
-      this.addCredentialsToLocalStorageUser(apiResponse.email);
+      this.addCredentialsToLocalStorageUser(credential.email,apiResponse.token );
       return true;
     } catch (error) {
       console.error('Erro ao autenticar:', error);
@@ -61,6 +61,7 @@ export class AuthenticationService {
     }
 
     let psychologist = await this.psychologistReadService.findByEmail(apiResponse.email!);
+    this.addCredentialsToLocalStorageUser(credential.email,apiResponse.token);
 
     console.log(psychologist);
 
@@ -89,9 +90,9 @@ export class AuthenticationService {
     return false;
   }
 
-  addCredentialsToLocalStorageUser(email: string) {
+  addCredentialsToLocalStorageUser(email: string, token: string) {
     localStorage.setItem('email', email);
-    localStorage.setItem('token', new Date().toLocaleTimeString());
+    localStorage.setItem('token', token);
   }
 
 

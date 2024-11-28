@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { User } from '../../domain/model/user-model';
 import { firstValueFrom } from 'rxjs';
@@ -10,8 +10,15 @@ export class UserCreateService {
 
   constructor(private http: HttpClient) { }
 
+  private getHeaders(): HttpHeaders {
+    const token = localStorage.getItem('token'); 
+    return new HttpHeaders({
+      Authorization: `Bearer ${token}` 
+    });
+  }
+
   create(user: User) {
-    return firstValueFrom(this.http.post<User>('http://localhost:8080/api/pessoa', user))
+    return firstValueFrom(this.http.post<User>('http://localhost:8080/api/pessoa', {body: user, Headers: this.getHeaders()}))
       .catch(error => {
         throw new Error(error.error ? error.error : 'Erro desconhecido');
       });

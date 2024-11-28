@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Availability } from '../../domain/model/disponibilidade-psicologo-model';
 import { firstValueFrom } from 'rxjs';
@@ -10,10 +10,16 @@ export class AvailabilityDeleteService {
 
   constructor(private http: HttpClient) { }
 
+  private getHeaders(): HttpHeaders {
+    const token = localStorage.getItem('token'); 
+    return new HttpHeaders({
+      Authorization: `Bearer ${token}` 
+    });
+  }
+
   delete(availability: Availability) {
-    // Passa o objeto Availability no campo 'body' do segundo argumento (options)
     return firstValueFrom(
-      this.http.delete('http://localhost:8080/api/disponibilidade/datahora', { body: availability })
+      this.http.delete('http://localhost:8080/api/disponibilidade/datahora', { body: availability, headers: this.getHeaders() })
     );
   }
 }

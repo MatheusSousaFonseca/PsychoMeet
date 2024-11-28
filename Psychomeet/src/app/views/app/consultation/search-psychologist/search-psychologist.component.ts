@@ -73,11 +73,11 @@ export class SearchPsychologistComponent implements OnInit {
 
   loadEspecialidades() {
     this.http.get<{ especialidades: string[] }>('assets/especialidades.json')
-      .subscribe(data => {
-        this.especialidades = data.especialidades;
-      }, error => {
-        console.error('Erro ao carregar especialidades:', error);
-      });
+    .subscribe(data => {
+      this.especialidades = data.especialidades;
+    }, error => {
+      console.error('Erro ao carregar especialidades:', error);
+    });
   }
 
   logout() {

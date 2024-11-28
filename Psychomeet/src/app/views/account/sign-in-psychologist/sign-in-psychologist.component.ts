@@ -47,14 +47,14 @@ export class SignInPsychologistComponent implements OnInit {
   async login() {
 
 
-    let credentials: PsychologistCredential = {
+    let credentials: UserCredential = {
       email: this.email.value!,
-      senha: this.senha.value!
+      senha: this.senha.value!,
+      token: ""
     };
 
     try {
-      await this.authenticationService.authenticatePsychologist(credentials);
-      this.authenticationService.addCredentialsToLocalStorageUser(credentials.email);
+      await this.authenticationService.authenticateUser(credentials);
       await this.router.navigate(['consultation/view-consultation-psychologist']);
     } catch (e: any) {
       console.error(`erro: ${e}`);

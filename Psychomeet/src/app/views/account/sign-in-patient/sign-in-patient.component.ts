@@ -48,12 +48,12 @@ export class SignInPatientComponent implements OnInit {
 
     let credentials: UserCredential = {
       email: this.email.value!,
-      senha: this.senha.value!
+      senha: this.senha.value!,
+      token: ""
     };
 
     try {
       await this.authenticationService.authenticateUser(credentials);
-      this.authenticationService.addCredentialsToLocalStorageUser(credentials.email);
       await this.router.navigate(['consultation/search-psychologist']);
     } catch (e: any) {
       console.error(`erro: ${e}`);

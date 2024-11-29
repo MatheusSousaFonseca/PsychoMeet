@@ -79,5 +79,20 @@ public class PessoaServiceImpl implements PessoaService {
         }
         return pessoaDao.readByEmail(email);
     }
+
+    @Override
+    public void updateFoto(int id, byte[] foto) {
+        Pessoa pessoa = findById(id);
+        if (pessoa == null) {
+            throw new RuntimeException("Pessoa não encontrada para atualizar a foto");
+        }
+        pessoaDao.updateFoto(id, foto);
+    }
+
+    @Override
+    public byte[] getFoto(int id) {
+        return pessoaDao.readFotoById(id);
+    }
 }
+
 

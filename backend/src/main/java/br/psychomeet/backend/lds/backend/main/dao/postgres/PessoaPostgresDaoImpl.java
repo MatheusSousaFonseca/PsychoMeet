@@ -20,7 +20,7 @@ public class PessoaPostgresDaoImpl implements PessoaDao {
 
     @Override
     public int add(Pessoa entity) {
-        String sqlPessoa = "INSERT INTO pessoa (nome, telefone, senha, cpf, email, data_nascimento, role) VALUES (?, ?, ?, ?, ?, ?, ?) RETURNING id;";
+        String sqlPessoa = "INSERT INTO pessoa (nome, telefone, senha, cpf, email, data_nascimento, role) VALUES (?, ?, ?, ?, ?, ?, ?::user_role) RETURNING id;";
         String sqlPaciente = "INSERT INTO paciente (pessoa_id) VALUES (?);"; // Novo SQL para inserir em paciente
 
         PreparedStatement preparedStatementPessoa = null;
@@ -38,6 +38,7 @@ public class PessoaPostgresDaoImpl implements PessoaDao {
             preparedStatementPessoa.setString(4, entity.getCpf());
             preparedStatementPessoa.setString(5, entity.getEmail());
             preparedStatementPessoa.setDate(6, new Date(entity.getDataNascimento().getTime()));
+            preparedStatementPessoa.setString(7, entity.getRole().name());
 
             preparedStatementPessoa.execute();
 
@@ -131,6 +132,7 @@ public class PessoaPostgresDaoImpl implements PessoaDao {
                     pessoa.setCpf(resultSet.getString("cpf"));
                     pessoa.setEmail(resultSet.getString("email"));
                     pessoa.setDataNascimento(resultSet.getDate("data_nascimento"));
+                    pessoa.setRole(Pessoa.UserRole.valueOf(resultSet.getString("role"))) ;
                 }
             }
         } catch (SQLException e) {
@@ -157,6 +159,7 @@ public class PessoaPostgresDaoImpl implements PessoaDao {
                 pessoa.setCpf(resultSet.getString("cpf"));
                 pessoa.setEmail(resultSet.getString("email"));
                 pessoa.setDataNascimento(resultSet.getDate("data_nascimento"));
+                pessoa.setRole(Pessoa.UserRole.valueOf(resultSet.getString("role"))) ;
 
                 pessoas.add(pessoa);
             }
@@ -216,7 +219,7 @@ public class PessoaPostgresDaoImpl implements PessoaDao {
                     pessoa.setCpf(resultSet.getString("cpf"));
                     pessoa.setEmail(resultSet.getString("email"));
                     pessoa.setDataNascimento(resultSet.getDate("data_nascimento"));
-                    pessoa.setRole(Pessoa.UserRole.valueOf(resultSet.getString("role")));
+                    pessoa.setRole(Pessoa.UserRole.valueOf(resultSet.getString("role"))) ;
                 }
             }
         } catch (SQLException e) {
@@ -232,4 +235,50 @@ public class PessoaPostgresDaoImpl implements PessoaDao {
     public boolean updatePassword(int id, String oldPassword, String newPassword) {
         return false;
     }
+
+
+    //Tratamento de Imagem
+    @Override
+    public void updateFoto(int id, byte[] foto) {
+        String sql = "UPDATE pessoa SET foto = ? WHERE id = ?;";
+
+        try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+            connection.setAutoCommit(false);
+
+            preparedStatement.setBytes(1, foto); // Salvar a foto como array de bytes
+            preparedStatement.setInt(2, id);
+
+            preparedStatement.executeUpdate();
+            connection.commit();
+        } catch (SQLException e) {
+            try {
+                connection.rollback();
+            } catch (SQLException ex) {
+                logger.severe("Erro ao desfazer a transação: " + ex.getMessage());
+            }
+            logger.severe("Erro ao atualizar a foto: " + e.getMessage());
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Override
+    public byte[] readFotoById(int id) {
+        String sql = "SELECT foto FROM pessoa WHERE id = ?;";
+        byte[] foto = null;
+
+        try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+            preparedStatement.setInt(1, id);
+
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                if (resultSet.next()) {
+                    foto = resultSet.getBytes("foto"); // Recuperar a foto como array de bytes
+                }
+            }
+        } catch (SQLException e) {
+            logger.severe("Erro ao buscar a foto: " + e.getMessage());
+            throw new RuntimeException(e);
+        }
+        return foto;
+    }
+
 }

@@ -22,7 +22,8 @@ CREATE TABLE pessoa (
                         data_nascimento date NOT NULL,
                         cpf varchar(14) NOT NULL UNIQUE,
                         email varchar(100) NOT NULL UNIQUE,
-                        role user_role not null
+                        role user_role not null,
+                        foto bytea
 
 );
 

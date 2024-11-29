@@ -140,4 +140,14 @@ public class PessoaFakeDaoImpl implements PessoaDao {
         }
         return false;
     }
+
+    @Override
+    public void updateFoto(int id, byte[] foto) {
+
+    }
+
+    @Override
+    public byte[] readFotoById(int id) {
+        return new byte[0];
+    }
 }

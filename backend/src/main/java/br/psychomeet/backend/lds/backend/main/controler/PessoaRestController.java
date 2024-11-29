@@ -6,7 +6,9 @@ import br.psychomeet.backend.lds.backend.main.port.service.authentication.Authen
 import br.psychomeet.backend.lds.backend.main.port.service.user.PessoaService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.net.URI;
 import java.util.List;
@@ -52,7 +54,6 @@ public class PessoaRestController {
         }
     }
 
-
     @PutMapping("/{id}")
     public ResponseEntity<Void> updateEntity(@PathVariable final int id, @RequestBody final Pessoa data) {
         pessoaService.update(id, data);
@@ -71,6 +72,31 @@ public class PessoaRestController {
         final boolean response = pessoaService.updatePassword(pessoa.getId(), data.getOldPassword(), data.getNewPassword());
         return response ? ResponseEntity.ok().build() : ResponseEntity.badRequest().build();
     }
+
+    //Tratamento de Imagens
+    @PostMapping("/{id}/upload-foto")
+    public ResponseEntity<String> uploadFoto(@PathVariable int id, @RequestParam("file") MultipartFile file) {
+        try {
+            byte[] foto = file.getBytes();
+            pessoaService.updateFoto(id, foto);
+            return ResponseEntity.ok("Foto atualizada com sucesso!");
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body("Erro ao atualizar a foto: " + e.getMessage());
+        }
+    }
+
+    @GetMapping("/{id}/foto")
+    public ResponseEntity<byte[]> getFoto(@PathVariable int id) {
+        byte[] foto = pessoaService.getFoto(id);
+        if (foto != null) {
+            return ResponseEntity.ok()
+                    .header("Content-Type", "image/jpeg")
+                    .body(foto);
+        }
+        return ResponseEntity.notFound().build();
+    }
+
+
 
 
 }

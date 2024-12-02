@@ -2,6 +2,8 @@ package br.psychomeet.backend.lds.backend.main.dao.postgres;
 
 import br.psychomeet.backend.lds.backend.main.domain.Pessoa;
 import br.psychomeet.backend.lds.backend.main.port.dao.user.PessoaDao;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -29,12 +31,14 @@ public class PessoaPostgresDaoImpl implements PessoaDao {
 
         try {
             connection.setAutoCommit(false);
+            PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+            String encryptedPassword = passwordEncoder.encode(entity.getSenha());
 
             // 1. Inserir na tabela pessoa
             preparedStatementPessoa = connection.prepareStatement(sqlPessoa, PreparedStatement.RETURN_GENERATED_KEYS);
             preparedStatementPessoa.setString(1, entity.getNome());
             preparedStatementPessoa.setString(2, entity.getTelefone());
-            preparedStatementPessoa.setString(3, entity.getSenha());
+            preparedStatementPessoa.setString(3, encryptedPassword);
             preparedStatementPessoa.setString(4, entity.getCpf());
             preparedStatementPessoa.setString(5, entity.getEmail());
             preparedStatementPessoa.setDate(6, new Date(entity.getDataNascimento().getTime()));

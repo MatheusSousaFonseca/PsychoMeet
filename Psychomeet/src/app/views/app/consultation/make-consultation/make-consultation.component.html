@@ -1,81 +1,85 @@
 <div class="container mt-5">
-<div class="p-5">
-  <button type="button" class="btn btn-outline-danger" (click)="voltar()">Voltar</button>
-</div>
+  <div class="p-5">
+    <button type="button" class="btn btn-outline-danger" (click)="voltar()">Voltar</button>
+  </div>
 
   <div class="row">
 
-     <!-- Card de informações do Psicólogo -->
-  <div class="row justify-content-center">
-    <div class="col-md-8">
-      <div class="card shadow-lg p-3 mb-5 bg-white rounded">
-        <div class="media p-4 align-items-center">
-          <img src="assets/user.png" class="rounded-circle mr-4" alt="User Image" width="120" height="120">
-          <div class="media-body">
-            <h4 class="mt-0 font-weight-bold text-primary">Dr. {{psychologist.nome}}</h4>
-            <p><strong>CRP:</strong> {{psychologist.crp}}</p>
-            <p><strong>Especialidade:</strong> {{psychologist.especialidades}}</p>
-            <p><strong>Descrição:</strong> {{psychologist.descricao}}</p>
-            <ngb-rating [disabled]="true" [tooltipContext]="{ rating: mediaNotas }" [ngbTooltip]="tipContent" [(rate)]="mediaNotas" />
+    <!-- Card de informações do Psicólogo -->
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <div class="card shadow-lg p-3 mb-5 bg-white rounded">
+          <div class="media p-4 align-items-center">
+            <img
+              [src]="imageSrc || 'assets/user.png'"
+              alt="Foto de Perfil"
+              class="img-thumbnail"
+            >
+            <div class="media-body">
+              <h4 class="mt-0 font-weight-bold text-primary">Dr. {{psychologist.nome}}</h4>
+              <p><strong>CRP:</strong> {{psychologist.crp}}</p>
+              <p><strong>Especialidade:</strong> {{psychologist.especialidades}}</p>
+              <p><strong>Descrição:</strong> {{psychologist.descricao}}</p>
+              <ngb-rating [disabled]="true" [tooltipContext]="{ rating: mediaNotas }" [ngbTooltip]="tipContent" [(rate)]="mediaNotas" />
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
 
 
     <!-- Calendário de Disponibilidade -->
     <div class="container mt-5">
       <div class="row mb-4 align-items-center">
         <div class="col-auto">
-            <button class="btn btn-outline-secondary" (click)="previousWeek()">Semana Anterior</button>
+          <button class="btn btn-outline-secondary" (click)="previousWeek()">Semana Anterior</button>
         </div>
 
         <div class="col text-center">
-            <h2 class="card-title">Agendar Consulta ({{ startOfWeek | date: 'dd/MM/yyyy' }} - {{ endOfWeek | date: 'dd/MM/yyyy' }})</h2>
+          <h2 class="card-title">Agendar Consulta ({{ startOfWeek | date: 'dd/MM/yyyy' }} - {{ endOfWeek | date: 'dd/MM/yyyy' }})</h2>
         </div>
 
         <div class="col-auto">
-            <button class="btn btn-outline-secondary" (click)="nextWeek()">Próxima Semana</button>
+          <button class="btn btn-outline-secondary" (click)="nextWeek()">Próxima Semana</button>
         </div>
-    </div>
+      </div>
 
-    <div class="text-center">
+      <div class="text-center">
         <table class="table table-bordered table-white custom-table mx-auto">
-            <thead>
-                <tr>
-                    <th>Hora</th>
-                    <th *ngFor="let day of weekDays">{{ getDayWithDate(day) }}</th>
-                </tr>
-            </thead>
-            <tbody>
-              <tr *ngFor="let time of horarioLista">
-                <td>{{ time.hora }}</td>
-                <td *ngFor="let day of weekDays">
-                  <button class="btn calendar-button" (click)="onAvailabilityClick(content, time.hora, day)">
-                    <ng-container *ngIf="isConsultaMarcada(day, time.hora)">
-                      <i class="fas fa-calendar-alt text-primary"></i> <!-- Calendário azul para consulta marcada -->
-                    </ng-container>
-                    <ng-container *ngIf="!isConsultaMarcada(day, time.hora)">
-                      <i *ngIf="isAvailable(day, time.hora)" class="fas fa-check-circle text-success"></i> <!-- Disponível -->
-                      <i *ngIf="!isAvailable(day, time.hora)" class="fas fa-times-circle text-danger"></i> <!-- Não disponível ou dia passado -->
-                    </ng-container>
-                  </button>
-                </td>
+          <thead>
+          <tr>
+            <th>Hora</th>
+            <th *ngFor="let day of weekDays">{{ getDayWithDate(day) }}</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let time of horarioLista">
+            <td>{{ time.hora }}</td>
+            <td *ngFor="let day of weekDays">
+              <button class="btn calendar-button" (click)="onAvailabilityClick(content, time.hora, day)">
+                <ng-container *ngIf="isConsultaMarcada(day, time.hora)">
+                  <i class="fas fa-calendar-alt text-primary"></i> <!-- Calendário azul para consulta marcada -->
+                </ng-container>
+                <ng-container *ngIf="!isConsultaMarcada(day, time.hora)">
+                  <i *ngIf="isAvailable(day, time.hora)" class="fas fa-check-circle text-success"></i> <!-- Disponível -->
+                  <i *ngIf="!isAvailable(day, time.hora)" class="fas fa-times-circle text-danger"></i> <!-- Não disponível ou dia passado -->
+                </ng-container>
+              </button>
+            </td>
 
-              </tr>
+          </tr>
 
-            </tbody>
+          </tbody>
         </table>
 
         <div class="container mt-5">
           <div class="row mb-4 align-items-center">
 
 
-              <!-- Coluna central para o título -->
-              <div class="col text-center">
-                  <h2 class="card-title">Feedback de outros Usuarios</h2>
-              </div>
+            <!-- Coluna central para o título -->
+            <div class="col text-center">
+              <h2 class="card-title">Feedback de outros Usuarios</h2>
+            </div>
 
 
           </div>
@@ -83,58 +87,58 @@
 
         <ul class="list-group mb-3">
           <div *ngFor="let consultation of consultations; trackBy: trackById">
-          <li *ngIf="hasFeedback(consultation.comentarioPaciente , consultation.notaPaciente)" class="list-group-item" >
+            <li *ngIf="hasFeedback(consultation.comentarioPaciente , consultation.notaPaciente)" class="list-group-item" >
               <div  class="card mb-3">
-                  <div class="card-body">
-                      <div class="d-flex justify-content-between align-items-center">
-                        <div class="col-md-2">
-                          <img src="assets/user.png" alt="Foto de João dos Santos" class="img-thumbnail">
-                      </div>
-                          <div  class="col-md-9">
-                              <h5 class="card-title font-weight-bold text-primary">{{ pacientesMap[consultation.pacienteId] }}</h5> <!-- Get preloaded name -->
-                              <p class="card-text"><strong>Data: </strong>{{ formatarData(consultation.data)  }} , {{ consultation.horaIntervalo }}</p>
-                              <ngb-rating [disabled]="true" [tooltipContext]="{ rating: consultation.notaPaciente }" [ngbTooltip]="tipContent" [(rate)]="consultation.notaPaciente" />
-                              <p class="card-text"><strong>Feedback: </strong>{{ consultation.comentarioPaciente }}</p>
-                          </div>
-                      </div>
+                <div class="card-body">
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div class="col-md-2">
+                      <img src="assets/user.png" alt="Foto de João dos Santos" class="img-thumbnail">
+                    </div>
+                    <div  class="col-md-9">
+                      <h5 class="card-title font-weight-bold text-primary">{{ pacientesMap[consultation.pacienteId] }}</h5> <!-- Get preloaded name -->
+                      <p class="card-text"><strong>Data: </strong>{{ formatarData(consultation.data)  }} , {{ consultation.horaIntervalo }}</p>
+                      <ngb-rating [disabled]="true" [tooltipContext]="{ rating: consultation.notaPaciente }" [ngbTooltip]="tipContent" [(rate)]="consultation.notaPaciente" />
+                      <p class="card-text"><strong>Feedback: </strong>{{ consultation.comentarioPaciente }}</p>
+                    </div>
                   </div>
+                </div>
               </div>
-          </li>
-        </div>
+            </li>
+          </div>
         </ul>
 
+      </div>
+      <ng-template #tipContent let-rating="rating"
+      >Nota: <b>{{ rating }}</b>!
+      </ng-template>
     </div>
-    <ng-template #tipContent let-rating="rating"
-	>Nota: <b>{{ rating }}</b>!
-</ng-template>
-  </div>
 
-  <!-- Modal para marcar consulta -->
-  <ng-template #content let-modal="modal">
-    <div class="modal-header">
-      <h4 class="modal-title">Marcar Consulta</h4>
-      <button type="button" class="close" aria-label="Close" (click)="closeMyModal()">
-        <span aria-hidden="true">&times;</span>
-      </button>
-    </div>
-    <div class="modal-body">
-      <p>Marcar consulta com Dr. {{psychologist.nome}} dia {{ diaSelecionada.getDate() }} às {{ horaSelecionada }}.</p>
-      <button class="btn btn-success" (click)="marcarConsulta()" >Marcar Consulta</button>
+    <!-- Modal para marcar consulta -->
+    <ng-template #content let-modal="modal">
+      <div class="modal-header">
+        <h4 class="modal-title">Marcar Consulta</h4>
+        <button type="button" class="close" aria-label="Close" (click)="closeMyModal()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Marcar consulta com Dr. {{psychologist.nome}} dia {{ diaSelecionada.getDate() }} às {{ horaSelecionada }}.</p>
+        <button class="btn btn-success" (click)="marcarConsulta()" >Marcar Consulta</button>
 
-    </div>
-    <div class="modal-footer">
-      <button type="button" class="btn btn-outline-dark" (click)="closeMyModal()">Fechar</button>
-    </div>
-  </ng-template>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-dark" (click)="closeMyModal()">Fechar</button>
+      </div>
+    </ng-template>
 
-  <ng-template #t let-fill="fill">
-    <i class="bi-heart-fill">
-      @if (fill > 0) {
+    <ng-template #t let-fill="fill">
+      <i class="bi-heart-fill">
+        @if (fill > 0) {
         <i class="bi-heart-fill filled" [style.width.%]="fill"></i>
-      }
-    </i>
-  </ng-template>
+        }
+      </i>
+    </ng-template>
 
 
 
-</div>
+  </div>

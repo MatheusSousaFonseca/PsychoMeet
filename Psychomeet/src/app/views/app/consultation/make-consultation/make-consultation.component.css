@@ -70,3 +70,15 @@ i {
   top: 0;
   left: 0;
 }
+
+.img-thumbnail {
+  max-width: 100%; /* Ensures the image fits within its container */
+  height: auto;    /* Maintains the aspect ratio */
+  max-height: 300px; /* Optional: limits the height if necessary */
+  object-fit: cover; /* Ensures the image covers its box without distortion */
+  padding-right: 10;
+}
+
+.media-body{
+  padding-left: 10
+}

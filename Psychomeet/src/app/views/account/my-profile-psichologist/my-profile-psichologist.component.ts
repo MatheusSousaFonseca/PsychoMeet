@@ -1,120 +1,125 @@
-import { Component, Input } from '@angular/core';
-import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
-import { PsychologistUpdateService } from '../../../services/psychologist/psychologist-update.service';
-import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';  // Import NgbActiveModal
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { CommonModule } from '@angular/common';
-import { MatOptionModule } from '@angular/material/core';
-import { MatSelectModule } from '@angular/material/select';
-import { Router, ActivatedRoute } from '@angular/router';
-import { FormBuilder, Validators } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';  // Import NgbModal
 import { PsychologistReadService } from '../../../services/psychologist/psychologist-read.service';
+import { Psychologist } from '../../../domain/model/psychologist-model';
+import { FormBuilder, FormControl, FormGroup, Validators, ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { PsychologistUpdateService } from '../../../services/psychologist/psychologist-update.service';
 import { HttpClient } from '@angular/common/http';
-import { ToastrService } from 'ngx-toastr';
+import { CommonModule } from '@angular/common';
+import { MatChipsModule } from '@angular/material/chips';
 import { ImageService } from '../../../services/image/image-service';
 
 @Component({
-selector: 'app-edit-profile-psichologist',
-standalone: true,
-imports: [ReactiveFormsModule, MatFormFieldModule,CommonModule, MatOptionModule, MatSelectModule],
-templateUrl: './edit-profile-psichologist.component.html',
-styleUrls: ['./edit-profile-psichologist.component.css']
+  selector: 'app-my-profile-psichologist',
+  standalone: true,
+  imports: [
+    CommonModule,
+    ReactiveFormsModule,
+    MatChipsModule,
+    FormsModule
+  ],
+  templateUrl: './my-profile-psichologist.component.html',
+  styleUrls: ['./my-profile-psichologist.component.css']
 })
-export class EditProfilePsichologistComponent {
+export class MyProfilePsichologistComponent implements OnInit {
 
-form!: FormGroup;
-abordagensList: string[] = [];
-especialidadesList: string[] = [];
-psychologistId : number | undefined;
-previewImageSrc: string | undefined; // For previewing uploaded image
-  uploadedImage: File | null = null; // Store the uploaded file
-  imageSrc: string | undefined; // Existing image
+  form!: FormGroup;
+  psychologist!: Psychologist;
+  abordagensList: string[] = [];
+  especialidadesList: string[] = [];
+  imageSrc: string | undefined; // URL for the psychologist's image
 
   constructor(
-private router: Router,
-private formBuilder: FormBuilder,
-private psychologistReadService: PsychologistReadService,
-private psychologistUpdateService: PsychologistUpdateService,
-private http: HttpClient,
-private route: ActivatedRoute,
-private toastr: ToastrService,
-private imageService: ImageService
-) { }
+    private router: Router,
+    private modalService: NgbModal,  // Using NgbModal here
+    private psychologistReadService: PsychologistReadService,
+    private formBuilder: FormBuilder,
+    private psychologistUpdateService: PsychologistUpdateService,
+    private http: HttpClient,
+    private imageService: ImageService
+  ) { }
 
-ngOnInit(): void {
-this.form = this.formBuilder.group({
-nome: ['', Validators.required],  // Nome cannot be blank
-      email: ['', [Validators.required, Validators.email]],  // Email must be valid
-      senha: ['', Validators.required],  // Senha cannot be blank
-      repeatPassword: ['', Validators.required],  // Repeat password cannot be blank
-      crp: ['', [Validators.required, Validators.pattern('^[0-9]{7}$')]],  // CRP: exactly 7 digits
-      cpf: ['', [Validators.required, Validators.pattern('^[0-9]{11}$')]],  // CPF: exactly 11 digits
-      data: ['', Validators.required],  // Data de nascimento cannot be blank
-      telefone: ['', [Validators.required, Validators.pattern('^[0-9]{11}$')]],  // Telefone: exactly 11 digits
-      descricao: ['', Validators.required],  // Descrição cannot be blank
-      especialidades: new FormControl([], Validators.required),  // Especialidades cannot be blank
-      abordagens: new FormControl([], Validators.required)  // Abordagens cannot be blank
+  ngOnInit(): void {
+    this.loadPsychologist();
+    this.loadEspecialidades();
+    this.loadAbordagens();
+
+    this.form = this.formBuilder.group({
+      id: [''],  // Add this line to define 'id' in the form group
+      nome: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
+      senha: ['', Validators.required],
+      publico: ['', Validators.required],
+      descricao: ['', Validators.required],
+      crp: ['', Validators.required],
+      cpf: ['', Validators.required],
+      abordagens: new FormControl([]),
+      data: ['', Validators.required],
+      preco: ['', Validators.required],
+      especialidades: new FormControl([]),
+      telefone: ['', Validators.required]
     });
 
-this.loadPsychologist();
-this.loadAbordagens();
-this.loadEspecialidades();
-}
+  }
 
-async loadPsychologist() {
-let email = localStorage.getItem("email");
-let psychologist = await this.psychologistReadService.findByEmail(email!);
-this.psychologistId = psychologist.id;
-if (psychologist) {
-this.form.patchValue(psychologist);
-}
-}
+  async loadPsychologist() {
+    let email = localStorage.getItem("email");
 
-loadAbordagens() {
-this.http.get<{ abordagens: string[] }>('assets/abordagens.json')
-.subscribe(data => {
-this.abordagensList = data.abordagens;
-});
-}
+    let psychologist = await this.psychologistReadService.findByEmail(email!);
+    this.psychologist = psychologist;
 
-loadEspecialidades() {
-this.http.get<{ especialidades: string[] }>('assets/especialidades.json')
-.subscribe(data => {
-this.especialidadesList = data.especialidades;
-});
-}
+    // Fetch the image for the psychologist
+    this.loadImage(this.psychologist.id!);
 
-async salvar() {
+    this.form.controls['id'].setValue(this.psychologist.id);
+    this.form.controls['nome'].setValue(this.psychologist.nome);
+    this.form.controls['email'].setValue(this.psychologist.email);
+    this.form.controls['senha'].setValue(this.psychologist.senha);
+    this.form.controls['publico'].setValue(this.psychologist.publico);
+    this.form.controls['descricao'].setValue(this.psychologist.descricao);
+    this.form.controls['crp'].setValue(this.psychologist.crp);
+    this.form.controls['cpf'].setValue(this.psychologist.cpf);
+    this.form.controls['abordagens'].setValue(this.psychologist.abordagens);
+    this.form.controls['data'].setValue(this.psychologist.dataNascimento);
+    this.form.controls['preco'].setValue(this.psychologist.preco);
+    this.form.controls['especialidades'].setValue(this.psychologist.especialidades);
+    this.form.controls['telefone'].setValue(this.psychologist.telefone);
+  }
 
-try {
-await this.psychologistUpdateService.update(this.form.value, this.psychologistId);
-// If an image was uploaded, upload it to the server
-        if (this.uploadedImage) {
-await this.imageService.uploadImage(this.psychologistId!, this.uploadedImage);
-}
-this.router.navigate(['/account/my-profile-psichologist']);
-} catch (error) {
-console.error('Error updating psychologist:', error);
-this.toastr.error('Erro ao atualizar psicologo, tente novamente mais tarde!');
-}
-}
+  async loadImage(psychologistId: number) {
+    try {
+      const imageBlob = await this.imageService.fetchImageByPessoaId(psychologistId);
+      this.imageSrc = URL.createObjectURL(imageBlob); // Create a URL for the image Blob
+    } catch (error) {
+      console.error('Error loading image:', error);
+    }
+  }
 
-onImageUpload(event: Event) {
-const input = event.target as HTMLInputElement;
-if (input.files && input.files[0]) {
-this.uploadedImage = input.files[0];
-const reader = new FileReader();
-reader.onload = (e: any) => {
-this.previewImageSrc = e.target.result;
-};
-reader.readAsDataURL(this.uploadedImage);
-}
-}
+  async loadEspecialidades() {
+    this.http.get<{ especialidades: string[] }>('assets/especialidades.json')
+      .subscribe(data => {
+        this.especialidadesList = data.especialidades;
+      }, error => {
+        console.error('Error loading especialidades:', error);
+      });
+  }
 
+  loadAbordagens() {
+    this.http.get<{ abordagens: string[]; }>('assets/abordagens.json')
+      .subscribe(data => {
+        this.abordagensList = data.abordagens;
+      }, error => {
+        console.error('Error loading abordagens:', error);
+      });
+  }
 
-voltar() {
-this.router.navigate(['/account/my-profile-psichologist']);
-}
+  openMyModal(): void {
+    this.router.navigate(['/account/edit-profile-psichologist']);  // Navega para a página de edição
+  }
 
 
+  voltar() {
+    this.router.navigate(['consultation/view-consultation-psychologist']);
+  }
 }

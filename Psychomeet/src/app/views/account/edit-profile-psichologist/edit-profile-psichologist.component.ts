@@ -11,6 +11,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { PsychologistReadService } from '../../../services/psychologist/psychologist-read.service';
 import { HttpClient } from '@angular/common/http';
 import { ToastrService } from 'ngx-toastr';
+import { ImageService } from '../../../services/image/image-service';
 
 @Component({
   selector: 'app-edit-profile-psichologist',
@@ -25,6 +26,9 @@ export class EditProfilePsichologistComponent {
   abordagensList: string[] = [];
   especialidadesList: string[] = [];
   psychologistId : number | undefined;
+  previewImageSrc: string | undefined; // For previewing uploaded image
+  uploadedImage: File | null = null; // Store the uploaded file
+  imageSrc: string | undefined; // Existing image
 
   constructor(
     private router: Router,
@@ -34,6 +38,7 @@ export class EditProfilePsichologistComponent {
     private http: HttpClient,
     private route: ActivatedRoute,
     private toastr: ToastrService,
+    private imageService: ImageService
   ) { }
 
   ngOnInit(): void {
@@ -83,12 +88,29 @@ export class EditProfilePsichologistComponent {
 
       try {
         await this.psychologistUpdateService.update(this.form.value, this.psychologistId);
+        // If an image was uploaded, upload it to the server
+        if (this.uploadedImage) {
+          await this.imageService.uploadImage(this.psychologistId!, this.uploadedImage);
+        }
         this.router.navigate(['/account/my-profile-psichologist']);
       } catch (error) {
         console.error('Error updating psychologist:', error);
-        this.toastr.error('Erro ao atualizar psicologo, tente novamente mais tarde!');
+        this.router.navigate(['/account/my-profile-psichologist']);
       }
   }
+
+  onImageUpload(event: Event) {
+    const input = event.target as HTMLInputElement;
+    if (input.files && input.files[0]) {
+      this.uploadedImage = input.files[0];
+      const reader = new FileReader();
+      reader.onload = (e: any) => {
+        this.previewImageSrc = e.target.result;
+      };
+      reader.readAsDataURL(this.uploadedImage);
+    }
+  }
+
 
   voltar() {
     this.router.navigate(['/account/my-profile-psichologist']);

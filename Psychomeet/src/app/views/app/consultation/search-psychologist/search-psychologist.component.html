@@ -1,98 +1,103 @@
 <div class="container mt-4">
-    <!-- Linha para botões e título -->
-    <div class="d-flex justify-content-between align-items-center mb-4">
-        <!-- Botão Histórico de consultas -->
-        <button type="submit" class="btn btn-primary" (click)="historico()">
-            Histórico de consultas
-        </button>
+  <!-- Linha para botões e título -->
+  <div class="d-flex justify-content-between align-items-center mb-4">
+      <!-- Botão Histórico de consultas -->
+      <button type="submit" class="btn btn-primary" (click)="historico()">
+          Histórico de consultas
+      </button>
 
 
 
-        <div class="col-auto">
-            <div class="d-flex flex-column">
-                <button class="btn btn-warning mb-2" (click)="acessarPerfilPaciente()">Meu Perfil</button>
-                <button class="btn btn-danger" (click)="logout()">Sair</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Texto Buscar Profissionais -->
-    <h2 class="mb-3">Buscar Profissionais</h2>
-
-    <!-- Formulário de busca -->
-    <form (ngSubmit)="search()">
-      <div class="form-row align-items-center mb-3">
-        <div class="col-md-6">
-          <label for="inputName" class="sr-only">Nome</label>
-          <input
-            [(ngModel)]="name"
-            type="text"
-            class="form-control"
-            name="name"
-            id="inputName"
-            placeholder="Nome do Profissional"
-            required
-          />
-        </div>
-
-        <div class="col-md-4">
-          <label for="selectEspecialidade" class="sr-only">Especialidades</label>
-          <select
-            [(ngModel)]="especialidadeSelecionada"
-            class="form-control"
-            name="especialidade"
-            id="selectEspecialidade"
-          >
-            <option value="">Todas as Especialidades</option>
-            <option *ngFor="let especialidade of especialidades" [value]="especialidade">
-              {{ especialidade }}
-            </option>
-          </select>
-        </div>
-
-        <div class="col-md-2">
-          <button type="submit" class="btn btn-primary">
-            <i class="fas fa-search"></i> Buscar
-          </button>
-        </div>
+      <div class="col-auto">
+          <div class="d-flex flex-column">
+              <button class="btn btn-warning mb-2" (click)="acessarPerfilPaciente()">Meu Perfil</button>
+              <button class="btn btn-danger" (click)="logout()">Sair</button>
+          </div>
       </div>
-    </form>
+  </div>
 
+  <!-- Texto Buscar Profissionais -->
+  <h2 class="mb-3">Buscar Profissionais</h2>
 
+  <!-- Formulário de busca -->
+  <form (ngSubmit)="search()">
+    <div class="form-row align-items-center mb-3">
+      <div class="col-md-6">
+        <label for="inputName" class="sr-only">Nome</label>
+        <input
+          [(ngModel)]="name"
+          type="text"
+          class="form-control"
+          name="name"
+          id="inputName"
+          placeholder="Nome do Profissional"
+          required
+        />
+      </div>
 
-    <!-- Lista de profissionais sugeridos -->
-    <div>
-        <h4>Profissionais Sugeridos:</h4>
-        <ul class="list-group mb-3">
-            <!-- Loop para listar psicólogos -->
-            @for (psychologist of psychologists; track $index) {
-                <li class="list-group-item">
-                    <div class="row align-items-center">
-                        <div class="col-md-2">
-                            <img src="assets/user.png" alt="Foto de João dos Santos" class="img-thumbnail">
-                        </div>
-                        <div class="col-md-9">
-                            <h5 class="card-title mb-1">Psicólogo: {{psychologist.nome}}</h5>
-                            <p class="card-text mb-1"><strong>Atuação:</strong>
-                              <mat-chip-set aria-label="Especialidades">
-                                @for (especialidade of psychologist.especialidades; track $index) {
-                                  <mat-chip>
-                                    {{especialidade}}
-                                  </mat-chip>
+      <div class="col-md-4">
+        <label for="selectEspecialidade" class="sr-only">Especialidades</label>
+        <select
+          [(ngModel)]="especialidadeSelecionada"
+          class="form-control"
+          name="especialidade"
+          id="selectEspecialidade"
+        >
+          <option value="">Todas as Especialidades</option>
+          <option *ngFor="let especialidade of especialidades" [value]="especialidade">
+            {{ especialidade }}
+          </option>
+        </select>
+      </div>
 
-                                }
-
-                              </mat-chip-set>
-                            </p>
-                            <p class="card-text mb-0"><strong>Descrição:</strong> {{psychologist.descricao}}</p>
-                            <p class="card-text mb-1"><strong>Valor:</strong> R$ 50,00</p>
-                        </div>
-                        <div class="col-md-1 text-right">
-                            <a class="btn btn-success btn-sm" routerLink="/consultation/make-consultation/{{psychologist.id}}">Ver perfil</a>
-                        </div>
-                    </div>
-                </li>
-            }
-        </ul>
+      <div class="col-md-2">
+        <button type="submit" class="btn btn-primary">
+          <i class="fas fa-search"></i> Buscar
+        </button>
+      </div>
     </div>
+  </form>
+
+
+
+  <!-- Lista de profissionais sugeridos -->
+  <div>
+      <h4>Profissionais Sugeridos:</h4>
+      <ul class="list-group mb-3">
+          <!-- Loop para listar psicólogos -->
+          @for (psychologist of psychologists; track $index) {
+              <li class="list-group-item">
+                  <div class="row align-items-center">
+                    <div class="col-md-2">
+                      <!-- Display the image dynamically -->
+                      <img
+                        [src]="psychologistImages[psychologist.id!] || 'assets/user.png'"
+                        alt="Foto do Psicólogo"
+                        class="img-thumbnail"
+                      >
+                    </div>
+                      <div class="col-md-9">
+                          <h5 class="card-title mb-1">Psicólogo: {{psychologist.nome}}</h5>
+                          <p class="card-text mb-1"><strong>Atuação:</strong>
+                            <mat-chip-set aria-label="Especialidades">
+                              @for (especialidade of psychologist.especialidades; track $index) {
+                                <mat-chip>
+                                  {{especialidade}}
+                                </mat-chip>
+
+                              }
+
+                            </mat-chip-set>
+                          </p>
+                          <p class="card-text mb-0"><strong>Descrição:</strong> {{psychologist.descricao}}</p>
+                          <p class="card-text mb-1"><strong>Valor:</strong> R$ 50,00</p>
+                      </div>
+                      <div class="col-md-1 text-right">
+                          <a class="btn btn-success btn-sm" routerLink="/consultation/make-consultation/{{psychologist.id}}">Ver perfil</a>
+                      </div>
+                  </div>
+              </li>
+          }
+      </ul>
+  </div>
 </div>
